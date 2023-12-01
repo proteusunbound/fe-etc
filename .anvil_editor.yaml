@@ -1,8 +1,14 @@
 unique_ids:
   forms:
     Form1: 7EBIJRVRQTILZLPHDG4GOJH5BZRPVLCH
-  modules: {}
-  server_modules: {}
+    Form1.ItemTemplate1: '1701462598418900906169952.165'
+    Form1.RowTemplate1: '1701462526366245554749821.5833'
+    Form1.RowTemplate2: '1701462623068517504994490.6669'
+    Form1.RowTemplate3: '1701462912174607356042634.778'
+  modules:
+    data: '1701461147071936999611805.4498'
+  server_modules:
+    ServerModule1: '1701455677961978311808004.1575'
   assets:
     standard-page.html: RMGFQPUTQI2IYMDSPVFQKQ6SUL2DSZPR
     theme.css: R2FXCDZNEVWLKPND6HFS6ZJMGV4DUHBN
