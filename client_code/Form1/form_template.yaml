@@ -10,10 +10,10 @@ components:
   - name: unit_drop
     properties: {}
     type: DropDown
-    layout_properties: {grid_position: 'TIFNBG,VBLLIG'}
+    layout_properties: {grid_position: 'CPMBRD,PMNJMY'}
   - name: weapon_drop
     properties: {}
     type: DropDown
-    layout_properties: {grid_position: 'URGRSE,IUIIMF'}
+    layout_properties: {grid_position: 'TOBBMK,NQXNUF'}
 is_package: true
 custom_component: false
