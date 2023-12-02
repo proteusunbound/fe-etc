@@ -1,3 +1,4 @@
+import math
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -50,6 +51,41 @@ class ActiveBoss:
     self.hitpoints = 0
     self.doubles = False
     self.counter = False
+
+def attack_speed(keyword, weapon):
+    """Attack Speed"""
+    keyword.AS = max(0, keyword.speed - weapon.weight)
+  
+def hitrate(keyword, weapon):
+    """Hit Rate"""
+    keyword.hit = keyword.skill + weapon.hit
+
+def get_attack(keyword, weapon):
+    """Attack"""
+    keyword.attack = keyword.strength + weapon.might
+
+def unit_crit(unit, weapon):
+    """Unit Crit"""
+    unit.crit = math.floor(((unit.skill + unit.luck) / 2 + weapon.crit) / 2)
+
+def boss_crit(boss, weapon):
+    """Boss Crit"""
+    boss.crit = math.floor((boss.skill / 2 + weapon.crit) / 2)
+
+def enemy_avoid(boss, terrain):
+    """Enemy Avoid"""
+    if terrain is True:
+      boss.avoid = boss.AS + 30
+    else:
+      boss.avoid = boss.AS
+
+def damage(attacker, defender):
+    """Damage"""
+    attacker.damage = max(0, attacker.attack - defender.defense)
+
+def bosshitchance(boss, unit):
+    """Boss Hit Chance"""
+    boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
 
 @anvil.server.portable_class
 class DuelSim:
@@ -108,18 +144,18 @@ class DuelSim:
 
   def precombat(self):
     """Pre-Combat Calculation"""
-    anvil.server.call('attack_speed', self.unit, self.unitweapon)
-    anvil.server.call('attack_speed', self.boss, self.bossweapon)
-    anvil.server.call('hitrate', self.unit, self.unitweapon)
-    anvil.server.call('hitrate', self.boss, self.bossweapon)
-    anvil.server.call('get_attack', self.unit, self.unitweapon)
-    anvil.server.call('get_attack', self.boss, self.bossweapon)
-    anvil.server.call('unit_crit', self.unit, self.unitweapon)
-    anvil.server.call('boss_crit', self.boss, self.bossweapon)
-    anvil.server.call('damage', self.unit, self.boss)
-    anvil.server.call('damage', self.boss, self.unit)
-    anvil.server.call('bosshitchance', self.boss, self.unit)
-    anvil.server.call('enemy_avoid', self.boss, self.terrain)
+    attack_speed(self.unit, self.unitweapon)
+    attack_speed(self.boss, self.bossweapon)
+    hitrate(self.unit, self.unitweapon)
+    hitrate(self.boss, self.bossweapon)
+    get_attack(self.unit, self.unitweapon)
+    get_attack(self.boss, self.bossweapon)
+    unit_crit(self.unit, self.unitweapon)
+    boss_crit(self.boss, self.bossweapon)
+    damage(self.unit, self.boss)
+    damage(self.boss, self.unit)
+    bosshitchance(self.boss, self.unit)
+    enemy_avoid(self.boss, self.terrain)
     self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
     self.unitcrit = self.unit.crit / 100
     self.unitavoid = 1 - self.boss.hitchance

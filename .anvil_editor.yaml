@@ -1,10 +1,10 @@
 unique_ids:
-  forms: {}
+  forms:
+    Form1: 7EBIJRVRQTILZLPHDG4GOJH5BZRPVLCH
   modules:
     combat: '1701483516070113728583671.12015'
     data: '1701461147071936999611805.4498'
-  server_modules:
-    combat_calc: '1701481547916854777104446.4576'
+  server_modules: {}
   assets:
     standard-page.html: RMGFQPUTQI2IYMDSPVFQKQ6SUL2DSZPR
     theme.css: R2FXCDZNEVWLKPND6HFS6ZJMGV4DUHBN
