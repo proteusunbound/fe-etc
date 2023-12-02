@@ -4,15 +4,14 @@ container:
 components:
 - name: xy_panel_1
   properties: {height: '600', width: null, align: center, background: '', spacing_above: small,
-    spacing_below: small, tooltip: ''}
+    spacing_below: small, tooltip: ' '}
   type: XYPanel
   layout_properties: {grid_position: 'KCDNTS,SSDZVK', full_width_row: false, row_background: ''}
   data_bindings: []
   components:
-  - name: label_1
-    properties: {tooltip: '', text: HP}
-    type: Label
-    layout_properties: {x: 12.109375, y: 7.9765625, width: 200}
-    data_bindings: []
+  - name: xy_panel_2
+    properties: {height: 146.1756591796875}
+    type: XYPanel
+    layout_properties: {x: 455.171875, y: 207.171875, width: 226.16632080078125}
 is_package: true
 data_bindings: []
