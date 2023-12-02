@@ -17,7 +17,7 @@ components:
       include_placeholder: true
       placeholder: Select Unit
     type: DropDown
-    layout_properties: {x: 10, y: 10, width: 795}
+    layout_properties: {x: 0, y: 10, width: 805}
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
@@ -31,7 +31,7 @@ components:
       include_placeholder: true
       placeholder: Select Weapon
     type: DropDown
-    layout_properties: {x: 10, y: 60, width: 795}
+    layout_properties: {x: 0, y: 60, width: 805}
     event_bindings: {change: weapon_drop_change}
   - name: spacer_1
     properties: {height: 32}
@@ -39,12 +39,13 @@ components:
     layout_properties: {x: 820, y: 10, width: 140}
   - name: custombutton
     properties: {text: Customize, align: full, role: outlined, background: 'theme:Surface
-        Variant', foreground: 'theme:Primary'}
+        Variant', foreground: 'theme:On Primary Container'}
     type: Button
     layout_properties: {x: 820, y: 60, width: 140}
     event_bindings: {click: custombutton_click}
 - name: customization
-  properties: {visible: false, background: ''}
+  properties: {visible: false, background: 'theme:On Primary Container', role: card,
+    foreground: 'theme:On Secondary'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
@@ -116,7 +117,7 @@ components:
     components:
     - name: hide
       properties: {text: Hide, align: full, role: outlined, background: 'theme:Surface
-          Variant', foreground: 'theme:Primary', visible: true}
+          Variant', foreground: 'theme:On Primary Container', visible: true}
       type: Button
       layout_properties: {x: 325, y: 0, width: 140}
       event_bindings: {click: hide_click}
@@ -128,6 +129,7 @@ components:
       properties: {placeholder: '0', font_size: 25}
       type: TextBox
       layout_properties: {x: 130, y: 11, width: 50}
+      event_bindings: {change: startinghp_change}
   - name: column_panel_3
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
@@ -144,17 +146,19 @@ components:
         items: ['1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,YCGGNU VKMUZG,XZSAGP'}
+      event_bindings: {change: avoid_drop_change}
     - name: critno
       properties: {text: Crits, align: center}
       type: Label
       layout_properties: {grid_position: 'QDIZME,COUIXI BYTOIM,GXGCBQ'}
-    - name: drop_down_2
+    - name: crit_drop
       properties:
         include_placeholder: true
         placeholder: '0'
         items: ['1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,COUIXI EAGRXS,UXYPYK'}
+      event_bindings: {change: crit_drop_change}
     - name: dodgelabel
       properties: {text: Dodges, align: center}
       type: Label
@@ -166,6 +170,7 @@ components:
         items: ['1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,MLQFBU MVLKOS,PVCDWO'}
+      event_bindings: {change: dodge_drop_change}
   - name: column_panel_1
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
