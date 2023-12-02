@@ -1,22 +1,38 @@
 container: {type: ColumnPanel}
 components:
-- name: unit_drop
-  properties:
-    items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Wrys, Bord, Cord, Barst,
-      Ogma, Darros, Castor, Julian, Lena, Navarre, Matthis, Merric, Roshea, Vyland,
-      Sedgar, Wolf, Hardin, Wendell, Rickard, Bantu, Caesar, Radd, Roger, Jeorge,
-      Maria, Minerva, Linde, Jake, Dolph, Macellan, Tomas, Boah, Midia, Astram, Beck,
-      Catria, Palla, Arran, Samson, Xane, Est, Tiki, Lorenz, Elice, Gotoh]
-  type: DropDown
-  layout_properties: {grid_position: 'WAOYGB,AKJYBL'}
-- name: weapon_drop
-  properties:
-    items: [Iron Sword, Steel Sword, Silver Sword, Killing Edge, Levin Sword, Devil Sword,
-      Wyrmslayer, Armorslayer, Rapier, Mercurius, Falchion, Lance, Silver Lance, Ridersbane,
-      Javelin, Gradivus, Axe, Steel Axe, Hammer, Devil Axe, Hand Axe, Bow, Steel Bow,
-      Bowgun, Silver Bow, Parthia, Fire, Thunder, Blizzard, Elfire, Bolganone, Thoron,
-      Swarm, Aura, Excalibur, Imhullu, Starlight, Firestone, Divinestone, Magestone,
-      Earthstone, Arrowspate, Stonehoist, Hoistflamme, Thunderbolt, Pachyderm]
-  type: DropDown
-  layout_properties: {grid_position: 'HPHKXA,OTWVOZ'}
+- name: xy_panel_1
+  properties: {height: 100}
+  type: XYPanel
+  layout_properties: {grid_position: 'QIXASK,RJPYQE'}
+  components:
+  - name: unit_drop
+    properties:
+      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Wrys, Bord, Cord, Barst,
+        Ogma, Darros, Castor, Julian, Lena, Navarre, Matthis, Merric, Roshea, Vyland,
+        Sedgar, Wolf, Hardin, Wendell, Rickard, Bantu, Caesar, Radd, Roger, Jeorge,
+        Maria, Minerva, Linde, Jake, Dolph, Macellan, Tomas, Boah, Midia, Astram,
+        Beck, Catria, Palla, Arran, Samson, Xane, Est, Tiki, Lorenz, Elice, Gotoh]
+      spacing_above: small
+      spacing_below: small
+    type: DropDown
+    layout_properties: {x: 0, y: 10, width: 795}
+  - name: weapon_drop
+    properties:
+      items: [Iron Sword, Steel Sword, Silver Sword, Killing Edge, Levin Sword, Devil Sword,
+        Wyrmslayer, Armorslayer, Rapier, Mercurius, Falchion, Lance, Silver Lance,
+        Ridersbane, Javelin, Gradivus, Axe, Steel Axe, Hammer, Devil Axe, Hand Axe,
+        Bow, Steel Bow, Bowgun, Silver Bow, Parthia, Fire, Thunder, Blizzard, Elfire,
+        Bolganone, Thoron, Swarm, Aura, Excalibur, Imhullu, Starlight, Firestone,
+        Divinestone, Magestone, Earthstone, Arrowspate, Stonehoist, Hoistflamme, Thunderbolt,
+        Pachyderm]
+    type: DropDown
+    layout_properties: {x: 0, y: 60, width: 795}
+  - name: spacer_1
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {x: 810, y: 10, width: 146}
+  - name: button_1
+    properties: {text: button_1}
+    type: Button
+    layout_properties: {x: 812.046875, y: 59.046875, width: 127}
 is_package: true
