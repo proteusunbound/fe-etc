@@ -32,6 +32,7 @@ components:
       placeholder: Select Weapon
     type: DropDown
     layout_properties: {x: 10, y: 60, width: 795}
+    event_bindings: {change: weapon_drop_change}
   - name: spacer_1
     properties: {height: 32}
     type: Spacer
@@ -117,7 +118,8 @@ components:
       properties: {text: Hide, align: full, role: outlined, background: 'theme:Surface
           Variant', foreground: 'theme:Primary', visible: true}
       type: Button
-      layout_properties: {x: 325, y: 10, width: 140}
+      layout_properties: {x: 325, y: 0, width: 140}
+      event_bindings: {click: hide_click}
   - name: column_panel_1
     properties: {}
     type: ColumnPanel
@@ -127,7 +129,7 @@ components:
       properties: {text: AS, align: center}
       type: Label
       layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
-    - name: as
+    - name: attackspeed
       properties: {text: '-', align: center}
       type: Label
       layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}

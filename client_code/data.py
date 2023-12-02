@@ -22,6 +22,7 @@ class ActiveUnit:
     self.speed = unit['Spd']
     self.defense = unit['Def']
     self.luck = unit['Lck']
+    self.resistance = unit['Res']
     self.hitpoints = 0
     self.doubles = False
 
@@ -142,15 +143,18 @@ class DuelSim:
     """Set Dodge Number"""
     self.ddgno = ddgno
 
+  def unitdisplay(self):
+    """Unit Stat Display"""
+    attack_speed(self.unit, self.unitweapon)
+    hitrate(self.unit, self.unitweapon)
+    get_attack(self.unit, self.unitweapon)
+    unit_crit(self.unit, self.unitweapon)
+    
   def precombat(self):
     """Pre-Combat Calculation"""
-    attack_speed(self.unit, self.unitweapon)
     attack_speed(self.boss, self.bossweapon)
-    hitrate(self.unit, self.unitweapon)
     hitrate(self.boss, self.bossweapon)
-    get_attack(self.unit, self.unitweapon)
     get_attack(self.boss, self.bossweapon)
-    unit_crit(self.unit, self.unitweapon)
     boss_crit(self.boss, self.bossweapon)
     damage(self.unit, self.boss)
     damage(self.boss, self.unit)
