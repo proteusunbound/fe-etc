@@ -1,6 +1,0 @@
-container:
-  type: ColumnPanel
-  properties: {tooltip: this is a panel, col_spacing: tiny}
-components: []
-is_package: true
-data_bindings: []
