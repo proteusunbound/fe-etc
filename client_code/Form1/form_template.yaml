@@ -43,9 +43,9 @@ components:
     layout_properties: {x: 820, y: 60, width: 140}
     event_bindings: {click: custombutton_click}
 - name: customization
-  properties: {visible: false}
+  properties: {visible: false, background: ''}
   type: ColumnPanel
-  layout_properties: {grid_position: 'SMEOEH,QLYFCW'}
+  layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
   - name: column_panel_2
     properties: {background: '', role: null, foreground: '', col_spacing: medium}
@@ -109,7 +109,51 @@ components:
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
   - name: xy_panel_2
-    properties: {height: 100}
+    properties: {height: '200'}
     type: XYPanel
-    layout_properties: {grid_position: 'EZLRPF,TCYFRW'}
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW SSUYJH,AUDXQI'}
+    components:
+    - name: hide
+      properties: {text: Hide, align: full, role: outlined, background: 'theme:Surface
+          Variant', foreground: 'theme:Primary', visible: true}
+      type: Button
+      layout_properties: {x: 325, y: 10, width: 140}
+  - name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
+    components:
+    - name: aslabel
+      properties: {text: AS, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
+    - name: as
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}
+    - name: hitlabel
+      properties: {text: HIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR FNRQCP,BBKNCJ'}
+    - name: hit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
+      data_bindings: []
+    - name: atklabel
+      properties: {text: ATK, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,QMIHSW YRCWBT,WXEXPN'}
+    - name: atk
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,QMIHSW EKQALQ,LMDRKC'}
+    - name: critlabel
+      properties: {text: CRIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MEZRDQ RLQNIM,AFXSUF'}
+    - name: crit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MEZRDQ NPSOME,LLZVGC'}
 is_package: true
