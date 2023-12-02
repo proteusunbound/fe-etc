@@ -1,6 +1,5 @@
 unique_ids:
-  forms:
-    Form1: 7EBIJRVRQTILZLPHDG4GOJH5BZRPVLCH
+  forms: {}
   modules:
     combat: '1701483516070113728583671.12015'
     data: '1701461147071936999611805.4498'

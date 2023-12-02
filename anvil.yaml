@@ -2,7 +2,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Form1}
+startup: {type: module, module: combat}
 package_name: FE1_ETC
 allow_embedding: false
 name: FE1 ETC
