@@ -1,18 +1,18 @@
 container: {type: ColumnPanel}
 components:
-- name: unit_num
-  properties:
-    include_placeholder: true
-    placeholder: '0'
-    items: ['1', '2', '3']
-  type: DropDown
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU SHXLIP,YEWBIN'}
-- name: addunit1
-  properties: {text: Add Unit, visible: true}
-  type: Button
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU ZWLXHM,QMZXRT'}
-  event_bindings: {click: addunit1_click}
-  data_bindings: []
+- name: column_panel_2
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU SDCYAS,PVSTYG'}
+  components:
+  - name: unit_number
+    properties:
+      include_placeholder: true
+      placeholder: Select Unit Number
+      items: ['1', '2', '3']
+    type: DropDown
+    layout_properties: {grid_position: 'PBCBOF,LNJSME'}
+    event_bindings: {change: unit_number_change}
 - name: unit1_panel
   properties: {}
   type: form:unit1_panel
@@ -22,8 +22,8 @@ components:
   type: form:unit2_panel
   layout_properties: {grid_position: 'KJHVDW,CRTGEU HCNKEV,YMSUKW'}
   data_bindings: []
-- name: column_panel_2
-  properties: {spacing_above: small, visible: true}
+- name: boss_panel
+  properties: {spacing_above: small, visible: false}
   type: ColumnPanel
   layout_properties: {grid_position: 'KJHVDW,LLIYSH EZGZJP,OLTEHB'}
   components:

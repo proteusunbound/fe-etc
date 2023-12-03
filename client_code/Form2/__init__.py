@@ -10,10 +10,15 @@ class Form2(Form2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.combat = combat.CombatSim()
-    self.combat.setduels(1)
-
+    self.unitpanels = [self.unit1_panel, self.unit2_panel]
     # Any code you write here will run before the form opens.
-
+  
+  def unit_number_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.combat.setduels(int(self.unit_number.selected_value))
+    for i in range (0, int(self.unit_number.selected_value)):
+      self.unitpanels[i].visible = True
+        
   def boss_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     for number, name in self.combat.duels.items():
@@ -48,11 +53,6 @@ class Form2(Form2Template):
     """This method is called when an item is selected"""
     self.combat.set_turns(int(self.turn_drop.selected_value))
 
-  def addunit1_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.addunit1.visible = False
-    self.unit1_panel_panel.visible = True
-
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
     for number, name in self.combat.duels.items():
@@ -72,8 +72,8 @@ class Form2(Form2Template):
     self.startinghp.text = None
     self.terrainbox.checked = False
     self.turn_drop.selected_value = None
-    self.gotoboss.visible = True
-    self.addunit2.visible = True
-    self.column_panel_2.visible = False
+    self.boss_panel.visible = False
+    self.unit_number.selected_value = None
+
 
 
