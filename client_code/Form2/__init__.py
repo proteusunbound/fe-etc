@@ -48,11 +48,10 @@ class Form2(Form2Template):
     """This method is called when an item is selected"""
     self.combat.set_turns(int(self.turn_drop.selected_value))
 
-  def addunit2_click(self, **event_args):
+  def addunit1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.combat.setduels(2)
-    self.addunit2.visible = False
-    self.unit2_panel.visible = True
+    self.addunit1.visible = False
+    self.unit1_panel_panel.visible = True
 
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -63,7 +62,6 @@ class Form2(Form2Template):
     self.combat.battle()
     self.combatlog.content = self.combat.text
     self.combat.reset()
-    self.reset.visible = True
 
   def reset_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -74,5 +72,8 @@ class Form2(Form2Template):
     self.startinghp.text = None
     self.terrainbox.checked = False
     self.turn_drop.selected_value = None
+    self.gotoboss.visible = True
     self.addunit2.visible = True
+    self.column_panel_2.visible = False
+
 

@@ -1,4 +1,6 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {visible: false}
 components:
 - name: xy_panel_1
   properties: {height: '70'}
