@@ -9,7 +9,6 @@ class unit_panel(unit_panelTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.duel = combat.data.DuelSim()
 
     # Any code you write here will run before the form opens.
 
