@@ -163,4 +163,8 @@ components:
   properties: {}
   type: RichText
   layout_properties: {grid_position: 'KJHVDW,LLIYSH CJIRRF,NPMILS'}
+- name: reset
+  properties: {text: Reset}
+  type: Button
+  layout_properties: {grid_position: 'KJHVDW,LLIYSH CJIRRF,XVLSES'}
 is_package: true
