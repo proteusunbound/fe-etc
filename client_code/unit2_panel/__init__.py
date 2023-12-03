@@ -26,6 +26,7 @@ class unit2_panel(unit2_panelTemplate):
     self.luck.text = self.parent.combat.duels[1].unit.luck
     self.defense.text = self.parent.combat.duels[1].unit.defense
     self.resistance.text = self.parent.combat.duels[1].unit.resistance
+    self.startinghp.text = self.parent.combat.duels[1].unit.maxhp
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -40,27 +41,13 @@ class unit2_panel(unit2_panelTemplate):
     self.atk.text = self.parent.combat.duels[1].unit.attack
     self.crit.text = self.parent.combat.duels[1].unit.crit
 
-  def startinghp_change(self, **event_args):
-    """This method is called when the text in this text box is edited"""
+  def setinfo(self):
     self.parent.combat.duels[1].setunithp(self.startinghp.text)
-
-  def avoid_drop_change(self, **event_args):
-    """This method is called when an item is selected"""
     self.parent.combat.duels[1].setavoidno(int(self.avoid_drop.selected_value))
-
-  def crit_drop_change(self, **event_args):
-    """This method is called when an item is selected"""
     self.parent.combat.duels[1].setcritno(int(self.crit_drop.selected_value))
-
-  def dodge_drop_change(self, **event_args):
-    """This method is called when an item is selected"""
     self.parent.combat.duels[1].setddgno(int(self.dodge_drop.selected_value))
 
   def reset(self):
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
-    self.avoid_drop.selected_value = None
-    self.crit_drop.selected_value = None
-    self.dodge_drop.selected_value = None
-    self.startinghp.text = None
     self.visible = False

@@ -247,7 +247,7 @@ class DuelSim:
 
   def playerphase(self):
     """Player Phase"""
-    self.dueltext += "**Player Phase:**\n"
+    self.dueltext += "#### Player Phase:\n"
     if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
       self.unitattack()
     if (
@@ -283,7 +283,7 @@ class DuelSim:
 
   def enemyphase(self):
     """Enemy Phase"""
-    self.dueltext += "**Enemy Phase:** \n"
+    self.dueltext += "#### Enemy Phase:\n"
     if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
       if self.avoidno > 0:
         self.bossmiss()

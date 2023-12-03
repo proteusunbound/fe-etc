@@ -47,7 +47,7 @@ class CombatSim:
           self.text += "%s heals to %d HP at the start of the round.\n" % (name.boss.name, self.bosshp)
           break
     for number, name in self.duels.items():
-      if name.unit.hitpoints > 0 and name.boss.counter is True:
+      if name.unit.hitpoints > 0 and self.bosshp > 0 and name.boss.counter is True:
         name.setbosshp(self.bosshp)
         name.enemyphase()
         self.bosshp = name.boss.hitpoints
@@ -77,3 +77,4 @@ class CombatSim:
       name.hitno = 0
     self.text = ""
     self.successrate = 1
+    self.duels = {}

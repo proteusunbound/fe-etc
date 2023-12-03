@@ -3,7 +3,7 @@ container:
   properties: {visible: false}
 components:
 - name: xy_panel_1
-  properties: {height: '70'}
+  properties: {height: '70', spacing_above: none, spacing_below: small}
   type: XYPanel
   layout_properties: {grid_position: 'QIXASK,RJPYQE'}
   components:
@@ -50,7 +50,7 @@ components:
       foreground: '', type: number}
     type: TextBox
     layout_properties: {x: 435, y: 0, width: 40}
-    event_bindings: {change: startinghp_change}
+    event_bindings: {}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000'}
   type: ColumnPanel
@@ -140,13 +140,13 @@ components:
       layout_properties: {grid_position: 'QDIZME,YCGGNU QNSUVS,TNAPQP'}
     - name: avoid_drop
       properties:
-        include_placeholder: true
-        placeholder: '0'
-        items: ['1', '2', '3', '4', '5']
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
         foreground: ''
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,YCGGNU VKMUZG,XZSAGP'}
-      event_bindings: {change: avoid_drop_change}
+      event_bindings: {}
       data_bindings: []
     - name: critno
       properties: {text: Crits, align: center}
@@ -154,24 +154,24 @@ components:
       layout_properties: {grid_position: 'QDIZME,COUIXI BYTOIM,GXGCBQ'}
     - name: crit_drop
       properties:
-        include_placeholder: true
-        placeholder: '0'
-        items: ['1', '2', '3', '4', '5']
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,COUIXI EAGRXS,UXYPYK'}
-      event_bindings: {change: crit_drop_change}
+      event_bindings: {}
     - name: dodgelabel
       properties: {text: Dodges, align: center}
       type: Label
       layout_properties: {grid_position: 'QDIZME,MLQFBU RWHBYF,RVIFZJ'}
     - name: dodge_drop
       properties:
-        include_placeholder: true
-        placeholder: '0'
-        items: ['1', '2', '3', '4', '5']
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,MLQFBU MVLKOS,PVCDWO'}
-      event_bindings: {change: dodge_drop_change}
+      event_bindings: {}
   - name: column_panel_1
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
@@ -211,5 +211,3 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,MEZRDQ NPSOME,LLZVGC'}
 is_package: true
-custom_component: true
-properties: []
