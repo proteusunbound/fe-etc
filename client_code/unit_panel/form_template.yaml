@@ -40,7 +40,7 @@ components:
     layout_properties: {x: 355, y: 45, width: 120}
     event_bindings: {click: custombutton_click}
 - name: customization
-  properties: {visible: true, background: '#9ea9ff', role: card, foreground: '#000000'}
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
@@ -121,7 +121,7 @@ components:
       properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
         foreground: ''}
       type: TextBox
-      layout_properties: {x: 185, y: 60, width: 35}
+      layout_properties: {x: 180, y: 60, width: 40}
       event_bindings: {change: startinghp_change}
     - name: sethplabel
       properties: {text: 'Starting HP:', font_size: 15}

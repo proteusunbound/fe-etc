@@ -19,6 +19,7 @@ components:
         Tiki, Camus, Orridyon, Michalis, Gharnef, Xemcel, Medeus]
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
+    event_bindings: {change: boss_drop_change}
   - name: weapon_drop
     properties:
       items: [Iron Sword, Steel Sword, Silver Sword, Killing Edge, Levin Sword, Devil Sword,
