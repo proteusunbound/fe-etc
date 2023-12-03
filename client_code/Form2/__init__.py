@@ -50,5 +50,6 @@ class Form2(Form2Template):
     self.combat.duels[0].counterattack()
     self.combat.duels[0].doubling()
     self.combat.battle()
-    print(self.combat.text)
+    self.combatlog.content = self.combat.text
+    self.combat.reset()
 

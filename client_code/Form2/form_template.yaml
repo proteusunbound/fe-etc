@@ -7,7 +7,7 @@ components:
 - name: column_panel_2
   properties: {spacing_above: small}
   type: ColumnPanel
-  layout_properties: {grid_position: 'KJHVDW,LLIYSH'}
+  layout_properties: {grid_position: 'KJHVDW,LLIYSH EZGZJP,OLTEHB'}
   components:
   - name: boss_drop
     properties:
@@ -159,4 +159,8 @@ components:
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}
+- name: combatlog
+  properties: {}
+  type: RichText
+  layout_properties: {grid_position: 'KJHVDW,LLIYSH CJIRRF,NPMILS'}
 is_package: true
