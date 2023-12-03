@@ -76,3 +76,4 @@ class CombatSim:
     for number, name in self.duels.items():
       name.hitno = 0
     self.text = ""
+    self.successrate = 1
