@@ -18,15 +18,14 @@ class unit_panel(unit_panelTemplate):
 
   def unit_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.parent.duel.setunit(self.unit_drop.selected_value)
-    self.hp.text = self.parent.duel.unit.maxhp
-    self.strength.text = self.parent.duel.unit.strength
-    self.skill.text = self.parent.duel.unit.skill
-    self.speed.text = self.parent.duel.unit.speed
-    self.luck.text = self.parent.duel.unit.luck
-    self.defense.text = self.parent.duel.unit.defense
-    self.resistance.text = self.parent.duel.unit.resistance
-    self.startinghp.text = self.parent.duel.unit.maxhp
+    self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
+    self.hp.text = self.parent.combat.duels[0].unit.maxhp
+    self.strength.text = self.parent.combat.duels[0].unit.strength
+    self.skill.text = self.parent.combat.duels[0].unit.skill
+    self.speed.text = self.parent.combat.duels[0].unit.speed
+    self.luck.text = self.parent.combat.duels[0].unit.luck
+    self.defense.text = self.parent.combat.duels[0].unit.defense
+    self.resistance.text = self.parent.combat.duels[0].unit.resistance
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -34,25 +33,25 @@ class unit_panel(unit_panelTemplate):
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.parent.duel.setunitweapon(self.weapon_drop.selected_value)
-    self.parent.duel.unitdisplay()
-    self.attackspeed.text = self.parent.duel.unit.AS
-    self.hit.text = self.parent.duel.unit.hit
-    self.atk.text = self.parent.duel.unit.attack
-    self.crit.text = self.parent.duel.unit.crit
+    self.parent.combat.duels[0].setunitweapon(self.weapon_drop.selected_value)
+    self.parent.combat.duels[0].unitdisplay()
+    self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+    self.hit.text = self.parent.combat.duels[0].unit.hit
+    self.atk.text = self.parent.combat.duels[0].unit.attack
+    self.crit.text = self.parent.combat.duels[0].unit.crit
 
   def startinghp_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
-    self.parent.duel.setunithp(self.startinghp.select())
+    self.parent.combat.duels[0].setunithp(self.startinghp.text)
 
   def avoid_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.parent.duel.setavoidno(self.avoid_drop.selected_value)
+    self.parent.combat.duels[0].setavoidno(int(self.avoid_drop.selected_value))
 
   def crit_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.parent.duel.setcritno(self.crit_drop.selected_value)
+    self.parent.combat.duels[0].setcritno(int(self.crit_drop.selected_value))
 
   def dodge_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.parent.duel.setddgno(self.dodge_drop.selected_value)
+    self.parent.combat.duels[0].setddgno(int(self.dodge_drop.selected_value))

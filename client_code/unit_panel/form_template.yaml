@@ -119,7 +119,7 @@ components:
       data_bindings: []
     - name: startinghp
       properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
-        foreground: ''}
+        foreground: '', type: number}
       type: TextBox
       layout_properties: {x: 180, y: 60, width: 40}
       event_bindings: {change: startinghp_change}

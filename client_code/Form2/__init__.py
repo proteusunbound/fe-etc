@@ -9,34 +9,46 @@ class Form2(Form2Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.duel = combat.data.DuelSim()
+    self.combat = combat.CombatSim()
+    self.combat.setduels(1)
 
     # Any code you write here will run before the form opens.
 
   def boss_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.duel.setboss(self.boss_drop.selected_value)
-    self.hp.text = self.duel.boss.maxhp
-    self.strength.text = self.duel.boss.strength
-    self.skill.text = self.duel.boss.skill
-    self.speed.text = self.duel.boss.speed
-    self.defense.text = self.duel.boss.defense
-    self.startinghp.text = self.duel.boss.maxhp
+    self.combat.duels[0].setboss(self.boss_drop.selected_value)
+    self.hp.text = self.combat.duels[0].boss.maxhp
+    self.strength.text = self.combat.duels[0].boss.strength
+    self.skill.text = self.combat.duels[0].boss.skill
+    self.speed.text = self.combat.duels[0].boss.speed
+    self.defense.text = self.combat.duels[0].boss.defense
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.duel.setbossweapon(self.weapon_drop.selected_value)
-    self.duel.bossdisplay()
-    self.attackspeed.text = self.duel.boss.AS
-    self.hit.text = self.duel.boss.hit
-    self.attack.text = self.duel.boss.attack
-    self.crit.text = self.duel.boss.crit
+    self.combat.duels[0].setbossweapon(self.weapon_drop.selected_value)
+    self.combat.duels[0].bossdisplay()
+    self.attackspeed.text = self.combat.duels[0].boss.AS
+    self.hit.text = self.combat.duels[0].boss.hit
+    self.attack.text = self.combat.duels[0].boss.attack
+    self.crit.text = self.combat.duels[0].boss.crit
 
   def startinghp_change(self, **event_args):
-    """This method is called when the text in this text box is edited"""
-    self.duel.setbosshp(self.startinghp.select())
-
+    """This method is called when the user presses Enter in this text box"""
+    self.combat.duels[0].setbosshp(self.startinghp.text)
+  
   def terrainbox_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
-    self.duel.set_terrain(self.terrainbox.checked)
+    self.combat.duels[0].set_terrain(self.terrainbox.checked)
+
+  def turn_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.combat.set_turns(int(self.turn_drop.selected_value))
+
+  def calculatebutton_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.combat.duels[0].precombat()
+    self.combat.duels[0].counterattack()
+    self.combat.duels[0].doubling()
+    self.combat.battle()
+    print(self.combat.text)
 

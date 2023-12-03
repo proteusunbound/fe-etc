@@ -94,7 +94,7 @@ components:
         type: Label
         layout_properties: {x: 0, y: 10, width: 75}
       - name: startinghp
-        properties: {placeholder: '0'}
+        properties: {placeholder: '0', type: number}
         type: TextBox
         layout_properties: {x: 75, y: 10, width: 40}
         event_bindings: {change: startinghp_change}
@@ -152,9 +152,11 @@ components:
             items: ['1', '2', '3', '4', '5']
           type: DropDown
           layout_properties: {grid_position: 'COHHLI,RIPOVX'}
+          event_bindings: {change: turn_drop_change}
         - name: calculatebutton
           properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
             align: center, font_size: 13, foreground: '#ff8585'}
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
+          event_bindings: {click: calculatebutton_click}
 is_package: true
