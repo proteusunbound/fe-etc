@@ -149,13 +149,16 @@ class DuelSim:
     hitrate(self.unit, self.unitweapon)
     get_attack(self.unit, self.unitweapon)
     unit_crit(self.unit, self.unitweapon)
-    
-  def precombat(self):
-    """Pre-Combat Calculation"""
+
+  def bossdisplay(self):
+    """Boss Stat Display"""
     attack_speed(self.boss, self.bossweapon)
     hitrate(self.boss, self.bossweapon)
     get_attack(self.boss, self.bossweapon)
     boss_crit(self.boss, self.bossweapon)
+    
+  def precombat(self):
+    """Pre-Combat Calculation"""
     damage(self.unit, self.boss)
     damage(self.boss, self.unit)
     bosshitchance(self.boss, self.unit)
