@@ -145,6 +145,7 @@ components:
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,YCGGNU VKMUZG,XZSAGP'}
       event_bindings: {change: avoid_drop_change}
+      data_bindings: []
     - name: critno
       properties: {text: Crits, align: center}
       type: Label

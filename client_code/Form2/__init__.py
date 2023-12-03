@@ -53,3 +53,12 @@ class Form2(Form2Template):
     self.combatlog.content = self.combat.text
     self.combat.reset()
 
+  def reset_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.unit_panel_1.reset()
+    self.boss_drop.selected_value = None
+    self.weapon_drop.selected_value = None
+    self.startinghp.text = None
+    self.terrainbox.checked = False
+    self.turn_drop.selected_value = None
+

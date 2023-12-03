@@ -55,3 +55,11 @@ class unit_panel(unit_panelTemplate):
   def dodge_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     self.parent.combat.duels[0].setddgno(int(self.dodge_drop.selected_value))
+  
+  def reset(self):
+    self.unit_drop.selected_value = None
+    self.weapon_drop.selected_value = None
+    self.avoid_drop.selected_value = None
+    self.crit_drop.selected_value = None
+    self.dodge_drop.selected_value = None
+    self.startinghp.text = None

@@ -167,4 +167,5 @@ components:
   properties: {text: Reset}
   type: Button
   layout_properties: {grid_position: 'KJHVDW,LLIYSH CJIRRF,XVLSES'}
+  event_bindings: {click: reset_click}
 is_package: true
