@@ -67,7 +67,7 @@ def hitrate(keyword, weapon):
 
 def get_attack(keyword, weapon):
     """Attack"""
-    keyword.attack = keyword.strength + weapon.might
+    keyword.attack = keyword.strength + weapon.might * weapon.effco
 
 def unit_crit(unit, weapon):
     """Unit Crit"""
@@ -93,10 +93,12 @@ def bosshitchance(boss, unit):
     boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
 
 def effectiveness(weapon, keyword):
-  """Effectiveness"""
-  weap_eff = app_tables.effectiveness.get(Name=weapon)
-  weapon.dmgbonus = weapon_eff[keyword]
-  return weapon.dmg
+    """Effectiveness"""
+    effcheck = app_tables.effectiveness.get(Name=weapon.name)
+    if effcheck[keyword.charclass] is True:
+      weapon.effco = 3
+    else:
+      weapon.effco = 1
 
 @anvil.server.portable_class
 class DuelSim:
@@ -157,6 +159,7 @@ class DuelSim:
     """Unit Stat Display"""
     attack_speed(self.unit, self.unitweapon)
     unit_crit(self.unit, self.unitweapon)
+    effectiveness(self.unitweapon, self.boss)
     if self.unitweapon.type == 'Magical':
       self.unit.hit = self.unitweapon.hit
       self.unit.attack = self.unitweapon.might
@@ -168,6 +171,7 @@ class DuelSim:
     """Boss Stat Display"""
     attack_speed(self.boss, self.bossweapon)
     boss_crit(self.boss, self.bossweapon)
+    effectiveness(self.bossweapon, self.unit)
     if self.bossweapon.type == 'Magical':
       self.boss.hit = self.bossweapon.hit
       self.boss.attack = self.bossweapon.might
