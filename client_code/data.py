@@ -23,6 +23,7 @@ class ActiveUnit:
     self.defense = unit['Def']
     self.luck = unit['Lck']
     self.resistance = unit['Res']
+    self.charclass = unit['Class']
     self.hitpoints = 0
     self.doubles = False
 
@@ -31,6 +32,7 @@ class ActiveWeapon:
   """Active Weapon"""
   def __init__(self, keyword):
     weapon = app_tables.weapon_stats.get(Name=keyword)
+    self.name = weapon['Name']
     self.might = weapon['Mgt']
     self.weight = weapon['Wgt']
     self.hit = weapon['Hit']
@@ -50,6 +52,7 @@ class ActiveBoss:
     self.skill = boss['Skl']
     self.speed = boss['Spd']
     self.defense = boss['Def']
+    self.charclass = boss['Class']
     self.hitpoints = 0
     self.doubles = False
     self.counter = False
@@ -88,6 +91,12 @@ def damage(attacker, defender):
 def bosshitchance(boss, unit):
     """Boss Hit Chance"""
     boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
+
+def effectiveness(weapon, keyword):
+  """Effectiveness"""
+  weap_eff = app_tables.effectiveness.get(Name=weapon)
+  weapon.dmgbonus = weapon_eff[keyword]
+  return weapon.dmg
 
 @anvil.server.portable_class
 class DuelSim:
