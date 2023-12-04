@@ -37,6 +37,7 @@ class ActiveWeapon:
     self.crit = weapon['Crit']
     self.minrange = weapon['Min Range']
     self.maxrange = weapon['Max Range']
+    self.type = weapon['Type']
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -59,7 +60,10 @@ def attack_speed(keyword, weapon):
   
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill + weapon.hit
+    if weapon.type = 'Magic':
+      keyword.hit = weapon.hit
+    else:
+      keyword.hit = keyword.skill + weapon.hit
 
 def get_attack(keyword, weapon):
     """Attack"""
