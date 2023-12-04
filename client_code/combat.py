@@ -77,4 +77,3 @@ class CombatSim:
       name.hitno = 0
     self.text = ""
     self.successrate = 1
-    self.duels = {}
