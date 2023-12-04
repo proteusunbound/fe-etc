@@ -69,6 +69,7 @@ class Form2(Form2Template):
     for i in range (0, int(self.unit_number.selected_value)):
       self.unitpanels[i].reset()
     self.combat.reset()
+    self.combat.duels = {}
     self.boss_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.terrainbox.checked = False
