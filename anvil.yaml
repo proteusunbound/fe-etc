@@ -36,6 +36,9 @@ db_schema:
     - name: Def
       admin_ui: {width: 200, order: 5}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 6}
+      type: string
     title: Boss Stats
   unit_stats:
     client: search
