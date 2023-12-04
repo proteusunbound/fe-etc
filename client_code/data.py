@@ -147,23 +147,39 @@ class DuelSim:
   def unitdisplay(self):
     """Unit Stat Display"""
     attack_speed(self.unit, self.unitweapon)
-    hitrate(self.unit, self.unitweapon)
-    get_attack(self.unit, self.unitweapon)
     unit_crit(self.unit, self.unitweapon)
+    if self.unitweapon.type == 'Magical':
+      self.unit.hit = self.unitweapon.hit
+      self.unit.attack = self.unitweapon.might
+    else:
+      hitrate(self.unit, self.unitweapon)
+      get_attack(self.unit, self.unitweapon)
 
   def bossdisplay(self):
     """Boss Stat Display"""
     attack_speed(self.boss, self.bossweapon)
-    hitrate(self.boss, self.bossweapon)
-    get_attack(self.boss, self.bossweapon)
     boss_crit(self.boss, self.bossweapon)
+    if self.bossweapon.type == 'Magical':
+      self.boss.hit = self.bossweapon.hit
+      self.boss.attack = self.bossweapon.might
+    else:
+      hitrate(self.boss, self.bossweapon)
+      get_attack(self.boss, self.bossweapon)
     
   def precombat(self):
     """Pre-Combat Calculation"""
-    damage(self.unit, self.boss)
-    damage(self.boss, self.unit)
-    bosshitchance(self.boss, self.unit)
-    enemy_avoid(self.boss, self.terrain)
+    if self.unitweapon.type == "Magical":
+      self.unit.damage = self.unit.attack
+      self.boss.avoid = 0
+    else:
+      damage(self.unit, self.boss)
+      enemy_avoid(self.boss, self.terrain)
+    if self.bossweapon.type == "Magical":
+      self.boss.damage = max(0, self.boss.attack - self.unit.resistance)
+      self.boss.hitchance = min((self.boss.hit - self.unit.luck) / 100, 1)
+    else:
+      damage(self.boss, self.unit)
+      bosshitchance(self.boss, self.unit)
     self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
     self.unitcrit = self.unit.crit / 100
     self.unitavoid = 1 - self.boss.hitchance
