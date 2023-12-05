@@ -9,7 +9,7 @@ components:
     properties:
       include_placeholder: true
       placeholder: Select Unit Number
-      items: ['1', '2', '3']
+      items: ['1', '2', '3', '4']
       spacing_below: none
       spacing_above: small
     type: DropDown
@@ -27,6 +27,10 @@ components:
   properties: {}
   type: form:unit3_panel
   layout_properties: {grid_position: 'KJHVDW,CRTGEU HLUGHT,PIRWMN'}
+- name: unit4_panel
+  properties: {}
+  type: form:unit4_panel
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU SMPFMX,HGIDAS'}
 - name: boss_panel
   properties: {spacing_above: small, visible: false}
   type: ColumnPanel
@@ -148,14 +152,6 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'JQRWMP,THJVMG OFPRXI,XUIRTP'}
-      - name: atklabel
-        properties: {text: ATK, align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,MWHRIL MDPSDK,SHCMED'}
-      - name: attack
-        properties: {text: '-', align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,MWHRIL KWIGFN,DPLBPP'}
       - name: critlabel
         properties: {text: CRIT, align: center}
         type: Label

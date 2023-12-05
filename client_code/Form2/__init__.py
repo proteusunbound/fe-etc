@@ -10,7 +10,7 @@ class Form2(Form2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.combat = combat.CombatSim()
-    self.unitpanels = [self.unit1_panel, self.unit2_panel, self.unit3_panel]
+    self.unitpanels = [self.unit1_panel, self.unit2_panel, self.unit3_panel, self.unit4_panel]
     # Any code you write here will run before the form opens.
   
   def unit_number_change(self, **event_args):
@@ -32,6 +32,7 @@ class Form2(Form2Template):
     self.speed.text = self.combat.duels[0].boss.speed
     self.defense.text = self.combat.duels[0].boss.defense
     self.startinghp.text = self.combat.duels[0].boss.maxhp
+    self.weapon_drop.selected_value = None
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -40,7 +41,6 @@ class Form2(Form2Template):
       name.bossdisplay()
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
-    self.attack.text = self.combat.duels[0].boss.attack
     self.crit.text = self.combat.duels[0].boss.crit
   
   def terrainbox_change(self, **event_args):
@@ -53,12 +53,13 @@ class Form2(Form2Template):
     self.combat.set_turns(int(self.turn_drop.selected_value))
     for number, name in self.combat.duels.items():
       name.setbosshp(self.startinghp.text)
+    for i in range (0, int(self.unit_number.selected_value)):
+      self.unitpanels[i].setinfo()
     for number, name in self.combat.duels.items():
-      name.precombat()
       name.counterattack()
       name.doubling()
-    for i in range(0, int(self.unit_number.selected_value)):
-      self.unitpanels[i].setinfo()
+      name.effectivecheck()
+      name.precombat()
     self.combat.battle()
     self.combatlog.content = self.combat.text
     self.combatlog.visible = True
