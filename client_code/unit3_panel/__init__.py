@@ -27,6 +27,7 @@ class unit3_panel(unit3_panelTemplate):
     self.defense.text = self.parent.combat.duels[2].unit.defense
     self.resistance.text = self.parent.combat.duels[2].unit.resistance
     self.startinghp.text = self.parent.combat.duels[2].unit.maxhp
+    self.weapon_drop.selected_value = None
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -38,7 +39,6 @@ class unit3_panel(unit3_panelTemplate):
     self.parent.combat.duels[2].unitdisplay()
     self.attackspeed.text = self.parent.combat.duels[2].unit.AS
     self.hit.text = self.parent.combat.duels[2].unit.hit
-    self.atk.text = self.parent.combat.duels[2].unit.attack
     self.crit.text = self.parent.combat.duels[2].unit.crit
 
   def setinfo(self):

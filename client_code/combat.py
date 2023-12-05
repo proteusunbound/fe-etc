@@ -34,7 +34,7 @@ class CombatSim:
   def combatround(self):
     """Combat Round"""
     for number, name in self.duels.items():
-      if name.unit.hitpoints > 0:
+      if name.unit.hitpoints > 0 and self.bosshp > 0:
         name.setbosshp(self.bosshp)
         name.playerphase()
         self.bosshp = name.boss.hitpoints

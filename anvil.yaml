@@ -19,7 +19,7 @@ db_schema:
     server: search
     columns:
     - name: Name
-      admin_ui: {order: 0, width: 67}
+      admin_ui: {order: 0, width: 126}
       type: string
     - name: HP
       admin_ui: {order: 1, width: 59}
@@ -36,6 +36,9 @@ db_schema:
     - name: Def
       admin_ui: {width: 200, order: 5}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 6}
+      type: string
     title: Boss Stats
   unit_stats:
     client: search
@@ -60,7 +63,7 @@ db_schema:
       admin_ui: {order: 5, width: 50}
       type: number
     - name: Def
-      admin_ui: {width: 200, order: 6}
+      admin_ui: {order: 6, width: 50}
       type: number
     - name: Res
       admin_ui: {width: 200, order: 7}
@@ -68,6 +71,9 @@ db_schema:
     - name: Skl
       admin_ui: {order: 2.5, width: 200}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 8}
+      type: string
     title: Unit Stats
   weapon_stats:
     client: search
@@ -97,4 +103,81 @@ db_schema:
     - name: Max Range
       admin_ui: {width: 200, order: 7}
       type: number
+    - name: Type
+      admin_ui: {width: 200, order: 8}
+      type: string
     title: Weapon Stats
+  effectiveness:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 84}
+      type: string
+    - name: Cavalier
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    - name: Knight
+      admin_ui: {width: 200, order: 2}
+      type: bool
+    - name: Pegasus Knight
+      admin_ui: {width: 200, order: 3}
+      type: bool
+    - name: Paladin
+      admin_ui: {width: 200, order: 4}
+      type: bool
+    - name: Wyvern Knight
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    - name: Mercenary
+      admin_ui: {width: 200, order: 6}
+      type: bool
+    - name: Fighter
+      admin_ui: {width: 200, order: 7}
+      type: bool
+    - name: Pirate
+      admin_ui: {width: 200, order: 8}
+      type: bool
+    - name: Thief
+      admin_ui: {width: 200, order: 9}
+      type: bool
+    - name: Hero
+      admin_ui: {width: 200, order: 10}
+      type: bool
+    - name: Archer
+      admin_ui: {width: 200, order: 11}
+      type: bool
+    - name: Hunter
+      admin_ui: {width: 200, order: 12}
+      type: bool
+    - name: Ballistician
+      admin_ui: {order: 13, width: 50}
+      type: bool
+    - name: Horseman
+      admin_ui: {width: 200, order: 14}
+      type: bool
+    - name: Sniper
+      admin_ui: {width: 200, order: 15}
+      type: bool
+    - name: Freelancer
+      admin_ui: {width: 200, order: 16}
+      type: bool
+    - name: Manakete
+      admin_ui: {order: 17, width: 50}
+      type: bool
+    - name: Mage
+      admin_ui: {width: 200, order: 18}
+      type: bool
+    - name: Curate
+      admin_ui: {width: 200, order: 18}
+      type: bool
+    - name: Bishop
+      admin_ui: {width: 200, order: 19}
+      type: bool
+    - name: Lord
+      admin_ui: {width: 200, order: 20}
+      type: bool
+    - name: General
+      admin_ui: {width: 200, order: 21}
+      type: bool
+    title: Effectiveness

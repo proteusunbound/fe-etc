@@ -23,6 +23,7 @@ class ActiveUnit:
     self.defense = unit['Def']
     self.luck = unit['Lck']
     self.resistance = unit['Res']
+    self.charclass = unit['Class']
     self.hitpoints = 0
     self.doubles = False
 
@@ -31,12 +32,15 @@ class ActiveWeapon:
   """Active Weapon"""
   def __init__(self, keyword):
     weapon = app_tables.weapon_stats.get(Name=keyword)
+    self.name = weapon['Name']
     self.might = weapon['Mgt']
     self.weight = weapon['Wgt']
     self.hit = weapon['Hit']
     self.crit = weapon['Crit']
     self.minrange = weapon['Min Range']
     self.maxrange = weapon['Max Range']
+    self.type = weapon['Type']
+    self.effco = 1
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -49,6 +53,7 @@ class ActiveBoss:
     self.skill = boss['Skl']
     self.speed = boss['Spd']
     self.defense = boss['Def']
+    self.charclass = boss['Class']
     self.hitpoints = 0
     self.doubles = False
     self.counter = False
@@ -63,7 +68,7 @@ def hitrate(keyword, weapon):
 
 def get_attack(keyword, weapon):
     """Attack"""
-    keyword.attack = keyword.strength + weapon.might
+    keyword.attack = keyword.strength + weapon.might * weapon.effco
 
 def unit_crit(unit, weapon):
     """Unit Crit"""
@@ -87,6 +92,14 @@ def damage(attacker, defender):
 def bosshitchance(boss, unit):
     """Boss Hit Chance"""
     boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
+
+def effectiveness(weapon, keyword):
+    """Effectiveness"""
+    effcheck = app_tables.effectiveness.get(Name=weapon.name)
+    if effcheck[keyword.charclass] is True:
+      weapon.effco = 3
+    else:
+      weapon.effco = 1
 
 @anvil.server.portable_class
 class DuelSim:
@@ -146,28 +159,60 @@ class DuelSim:
   def unitdisplay(self):
     """Unit Stat Display"""
     attack_speed(self.unit, self.unitweapon)
-    hitrate(self.unit, self.unitweapon)
-    get_attack(self.unit, self.unitweapon)
     unit_crit(self.unit, self.unitweapon)
+    if self.unitweapon.type == 'Magical':
+      self.unit.hit = self.unitweapon.hit
+    else:
+      hitrate(self.unit, self.unitweapon)
 
   def bossdisplay(self):
     """Boss Stat Display"""
     attack_speed(self.boss, self.bossweapon)
-    hitrate(self.boss, self.bossweapon)
-    get_attack(self.boss, self.bossweapon)
     boss_crit(self.boss, self.bossweapon)
+    if self.bossweapon.type == 'Magical':
+      self.boss.hit = self.bossweapon.hit
+    else:
+      hitrate(self.boss, self.bossweapon)
     
   def precombat(self):
     """Pre-Combat Calculation"""
-    damage(self.unit, self.boss)
-    damage(self.boss, self.unit)
-    bosshitchance(self.boss, self.unit)
-    enemy_avoid(self.boss, self.terrain)
+    if self.unitweapon.type == "Magical":
+      self.unit.attack = self.unitweapon.might * self.unitweapon.effco
+      self.unit.damage = self.unit.attack
+      self.boss.avoid = 0
+    else:
+      get_attack(self.unit, self.unitweapon)
+      damage(self.unit, self.boss)
+      enemy_avoid(self.boss, self.terrain)
+    if self.bossweapon.type == "Magical":
+      self.boss.attack = self.bossweapon.might * self.bossweapon.effco
+      self.boss.damage = max(0, self.boss.attack - self.unit.resistance)
+      self.boss.hitchance = min((self.boss.hit - self.unit.luck) / 100, 1)
+    else:
+      get_attack(self.boss, self.bossweapon)
+      damage(self.boss, self.unit)
+      bosshitchance(self.boss, self.unit)
     self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
     self.unitcrit = self.unit.crit / 100
     self.unitavoid = 1 - self.boss.hitchance
     self.unitdodge = 1 - self.boss.crit / 100
 
+  def effectivecheck(self):
+    effectiveness(self.unitweapon, self.boss)
+    if self.unitweapon.effco == 3:
+      self.dueltext += "%s's %s deals effective damage against %s. \n" % (
+        self.unit.name,
+        self.unitweapon.name,
+        self.boss.name
+      )
+    effectiveness(self.bossweapon, self.unit)
+    if self.bossweapon.effco == 3:
+      self.dueltext += "%s's %s deals effective damage against %s. \n" % (
+        self.boss.name,
+        self.bossweapon.name,
+        self.unit.name
+      )
+  
   def counterattack(self):
     """Counter Attack"""
     if self.bossweapon.minrange != self.bossweapon.maxrange:

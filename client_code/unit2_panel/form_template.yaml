@@ -194,14 +194,6 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
       data_bindings: []
-    - name: atklabel
-      properties: {text: ATK, align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,QMIHSW YRCWBT,WXEXPN'}
-    - name: atk
-      properties: {text: '-', align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,QMIHSW EKQALQ,LMDRKC'}
     - name: critlabel
       properties: {text: CRIT, align: center}
       type: Label
