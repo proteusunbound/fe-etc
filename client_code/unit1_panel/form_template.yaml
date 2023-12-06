@@ -172,6 +172,15 @@ components:
       type: DropDown
       layout_properties: {grid_position: 'QDIZME,MLQFBU MVLKOS,PVCDWO'}
       event_bindings: {}
+    - name: devil_label
+      properties: {text: Devil Weapon, align: center}
+      type: Label
+      layout_properties: {grid_position: 'QDIZME,XYOVPN MVVHVM,XEODHE'}
+    - name: devildrop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'QDIZME,XYOVPN VIACUI,BIHCEA'}
   - name: column_panel_1
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
