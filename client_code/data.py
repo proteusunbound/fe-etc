@@ -26,6 +26,7 @@ class ActiveUnit:
     self.charclass = unit['Class']
     self.hitpoints = 0
     self.doubles = False
+    self.devil = 
 
 @anvil.server.portable_class
 class ActiveWeapon:
