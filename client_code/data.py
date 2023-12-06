@@ -164,8 +164,18 @@ class DuelSim:
 
   def devilcheck(self):
     """Devil Weapon"""
-    if self.unitweapon.name == 'Devil Sword' or 'Devil Axe':
+    if self.unitweapon.name == ('Devil Sword' or 'Devil Axe'):
       self.unit.devil = 1 - (21 - self.unit.luck) / 100
+
+  def effcoadjust(self):
+    """Adjust Weapon Effectiveness"""
+    if self.unitweapon.name == 'Falchion' and self.bossweapon.name != 'Earthstone':
+      self.unitweapon.effco = 1
+
+  def damageadjust(self):
+    """Adjust Damage"""
+    if self.unitweapon.name == 'Falchion' and self.bossweapon.maxrange == 1 and (self.bossweapon.name != ('Firestone' and 'Divinestone' and 'Magestone' and 'Earthstone')):
+      self.boss.damage = 0
 
   def unitdisplay(self):
     """Unit Stat Display"""
@@ -204,6 +214,7 @@ class DuelSim:
       damage(self.boss, self.unit)
       bosshitchance(self.boss, self.unit)
     self.devilcheck()
+    self.damageadjust()
     self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
     self.unitcrit = self.unit.crit / 100
     self.unitavoid = 1 - self.boss.hitchance
@@ -211,6 +222,7 @@ class DuelSim:
 
   def effectivecheck(self):
     effectiveness(self.unitweapon, self.boss)
+    self.effcoadjust()
     if self.unitweapon.effco == 3:
       self.dueltext += "%s's %s deals effective damage against %s. \n" % (
         self.unit.name,
