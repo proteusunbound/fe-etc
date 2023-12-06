@@ -39,6 +39,8 @@ class Form2(Form2Template):
     for number, name in self.combat.duels.items():
       name.setbossweapon(self.weapon_drop.selected_value)
       name.bossdisplay()
+      name.boss_stat_adjust()
+    self.defense.text = self.combat.duels[0].boss.defense
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
     self.crit.text = self.combat.duels[0].boss.crit

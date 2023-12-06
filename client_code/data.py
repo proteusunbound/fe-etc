@@ -176,6 +176,26 @@ class DuelSim:
     """Adjust Damage"""
     if self.unitweapon.name == 'Falchion' and self.bossweapon.maxrange == 1 and (self.bossweapon.name != ('Firestone' and 'Divinestone' and 'Magestone' and 'Earthstone')):
       self.boss.damage = 0
+    if self.bossweapon.name == 'Imhullu' and self.unitweapon.name != 'Starlight':
+      self.unit.damage = 0
+
+  def unitstatadjust(self):
+    """Adjust Unit Stats"""
+    if self.unitweapon.name == 'Firestone':
+      self.unit.defense += 12
+    if self.unitweapon.name == 'Divinestone':
+      self.unit.defense += 13
+
+  def boss_stat_adjust(self):
+    """Adjust Boss Stats"""
+    if self.bossweapon.name == 'Firestone':
+      self.boss.defense += 12
+    if self.bossweapon.name == 'Divinestone':
+      self.boss.defense += 13
+    if self.bossweapon.name == 'Magestone':
+      self.boss.defense += 15
+    if self.bossweapon.name == 'Earthstone':
+      self.boss.defense += 23
 
   def unitdisplay(self):
     """Unit Stat Display"""

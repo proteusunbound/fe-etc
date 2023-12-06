@@ -37,6 +37,8 @@ class unit3_panel(unit3_panelTemplate):
     """This method is called when an item is selected"""
     self.parent.combat.duels[2].setunitweapon(self.weapon_drop.selected_value)
     self.parent.combat.duels[2].unitdisplay()
+    self.parent.combat.duels[2].unitstatadjust()
+    self.defense.text = self.parent.combat.duels[2].unit.defense
     self.attackspeed.text = self.parent.combat.duels[2].unit.AS
     self.hit.text = self.parent.combat.duels[2].unit.hit
     self.crit.text = self.parent.combat.duels[2].unit.crit
