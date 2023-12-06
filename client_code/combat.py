@@ -63,7 +63,7 @@ class CombatSim:
       self.combatround()
       self.turn += 1
     for number, name in self.duels.items():
-      self.successrate *= ((name.unithit ** name.hitno) * (name.unitavoid ** name.avoidno) * (name.unitcrit ** name.critno) * (name.unitdodge ** name.ddgno))
+      self.successrate *= ((name.unithit ** name.hitno) * (name.unitavoid ** name.avoidno) * (name.unitcrit ** name.critno) * (name.unitdodge ** name.ddgno) * (name.unit.devil) ** name.devilno)
     self.etc = self.turns / (self.successrate)
     self.text += (
       "This outcome has a %.2f chance of occurring. The Estimated Turn Count is %.2f."
