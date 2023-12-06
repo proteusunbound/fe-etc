@@ -26,7 +26,7 @@ class ActiveUnit:
     self.charclass = unit['Class']
     self.hitpoints = 0
     self.doubles = False
-    self.devil = 
+    self.devil = 1
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -112,6 +112,7 @@ class DuelSim:
     self.avoidno = 0
     self.critno = 0
     self.ddgno = 0
+    self.devilno = 0
     self.unithit = 0
     self.unitavoid = 0
     self.unitcrit = 0
@@ -156,6 +157,15 @@ class DuelSim:
   def setddgno(self, ddgno):
     """Set Dodge Number"""
     self.ddgno = ddgno
+
+  def setdevilno(self, devilno):
+    """Set Avoid Backfire Number"""
+    self.devilno = devilno
+
+  def devilcheck(self):
+    """Devil Weapon"""
+    if self.unitweapon.name == 'Devil Sword' or 'Devil Axe':
+      self.unit.devil = 1 - (21 - self.unit.luck) / 100
 
   def unitdisplay(self):
     """Unit Stat Display"""
