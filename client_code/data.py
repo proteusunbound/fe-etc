@@ -203,6 +203,7 @@ class DuelSim:
       get_attack(self.boss, self.bossweapon)
       damage(self.boss, self.unit)
       bosshitchance(self.boss, self.unit)
+    self.devilcheck()
     self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
     self.unitcrit = self.unit.crit / 100
     self.unitavoid = 1 - self.boss.hitchance
@@ -255,19 +256,49 @@ class DuelSim:
     self.hitno += 1
     if self.critno and self.unit.crit > 0:
       self.critno -= 1
-      self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
-      self.dueltext += "%s lands a critical hit and leaves %s with %d HP.\n" % (
-        self.unit.name,
-        self.boss.name,
-        self.boss.hitpoints,
-      )
+      if self.unit.devil == 1:
+        self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+        self.dueltext += "%s lands a critical hit and leaves %s with %d HP.\n" % (
+          self.unit.name,
+          self.boss.name,
+          self.boss.hitpoints,
+        )
+      elif self.devilno > 0:
+        self.devilno -= 1
+        self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+        self.dueltext += "%s lands a critical hit and leaves %s with %d HP.\n" % (
+          self.unit.name,
+          self.boss.name,
+          self.boss.hitpoints,
+        )
+      else:
+        self.unit.hitpoints = max(0, self.unit.hitpoints - 3 * self.unit.damage)
+        self.dueltext += "%s's attack backfires and leaves them with %d HP.\n" % (
+          self.unit.name,
+          self.unit.hitpoints,
+        )
     else:
-      self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-      self.dueltext += "%s's attack leaves %s with %d HP.\n" % (
-        self.unit.name,
-        self.boss.name,
-        self.boss.hitpoints,
-      )
+      if self.unit.devil == 1:
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+        self.dueltext += "%s's attack leaves %s with %d HP.\n" % (
+          self.unit.name,
+          self.boss.name,
+          self.boss.hitpoints,
+        )
+      elif self.devilno > 0:
+        self.devilno -= 1
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+        self.dueltext += "%s's attack leaves %s with %d HP.\n" % (
+          self.unit.name,
+          self.boss.name,
+          self.boss.hitpoints,
+        )
+      else:
+        self.unit.hitpoints = max(0, self.unit.hitpoints - self.unit.damage)
+        self.dueltext += "%s's attack backfires and leaves them with %d HP.\n" % (
+          self.unit.name,
+          self.unit.hitpoints,
+        )
 
   def bossmiss(self):
     """Boss Miss"""
