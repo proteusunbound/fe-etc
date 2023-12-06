@@ -40,12 +40,16 @@ class unit2_panel(unit2_panelTemplate):
     self.attackspeed.text = self.parent.combat.duels[1].unit.AS
     self.hit.text = self.parent.combat.duels[1].unit.hit
     self.crit.text = self.parent.combat.duels[1].unit.crit
+    if self.parent.combat.duels[1].unitweapon.name == 'Devil Sword' or 'Devil Axe':
+      self.devil_label.visible = True
+      self.devildrop.visible = True
 
   def setinfo(self):
     self.parent.combat.duels[1].setunithp(self.startinghp.text)
     self.parent.combat.duels[1].setavoidno(int(self.avoid_drop.selected_value))
     self.parent.combat.duels[1].setcritno(int(self.crit_drop.selected_value))
     self.parent.combat.duels[1].setddgno(int(self.dodge_drop.selected_value))
+    self.parent.combat.duels[1].setdevilno(int(self.devildrop.selected_value))
 
   def reset(self):
     self.unit_drop.selected_value = None
