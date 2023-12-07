@@ -1,3 +1,4 @@
+"""Unit 3 Panel"""
 from ._anvil_designer import unit3_panelTemplate
 from anvil import *
 import anvil.tables as tables
@@ -6,11 +7,9 @@ from anvil.tables import app_tables
 from .. import combat
 
 class unit3_panel(unit3_panelTemplate):
+  """Unit Template"""
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    # Any code you write here will run before the form opens.
 
   def custombutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -28,6 +27,7 @@ class unit3_panel(unit3_panelTemplate):
     self.resistance.text = self.parent.combat.duels[2].unit.resistance
     self.startinghp.text = self.parent.combat.duels[2].unit.maxhp
     self.weapon_drop.selected_value = None
+    self.weapon_drop.visible = True
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -37,17 +37,25 @@ class unit3_panel(unit3_panelTemplate):
     """This method is called when an item is selected"""
     self.parent.combat.duels[2].setunitweapon(self.weapon_drop.selected_value)
     self.parent.combat.duels[2].unitdisplay()
+    self.parent.combat.duels[2].unitstatadjust()
+    self.defense.text = self.parent.combat.duels[2].unit.defense
     self.attackspeed.text = self.parent.combat.duels[2].unit.AS
     self.hit.text = self.parent.combat.duels[2].unit.hit
     self.crit.text = self.parent.combat.duels[2].unit.crit
+    if self.parent.combat.duels[2].unitweapon.name in ("Devil Sword", "Devil Axe"):
+      self.devil_label.visible = True
+      self.devildrop.visible = True
 
   def setinfo(self):
+    """Set Info"""
     self.parent.combat.duels[2].setunithp(self.startinghp.text)
     self.parent.combat.duels[2].setavoidno(int(self.avoid_drop.selected_value))
     self.parent.combat.duels[2].setcritno(int(self.crit_drop.selected_value))
     self.parent.combat.duels[2].setddgno(int(self.dodge_drop.selected_value))
+    self.parent.combat.duels[2].setdevilno(int(self.devildrop.selected_value))
 
   def reset(self):
+    """Reset"""
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.visible = False
