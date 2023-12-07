@@ -40,6 +40,7 @@ class Form2(Form2Template):
         self.defense.text = self.combat.duels[0].boss.defense
         self.startinghp.text = self.combat.duels[0].boss.maxhp
         self.weapon_drop.selected_value = None
+        self.weapon_drop.visible = True
 
     def weapon_drop_change(self, **event_args):
         """This method is called when an item is selected"""
@@ -88,3 +89,7 @@ class Form2(Form2Template):
         self.unit_number.selected_value = None
         self.reset.visible = False
         self.combatlog.visible = False
+
+    def turn_drop_change(self, **event_args):
+      """This method is called when an item is selected"""
+      self.calculatebutton.visible = True

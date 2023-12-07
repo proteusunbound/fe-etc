@@ -63,6 +63,7 @@ components:
         Pachyderm]
       include_placeholder: true
       placeholder: Select Weapon
+      visible: false
     type: DropDown
     layout_properties: {grid_position: 'IYCVIS,WPYKGI'}
     event_bindings: {change: weapon_drop_change}
@@ -176,10 +177,10 @@ components:
             items: ['1', '2', '3', '4', '5']
           type: DropDown
           layout_properties: {grid_position: 'COHHLI,RIPOVX'}
-          event_bindings: {}
+          event_bindings: {change: turn_drop_change}
         - name: calculatebutton
           properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
-            align: center, font_size: 13, foreground: '#ff8585'}
+            align: center, font_size: 13, foreground: '#ff8585', visible: false}
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}

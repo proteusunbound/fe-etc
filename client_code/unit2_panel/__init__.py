@@ -27,6 +27,7 @@ class unit2_panel(unit2_panelTemplate):
     self.resistance.text = self.parent.combat.duels[1].unit.resistance
     self.startinghp.text = self.parent.combat.duels[1].unit.maxhp
     self.weapon_drop.selected_value = None
+    self.weapon_drop.visible = True
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""

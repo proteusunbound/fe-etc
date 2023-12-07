@@ -32,6 +32,7 @@ components:
         Pachyderm]
       include_placeholder: true
       placeholder: Select Weapon
+      visible: false
     type: DropDown
     layout_properties: {x: 0, y: 45, width: 345}
     event_bindings: {change: weapon_drop_change}
