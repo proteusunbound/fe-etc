@@ -1,3 +1,4 @@
+"""Unit 4 Panel"""
 from ._anvil_designer import unit4_panelTemplate
 from anvil import *
 import anvil.tables as tables
@@ -6,11 +7,9 @@ from anvil.tables import app_tables
 from .. import combat
 
 class unit4_panel(unit4_panelTemplate):
+  """Unit Template"""
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    # Any code you write here will run before the form opens.
 
   def custombutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -42,11 +41,12 @@ class unit4_panel(unit4_panelTemplate):
     self.attackspeed.text = self.parent.combat.duels[3].unit.AS
     self.hit.text = self.parent.combat.duels[3].unit.hit
     self.crit.text = self.parent.combat.duels[3].unit.crit
-    if self.parent.combat.duels[3].unitweapon.name == 'Devil Sword' or self.parent.combat.duels[3].unitweapon.name == 'Devil Axe':
+    if self.parent.combat.duels[3].unitweapon.name in ("Devil Sword", "Devil Axe"):
       self.devil_label.visible = True
       self.devildrop.visible = True
 
   def setinfo(self):
+    """Set Info"""
     self.parent.combat.duels[3].setunithp(self.startinghp.text)
     self.parent.combat.duels[3].setavoidno(int(self.avoid_drop.selected_value))
     self.parent.combat.duels[3].setcritno(int(self.crit_drop.selected_value))
@@ -54,6 +54,7 @@ class unit4_panel(unit4_panelTemplate):
     self.parent.combat.duels[3].setdevilno(int(self.devildrop.selected_value))
 
   def reset(self):
+    """Reset"""
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.visible = False
