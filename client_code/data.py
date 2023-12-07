@@ -164,19 +164,25 @@ class DuelSim:
 
   def devilcheck(self):
     """Devil Weapon"""
-    if self.unitweapon.name == ('Devil Sword' or 'Devil Axe'):
+    if self.unitweapon.name == 'Devil Sword' or self.unitweapon.name == 'Devil Axe':
       self.unit.devil = 1 - (21 - self.unit.luck) / 100
 
   def effcoadjust(self):
     """Adjust Weapon Effectiveness"""
     if self.unitweapon.name == 'Falchion' and self.bossweapon.name != 'Earthstone':
       self.unitweapon.effco = 1
+    if self.bossweapon.name == 'Earthstone' and self.unitweapon.name != 'Falchion':
+      self.unitweapon.effco = 1
 
   def damageadjust(self):
     """Adjust Damage"""
-    if self.unitweapon.name == 'Falchion' and self.bossweapon.maxrange == 1 and (self.bossweapon.name != ('Firestone' and 'Divinestone' and 'Magestone' and 'Earthstone')):
+    if self.unitweapon.name == 'Falchion' and self.bossweapon.maxrange == 1 and (self.bossweapon.name != 'Firestone' and self.bossweapon.name != 'Divinestone' and self.bossweapon.name != 'Magestone' and self.bossweapon.name != 'Earthstone'):
       self.boss.damage = 0
     if self.bossweapon.name == 'Imhullu' and self.unitweapon.name != 'Starlight':
+      self.unit.damage = 0
+    if self.bossweapon.name == 'Magestone' and self.unitweapon.type == 'Magical':
+      self.unit.damage = 0
+    if self.bossweapon.name == 'Earthstone' and self.unitweapon.maxrange == 2:
       self.unit.damage = 0
 
   def unitstatadjust(self):
@@ -274,11 +280,11 @@ class DuelSim:
 
   def doubling(self):
     """Doubling Calculation"""
-    if self.unit.AS > self.boss.AS:
+    if self.unit.AS > self.boss.AS and (self.unitweapon.name != 'Arrowspate' and self.unitweapon.name != 'Stonehoist' and self.unitweapon.name != 'Hoistflamme' and self.unitweapon.name != 'Thunderbolt' and self.unitweapon.name != 'Pachyderm'):
       self.unit.doubles = True
       self.boss.doubles = False
       self.dueltext += "%s can make follow-up attacks. \n" % self.unit.name
-    if self.boss.AS > self.unit.AS:
+    if self.boss.AS > self.unit.AS and (self.bossweapon.name != 'Arrowspate' and self.bossweapon.name != 'Stonehoist' and self.bossweapon.name != 'Hoistflamme' and self.bossweapon.name != 'Thunderbolt' and self.bossweapon.name != 'Pachyderm'):
       self.boss.doubles = True
       self.unit.doubles = False
       self.dueltext += "%s can make follow-up attacks. \n" % self.boss.name
@@ -286,7 +292,7 @@ class DuelSim:
   def unitattack(self):
     """Unit Attack"""
     self.hitno += 1
-    if self.critno and self.unit.crit > 0:
+    if self.critno > 0 and self.unit.crit > 0:
       self.critno -= 1
       if self.unit.devil == 1:
         self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)

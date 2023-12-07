@@ -42,7 +42,7 @@ class unit2_panel(unit2_panelTemplate):
     self.attackspeed.text = self.parent.combat.duels[1].unit.AS
     self.hit.text = self.parent.combat.duels[1].unit.hit
     self.crit.text = self.parent.combat.duels[1].unit.crit
-    if self.parent.combat.duels[1].unitweapon.name == 'Devil Sword' or 'Devil Axe':
+    if self.parent.combat.duels[1].unitweapon.name == 'Devil Sword' or self.parent.combat.duels[1].unitweapon.name =='Devil Axe':
       self.devil_label.visible = True
       self.devildrop.visible = True
 
