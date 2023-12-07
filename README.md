@@ -1,5 +1,8 @@
 # fe1-calculator
 Combat success rate and turn calculator for Fire Emblem: Shadow Dragon and the Blade of Light.  
+### version 1.0
+- covers all basic combat stats and calculations, including for unique weapons
+- fifth player combatant option
 ### version 0.4
 - adjusted damage, hit, and avoid calculations for magical weapons
 - weapon effectiveness
