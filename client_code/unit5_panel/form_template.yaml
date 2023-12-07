@@ -1,0 +1,218 @@
+container:
+  type: ColumnPanel
+  properties: {visible: false}
+components:
+- name: xy_panel_1
+  properties: {height: '70', spacing_above: none, spacing_below: small}
+  type: XYPanel
+  layout_properties: {grid_position: 'QIXASK,RJPYQE'}
+  components:
+  - name: unit_drop
+    properties:
+      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Wrys, Bord, Cord, Barst,
+        Ogma, Darros, Castor, Julian, Lena, Navarre, Matthis, Merric, Roshea, Vyland,
+        Sedgar, Wolf, Hardin, Wendell, Rickard, Bantu, Caesar, Radd, Roger, Jeorge,
+        Maria, Minerva, Linde, Jake, Dolph, Macellan, Tomas, Boah, Midia, Astram,
+        Beck, Catria, Palla, Arran, Samson, Xane, Est, Tiki, Lorenz, Elice, Gotoh]
+      spacing_above: small
+      spacing_below: small
+      include_placeholder: true
+      placeholder: Select Unit
+    type: DropDown
+    layout_properties: {x: 0, y: 0, width: 345}
+    event_bindings: {change: unit_drop_change}
+  - name: weapon_drop
+    properties:
+      items: [Iron Sword, Steel Sword, Silver Sword, Killing Edge, Levin Sword, Devil Sword,
+        Wyrmslayer, Armorslayer, Rapier, Mercurius, Falchion, Lance, Silver Lance,
+        Ridersbane, Javelin, Gradivus, Axe, Steel Axe, Hammer, Devil Axe, Hand Axe,
+        Bow, Steel Bow, Bowgun, Silver Bow, Parthia, Fire, Thunder, Blizzard, Elfire,
+        Bolganone, Thoron, Swarm, Aura, Excalibur, Imhullu, Starlight, Firestone,
+        Divinestone, Magestone, Earthstone, Arrowspate, Stonehoist, Hoistflamme, Thunderbolt,
+        Pachyderm]
+      include_placeholder: true
+      placeholder: Select Weapon
+    type: DropDown
+    layout_properties: {x: 0, y: 45, width: 345}
+    event_bindings: {change: weapon_drop_change}
+  - name: custombutton
+    properties: {text: Customize, align: full, role: null, background: 'theme:Surface
+        Variant', foreground: '#9ea9ff', font_size: 15}
+    type: Button
+    layout_properties: {x: 355, y: 45, width: 120}
+    event_bindings: {click: custombutton_click}
+  - name: sethplabel
+    properties: {text: 'Starting HP:', font_size: 15}
+    type: Label
+    layout_properties: {x: 360, y: 0, width: 75}
+  - name: startinghp
+    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
+      foreground: '', type: number}
+    type: TextBox
+    layout_properties: {x: 435, y: 0, width: 40}
+    event_bindings: {}
+- name: customization
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000'}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
+  components:
+  - name: column_panel_2
+    properties: {background: '', role: null, foreground: '', col_spacing: medium}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
+    components:
+    - name: hplabel
+      properties: {text: HP, align: center}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,UEJOCT'}
+    - name: hp
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+    - name: strlabel
+      properties: {text: STR, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR GYRYBB,TAPVOF'}
+    - name: skl_label
+      properties: {text: SKL, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR YEDAHM,XEDNFW'}
+    - name: spdlabel
+      properties: {text: SPD, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR MSWAXB,WVUMZS'}
+    - name: lcklabel
+      properties: {text: LCK, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR PDBIDL,WAOREX'}
+    - name: deflabel
+      properties: {text: DEF, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR DYRMEN,ZMLJID'}
+    - name: reslabel
+      properties: {text: RES, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR IXIGGU,EJGINA'}
+    - name: strength
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE PQZPMB,KXSLRR'}
+    - name: skill
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE CRNPVZ,RWLPKA'}
+    - name: speed
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE RLVUXH,WWEMQZ'}
+    - name: luck
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE AXGWJW,GKYSZT'}
+    - name: defense
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE QCKJYR,PLZMCT'}
+    - name: resistance
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
+  - name: xy_panel_2
+    properties: {height: 25}
+    type: XYPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
+    components:
+    - name: hide
+      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
+        visible: true, border: ''}
+      type: Button
+      layout_properties: {x: 105, y: 0, width: 120}
+      event_bindings: {click: hide_click}
+      data_bindings: []
+  - name: column_panel_3
+    properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
+    components:
+    - name: avoidlabel
+      properties: {text: Avoids, align: center}
+      type: Label
+      layout_properties: {grid_position: 'QDIZME,YCGGNU QNSUVS,TNAPQP'}
+    - name: avoid_drop
+      properties:
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
+        foreground: ''
+      type: DropDown
+      layout_properties: {grid_position: 'QDIZME,YCGGNU VKMUZG,XZSAGP'}
+      event_bindings: {}
+      data_bindings: []
+    - name: critno
+      properties: {text: Crits, align: center}
+      type: Label
+      layout_properties: {grid_position: 'QDIZME,COUIXI BYTOIM,GXGCBQ'}
+    - name: crit_drop
+      properties:
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'QDIZME,COUIXI EAGRXS,UXYPYK'}
+      event_bindings: {}
+    - name: dodgelabel
+      properties: {text: Dodges, align: center}
+      type: Label
+      layout_properties: {grid_position: 'QDIZME,MLQFBU RWHBYF,RVIFZJ'}
+    - name: dodge_drop
+      properties:
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'QDIZME,MLQFBU MVLKOS,PVCDWO'}
+      event_bindings: {}
+    - name: devil_label
+      properties: {text: 'Devil
+
+          ', align: center, visible: false}
+      type: Label
+      layout_properties: {grid_position: 'QDIZME,XYOVPN MVVHVM,XEODHE'}
+    - name: devildrop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+        visible: false
+      type: DropDown
+      layout_properties: {grid_position: 'QDIZME,XYOVPN VIACUI,BIHCEA'}
+      event_bindings: {}
+  - name: column_panel_1
+    properties: {spacing_above: medium, spacing_below: medium}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
+    components:
+    - name: aslabel
+      properties: {text: AS, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
+    - name: attackspeed
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}
+    - name: hitlabel
+      properties: {text: HIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR FNRQCP,BBKNCJ'}
+    - name: hit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
+      data_bindings: []
+    - name: critlabel
+      properties: {text: CRIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MEZRDQ RLQNIM,AFXSUF'}
+    - name: crit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MEZRDQ NPSOME,LLZVGC'}
+is_package: true

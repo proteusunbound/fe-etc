@@ -10,7 +10,7 @@ class Form2(Form2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.combat = combat.CombatSim()
-    self.unitpanels = [self.unit1_panel, self.unit2_panel, self.unit3_panel, self.unit4_panel]
+    self.unitpanels = [self.unit1_panel, self.unit2_panel, self.unit3_panel, self.unit4_panel, self.unit5_panel]
     # Any code you write here will run before the form opens.
   
   def unit_number_change(self, **event_args):
