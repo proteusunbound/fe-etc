@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {visible: false}
+  properties: {visible: true}
 components:
 - name: xy_panel_1
   properties: {height: '70', spacing_above: none, spacing_below: small}
@@ -53,12 +53,12 @@ components:
     layout_properties: {x: 435, y: 0, width: 40}
     event_bindings: {}
 - name: customization
-  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000'}
+  properties: {visible: true, background: '#9ea9ff', role: card, foreground: '#000000'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
   - name: column_panel_2
-    properties: {background: '', role: null, foreground: '', col_spacing: medium}
+    properties: {background: '', role: null, foreground: '', col_spacing: none}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -70,6 +70,14 @@ components:
       properties: {text: '-', align: center}
       type: Label
       layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+    - name: seraphlabel
+      properties: {text: Seraph Robes}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,UDORCM'}
+    - name: drop_down_1
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'KTXRFX,QMVVTY'}
     - name: strlabel
       properties: {text: STR, align: center}
       type: Label
@@ -118,6 +126,54 @@ components:
       properties: {text: '-', align: center}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
+    - name: powerlabel
+      properties: {text: Power Rings}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX SBACQM,HCRWQH'}
+    - name: secretlabel
+      properties: {text: Secret Books}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX IVECKH,BXJYTZ'}
+    - name: speedringlabel
+      properties: {text: Speed Rings}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX HQCZTB,HTDPTE'}
+    - name: goddesslabel
+      properties: {text: Goddess Icons}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX SMRCDB,RCLWRZ'}
+    - name: dracoshieldlabel
+      properties: {text: Dracoshields}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX JLLAQC,UUHCZN'}
+    - name: talismanlabel
+      properties: {text: Talismans}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,ZYITFX QYVOAH,MCPLUQ'}
+    - name: drop_down_2
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR YLZVZZ,OAXAGN'}
+    - name: drop_down_3
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR EIIUYZ,QOEGYG'}
+    - name: drop_down_4
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR TEDLJN,BSAATD'}
+    - name: drop_down_5
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR PYVGVX,DHPJTC'}
+    - name: drop_down_6
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR OIWZPO,LHSGSF'}
+    - name: drop_down_7
+      properties: {}
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,KSMRTR ZTDBUR,TBXNFS'}
   - name: xy_panel_2
     properties: {height: 25}
     type: XYPanel
