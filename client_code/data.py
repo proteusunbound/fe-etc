@@ -27,9 +27,6 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
-    
-    def boosthp (self, number):
-      self.maxhp = min(self.maxhp + 9 * number, 52)
 
 @anvil.server.portable_class
 class ActiveWeapon:
