@@ -28,9 +28,33 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
       
-    def boosthp (self, number):
+    def boosthp(self, number):
+      """Seraph Robe"""
       self.maxhp = min(self.maxhp + 9 * number, 52)
 
+    def boostluck(self, number):
+      """Goddess Icon"""
+      self.luck = min(self.luck + 7 * number, 20)
+
+    def boost_speed(self, number):
+      """Speed Ring"""
+      self.speed = min(self.speed + 6 * number, 20)
+
+    def boost_strength(self, number):
+      """Power Ring"""
+      self.strength = min(self.strength + 4 * number, 20)
+
+    def boostresistance(self, number):
+      """Talisman"""
+      self.resistance = min(self.resistance + 7 * number, 7)
+
+    def boostdefense(self, number):
+      """Dracoshield"""
+      self.defense = min(self.defense + 3 * number, 20)
+
+    def boost_skill(self, number):
+      """Secret Book"""
+      self.skill = min(self.skill + 5 * number, 20)
 
 @anvil.server.portable_class
 class ActiveWeapon:
