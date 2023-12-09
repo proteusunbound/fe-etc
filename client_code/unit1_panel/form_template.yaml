@@ -83,6 +83,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'KTXRFX,QMVVTY'}
+      event_bindings: {change: seraphrobe_change}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -162,6 +163,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR YLZVZZ,OAXAGN'}
+      event_bindings: {change: powerdrop_change}
     - name: secretdrop
       properties:
         items: ['0', '1', '2', '3', '4']
@@ -170,6 +172,7 @@ components:
         bold: false
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR EIIUYZ,QOEGYG'}
+      event_bindings: {change: secretdrop_change}
     - name: speedring_drop
       properties:
         items: ['0', '1', '2', '3']
@@ -177,6 +180,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR TEDLJN,BSAATD'}
+      event_bindings: {change: speedring_drop_change}
     - name: goddessdrop
       properties:
         items: ['0', '1', '2', '3']
@@ -184,6 +188,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR PYVGVX,DHPJTC'}
+      event_bindings: {change: goddessdrop_change}
     - name: dracoshield_drop
       properties:
         items: ['0', '1', '2', '3', '4', '5', '6']
@@ -191,6 +196,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR OIWZPO,LHSGSF'}
+      event_bindings: {change: dracoshield_drop_change}
     - name: talismandrop
       properties:
         items: ['0', '1']
@@ -198,6 +204,7 @@ components:
         align: full
       type: DropDown
       layout_properties: {grid_position: 'CLSTUB,KSMRTR ZTDBUR,TBXNFS'}
+      event_bindings: {change: talismandrop_change}
   - name: xy_panel_2
     properties: {height: 25}
     type: XYPanel

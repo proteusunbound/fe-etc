@@ -11,16 +11,16 @@ class ActiveUnit:
     """Active Unit"""
 
     def __init__(self, keyword):
-        unit = app_tables.unit_stats.get(Name=keyword)
-        self.name = unit["Name"]
-        self.maxhp = unit["HP"]
-        self.strength = unit["Str"]
-        self.skill = unit["Skl"]
-        self.speed = unit["Spd"]
-        self.defense = unit["Def"]
-        self.luck = unit["Lck"]
-        self.resistance = unit["Res"]
-        self.charclass = unit["Class"]
+        self.unit = app_tables.unit_stats.get(Name=keyword)
+        self.name = self.unit["Name"]
+        self.maxhp = self.unit["HP"]
+        self.strength = self.unit["Str"]
+        self.skill = self.unit["Skl"]
+        self.speed = self.unit["Spd"]
+        self.defense = self.unit["Def"]
+        self.luck = self.unit["Lck"]
+        self.resistance = self.unit["Res"]
+        self.charclass = self.unit["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.devil = 1
@@ -30,31 +30,31 @@ class ActiveUnit:
       
     def boosthp(self, number):
       """Seraph Robe"""
-      self.maxhp = min(self.maxhp + 9 * number, 52)
+      self.maxhp = min(self.unit["HP"] + 9 * number, 52)
 
     def boostluck(self, number):
       """Goddess Icon"""
-      self.luck = min(self.luck + 7 * number, 20)
+      self.luck = min(self.unit["Lck"] + 7 * number, 20)
 
     def boost_speed(self, number):
       """Speed Ring"""
-      self.speed = min(self.speed + 6 * number, 20)
+      self.speed = min(self.unit["Spd"] + 6 * number, 20)
 
     def boost_strength(self, number):
       """Power Ring"""
-      self.strength = min(self.strength + 4 * number, 20)
+      self.strength = min(self.unit["Str"] + 4 * number, 20)
 
     def boostresistance(self, number):
       """Talisman"""
-      self.resistance = min(self.resistance + 7 * number, 7)
+      self.resistance = min(self.unit["Res"] + 7 * number, 7)
 
     def boostdefense(self, number):
       """Dracoshield"""
-      self.defense = min(self.defense + 3 * number, 20)
+      self.defense = min(self.unit["Def"] + 3 * number, 20)
 
     def boost_skill(self, number):
       """Secret Book"""
-      self.skill = min(self.skill + 5 * number, 20)
+      self.skill = min(self.unit["Skl"] + 5 * number, 20)
 
 @anvil.server.portable_class
 class ActiveWeapon:
