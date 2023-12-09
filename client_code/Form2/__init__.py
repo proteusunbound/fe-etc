@@ -93,3 +93,7 @@ class Form2(Form2Template):
     def turn_drop_change(self, **event_args):
       """This method is called when an item is selected"""
       self.calculatebutton.visible = True
+
+    def mainpage_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      open_form('Landing')
