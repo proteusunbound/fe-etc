@@ -11,16 +11,16 @@ class ActiveUnit:
     """Active Unit"""
 
     def __init__(self, keyword):
-        self.unit = app_tables.unit_stats.get(Name=keyword)
-        self.name = self.unit["Name"]
-        self.maxhp = self.unit["HP"]
-        self.strength = self.unit["Str"]
-        self.skill = self.unit["Skl"]
-        self.speed = self.unit["Spd"]
-        self.defense = self.unit["Def"]
-        self.luck = self.unit["Lck"]
-        self.resistance = self.unit["Res"]
-        self.charclass = self.unit["Class"]
+        self.char = app_tables.fe1_unit_stats.get(Name=keyword)
+        self.name = self.char["Name"]
+        self.maxhp = self.char["HP"]
+        self.strength = self.char["Str"]
+        self.skill = self.char["Skl"]
+        self.speed = self.char["Spd"]
+        self.defense = self.char["Def"]
+        self.luck = self.char["Lck"]
+        self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.devil = 1
@@ -30,38 +30,38 @@ class ActiveUnit:
       
     def boosthp(self, number):
       """Seraph Robe"""
-      self.maxhp = min(self.unit["HP"] + 9 * number, 52)
+      self.maxhp = min(self.char["HP"] + 9 * number, 52)
 
     def boostluck(self, number):
       """Goddess Icon"""
-      self.luck = min(self.unit["Lck"] + 7 * number, 20)
+      self.luck = min(self.char["Lck"] + 7 * number, 20)
 
     def boost_speed(self, number):
       """Speed Ring"""
-      self.speed = min(self.unit["Spd"] + 6 * number, 20)
+      self.speed = min(self.char["Spd"] + 6 * number, 20)
 
     def boost_strength(self, number):
       """Power Ring"""
-      self.strength = min(self.unit["Str"] + 4 * number, 20)
+      self.strength = min(self.char["Str"] + 4 * number, 20)
 
     def boostresistance(self, number):
       """Talisman"""
-      self.resistance = min(self.unit["Res"] + 7 * number, 7)
+      self.resistance = min(self.char["Res"] + 7 * number, 7)
 
     def boostdefense(self, number):
       """Dracoshield"""
-      self.defense = min(self.unit["Def"] + 3 * number, 20)
+      self.defense = min(self.char["Def"] + 3 * number, 20)
 
     def boost_skill(self, number):
       """Secret Book"""
-      self.skill = min(self.unit["Skl"] + 5 * number, 20)
+      self.skill = min(self.char["Skl"] + 5 * number, 20)
 
 @anvil.server.portable_class
 class ActiveWeapon:
     """Active Weapon"""
 
     def __init__(self, keyword):
-        weapon = app_tables.weapon_stats.get(Name=keyword)
+        weapon = app_tables.fe1_weapon_stats.get(Name=keyword)
         self.name = weapon["Name"]
         self.might = weapon["Mgt"]
         self.weight = weapon["Wgt"]
@@ -78,7 +78,7 @@ class ActiveBoss:
     """Active Boss"""
 
     def __init__(self, keyword):
-        boss = app_tables.boss_stats.get(Name=keyword)
+        boss = app_tables.fe1_boss_stats.get(Name=keyword)
         self.name = boss["Name"]
         self.maxhp = boss["HP"]
         self.strength = boss["Str"]
@@ -141,7 +141,7 @@ def bosshitchance(boss, unit):
 
 def effectiveness(weapon, keyword):
     """Effectiveness"""
-    effcheck = app_tables.effectiveness.get(Name=weapon.name)
+    effcheck = app_tables.fe1_effectiveness.get(Name=weapon.name)
     if effcheck[keyword.charclass] is True:
         weapon.effco = 3
     else:

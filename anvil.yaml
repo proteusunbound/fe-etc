@@ -14,7 +14,7 @@ startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
-  boss_stats:
+  fe1_boss_stats:
     client: search
     server: search
     columns:
@@ -39,75 +39,8 @@ db_schema:
     - name: Class
       admin_ui: {width: 200, order: 6}
       type: string
-    title: Boss Stats
-  unit_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 65}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Wlv
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Lck
-      admin_ui: {order: 5, width: 50}
-      type: number
-    - name: Def
-      admin_ui: {order: 6, width: 50}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Skl
-      admin_ui: {order: 2.5, width: 200}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: Unit Stats
-  weapon_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 87}
-      type: string
-    - name: Lvl
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Mgt
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Wgt
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Hit
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Crit
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Min Range
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Max Range
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Type
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: Weapon Stats
-  effectiveness:
+    title: FE1 Boss Stats
+  fe1_effectiveness:
     client: search
     server: search
     columns:
@@ -180,4 +113,100 @@ db_schema:
     - name: General
       admin_ui: {width: 200, order: 21}
       type: bool
-    title: Effectiveness
+    title: FE1 Effectiveness
+  fe1_unit_stats:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 65}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Wlv
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Lck
+      admin_ui: {order: 5, width: 50}
+      type: number
+    - name: Def
+      admin_ui: {order: 6, width: 50}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Skl
+      admin_ui: {order: 2.5, width: 200}
+      type: number
+    - name: Class
+      admin_ui: {width: 200, order: 8}
+      type: string
+    title: FE1 Unit Stats
+  fe1_weapon_stats:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 87}
+      type: string
+    - name: Lvl
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Mgt
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Wgt
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Hit
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Crit
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Min Range
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Type
+      admin_ui: {width: 200, order: 8}
+      type: string
+    title: FE1 Weapon Stats
+  fe2_boss_stats:
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 206}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 7}
+      type: number
+    title: FE2 Boss Stats
