@@ -182,8 +182,8 @@ db_schema:
       type: string
     title: FE1 Weapon Stats
   fe2_boss_stats:
-    client: none
-    server: full
+    client: search
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 206}
@@ -211,8 +211,8 @@ db_schema:
       type: number
     title: FE2 Boss Stats
   fe2_unit_stats:
-    client: none
-    server: full
+    client: search
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 64}
@@ -239,3 +239,23 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     title: FE2 Unit Stats
+  fe2_weapon_stats:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 101}
+      type: string
+    - name: Mgt
+      admin_ui: {order: 1, width: 200}
+      type: number
+    - name: Wgt
+      admin_ui: {order: 2, width: 50}
+      type: number
+    - name: Hit
+      admin_ui: {order: 3, width: 50}
+      type: number
+    - name: Crit
+      admin_ui: {width: 200, order: 4}
+      type: number
+    title: FE2 Weapon Stats

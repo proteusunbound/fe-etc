@@ -1,17 +1,17 @@
 """FE1 Calculator"""
-from ._anvil_designer import Form2Template
+from ._anvil_designer import fe1Template
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import combat
+from .. import fe1combat
 
 
-class Form2(Form2Template):
+class fe1(fe1Template):
     """GUI Interface"""
     def __init__(self, **properties):
         self.init_components(**properties)
-        self.combat = combat.CombatSim()
+        self.combat = fe1combat.CombatSim()
         self.unitpanels = [
             self.unit1_panel,
             self.unit2_panel,

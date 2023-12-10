@@ -3,7 +3,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from . import data
+from . import fe1data
 
 
 @anvil.server.portable_class
@@ -26,7 +26,7 @@ class CombatSim:
     def setduels(self, duelno):
         """Set Duels"""
         for i in range(0, duelno):
-            self.duels[i] = data.DuelSim()
+            self.duels[i] = fe1data.DuelSim()
 
     def combatround(self):
         """Combat Round"""

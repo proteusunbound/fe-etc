@@ -1,13 +1,13 @@
 """Unit 1 Panel"""
-from ._anvil_designer import unit1_panelTemplate
+from ._anvil_designer import fe1unit1_panelTemplate
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import combat
+from .. import fe1combat
 
 
-class unit1_panel(unit1_panelTemplate):
+class fe1unit1_panel(fe1unit1_panelTemplate):
     """Unit Template"""
 
     def __init__(self, **properties):

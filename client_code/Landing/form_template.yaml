@@ -10,4 +10,9 @@ components:
     type: Button
     layout_properties: {grid_position: 'BCPBTS,KNDETV'}
     event_bindings: {click: fe1button_click}
+  - name: fe2button
+    properties: {text: FE2}
+    type: Button
+    layout_properties: {grid_position: 'BCPBTS,CEPQZJ'}
+    event_bindings: {click: fe2button_click}
 is_package: true
