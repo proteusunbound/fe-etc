@@ -138,6 +138,14 @@ components:
       properties: {text: Avoids, align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'ZWALOY,WZAQGA'}
+    - name: critno
+      properties: {text: Crits, align: center}
+      type: Label
+      layout_properties: {grid_position: 'ZWALOY,FRQSWE'}
+    - name: dodgelabel
+      properties: {text: Dodges, align: center}
+      type: Label
+      layout_properties: {grid_position: 'ZWALOY,RAYLRS'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -146,11 +154,21 @@ components:
         foreground: ''
         font_size: null
         visible: true
-        align: center
+        align: full
       type: DropDown
       layout_properties: {grid_position: 'VKMUZG,XZSAGP'}
       event_bindings: {}
       data_bindings: []
+    - name: drop_down_1
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'VKMUZG,HAIZJY'}
+    - name: drop_down_2
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'VKMUZG,LBYVDT'}
   - name: column_panel_1
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
@@ -173,4 +191,12 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
       data_bindings: []
+    - name: critlabel
+      properties: {text: CRIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MPAUAT PEEXRK,NWCVQS'}
+    - name: crit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,MPAUAT GTNKXW,UGRQBF'}
 is_package: true
