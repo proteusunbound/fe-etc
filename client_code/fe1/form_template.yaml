@@ -1,5 +1,9 @@
 container: {type: ColumnPanel}
 components:
+- name: titlelabel
+  properties: {text: 'Fire Emblem: Shadow Dragon and the Blade of Light', role: headline}
+  type: Label
+  layout_properties: {grid_position: 'ROSUIT,HZXCIT'}
 - name: column_panel_2
   properties: {spacing_below: none}
   type: ColumnPanel

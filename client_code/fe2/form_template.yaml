@@ -1,5 +1,9 @@
 container: {type: ColumnPanel}
 components:
+- name: titlelabel
+  properties: {role: headline, text: Fire Emblem Gaiden}
+  type: Label
+  layout_properties: {grid_position: 'GVOJNR,MRGUWM'}
 - name: column_panel_2
   properties: {spacing_below: none}
   type: ColumnPanel
