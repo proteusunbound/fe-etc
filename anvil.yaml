@@ -8,8 +8,7 @@ allow_embedding: false
 name: FE ETC
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
-metadata: {title: FE Calculator, description: 'Combat success and turn calculator
-    for Fire Emblem: Shadow Dragon and the Blade of Light.'}
+metadata: {title: FE Calculator, description: Combat success and turn calculator for Fire Emblem.}
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
