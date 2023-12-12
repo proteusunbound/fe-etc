@@ -1,5 +1,9 @@
 # fe1-calculator
-Combat success rate and turn calculator for Fire Emblem: Shadow Dragon and the Blade of Light.  
+Combat success rate and turn calculator for Fire Emblem.  
+### version 1.1
+- added stat boosters for FE1 player units
+- created basic framework for FE2: unit, boss, weapon stats
+- current FE2 customization options: starting HP, turn count, and avoid
 ### version 1.0
 - covers all basic combat stats and calculations, including for unique weapons
 - fifth player combatant option
