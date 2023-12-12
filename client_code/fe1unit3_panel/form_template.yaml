@@ -217,6 +217,11 @@ components:
       layout_properties: {x: 105, y: 0, width: 120}
       event_bindings: {click: hide_click}
       data_bindings: []
+    - name: promobox
+      properties: {text: Promote, enabled: true, checked: false, visible: false}
+      type: CheckBox
+      layout_properties: {x: 0, y: 0, width: 85}
+      event_bindings: {change: promobox_change}
   - name: column_panel_3
     properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
     type: ColumnPanel
