@@ -13,7 +13,8 @@ class fe2(fe2Template):
     self.init_components(**properties)
     self.combat = fe2combat.CombatSim()
     self.unitpanels = [
-        self.unit1_panel
+        self.unit1_panel,
+        self.unit2_panel
     ]
 
   def unit_number_change(self, **event_args):
@@ -48,6 +49,7 @@ class fe2(fe2Template):
     self.defense.text = self.combat.duels[0].boss.defense
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
+    self.crit.text = self.combat.duels[0].boss.crit
     
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
