@@ -1,13 +1,15 @@
 """Unit 5 Panel"""
-from ._anvil_designer import unit5_panelTemplate
+from ._anvil_designer import fe1unit5_panelTemplate
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import combat
+from .. import fe1combat
 
-class unit5_panel(unit5_panelTemplate):
+
+class fe1unit5_panel(fe1unit5_panelTemplate):
   """Unit Template"""
+
   def __init__(self, **properties):
     self.init_components(**properties)
 
@@ -59,3 +61,46 @@ class unit5_panel(unit5_panelTemplate):
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.visible = False
+
+  def seraphrobe_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boosthp(int(self.seraphrobe.selected_value))
+    self.hp.text = self.parent.combat.duels[4].unit.maxhp
+    self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
+
+  def powerdrop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boost_strength(int(self.powerdrop.selected_value))
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+
+  def secretdrop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boost_skill(int(self.secretdrop.selected_value))
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.parent.combat.duels[4].unitdisplay()
+    self.hit.text = self.parent.combat.duels[4].unit.hit
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+
+  def speedring_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boost_speed(int(self.speedring_drop.selected_value))
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.parent.combat.duels[4].unitdisplay()
+    self.attackspeed.text = self.parent.combat.duels[4].unit.AS
+
+  def goddessdrop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boostluck(int(self.goddessdrop.selected_value))
+    self.luck.text = self.parent.combat.duels[4].unit.luck
+    self.parent.combat.duels[4].unitdisplay()
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+
+  def dracoshield_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boostdefense(int(self.dracoshield_drop.selected_value))
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+
+  def talismandrop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.boostresistance(int(self.talismandrop.selected_value))
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance

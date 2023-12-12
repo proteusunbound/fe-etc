@@ -1,0 +1,18 @@
+container: {type: ColumnPanel}
+components:
+- name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'FJKWAS,JEQEFH'}
+  components:
+  - name: fe1button
+    properties: {text: FE1}
+    type: Button
+    layout_properties: {grid_position: 'BCPBTS,KNDETV'}
+    event_bindings: {click: fe1button_click}
+  - name: fe2button
+    properties: {text: FE2}
+    type: Button
+    layout_properties: {grid_position: 'BCPBTS,CEPQZJ'}
+    event_bindings: {click: fe2button_click}
+is_package: true
