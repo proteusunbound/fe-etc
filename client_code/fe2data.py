@@ -77,10 +77,6 @@ def critical(keyword, weapon):
     """Critical"""
     keyword.crit = math.floor(((keyword.skill + keyword.luck) / 2 + weapon.crit) / 2)
 
-def enemy_avoid(boss):
-    """Enemy Avoid"""
-    boss.avoid = boss.AS
-
 def damage(attacker, defender):
     """Damage"""
     attacker.damage = max(1, attacker.attack - defender.defense)
@@ -158,11 +154,17 @@ class DuelSim:
         else:
           hitrate(self.boss, self.bossweapon)
 
+    def enemy_avoid(self):
+      if self.unitweapon.type == "Magical":
+        self.boss.avoid = self.boss.speed + self.boss.luck
+      else:
+        self.boss.avoid = self.boss.AS
+
     def precombat(self):
         """Pre-Combat Calculation"""
         get_attack(self.unit, self.unitweapon)
         damage(self.unit, self.boss)
-        enemy_avoid(self.boss)
+        self.enemy_avoid()
         get_attack(self.boss, self.bossweapon)
         damage(self.boss, self.unit)
         bosshitchance(self.boss, self.unit)
