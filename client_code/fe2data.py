@@ -70,6 +70,10 @@ def get_attack(keyword, weapon):
     """Attack"""
     keyword.attack = keyword.strength + weapon.might
 
+def critical(keyword, weapon):
+    """Critical"""
+    keyword.crit = math.floor(((keyword.skill + keyword.luck) / 2 + weapon.crit) / 2)
+
 def enemy_avoid(boss):
     """Enemy Avoid"""
     boss.avoid = boss.AS
@@ -90,8 +94,12 @@ class DuelSim:
         self.dueltext = ""
         self.hitno = 0
         self.avoidno = 0
+        self.critno = 0
+        self.ddgno = 0
         self.unithit = 0
         self.unitavoid = 0
+        self.unitcrit = 0
+        self.unitdodge = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -117,6 +125,14 @@ class DuelSim:
         """Set Avoid Number"""
         self.avoidno = avoidno
 
+    def setcritno(self, critno):
+        """Set Crit Number"""
+        self.critno = critno
+
+    def setddgno(self, ddgno):
+        """Set Dodge Number"""
+        self.ddgno = ddgno
+
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
@@ -125,11 +141,13 @@ class DuelSim:
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
+        critical(self.unit, self.unitweapon)
 
     def bossdisplay(self):
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
         hitrate(self.boss, self.bossweapon)
+        critical(self.boss, self.bossweapon)
 
     def precombat(self):
         """Pre-Combat Calculation"""
@@ -140,7 +158,9 @@ class DuelSim:
         damage(self.boss, self.unit)
         bosshitchance(self.boss, self.unit)
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+        self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
+        self.unitdodge = 1 - self.boss.crit / 100
 
     def doubling(self):
         """Doubling Calculation"""
@@ -156,13 +176,28 @@ class DuelSim:
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
-        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-        self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+        if self.critno > 0 and self.unit.crit > 0:
+            self.critno -= 1
+            self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+            self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+        else:
+            self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+            self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
     
     def bossmiss(self):
         """Boss Miss"""
         self.avoidno -= 1
         self.dueltext += f"{self.boss.name}'s attack misses.\n"
+
+    def bosscrit(self):
+        """Boss Crit"""
+        if self.ddgno > 0:
+            self.ddgno -= 1
+            self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
+            self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
+        else:
+            self.unit.hitpoints = max(0, self.unit.hitpoints - 3 * self.boss.damage)
+            self.dueltext += f"{self.boss.name} lands a critical hit and leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
     def bossattack(self):
         """Boss Attack"""
@@ -177,6 +212,8 @@ class DuelSim:
         if self.boss.hitpoints > 0 and self.boss.hitpoints > 0:
           if self.avoidno > 0:
                 self.bossmiss()
+          elif self.boss.crit > 0:
+                self.bosscrit()
           else:
                 self.bossattack()
         if (
@@ -192,6 +229,8 @@ class DuelSim:
         ):
           if self.avoidno > 0:
                 self.bossmiss()
+          elif self.boss.crit > 0:
+                self.bosscrit()
           else:
                 self.bossattack()
         self.dueltext += "\n"
@@ -202,6 +241,8 @@ class DuelSim:
         if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
             if self.avoidno > 0:
                 self.bossmiss()
+            elif self.boss.crit > 0:
+                self.bosscrit()
             else:
                 self.bossattack()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
@@ -213,6 +254,8 @@ class DuelSim:
         ):
             if self.avoidno > 0:
                 self.bossmiss()
+            elif self.boss.crit > 0:
+                self.bosscrit()
             else:
                 self.bossattack()
         if (

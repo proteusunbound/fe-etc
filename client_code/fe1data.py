@@ -56,6 +56,64 @@ class ActiveUnit:
       """Secret Book"""
       self.skill = min(self.char["Skl"] + 5 * number, 20)
 
+    def paladin(self):
+      """Paladin Stats"""
+      self.charclass = "Paladin"
+      self.maxhp = max(22, self.char["HP"])
+      self.strength = max(8, self.char["Str"])
+      self.skill = max(7, self.char["Skl"])
+      self.speed = max(11, self.char["Spd"])
+      self.defense = max(9, self.char["Def"])
+
+    def hero(self):
+      """Hero Stats"""
+      self.charclass = "Hero"
+      self.maxhp = max(24, self.char["HP"])
+      self.strength = max(8, self.char["Str"])
+      self.skill = max(14, self.char["Skl"])
+      self.speed = max(14, self.char["Spd"])
+      self.defense = max(8, self.char["Def"])
+
+    def sniper(self):
+      """Sniper Stats"""
+      self.charclass = "Sniper"
+      self.maxhp = max(24, self.char["HP"])
+      self.strength = max(7, self.char["Str"])
+      self.skill = max(10, self.char["Skl"])
+      self.speed = max(14, self.char["Spd"])
+      self.defense = max(7, self.char["Def"])
+
+    def bishop(self):
+      """Bishop Stats"""
+      self.charclass = "Bishop"
+      self.maxhp = max(22, self.char["HP"])
+      self.strength = max(3, self.char["Str"])
+      self.skill = max(1, self.char["Skl"])
+      self.speed = max(14, self.char["Spd"])
+      self.defense = max(8, self.char["Def"])
+
+    def wyvernknight(self):
+      """Wyvern Knight Stats"""
+      self.charclass = "Wyvern Knight"
+      self.maxhp = max(22, self.char["HP"])
+      self.strength = max(9, self.char["Str"])
+      self.skill = max(3, self.char["Skl"])
+      self.speed = max(6, self.char["Spd"])
+      self.defense = max(14, self.char["Def"])
+
+    def promote(self):
+      "Promotion"
+      if self.charclass == "Cavalier":
+        self.paladin()
+      if self.charclass == "Mercenary":
+        self.hero()
+      if self.charclass == "Archer":
+        self.sniper()
+      if self.charclass in ("Curate", "Mage"):
+        self.bishop()
+      if self.charclass == "Pegasus Knight":
+        self.wyvernknight()
+
 @anvil.server.portable_class
 class ActiveWeapon:
     """Active Weapon"""

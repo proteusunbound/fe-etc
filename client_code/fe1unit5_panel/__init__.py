@@ -30,6 +30,9 @@ class fe1unit5_panel(fe1unit5_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    self.promobox.checked = False
+    if self.parent.combat.duels[4].unit.charclass in ("Cavalier", "Mercenary", "Archer", "Curate", "Mage", "Pegasus Knight"):
+      self.promobox.visible = True
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -104,3 +107,17 @@ class fe1unit5_panel(fe1unit5_panelTemplate):
     """This method is called when an item is selected"""
     self.parent.combat.duels[4].unit.boostresistance(int(self.talismandrop.selected_value))
     self.resistance.text = self.parent.combat.duels[4].unit.resistance
+
+  def promobox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].unit.promote()
+    self.hp.text = self.parent.combat.duels[4].unit.maxhp
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
+    self.parent.combat.duels[4].unitdisplay()
+    self.hit.text = self.parent.combat.duels[4].unit.hit
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+    self.attackspeed.text = self.parent.combat.duels[4].unit.AS
