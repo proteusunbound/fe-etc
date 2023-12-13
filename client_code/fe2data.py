@@ -37,6 +37,7 @@ class ActiveWeapon:
         self.crit = weapon["Crit"]
         self.range = weapon["Range"]
         self.type = weapon["Type"]
+        self.backfire = weapon["Dmg"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -77,13 +78,13 @@ def critical(keyword, weapon):
     """Critical"""
     keyword.crit = math.floor(((keyword.skill + keyword.luck) / 2 + weapon.crit) / 2)
 
-def damage(attacker, defender):
-    """Damage"""
+def physdamage(attacker, defender):
+    """Physical Damage"""
     attacker.damage = max(1, attacker.attack - defender.defense)
 
-def bosshitchance(boss, unit):
-    """Boss Hit Chance"""
-    boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
+def magdamage(attacker, defender):
+  """Magical Damage"""
+  attacker.damage = max(1, attacker.attack - defender.resistance)
 
 @anvil.server.portable_class
 class DuelSim:
@@ -160,14 +161,26 @@ class DuelSim:
       else:
         self.boss.avoid = self.boss.AS
 
+    def bosshitchance(self):
+      if self.bossweapon.type == "Magical":
+        self.boss.hitchance = min((self.boss.hit - (self.unit.speed + self.unit.luck)) / 100, 1)
+      else:
+        self.boss.hitchance = min((self.boss.hit - self.unit.AS) / 100, 1)
+
     def precombat(self):
         """Pre-Combat Calculation"""
         get_attack(self.unit, self.unitweapon)
-        damage(self.unit, self.boss)
+        if self.unitweapon.type == "Magical":
+          magdamage(self.unit, self.boss)
+        else:
+          physdamage(self.unit, self.boss)
         self.enemy_avoid()
         get_attack(self.boss, self.bossweapon)
-        damage(self.boss, self.unit)
-        bosshitchance(self.boss, self.unit)
+        if self.bossweapon.type == "Magical":
+          magdamage(self.boss, self.unit)
+        else:
+          physdamage(self.boss, self.unit)
+        self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
@@ -193,9 +206,17 @@ class DuelSim:
             self.boss.counter = False
             self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
 
+    def unithpcost(self):
+      if self.unitweapon.backfire > 0:
+        self.unit.hitpoints = max(0, self.unit.hitpoints - self.unitweapon.backfire)
+        self.dueltext += f"Casting {self.unitweapon.name} leaves {self.unit.name} with {self.unit.hitpoints} HP. \n"
+      else:
+        pass
+
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
+        self.unithpcost()
         if self.critno > 0 and self.unit.crit > 0:
             self.critno -= 1
             self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
