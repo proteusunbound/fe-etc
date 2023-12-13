@@ -1,5 +1,8 @@
-# fe1-calculator
-Combat success rate and turn calculator for Fire Emblem.  
+# fe-etc
+Combat success rate and turn calculator for Fire Emblem.
+### version 1.2
+- promotion options for FE1 classes that can promote
+- critical hit and dodge added to FE2 as well as second combatant option
 ### version 1.1
 - added stat boosters for FE1 player units
 - created basic framework for FE2: unit, boss, weapon stats
