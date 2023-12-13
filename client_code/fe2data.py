@@ -35,6 +35,7 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
+        self.range = weapon["Range"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -52,6 +53,7 @@ class ActiveBoss:
         self.resistance = boss["Res"]
         self.hitpoints = 0
         self.doubles = False
+        self.counter = False
         self.damage = 0
         self.hit = 0
         self.attack = 0
@@ -173,6 +175,15 @@ class DuelSim:
             self.unit.doubles = False
             self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
 
+    def counterattack(self):
+        """Counter Attack"""
+        if self.bossweapon.range >= self.unitweapon.range:
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        else:
+            self.boss.counter = False
+            self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
@@ -209,7 +220,7 @@ class DuelSim:
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             self.unitattack()
-        if self.boss.hitpoints > 0 and self.boss.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
           if self.avoidno > 0:
                 self.bossmiss()
           elif self.boss.crit > 0:
@@ -226,6 +237,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
           if self.avoidno > 0:
                 self.bossmiss()
