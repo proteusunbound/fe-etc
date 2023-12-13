@@ -213,6 +213,13 @@ class DuelSim:
       else:
         pass
 
+    def bosshpcost(self):
+      if self.bossweapon.backfire > 0:
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.bossweapon.backfire)
+        self.dueltext += f"Casting {self.bossweapon.name} leaves {self.boss.name} with {self.boss.hitpoints} HP. \n"
+      else:
+        pass
+
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
@@ -228,10 +235,12 @@ class DuelSim:
     def bossmiss(self):
         """Boss Miss"""
         self.avoidno -= 1
+        self.bosshpcost()
         self.dueltext += f"{self.boss.name}'s attack misses.\n"
 
     def bosscrit(self):
         """Boss Crit"""
+        self.bosshpcost()  
         if self.ddgno > 0:
             self.ddgno -= 1
             self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
@@ -242,6 +251,7 @@ class DuelSim:
 
     def bossattack(self):
         """Boss Attack"""
+        self.bosshpcost()
         self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
         self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
