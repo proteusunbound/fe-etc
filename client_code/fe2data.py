@@ -36,6 +36,7 @@ class ActiveWeapon:
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
         self.range = weapon["Range"]
+        self.type = weapon["Type"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -142,14 +143,20 @@ class DuelSim:
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
-        hitrate(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
+        if self.unitweapon.type == "Magical":
+          self.unit.hit = self.unitweapon.hit
+        else:
+          hitrate(self.unit, self.unitweapon)
 
     def bossdisplay(self):
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
-        hitrate(self.boss, self.bossweapon)
         critical(self.boss, self.bossweapon)
+        if self.bossweapon.type == "Magical":
+          self.boss.hit = self.bossweapon.hit
+        else:
+          hitrate(self.boss, self.bossweapon)
 
     def precombat(self):
         """Pre-Combat Calculation"""
