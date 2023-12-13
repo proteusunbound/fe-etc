@@ -257,4 +257,13 @@ db_schema:
     - name: Crit
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: Range
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Type
+      admin_ui: {order: 6, width: 67}
+      type: string
+    - name: Dmg
+      admin_ui: {width: 200, order: 7}
+      type: number
     title: FE2 Weapon Stats
