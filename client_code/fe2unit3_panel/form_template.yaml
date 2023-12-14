@@ -9,11 +9,10 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Wrys, Bord, Cord, Barst,
-        Ogma, Darros, Castor, Julian, Lena, Navarre, Matthis, Merric, Roshea, Vyland,
-        Sedgar, Wolf, Hardin, Wendell, Rickard, Bantu, Caesar, Radd, Roger, Jeorge,
-        Maria, Minerva, Linde, Jake, Dolph, Macellan, Tomas, Boah, Midia, Astram,
-        Beck, Catria, Palla, Arran, Samson, Xane, Est, Tiki, Lorenz, Elice, Gotoh]
+      items: [Alm, Lukas, Gray, Tobin, Kliff, Silque, Clair, Clive, Forsyth, Python,
+        Luthier, Mathilda, Delthea, Tatiana, Zeke, Mycen, Celica, Mae, Boey, Genny,
+        Saber, Valbar, Kamui, Leon, Palla, Catria, Atlas, Jesse, Sonya, Deen, Est,
+        Nomah]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -23,13 +22,11 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Killing Edge, Levin Sword, Devil Sword,
-        Wyrmslayer, Armorslayer, Rapier, Mercurius, Falchion, Lance, Silver Lance,
-        Ridersbane, Javelin, Gradivus, Axe, Steel Axe, Hammer, Devil Axe, Hand Axe,
-        Bow, Steel Bow, Bowgun, Silver Bow, Parthia, Fire, Thunder, Blizzard, Elfire,
-        Bolganone, Thoron, Swarm, Aura, Excalibur, Imhullu, Starlight, Firestone,
-        Divinestone, Magestone, Earthstone, Arrowspate, Stonehoist, Hoistflamme, Thunderbolt,
-        Pachyderm]
+      items: [Sword, Steel Sword, Silver Sword, Brave Sword, Shadow Sword, Lightning Sword,
+        Blessed Sword, Falchion, Royal Sword, Lance, Steel Lance, Silver Lance, Javelin,
+        Blessed Lance, Ridersbane, Gradivus, Astra, Sol, Luna, Bow, Steel Bow, Blessed Bow,
+        Silver Bow, Axe, Fire, Thunder, Ragnarok, Seraphim, Excalibur, Sagittae, Aura,
+        Miasma, Mire, Death, Medusa, Ocular Beam, Oculus, Nosferatu, Tentacle]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -60,7 +57,7 @@ components:
   components:
   - name: column_panel_2
     properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"UDORCM":25,"QMVVTY":15,"EORSAR":10,"INCKSE":10,"ZYITFX":25,"KSMRTR":15}'}
+      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10,"KSMRTR":15}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -72,18 +69,6 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
-    - name: seraphlabel
-      properties: {text: Seraph Robes, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'KTXRFX,UDORCM'}
-    - name: seraphrobe
-      properties:
-        items: ['0', '1', '2', '3', '4']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'KTXRFX,QMVVTY'}
-      event_bindings: {change: seraphrobe_change}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -132,81 +117,8 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
-    - name: powerlabel
-      properties: {text: Power Rings, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX SBACQM,HCRWQH'}
-    - name: secretlabel
-      properties: {text: Secret Books, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX IVECKH,BXJYTZ'}
-    - name: speedringlabel
-      properties: {text: Speed Rings, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX HQCZTB,HTDPTE'}
-    - name: goddesslabel
-      properties: {text: Goddess Icons, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX SMRCDB,RCLWRZ'}
-    - name: dracoshieldlabel
-      properties: {text: Dracoshields, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX JLLAQC,UUHCZN'}
-    - name: talismanlabel
-      properties: {text: Talismans, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,ZYITFX QYVOAH,MCPLUQ'}
-    - name: powerdrop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR YLZVZZ,OAXAGN'}
-      event_bindings: {change: powerdrop_change}
-    - name: secretdrop
-      properties:
-        items: ['0', '1', '2', '3', '4']
-        font_size: null
-        align: full
-        bold: false
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR EIIUYZ,QOEGYG'}
-      event_bindings: {change: secretdrop_change}
-    - name: speedring_drop
-      properties:
-        items: ['0', '1', '2', '3']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR TEDLJN,BSAATD'}
-      event_bindings: {change: speedring_drop_change}
-    - name: goddessdrop
-      properties:
-        items: ['0', '1', '2', '3']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR PYVGVX,DHPJTC'}
-      event_bindings: {change: goddessdrop_change}
-    - name: dracoshield_drop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5', '6']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR OIWZPO,LHSGSF'}
-      event_bindings: {change: dracoshield_drop_change}
-    - name: talismandrop
-      properties:
-        items: ['0', '1']
-        font_size: null
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'CLSTUB,KSMRTR ZTDBUR,TBXNFS'}
-      event_bindings: {change: talismandrop_change}
   - name: xy_panel_2
-    properties: {height: 105}
+    properties: {height: 25}
     type: XYPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
@@ -217,25 +129,23 @@ components:
       layout_properties: {x: 105, y: 0, width: 120}
       event_bindings: {click: hide_click}
       data_bindings: []
-    - name: promobox
-      properties: {text: Promote, enabled: true, checked: false, visible: false}
-      type: CheckBox
-      layout_properties: {x: 0, y: 0, width: 85}
-      event_bindings: {change: promobox_change}
-    - name: trianglecheck
-      properties: {text: Triangle Attack, visible: false}
-      type: CheckBox
-      layout_properties: {x: 0, y: 40, width: 115}
-      event_bindings: {change: trianglecheck_change}
   - name: column_panel_3
-    properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
+    properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
     components:
     - name: avoidlabel
       properties: {text: Avoids, align: center, font_size: null}
       type: Label
-      layout_properties: {grid_position: 'QDIZME,YCGGNU QNSUVS,TNAPQP'}
+      layout_properties: {grid_position: 'ZWALOY,WZAQGA'}
+    - name: critno
+      properties: {text: Crits, align: center}
+      type: Label
+      layout_properties: {grid_position: 'ZWALOY,FRQSWE'}
+    - name: dodgelabel
+      properties: {text: Dodges, align: center}
+      type: Label
+      layout_properties: {grid_position: 'ZWALOY,RAYLRS'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -244,52 +154,24 @@ components:
         foreground: ''
         font_size: null
         visible: true
+        align: full
       type: DropDown
-      layout_properties: {grid_position: 'QDIZME,YCGGNU VKMUZG,XZSAGP'}
+      layout_properties: {grid_position: 'VKMUZG,XZSAGP'}
       event_bindings: {}
       data_bindings: []
-    - name: critno
-      properties: {text: Crits, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'QDIZME,COUIXI BYTOIM,GXGCBQ'}
     - name: crit_drop
       properties:
-        include_placeholder: false
-        placeholder: ''
         items: ['0', '1', '2', '3', '4', '5']
-        font_size: null
       type: DropDown
-      layout_properties: {grid_position: 'QDIZME,COUIXI EAGRXS,UXYPYK'}
+      layout_properties: {grid_position: 'VKMUZG,HAIZJY'}
       event_bindings: {}
-    - name: dodgelabel
-      properties: {text: Dodges, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'QDIZME,MLQFBU RWHBYF,RVIFZJ'}
     - name: dodge_drop
       properties:
-        include_placeholder: false
-        placeholder: ''
         items: ['0', '1', '2', '3', '4', '5']
-        font_size: null
       type: DropDown
-      layout_properties: {grid_position: 'QDIZME,MLQFBU MVLKOS,PVCDWO'}
-      event_bindings: {}
-    - name: devil_label
-      properties: {text: 'Devil
-
-          ', align: center, visible: false, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'QDIZME,XYOVPN MVVHVM,XEODHE'}
-    - name: devildrop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5']
-        visible: false
-        font_size: null
-      type: DropDown
-      layout_properties: {grid_position: 'QDIZME,XYOVPN VIACUI,BIHCEA'}
-      event_bindings: {}
+      layout_properties: {grid_position: 'VKMUZG,LBYVDT'}
   - name: column_panel_1
-    properties: {spacing_above: small, spacing_below: small}
+    properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
     components:
@@ -311,11 +193,11 @@ components:
       layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
       data_bindings: []
     - name: critlabel
-      properties: {text: CRIT, align: center, font_size: null}
+      properties: {text: CRIT, align: center}
       type: Label
-      layout_properties: {grid_position: 'VEAZQA,MEZRDQ RLQNIM,AFXSUF'}
+      layout_properties: {grid_position: 'VEAZQA,MPAUAT PEEXRK,NWCVQS'}
     - name: crit
-      properties: {text: '-', align: center, font_size: null}
+      properties: {text: '-', align: center}
       type: Label
-      layout_properties: {grid_position: 'VEAZQA,MEZRDQ NPSOME,LLZVGC'}
+      layout_properties: {grid_position: 'VEAZQA,MPAUAT GTNKXW,UGRQBF'}
 is_package: true

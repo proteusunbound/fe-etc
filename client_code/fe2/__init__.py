@@ -14,7 +14,8 @@ class fe2(fe2Template):
     self.combat = fe2combat.CombatSim()
     self.unitpanels = [
         self.unit1_panel,
-        self.unit2_panel
+        self.unit2_panel,
+        self.unit3_panel
     ]
 
   def unit_number_change(self, **event_args):
@@ -59,6 +60,7 @@ class fe2(fe2Template):
     for i in range(0, int(self.unit_number.selected_value)):
       self.unitpanels[i].setinfo()
     for number, name in self.combat.duels.items():
+      name.counterattack()
       name.doubling()
       name.precombat()
     self.combat.battle()

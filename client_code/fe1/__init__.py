@@ -56,7 +56,7 @@ class fe1(fe1Template):
     def terrainbox_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
         for number, name in self.combat.duels.items():
-            name.set_terrain(self.terrainbox.checked)
+            name.terrain = self.terrainbox.checked
 
     def calculatebutton_click(self, **event_args):
         """This method is called when the button is clicked"""

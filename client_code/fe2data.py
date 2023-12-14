@@ -35,6 +35,9 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
+        self.range = weapon["Range"]
+        self.type = weapon["Type"]
+        self.backfire = weapon["Dmg"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -52,6 +55,7 @@ class ActiveBoss:
         self.resistance = boss["Res"]
         self.hitpoints = 0
         self.doubles = False
+        self.counter = False
         self.damage = 0
         self.hit = 0
         self.attack = 0
@@ -74,17 +78,13 @@ def critical(keyword, weapon):
     """Critical"""
     keyword.crit = math.floor(((keyword.skill + keyword.luck) / 2 + weapon.crit) / 2)
 
-def enemy_avoid(boss):
-    """Enemy Avoid"""
-    boss.avoid = boss.AS
-
-def damage(attacker, defender):
-    """Damage"""
+def physdamage(attacker, defender):
+    """Physical Damage"""
     attacker.damage = max(1, attacker.attack - defender.defense)
 
-def bosshitchance(boss, unit):
-    """Boss Hit Chance"""
-    boss.hitchance = min((boss.hit - unit.AS) / 100, 1)
+def magdamage(attacker, defender):
+  """Magical Damage"""
+  attacker.damage = max(1, attacker.attack - defender.resistance)
 
 @anvil.server.portable_class
 class DuelSim:
@@ -140,23 +140,47 @@ class DuelSim:
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
-        hitrate(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
+        if self.unitweapon.type == "Magical":
+          self.unit.hit = self.unitweapon.hit
+        else:
+          hitrate(self.unit, self.unitweapon)
 
     def bossdisplay(self):
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
-        hitrate(self.boss, self.bossweapon)
         critical(self.boss, self.bossweapon)
+        if self.bossweapon.type == "Magical":
+          self.boss.hit = self.bossweapon.hit
+        else:
+          hitrate(self.boss, self.bossweapon)
+
+    def enemy_avoid(self):
+      if self.unitweapon.type == "Magical":
+        self.boss.avoid = self.boss.speed + self.boss.luck
+      else:
+        self.boss.avoid = self.boss.AS
+
+    def bosshitchance(self):
+      if self.bossweapon.type == "Magical":
+        self.boss.hitchance = min((self.boss.hit - (self.unit.speed + self.unit.luck)) / 100, 1)
+      else:
+        self.boss.hitchance = min((self.boss.hit - self.unit.AS) / 100, 1)
 
     def precombat(self):
         """Pre-Combat Calculation"""
         get_attack(self.unit, self.unitweapon)
-        damage(self.unit, self.boss)
-        enemy_avoid(self.boss)
+        if self.unitweapon.type == "Magical":
+          magdamage(self.unit, self.boss)
+        else:
+          physdamage(self.unit, self.boss)
+        self.enemy_avoid()
         get_attack(self.boss, self.bossweapon)
-        damage(self.boss, self.unit)
-        bosshitchance(self.boss, self.unit)
+        if self.bossweapon.type == "Magical":
+          magdamage(self.boss, self.unit)
+        else:
+          physdamage(self.boss, self.unit)
+        self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
@@ -173,9 +197,33 @@ class DuelSim:
             self.unit.doubles = False
             self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
 
+    def counterattack(self):
+        """Counter Attack"""
+        if self.bossweapon.range >= self.unitweapon.range:
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        else:
+            self.boss.counter = False
+            self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+
+    def unithpcost(self):
+      if self.unitweapon.backfire > 0:
+        self.unit.hitpoints = max(0, self.unit.hitpoints - self.unitweapon.backfire)
+        self.dueltext += f"Casting {self.unitweapon.name} leaves {self.unit.name} with {self.unit.hitpoints} HP. \n"
+      else:
+        pass
+
+    def bosshpcost(self):
+      if self.bossweapon.backfire > 0:
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.bossweapon.backfire)
+        self.dueltext += f"Casting {self.bossweapon.name} leaves {self.boss.name} with {self.boss.hitpoints} HP. \n"
+      else:
+        pass
+
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
+        self.unithpcost()
         if self.critno > 0 and self.unit.crit > 0:
             self.critno -= 1
             self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
@@ -187,10 +235,12 @@ class DuelSim:
     def bossmiss(self):
         """Boss Miss"""
         self.avoidno -= 1
+        self.bosshpcost()
         self.dueltext += f"{self.boss.name}'s attack misses.\n"
 
     def bosscrit(self):
         """Boss Crit"""
+        self.bosshpcost()  
         if self.ddgno > 0:
             self.ddgno -= 1
             self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
@@ -201,6 +251,7 @@ class DuelSim:
 
     def bossattack(self):
         """Boss Attack"""
+        self.bosshpcost()
         self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
         self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
@@ -209,7 +260,7 @@ class DuelSim:
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             self.unitattack()
-        if self.boss.hitpoints > 0 and self.boss.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
           if self.avoidno > 0:
                 self.bossmiss()
           elif self.boss.crit > 0:
@@ -226,6 +277,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
           if self.avoidno > 0:
                 self.bossmiss()
