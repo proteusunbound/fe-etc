@@ -405,7 +405,7 @@ class DuelSim:
         """Unit Attack"""
         self.hitno += 1
         if self.unit.triangleattack is True or (self.critno > 0 and self.unit.crit > 0):
-            self.critno -= 1
+            self.critno = max(0, self.critno - 1)
             if self.unit.devil == 1:
                 self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
                 self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"

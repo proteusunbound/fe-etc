@@ -31,8 +31,11 @@ class fe1unit1_panel(fe1unit1_panelTemplate):
         self.weapon_drop.selected_value = None
         self.weapon_drop.visible = True
         self.promobox.checked = False
+        self.trianglecheck.checked = False
         if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Mercenary", "Archer", "Curate", "Mage", "Pegasus Knight"):
           self.promobox.visible = True
+        if self.parent.combat.duels[0].unit.name in ("Catria", "Palla", "Est"):
+          self.trianglecheck.visible = True
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -121,3 +124,7 @@ class fe1unit1_panel(fe1unit1_panelTemplate):
       self.hit.text = self.parent.combat.duels[0].unit.hit
       self.crit.text = self.parent.combat.duels[0].unit.crit
       self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+
+    def trianglecheck_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
