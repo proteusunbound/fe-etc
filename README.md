@@ -1,5 +1,10 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 1.3
+- triangle attack for Catria, Palla, and Est in FE1
+- counterattack check based on range in FE2
+- magical hit, avoid, and damage as well as HP costs in FE2
+- third combatant option in FE2
 ### version 1.2
 - promotion options for FE1 classes that can promote
 - critical hit and dodge added to FE2 as well as second combatant option
