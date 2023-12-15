@@ -34,8 +34,12 @@ class fe1unit4_panel(fe1unit4_panelTemplate):
     self.trianglecheck.checked = False
     if self.parent.combat.duels[3].unit.charclass in ("Cavalier", "Mercenary", "Archer", "Curate", "Mage", "Pegasus Knight"):
       self.promobox.visible = True
+    else:
+      self.promobox.visible = False
     if self.parent.combat.duels[3].unit.name in ("Catria", "Palla", "Est"):
       self.trianglecheck.visible = True
+    else:
+      self.trianglecheck.visible = False
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
