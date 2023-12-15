@@ -247,6 +247,7 @@ class DuelSim:
     def setavoidno(self, avoidno):
         """Set Avoid Number"""
         self.avoidno = avoidno
+        self.iniavo = avoidno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -255,14 +256,17 @@ class DuelSim:
     def setcritno(self, critno):
         """Set Crit Number"""
         self.critno = critno
+        self.inicrit = critno
 
     def setddgno(self, ddgno):
         """Set Dodge Number"""
         self.ddgno = ddgno
+        self.iniddg = ddgno
 
     def setdevilno(self, devilno):
         """Set Avoid Backfire Number"""
         self.devilno = devilno
+        self.inidev = devilno
 
     def devilcheck(self):
         """Devil Weapon"""
