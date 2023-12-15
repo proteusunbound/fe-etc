@@ -67,6 +67,9 @@ class fe1unit3_panel(fe1unit3_panelTemplate):
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.visible = False
+    self.customization.visible = False
+    self.promobox.visible = False
+    self.trianglecheck.visible = False
 
   def seraphrobe_change(self, **event_args):
     """This method is called when an item is selected"""
