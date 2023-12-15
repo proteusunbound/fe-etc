@@ -247,6 +247,7 @@ class DuelSim:
     def setavoidno(self, avoidno):
         """Set Avoid Number"""
         self.avoidno = avoidno
+        self.iniavo = avoidno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
