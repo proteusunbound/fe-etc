@@ -39,6 +39,7 @@ class ActiveWeapon:
         self.range = weapon["Range"]
         self.type = weapon["Type"]
         self.backfire = weapon["Dmg"]
+        self.effco = 1
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -74,7 +75,7 @@ def hitrate(keyword, weapon):
 
 def get_attack(keyword, weapon):
     """Attack"""
-    keyword.attack = keyword.strength + weapon.might
+    keyword.attack = keyword.strength + weapon.might * weapon.effco
 
 def critical(keyword, weapon):
     """Critical"""
@@ -199,6 +200,15 @@ class DuelSim:
         self.unitavoid = 1 - self.boss.hitchance
         self.unitdodge = 1 - self.boss.crit / 100
 
+    def effectivecheck(self):
+        """Effectiveness Log"""
+        effectiveness(self.unitweapon, self.boss)
+        if self.unitweapon.effco == 3:
+            self.dueltext += f"{self.unit.name}'s {self.unitweapon.name} deals effective damage against {self.boss.name}. \n"
+        effectiveness(self.bossweapon, self.unit)
+        if self.bossweapon.effco == 3:
+            self.dueltext += f"{self.boss.name}'s {self.bossweapon.name} deals effective damage against {self.unit.name}. \n"
+    
     def doubling(self):
         """Doubling Calculation"""
         if self.unit.AS > self.boss.AS:

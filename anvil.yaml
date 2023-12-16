@@ -274,8 +274,8 @@ db_schema:
       type: number
     title: FE2 Weapon Stats
   fe2_effectiveness:
-    client: none
-    server: full
+    client: search
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 101}
