@@ -24,6 +24,7 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
+        self.devil = 1
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -107,6 +108,7 @@ class DuelSim:
         self.avoidno = 0
         self.critno = 0
         self.ddgno = 0
+        self.devilno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -147,10 +149,20 @@ class DuelSim:
         self.ddgno = ddgno
         self.iniddg = ddgno
 
+    def setdevilno(self, devilno):
+        """Set Avoid Backfire Number"""
+        self.devilno = devilno
+        self.inidev = devilno
+
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def devilcheck(self):
+        """Devil Weapon"""
+        if self.unitweapon.name == "Shadow Sword" and self.unit.charclass != "Dread Fighter":
+            self.unit.devil = 1 - max(0, 21 - self.unit.luck) / 1
+          
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
@@ -195,6 +207,7 @@ class DuelSim:
         else:
           physdamage(self.boss, self.unit)
         self.bosshitchance()
+        self.devilcheck()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
