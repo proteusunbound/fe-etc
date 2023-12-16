@@ -18,6 +18,7 @@ class ActiveUnit:
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -53,6 +54,7 @@ class ActiveBoss:
         self.luck = boss["Lck"]
         self.defense = boss["Def"]
         self.resistance = boss["Res"]
+        self.charclass = boss["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.counter = False
@@ -85,6 +87,14 @@ def physdamage(attacker, defender):
 def magdamage(attacker, defender):
   """Magical Damage"""
   attacker.damage = max(1, attacker.attack - defender.resistance)
+
+def effectiveness(weapon, keyword):
+    """Effectiveness"""
+    effcheck = app_tables.fe2_effectiveness.get(Name=weapon.name)
+    if effcheck[keyword.charclass] is True:
+        weapon.effco = 3
+    else:
+        weapon.effco = 1
 
 @anvil.server.portable_class
 class DuelSim:
