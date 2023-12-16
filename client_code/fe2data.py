@@ -162,6 +162,10 @@ class DuelSim:
         """Devil Weapon"""
         if self.unitweapon.name == "Shadow Sword" and self.unit.charclass != "Dread Fighter":
             self.unit.devil = 1 - max(0, 21 - self.unit.luck) / 1
+
+    def damageadjust(self):
+      if self.boss.name == "Duma" and self.boss.hitpoints < 53 and self.unitweapon.name not in ("Falchion", "Nosferatu"):
+        self.unit.damage = 0
           
     def unitdisplay(self):
         """Unit Stat Display"""
