@@ -167,10 +167,10 @@ class DuelSim:
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
-        if self.unitweapon.type == "Magical":
-          self.unit.hit = self.unitweapon.hit
-        else:
+        if self.unitweapon.type == "Physical" or self.unitweapon.name == "Lightning Sword":
           hitrate(self.unit, self.unitweapon)
+        else:
+          self.unit.hit == self.unitweapon.hit
 
     def bossdisplay(self):
         """Boss Stat Display"""
@@ -195,7 +195,10 @@ class DuelSim:
 
     def precombat(self):
         """Pre-Combat Calculation"""
-        get_attack(self.unit, self.unitweapon)
+        if self.unitweapon.name == "Lightning Sword":
+          self.unit.attack == self.unitweapon.might
+        else:
+          get_attack(self.unit, self.unitweapon)
         if self.unitweapon.type == "Magical":
           magdamage(self.unit, self.boss)
         else:
