@@ -394,7 +394,7 @@ class DuelSim:
             self.unit.doubles = True
             self.boss.doubles = False
             self.dueltext += f"{self.unit.name} can make follow-up attacks. \n"
-        if self.boss.AS > self.unit.AS and self.bossweapon.name not in (
+        elif self.boss.AS > self.unit.AS and self.bossweapon.name not in (
             "Arrowspate",
             "Stonehoist",
             "Hoistflamme",
@@ -404,6 +404,9 @@ class DuelSim:
             self.boss.doubles = True
             self.unit.doubles = False
             self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
+        else:
+            self.unit.doubles = False
+            self.boss.doubles = False
 
     def unitattack(self):
         """Unit Attack"""
