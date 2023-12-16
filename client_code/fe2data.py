@@ -262,11 +262,27 @@ class DuelSim:
         self.unithpcost()
         if self.critno > 0 and self.unit.crit > 0:
             self.critno -= 1
-            self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
-            self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            if self.unit.devil == 1:
+                self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+                self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            elif self.devilno > 0:
+                self.devilno -= 1
+                self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+                self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            else:
+                self.unit.hitpoints = max(0, self.unit.hitpoints - 3 * self.unit.damage)
+                self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
         else:
-            self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-            self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            if self.unit.devil == 1:
+                self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+                self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            elif self.devilno > 0:
+                self.devilno -= 1
+                self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+                self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            else:
+                self.unit.hitpoints = max(0, self.unit.hitpoints - self.unit.damage)
+                self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
     
     def bossmiss(self):
         """Boss Miss"""
