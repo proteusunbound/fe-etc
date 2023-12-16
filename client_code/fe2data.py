@@ -259,6 +259,11 @@ class DuelSim:
       else:
         pass
 
+    def hprecover(self):
+      if self.unit.maxhp > self.unit.hitpoints and self.unitweapon.name in ("Blessed Sword", "Falchion", "Royal Sword", "Blessed Lance", "Gradivus", "Astra", "Sol", "Luna", "Blessed Bow"):
+        self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
+        self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
+
     def unitattack(self):
         """Unit Attack"""
         self.hitno += 1
@@ -314,6 +319,7 @@ class DuelSim:
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.hprecover()
             self.unitattack()
         if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
           if self.avoidno > 0:
