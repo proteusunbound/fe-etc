@@ -273,3 +273,11 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     title: FE2 Weapon Stats
+  fe2_effectiveness:
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: FE2 Effectiveness
