@@ -197,7 +197,7 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: number
     - name: Spd
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 4, width: 50}
       type: number
     - name: Lck
       admin_ui: {width: 200, order: 5}
@@ -208,6 +208,9 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 7}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 8}
+      type: string
     title: FE2 Boss Stats
   fe2_unit_stats:
     client: search
@@ -237,6 +240,9 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 7}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 8}
+      type: string
     title: FE2 Unit Stats
   fe2_weapon_stats:
     client: search
@@ -267,3 +273,113 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     title: FE2 Weapon Stats
+  fe2_effectiveness:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 101}
+      type: string
+    - name: Cavalier
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    - name: Knight
+      admin_ui: {width: 200, order: 2}
+      type: bool
+    - name: Pegasus Knight
+      admin_ui: {width: 200, order: 3}
+      type: bool
+    - name: Gargoyle
+      admin_ui: {width: 200, order: 4}
+      type: bool
+    - name: Paladin
+      admin_ui: {width: 200, order: 5}
+      type: bool
+    - name: Falcon Knight
+      admin_ui: {width: 200, order: 6}
+      type: bool
+    - name: Necrodragon
+      admin_ui: {width: 200, order: 7}
+      type: bool
+    - name: Soldier
+      admin_ui: {width: 200, order: 8}
+      type: bool
+    - name: Gold Knight
+      admin_ui: {width: 200, order: 9}
+      type: bool
+    - name: Hades
+      admin_ui: {width: 200, order: 10}
+      type: bool
+    - name: Mercenary
+      admin_ui: {width: 200, order: 11}
+      type: bool
+    - name: Myrmidon
+      admin_ui: {width: 200, order: 12}
+      type: bool
+    - name: Dread Fighter
+      admin_ui: {width: 200, order: 13}
+      type: bool
+    - name: Priestess
+      admin_ui: {width: 200, order: 14}
+      type: bool
+    - name: Revenant
+      admin_ui: {width: 200, order: 15}
+      type: bool
+    - name: Archer
+      admin_ui: {width: 200, order: 16}
+      type: bool
+    - name: Sniper
+      admin_ui: {width: 200, order: 17}
+      type: bool
+    - name: Villager
+      admin_ui: {width: 200, order: 18}
+      type: bool
+    - name: Brigand
+      admin_ui: {width: 200, order: 19}
+      type: bool
+    - name: Mage
+      admin_ui: {width: 200, order: 20}
+      type: bool
+    - name: Arcanist
+      admin_ui: {width: 200, order: 21}
+      type: bool
+    - name: Witch
+      admin_ui: {order: 22, width: 200}
+      type: bool
+    - name: Saint
+      admin_ui: {width: 200, order: 23}
+      type: bool
+    - name: Bonewalker
+      admin_ui: {width: 200, order: 24}
+      type: bool
+    - name: Cleric
+      admin_ui: {width: 200, order: 25}
+      type: bool
+    - name: Mogall
+      admin_ui: {width: 200, order: 26}
+      type: bool
+    - name: Sage
+      admin_ui: {width: 200, order: 27}
+      type: bool
+    - name: Cantor
+      admin_ui: {width: 200, order: 28}
+      type: bool
+    - name: Bow Knight
+      admin_ui: {width: 200, order: 29}
+      type: bool
+    - name: Fighter
+      admin_ui: {width: 200, order: 30}
+      type: bool
+    - name: Fell God
+      admin_ui: {width: 200, order: 31}
+      type: bool
+    - name: Baron
+      admin_ui: {width: 200, order: 32}
+      type: bool
+    - name: Hero
+      admin_ui: {width: 200, order: 33}
+      type: bool
+    - name: Princess
+      admin_ui: {width: 200, order: 34}
+      type: bool
+    title: FE2 Effectiveness

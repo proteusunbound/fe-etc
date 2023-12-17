@@ -9,6 +9,7 @@ from .. import fe1combat
 
 class fe1(fe1Template):
     """GUI Interface"""
+
     def __init__(self, **properties):
         self.init_components(**properties)
         self.combat = fe1combat.CombatSim()
@@ -91,9 +92,9 @@ class fe1(fe1Template):
         self.combatlog.visible = False
 
     def turn_drop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.calculatebutton.visible = True
+        """This method is called when an item is selected"""
+        self.calculatebutton.visible = True
 
     def mainpage_click(self, **event_args):
-      """This method is called when the button is clicked"""
-      open_form('Landing')
+        """This method is called when the button is clicked"""
+        open_form("Landing")

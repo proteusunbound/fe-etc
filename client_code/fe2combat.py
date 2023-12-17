@@ -1,8 +1,10 @@
+"""Combat"""
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe2data
+
 
 @anvil.server.portable_class
 class CombatSim:
@@ -31,6 +33,7 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.damageadjust()
                 name.playerphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
@@ -42,6 +45,7 @@ class CombatSim:
                 and name.boss.counter is True
             ):
                 name.setbosshp(self.bosshp)
+                name.damageadjust()
                 name.enemyphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
@@ -58,9 +62,10 @@ class CombatSim:
         for number, name in self.duels.items():
             self.successrate *= (
                 (name.unithit**name.hitno)
-                * (name.unitavoid**name.avoidno)
-                * (name.unitcrit**name.critno)
-                * (name.unitdodge**name.ddgno)
+                * (name.unitavoid**name.iniavo)
+                * (name.unitcrit**name.inicrit)
+                * (name.unitdodge**name.iniddg)
+                * (name.unit.devil**name.inidev)
             )
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."
