@@ -146,6 +146,10 @@ components:
       properties: {text: Dodges, align: center}
       type: Label
       layout_properties: {grid_position: 'ZWALOY,RAYLRS'}
+    - name: devil_label
+      properties: {visible: false, text: Devil}
+      type: Label
+      layout_properties: {grid_position: 'ZWALOY,RHNRCV MOQMGZ,USQCHB'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -170,6 +174,12 @@ components:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'VKMUZG,LBYVDT'}
+    - name: devildrop
+      properties:
+        visible: false
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'YYIRTC,TWJUTX VKMUZG,FHXNYX'}
   - name: column_panel_1
     properties: {spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
