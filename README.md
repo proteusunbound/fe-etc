@@ -1,5 +1,8 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 2.0
+- all basic combat calculations based on weapon and units in FE2
+- fourth player combatant option
 ### version 1.3
 - triangle attack for Catria, Palla, and Est in FE1
 - counterattack check based on range in FE2
