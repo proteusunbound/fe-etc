@@ -166,15 +166,18 @@ class DuelSim:
     def damageadjust(self):
       if self.boss.name == "Duma" and self.boss.hitpoints < 53 and self.unitweapon.name not in ("Falchion", "Nosferatu"):
         self.unit.damage = 0
+      if self.bossweapon.name == "Medusa" and self.unit.hitpoints > 1:
+        self.boss.crit = 0
+        self.boss.damage = self.unit.hitpoints - 1
           
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
-        if self.unitweapon.type == "Physical" or self.unitweapon.name == "Lightning Sword":
-          hitrate(self.unit, self.unitweapon)
+        if self.unitweapon.type == "Magical" and self.unitweapon.name != "Lightning Sword":
+          self.unit.hit = self.unitweapon.hit
         else:
-          self.unit.hit == self.unitweapon.hit
+          hitrate(self.unit, self.unitweapon)
 
     def bossdisplay(self):
         """Boss Stat Display"""
@@ -277,6 +280,9 @@ class DuelSim:
             if self.unit.devil == 1:
                 self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
                 self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+                if self.unitweapon.name == "Nosferatu" and self.unit.hitpoints < self.unit.maxhp:
+                  self.unit.hitpoints = min(self.unit.hitpoints + 3 * self.unit.damage, self.unit.maxhp)
+                  self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
             elif self.devilno > 0:
                 self.devilno -= 1
                 self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
@@ -288,6 +294,9 @@ class DuelSim:
             if self.unit.devil == 1:
                 self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
                 self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+                if self.unitweapon.name == "Nosferatu" and self.unit.hitpoints < self.unit.maxhp:
+                  self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
+                  self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
             elif self.devilno > 0:
                 self.devilno -= 1
                 self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
