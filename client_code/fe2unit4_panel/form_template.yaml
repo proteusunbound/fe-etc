@@ -69,6 +69,15 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+    - name: hpshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,DVHYXN'}
+    - name: hpshrine
+      properties: {placeholder: '0', type: number, align: left}
+      type: TextBox
+      layout_properties: {grid_position: 'KTXRFX,NIIXAK'}
+      event_bindings: {pressed_enter: hpshrine_pressed_enter}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -117,6 +126,51 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
+    - name: strshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,OQEAPU VJXPHS,KUSDNN'}
+    - name: skillshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,OQEAPU MAEWQJ,MRDSAJ'}
+    - name: spdshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,OQEAPU UEISMU,MTADCS'}
+    - name: lckshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,OQEAPU ZATSUJ,KENEPS'}
+    - name: defshrinelabel
+      properties: {text: Shrine, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,OQEAPU GVJGOG,MRBMDV'}
+    - name: strshrine
+      properties: {placeholder: '0', type: number}
+      type: TextBox
+      layout_properties: {grid_position: 'CLSTUB,OOANRC BMOUQW,AIDQIP'}
+      event_bindings: {pressed_enter: strshrine_pressed_enter}
+    - name: sklshrine
+      properties: {placeholder: '0', type: number}
+      type: TextBox
+      layout_properties: {grid_position: 'CLSTUB,OOANRC XQWPRE,VVEDZQ'}
+      event_bindings: {pressed_enter: sklshrine_pressed_enter}
+    - name: spdshrine
+      properties: {placeholder: '0', type: number}
+      type: TextBox
+      layout_properties: {grid_position: 'CLSTUB,OOANRC KQETUM,ITVGCK'}
+      event_bindings: {pressed_enter: spdshrine_pressed_enter}
+    - name: lckshrine
+      properties: {placeholder: '0', type: number}
+      type: TextBox
+      layout_properties: {grid_position: 'CLSTUB,OOANRC VALTSX,HOAKFP'}
+      event_bindings: {pressed_enter: lckshrine_pressed_enter}
+    - name: defshrine
+      properties: {placeholder: '0', type: number}
+      type: TextBox
+      layout_properties: {grid_position: 'CLSTUB,OOANRC RFJYOX,PQRBHI'}
+      event_bindings: {pressed_enter: defshrine_pressed_enter}
   - name: xy_panel_2
     properties: {height: 25}
     type: XYPanel
