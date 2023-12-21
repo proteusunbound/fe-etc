@@ -192,6 +192,7 @@ components:
           Sage, Saint, Priestess, Falcon Knight]
       type: DropDown
       layout_properties: {x: 0, y: 0, width: 120}
+      event_bindings: {change: promodrop_change}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
