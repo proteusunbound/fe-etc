@@ -28,6 +28,30 @@ class ActiveUnit:
         self.attack = 0
         self.devil = 1
 
+    def boosthp(self, number):
+        """HP Boost"""
+        self.maxhp = min(self.char["HP"] + number, 52)
+
+    def boostluck(self, number):
+        """Luck Boost"""
+        self.luck = min(self.char["Lck"] + number, 40)
+
+    def boost_speed(self, number):
+        """Speed Boost"""
+        self.speed = min(self.char["Spd"] + number, 40)
+
+    def boost_strength(self, number):
+        """Strength Boost"""
+        self.strength = min(self.char["Str"] + number, 40)
+
+    def boostdefense(self, number):
+        """Defense Boost"""
+        self.defense = min(self.char["Def"] + number, 40)
+
+    def boost_skill(self, number):
+        """Skill Boost"""
+        self.skill = min(self.char["Skl"] + number, 40)
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
