@@ -18,6 +18,7 @@ class fe2(fe2Template):
             self.unit2_panel,
             self.unit3_panel,
             self.unit4_panel,
+            self.unit5_panel
         ]
 
     def unit_number_change(self, **event_args):
