@@ -27,6 +27,7 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
         self.devil = 1
+      
 
 
 @anvil.server.portable_class
