@@ -142,6 +142,9 @@ db_schema:
     - name: Str
       admin_ui: {width: 200, order: 2}
       type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 3}
+      type: number
     title: FE3 Unit Stats
   fe1_unit_stats:
     client: search
