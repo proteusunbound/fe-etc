@@ -66,3 +66,172 @@ def attack_speed(keyword, weapon):
 def hitrate(keyword, weapon):
     """Hit Rate"""
     keyword.hit = keyword.skill * 2 + weapon.hit
+
+def get_attack(keyword, weapon):
+    """Attack"""
+    keyword.attack = keyword.strength + weapon.might
+
+def physdamage(attacker, defender):
+    """Physical Damage"""
+    attacker.damage = max(1, attacker.attack - defender.defense)
+
+@anvil.server.portable_class
+class DuelSim:
+    """Duel Simulator"""
+
+    def __init__(self):
+        self.dueltext = ""
+        self.hitno = 0
+        self.avoidno = 0
+        self.iniavo = 0
+        self.unithit = 0
+        self.unitavoid = 0
+
+    def setunit(self, unit):
+        """Set Unit"""
+        self.unit = ActiveUnit(unit)
+
+    def setboss(self, boss):
+        """Set Boss"""
+        self.boss = ActiveBoss(boss)
+
+    def setunitweapon(self, weapon):
+        """Set Unit Weapon"""
+        self.unitweapon = ActiveWeapon(weapon)
+
+    def setbossweapon(self, weapon):
+        """Set Boss Weapon"""
+        self.bossweapon = ActiveWeapon(weapon)
+
+    def setunithp(self, hitpoints):
+        """Set Unit HP"""
+        self.unit.hitpoints = hitpoints
+
+    def setavoidno(self, avoidno):
+        """Set Avoid Number"""
+        self.avoidno = avoidno
+        self.iniavo = avoidno
+
+    def setbosshp(self, hitpoints):
+        """Set Boss HP"""
+        self.boss.hitpoints = hitpoints
+
+    def unitdisplay(self):
+        """Unit Stat Display"""
+        attack_speed(self.unit, self.unitweapon)
+        hitrate(self.unit, self.unitweapon)
+
+    def bossdisplay(self):
+      """Boss Stat Display"""
+      attack_speed(self.boss, self.bossweapon)
+      hitrate(self.boss, self.bossweapon)
+
+    def enemy_avoid(self):
+      """Enemy Avoid"""
+      self.boss.avoid = self.boss.speed + self.boss.luck
+
+    def bosshitchance(self):
+      """Boss Hit Chance"""
+      self.boss.hitchance = min((self.boss.hit - (self.unit.speed + self.unit.luck)) / 100, 1)
+
+    def precombat(self):
+      """Pre-Combat Calculation"""
+      get_attack(self.unit, self.unitweapon)
+      physdamage(self.unit, self.boss)
+      self.enemy_avoid()
+      get_attack(self.boss, self.bossweapon)
+      physdamage(self.boss, self.unit)
+      self.bosshitchance()
+      self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+      self.unitavoid = 1 - self.boss.hitchance
+
+    def doubling(self):
+        """Doubling Calculation"""
+        if self.unit.AS >= (self.boss.AS + 3):
+            self.unit.doubles = True
+            self.boss.doubles = False
+            self.dueltext += f"{self.unit.name} can make follow-up attacks. \n"
+        elif self.boss.AS >= (self.unit.AS + 3):
+            self.boss.doubles = True
+            self.unit.doubles = False
+            self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
+        else:
+          self.boss.doubles = False
+          self.unit.doubles = False
+
+    def unitattack(self):
+      """Unit Attack"""
+      self.hitno += 1
+      self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+      self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+
+    def bossmiss(self):
+        """Boss Miss"""
+        self.avoidno -= 1
+        self.dueltext += f"{self.boss.name}'s attack misses.\n"
+
+    def bossattack(self):
+        """Boss Attack"""
+        self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
+        self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
+
+    def playerphase(self):
+        """Player Phase"""
+        self.dueltext += "#### Player Phase:\n"
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.unitattack()
+        if (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+        ):
+            if self.avoidno > 0:
+                self.bossmiss()
+            else:
+                self.bossattack()
+        if (
+            self.unit.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.unitattack()
+        if (
+            self.boss.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            if self.avoidno > 0:
+                self.bossmiss()
+            else:
+                self.bossattack()
+        self.dueltext += "\n"
+
+    def enemyphase(self):
+        """Enemy Phase"""
+        self.dueltext += "#### Enemy Phase:\n"
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+            if self.avoidno > 0:
+                self.bossmiss()
+            else:
+                self.bossattack()
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.unitattack()
+        if (
+            self.boss.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            if self.avoidno > 0:
+                self.bossmiss()
+            else:
+                self.bossattack()
+        if (
+            self.unit.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.unitattack()
+        self.dueltext += "\n"
+
+    def reset_text(self):
+        """Reset"""
+        self.dueltext = ""
