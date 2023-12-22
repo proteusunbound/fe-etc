@@ -129,6 +129,20 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: string
     title: FE1 Weapon Stats
+  fe3_unit_stats:
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 70}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    title: FE3 Unit Stats
   fe1_unit_stats:
     client: search
     server: search
@@ -270,6 +284,35 @@ db_schema:
       admin_ui: {width: 200, order: 21}
       type: bool
     title: FE1 Effectiveness
+  fe3_boss_stats:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 165}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 7}
+      type: number
+    title: FE3 Boss Stats
   fe1_boss_stats:
     client: search
     server: search
