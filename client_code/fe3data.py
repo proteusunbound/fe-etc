@@ -73,7 +73,7 @@ def get_attack(keyword, weapon):
 
 def physdamage(attacker, defender):
     """Physical Damage"""
-    attacker.damage = max(1, attacker.attack - defender.defense)
+    attacker.damage = max(0, attacker.attack - defender.defense)
 
 @anvil.server.portable_class
 class DuelSim:
