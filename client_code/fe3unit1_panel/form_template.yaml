@@ -9,10 +9,12 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Alm, Lukas, Gray, Tobin, Kliff, Silque, Clair, Clive, Forsyth, Python,
-        Luthier, Mathilda, Delthea, Tatiana, Zeke, Mycen, Celica, Mae, Boey, Genny,
-        Saber, Valbar, Kamui, Leon, Palla, Catria, Atlas, Jesse, Sonya, Deen, Est,
-        Nomah]
+      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Bord, Cord, Barst, Ogma,
+        Castor, Julian, Lena, Navarre, Roshea, Vyland, Sedgar, Wolf, Hardin, Matthis,
+        Merric, Wendell, Rickard, Bantu, Caesar, Radd, Maria, Minerva, Jeorge, Linde,
+        Dolph, Macellan, Tomas, Boah, Midia, Astram, Catria, Palla, Arran, Samson,
+        Xane, Tiki, Est, Lorenz, Elice, Luke, Cecil, Roderick, Ryan, Marisha, Warren,
+        Yuliya, Jubelo, Sirius, Samuel, Phina, Arlen, Sheena, Nyna]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -22,11 +24,15 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Sword, Steel Sword, Silver Sword, Brave Sword, Shadow Sword, Lightning Sword,
-        Blessed Sword, Falchion, Royal Sword, Lance, Steel Lance, Silver Lance, Javelin,
-        Blessed Lance, Ridersbane, Gradivus, Astra, Sol, Luna, Bow, Steel Bow, Blessed Bow,
-        Silver Bow, Axe, Fire, Thunder, Ragnarok, Seraphim, Excalibur, Sagittae, Aura,
-        Miasma, Mire, Death, Medusa, Ocular Beam, Oculus, Nosferatu, Tentacle]
+      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword,
+        Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion,
+        Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance,
+        Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow,
+        Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe,
+        Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist,
+        Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath,
+        Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur,
+        Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -57,7 +63,7 @@ components:
   components:
   - name: column_panel_2
     properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10,"KSMRTR":15}'}
+      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -69,15 +75,6 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
-    - name: hpshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'KTXRFX,DVHYXN'}
-    - name: hpshrine
-      properties: {placeholder: '0', type: number, align: left}
-      type: TextBox
-      layout_properties: {grid_position: 'KTXRFX,NIIXAK'}
-      event_bindings: {pressed_enter: hpshrine_pressed_enter}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -126,51 +123,6 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
-    - name: strshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,OQEAPU VJXPHS,KUSDNN'}
-    - name: skillshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,OQEAPU MAEWQJ,MRDSAJ'}
-    - name: spdshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,OQEAPU UEISMU,MTADCS'}
-    - name: lckshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,OQEAPU ZATSUJ,KENEPS'}
-    - name: defshrinelabel
-      properties: {text: Shrine, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,OQEAPU GVJGOG,MRBMDV'}
-    - name: strshrine
-      properties: {placeholder: '0', type: number}
-      type: TextBox
-      layout_properties: {grid_position: 'CLSTUB,OOANRC BMOUQW,AIDQIP'}
-      event_bindings: {pressed_enter: strshrine_pressed_enter}
-    - name: sklshrine
-      properties: {placeholder: '0', type: number}
-      type: TextBox
-      layout_properties: {grid_position: 'CLSTUB,OOANRC XQWPRE,VVEDZQ'}
-      event_bindings: {pressed_enter: sklshrine_pressed_enter}
-    - name: spdshrine
-      properties: {placeholder: '0', type: number}
-      type: TextBox
-      layout_properties: {grid_position: 'CLSTUB,OOANRC KQETUM,ITVGCK'}
-      event_bindings: {pressed_enter: spdshrine_pressed_enter}
-    - name: lckshrine
-      properties: {placeholder: '0', type: number}
-      type: TextBox
-      layout_properties: {grid_position: 'CLSTUB,OOANRC VALTSX,HOAKFP'}
-      event_bindings: {pressed_enter: lckshrine_pressed_enter}
-    - name: defshrine
-      properties: {placeholder: '0', type: number}
-      type: TextBox
-      layout_properties: {grid_position: 'CLSTUB,OOANRC RFJYOX,PQRBHI'}
-      event_bindings: {pressed_enter: defshrine_pressed_enter}
   - name: xy_panel_2
     properties: {height: '100'}
     type: XYPanel
@@ -183,16 +135,6 @@ components:
       layout_properties: {x: 125, y: 0, width: 100}
       event_bindings: {click: hide_click}
       data_bindings: []
-    - name: promodrop
-      properties:
-        include_placeholder: true
-        placeholder: Promote
-        items: [Hero, Princess, Mercenary, Cavalier, Soldier, Archer, Mage, Myrmidon,
-          Dread Fighter, Paladin, Gold Knight, Knight, Baron, Sniper, Bow Knight,
-          Sage, Saint, Priestess, Falcon Knight]
-      type: DropDown
-      layout_properties: {x: 0, y: 0, width: 120}
-      event_bindings: {change: promodrop_change}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
@@ -202,18 +144,6 @@ components:
       properties: {text: Avoids, align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'ZWALOY,WZAQGA'}
-    - name: critno
-      properties: {text: Crits, align: center}
-      type: Label
-      layout_properties: {grid_position: 'ZWALOY,FRQSWE'}
-    - name: dodgelabel
-      properties: {text: Dodges, align: center}
-      type: Label
-      layout_properties: {grid_position: 'ZWALOY,RAYLRS'}
-    - name: devil_label
-      properties: {visible: false, text: Devil}
-      type: Label
-      layout_properties: {grid_position: 'ZWALOY,RHNRCV MOQMGZ,USQCHB'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -222,28 +152,11 @@ components:
         foreground: ''
         font_size: null
         visible: true
-        align: full
+        align: center
       type: DropDown
       layout_properties: {grid_position: 'VKMUZG,XZSAGP'}
       event_bindings: {}
       data_bindings: []
-    - name: crit_drop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5']
-      type: DropDown
-      layout_properties: {grid_position: 'VKMUZG,HAIZJY'}
-      event_bindings: {}
-    - name: dodge_drop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5']
-      type: DropDown
-      layout_properties: {grid_position: 'VKMUZG,LBYVDT'}
-    - name: devildrop
-      properties:
-        visible: false
-        items: ['0', '1', '2', '3', '4', '5']
-      type: DropDown
-      layout_properties: {grid_position: 'YYIRTC,TWJUTX VKMUZG,FHXNYX'}
   - name: column_panel_1
     properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
@@ -266,12 +179,4 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
       data_bindings: []
-    - name: critlabel
-      properties: {text: CRIT, align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,MPAUAT PEEXRK,NWCVQS'}
-    - name: crit
-      properties: {text: '-', align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,MPAUAT GTNKXW,UGRQBF'}
 is_package: true

@@ -28,6 +28,44 @@ class ActiveUnit:
         self.attack = 0
         self.devil = 1
 
+    def boosthp(self, number):
+        """HP Boost"""
+        self.maxhp = min(self.char["HP"] + number, 52)
+
+    def boostluck(self, number):
+        """Luck Boost"""
+        self.luck = min(self.char["Lck"] + number, 40)
+
+    def boost_speed(self, number):
+        """Speed Boost"""
+        self.speed = min(self.char["Spd"] + number, 40)
+
+    def boost_strength(self, number):
+        """Strength Boost"""
+        self.strength = min(self.char["Str"] + number, 40)
+
+    def boostdefense(self, number):
+        """Defense Boost"""
+        self.defense = min(self.char["Def"] + number, 40)
+
+    def boost_skill(self, number):
+        """Skill Boost"""
+        self.skill = min(self.char["Skl"] + number, 40)
+
+    def promote(self, keyword):
+      """Promotion"""
+      classdefault = app_tables.fe2_class_change.get(Class=keyword)
+      self.charclass = classdefault["Class"]
+      self.maxhp = max(self.char["HP"], classdefault["HP"])
+      self.strength = max(self.char["Str"], classdefault["Str"])
+      self.skill = max(self.char["Skl"], classdefault["Skl"])
+      self.speed = max(self.char["Spd"], classdefault["Spd"])
+      self.defense = max(self.char["Def"], classdefault["Def"])
+      if self.charclass == "Hero":
+        self.luck = max(self.char["Lck"], 10)
+      if self.charclass == "Dread Fighter":
+        self.resistance += 15
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
