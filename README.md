@@ -1,5 +1,8 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 2.1
+- Mila shrines and promotion in FE2
+- basic FE3 framework and customization
 ### version 2.0
 - all basic combat calculations based on weapon and units in FE2
 - fourth player combatant option
