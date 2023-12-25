@@ -167,7 +167,7 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
-      
+        self.terrain = False
 
     def setunit(self, unit):
         """Set Unit"""
@@ -258,6 +258,8 @@ class DuelSim:
         """Enemy Avoid"""
         if self.unitweapon.type == "Magical":
             self.boss.avoid = self.boss.speed + self.boss.luck
+        elif self.terrain == True:
+            self.boss.avoid = self.boss.AS + 40
         else:
             self.boss.avoid = self.boss.AS
 
