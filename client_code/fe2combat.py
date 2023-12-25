@@ -33,17 +33,19 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
-                name.damageadjust()
+                name.hprecover()
+                name.hpthreshold()
                 name.playerphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
         for number, name in self.duels.items():
             if self.bosshp > 0 and name.unit.hitpoints > 0:
-                if name.boss.maxhp > self.bosshp and name.terrain is True:
-                    self.bosshp = min(self.bosshp + 5, name.boss.maxhp)
-                    self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
-                    break
+                if name.boss.maxhp > self.bosshp:
+                  if name.terrain is True or name.bossequip in ("Blessed Ring", "Angel Ring", "Mage Ring", "Prayer Ring", "Dracoshield"):
+                      self.bosshp = min(self.bosshp + 5, name.boss.maxhp)
+                      self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
+                      break
         for number, name in self.duels.items():
             if (
                 name.unit.hitpoints > 0
@@ -51,7 +53,7 @@ class CombatSim:
                 and name.boss.counter is True
             ):
                 name.setbosshp(self.bosshp)
-                name.damageadjust()
+                name.hpthreshold()
                 name.enemyphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
