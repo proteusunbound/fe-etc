@@ -42,6 +42,8 @@ class fe2(fe2Template):
         self.defense.text = self.combat.duels[0].boss.defense
         self.resistance.text = self.combat.duels[0].boss.resistance
         self.startinghp.text = self.combat.duels[0].boss.maxhp
+        self.equip_drop.selected_value = None
+        self.equip_drop.visible = True
         self.weapon_drop.selected_value = None
         self.weapon_drop.visible = True
 
@@ -98,3 +100,11 @@ class fe2(fe2Template):
       """This method is called when this checkbox is checked or unchecked"""
       for number, name in self.combat.duels.items():
             name.terrain = self.terrainbox.checked
+
+    def equip_drop_change(self, **event_args):
+      """This method is called when an item is selected"""
+      for number, name in self.combat.duels.items():
+        name.setbossequip(self.equip_drop.selected_value)
+        name.boss_stat_adjust()
+      self.luck.text = self.combat.duels[0].boss.luck
+      self.defense.text = self.combat.duels[0].boss.defense

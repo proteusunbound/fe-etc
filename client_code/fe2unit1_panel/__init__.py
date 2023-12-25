@@ -30,6 +30,8 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
         self.weapon_drop.selected_value = None
         self.weapon_drop.visible = True
+        self.equip_drop.selected_value = None
+        self.equip_drop.visible = True
         self.promodrop.selected_value = None
 
     def hide_click(self, **event_args):
@@ -62,6 +64,7 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         self.promodrop.selected_value = None
         self.visible = False
         self.customization.visible = False
+        self.equip_drop.selected_value = None
 
     def hpshrine_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
@@ -114,6 +117,15 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
       self.hit.text = self.parent.combat.duels[0].unit.hit
       self.crit.text = self.parent.combat.duels[0].unit.crit
       self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+
+    def equip_drop_change(self, **event_args):
+      """This method is called when an item is selected"""
+      self.parent.combat.duels[0].setunitequip(self.equip_drop.selected_value)
+      self.parent.combat.duels[0].unitstatadjust()
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.luck.text = self.parent.combat.duels[0].unit.luck
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
 
 
 

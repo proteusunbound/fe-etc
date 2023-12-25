@@ -249,8 +249,6 @@ class DuelSim:
             self.boss.damage = self.unit.hitpoints - 1
         if self.unitequip == "Prayer Ring" and self.unit.hitpoints < self.unit.maxhp / 2:
           self.unit.crit = 100
-        if self.bossequip == "Prayer Ring" and self.boss.hitpoints < self.boss.maxhp / 2:
-          self.boss.crit = 100
 
     def unitstatadjust(self):
       """Adjust Unit Stats"""
@@ -278,9 +276,6 @@ class DuelSim:
         self.boss.defense += 3
       if self.bossequip == "Steel Shield":
         self.boss.defense += 5
-      if self.bossequip == "Dracoshield":
-        self.boss.defense += 13
-        self.boss.resistance += 13
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -413,7 +408,7 @@ class DuelSim:
               self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
               self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
-    def unitcrit(self):
+    def unit_crit(self):
       """Unit Crit"""
       self.hitno += 1
       self.unithpcost()
@@ -491,10 +486,10 @@ class DuelSim:
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             if self.unit.crit == 100:
-              self.unitcrit()
+              self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0:
               self.critno -= 1
-              self.unitcrit()
+              self.unit_crit()
             else:
               self.unitattack()
         if (
@@ -514,10 +509,10 @@ class DuelSim:
             and self.boss.hitpoints > 0
         ):
             if self.unit.crit == 100:
-              self.unitcrit()
+              self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0:
               self.critno -= 1
-              self.unitcrit()
+              self.unit_crit()
             else:
               self.unitattack()
         if (
