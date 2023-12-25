@@ -167,6 +167,7 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
+      
 
     def setunit(self, unit):
         """Set Unit"""
