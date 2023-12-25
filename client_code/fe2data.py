@@ -168,6 +168,8 @@ class DuelSim:
         self.unitcrit = 0
         self.unitdodge = 0
         self.terrain = False
+        self.unitequip = ""
+        self.bossequip = ""
 
     def setunit(self, unit):
         """Set Unit"""
@@ -184,6 +186,14 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setunitequip(self, equipment):
+      """Set Unit Equipment"""
+      self.unitequip = equipment
+
+    def setbossequip(self, equipment):
+      """Set Boss Equipment"""
+      self.bossequip = equipment
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -342,7 +352,8 @@ class DuelSim:
 
     def hprecover(self):
         """Player Phase HP Recover"""
-        if self.unit.maxhp > self.unit.hitpoints and self.unitweapon.name in (
+        if self.unit.maxhp > self.unit.hitpoints:
+          if self.unitweapon.name in (
             "Blessed Sword",
             "Falchion",
             "Royal Sword",
@@ -352,9 +363,9 @@ class DuelSim:
             "Sol",
             "Luna",
             "Blessed Bow",
-        ):
-            self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
-            self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
+          ) or self.unitequip in ("Blessed Ring", "Angel Ring", "Mage Ring", "Prayer Ring", "Speed Ring", "Blessed Shield", "Dracoshield"):
+              self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
+              self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
     def unitattack(self):
         """Unit Attack"""
