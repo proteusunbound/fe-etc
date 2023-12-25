@@ -83,6 +83,11 @@ class ActiveWeapon:
         self.backfire = weapon["Dmg"]
         self.effco = 1
 
+    def magering(self):
+      """Mage Ring"""
+      if self.type == "Magical" and self.name != "Lightning Sword":
+        self.range = 5
+
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -167,6 +172,9 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
+        self.terrain = False
+        self.unitequip = ""
+        self.bossequip = ""
 
     def setunit(self, unit):
         """Set Unit"""
@@ -183,6 +191,14 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setunitequip(self, equipment):
+      """Set Unit Equipment"""
+      self.unitequip = equipment
+
+    def setbossequip(self, equipment):
+      """Set Boss Equipment"""
+      self.bossequip = equipment
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -220,8 +236,8 @@ class DuelSim:
         ):
             self.unit.devil = 1 - max(0, 21 - self.unit.luck) / 100
 
-    def damageadjust(self):
-        """Adjust Damage"""
+    def hpthreshold(self):
+        """HP Threshold"""
         if (
             self.boss.name == "Duma"
             and self.boss.hitpoints < 53
@@ -231,6 +247,40 @@ class DuelSim:
         if self.bossweapon.name == "Medusa" and self.unit.hitpoints > 1:
             self.boss.crit = 0
             self.boss.damage = self.unit.hitpoints - 1
+        if self.unitequip == "Prayer Ring" and self.unit.hitpoints < self.unit.maxhp / 2:
+          self.unit.crit = 100
+        if self.bossequip == "Prayer Ring" and self.boss.hitpoints < self.boss.maxhp / 2:
+          self.boss.crit = 100
+
+    def unitstatadjust(self):
+      """Adjust Unit Stats"""
+      if self.unitequip == "Angel Ring":
+        self.unit.luck = 40
+      if self.unitequip == "Speed Ring":
+        self.unit.speed = 40
+      if self.unitequip == "Leather Shield":
+        self.unit.defense += 3
+      if self.unitequip == "Steel Shield":
+        self.unit.defense += 5
+      if self.unitequip == "Silver Shield":
+        self.unit.defense += 7
+      if self.unitequip == "Blessed Shield" and self.boss.charclass in ("Bonewalker", "Revenant", "Necrodragon", "Gargoyle", "Mogall"):
+        self.unit.defense += 13
+      if self.unitequip == "Dracoshield":
+        self.unit.defense += 13
+        self.unit.resistance += 13
+
+    def boss_stat_adjust(self):
+      """Adjust Boss Stats"""
+      if self.bossequip == "Angel Ring":
+        self.boss.luck = 40
+      if self.bossequip == "Leather Shield":
+        self.boss.defense += 3
+      if self.bossequip == "Steel Shield":
+        self.boss.defense += 5
+      if self.bossequip == "Dracoshield":
+        self.boss.defense += 13
+        self.boss.resistance += 13
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -257,15 +307,20 @@ class DuelSim:
         """Enemy Avoid"""
         if self.unitweapon.type == "Magical":
             self.boss.avoid = self.boss.speed + self.boss.luck
+        elif self.terrain == True:
+            self.boss.avoid = self.boss.AS + 40
         else:
             self.boss.avoid = self.boss.AS
 
     def bosshitchance(self):
         """Boss Hit Chance"""
         if self.bossweapon.type == "Magical":
-            self.boss.hitchance = min(
+            if self.unitequip == "Hexlock Shield":
+              self.boss.hitchance = 0.1
+            else:
+              self.boss.hitchance = min(
                 (self.boss.hit - (self.unit.speed + self.unit.luck)) / 100, 1
-            )
+              )
         else:
             self.boss.hitchance = min((self.boss.hit - self.unit.AS) / 100, 1)
 
@@ -314,6 +369,10 @@ class DuelSim:
 
     def counterattack(self):
         """Counter Attack"""
+        if self.bossequip == "Mage Ring":
+          self.bossweapon.magering()
+        if self.unitequip == "Mage Ring":
+          self.unitweapon.magering()
         if self.bossweapon.range >= self.unitweapon.range:
             self.boss.counter = True
             self.dueltext += f"{self.boss.name} can counter-attack. \n"
@@ -339,7 +398,8 @@ class DuelSim:
 
     def hprecover(self):
         """Player Phase HP Recover"""
-        if self.unit.maxhp > self.unit.hitpoints and self.unitweapon.name in (
+        if self.unit.maxhp > self.unit.hitpoints:
+          if self.unitweapon.name in (
             "Blessed Sword",
             "Falchion",
             "Royal Sword",
@@ -349,17 +409,15 @@ class DuelSim:
             "Sol",
             "Luna",
             "Blessed Bow",
-        ):
-            self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
-            self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
+          ) or self.unitequip in ("Blessed Ring", "Angel Ring", "Mage Ring", "Prayer Ring", "Speed Ring", "Blessed Shield", "Dracoshield"):
+              self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
+              self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
-    def unitattack(self):
-        """Unit Attack"""
-        self.hitno += 1
-        self.unithpcost()
-        if self.critno > 0 and self.unit.crit > 0:
-            self.critno -= 1
-            if self.unit.devil == 1:
+    def unitcrit(self):
+      """Unit Crit"""
+      self.hitno += 1
+      self.unithpcost()
+      if self.unit.devil == 1:
                 self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
                 self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
                 if (
@@ -372,34 +430,38 @@ class DuelSim:
                     self.dueltext += (
                         f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
                     )
-            elif self.devilno > 0:
+      elif self.devilno > 0:
                 self.devilno -= 1
                 self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
                 self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
-            else:
+      else:
                 self.unit.hitpoints = max(0, self.unit.hitpoints - 3 * self.unit.damage)
                 self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
+      
+    def unitattack(self):
+        """Unit Attack"""
+        self.hitno += 1
+        self.unithpcost()
+        if self.unit.devil == 1:
+            self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+            self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            if (
+                self.unitweapon.name == "Nosferatu"
+                and self.unit.hitpoints < self.unit.maxhp
+            ):
+                self.unit.hitpoints = min(
+                    self.unit.hitpoints + self.unit.damage, self.unit.maxhp
+                )
+                self.dueltext += (
+                    f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+                )
+        elif self.devilno > 0:
+            self.devilno -= 1
+            self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+            self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
         else:
-            if self.unit.devil == 1:
-                self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-                self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
-                if (
-                    self.unitweapon.name == "Nosferatu"
-                    and self.unit.hitpoints < self.unit.maxhp
-                ):
-                    self.unit.hitpoints = min(
-                        self.unit.hitpoints + self.unit.damage, self.unit.maxhp
-                    )
-                    self.dueltext += (
-                        f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
-                    )
-            elif self.devilno > 0:
-                self.devilno -= 1
-                self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-                self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
-            else:
-                self.unit.hitpoints = max(0, self.unit.hitpoints - self.unit.damage)
-                self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
+            self.unit.hitpoints = max(0, self.unit.hitpoints - self.unit.damage)
+            self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
 
     def bossmiss(self):
         """Boss Miss"""
@@ -410,7 +472,7 @@ class DuelSim:
     def bosscrit(self):
         """Boss Crit"""
         self.bosshpcost()
-        if self.ddgno > 0:
+        if self.boss.crit < 100 and self.ddgno > 0:
             self.ddgno -= 1
             self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
             self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
@@ -428,8 +490,13 @@ class DuelSim:
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            self.hprecover()
-            self.unitattack()
+            if self.unit.crit == 100:
+              self.unitcrit()
+            elif self.unit.crit > 0 and self.critno > 0:
+              self.critno -= 1
+              self.unitcrit()
+            else:
+              self.unitattack()
         if (
             self.boss.hitpoints > 0
             and self.unit.hitpoints > 0
@@ -446,7 +513,13 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            self.unitattack()
+            if self.unit.crit == 100:
+              self.unitcrit()
+            elif self.unit.crit > 0 and self.critno > 0:
+              self.critno -= 1
+              self.unitcrit()
+            else:
+              self.unitattack()
         if (
             self.boss.doubles is True
             and self.unit.hitpoints > 0

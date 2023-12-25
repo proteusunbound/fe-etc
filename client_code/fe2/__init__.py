@@ -84,6 +84,7 @@ class fe2(fe2Template):
         self.unit_number.selected_value = None
         self.reset.visible = False
         self.combatlog.visible = False
+        self.terrainbox.checked = False
 
     def turn_drop_change(self, **event_args):
         """This method is called when an item is selected"""
@@ -92,3 +93,8 @@ class fe2(fe2Template):
     def mainpage_click(self, **event_args):
         """This method is called when the button is clicked"""
         open_form("Landing")
+
+    def terrainbox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      for number, name in self.combat.duels.items():
+            name.terrain = self.terrainbox.checked
