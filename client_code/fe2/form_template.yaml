@@ -162,6 +162,7 @@ components:
         properties: {text: Terrain}
         type: CheckBox
         layout_properties: {x: 140, y: 50, width: 75}
+        event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {}
       type: ColumnPanel
