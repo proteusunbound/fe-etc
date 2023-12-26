@@ -14,7 +14,8 @@ class fe3(fe3Template):
     self.init_components(**properties)
     self.combat = fe3combat.CombatSim()
     self.unitpanels = [
-        self.unit1_panel
+        self.unit1_panel,
+        self.unit2_panel
     ]
 
   def unit_number_change(self, **event_args):
