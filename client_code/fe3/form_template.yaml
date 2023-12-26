@@ -140,6 +140,11 @@ components:
         type: TextBox
         layout_properties: {x: 75, y: 50, width: 50}
         event_bindings: {}
+      - name: terrainbox
+        properties: {text: Terrain}
+        type: CheckBox
+        layout_properties: {x: 150, y: 50, width: 70}
+        event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {}
       type: ColumnPanel
@@ -161,6 +166,14 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'JQRWMP,THJVMG OFPRXI,XUIRTP'}
+      - name: critlabel
+        properties: {text: CRIT, align: center}
+        type: Label
+        layout_properties: {grid_position: 'JQRWMP,PKIBGN ZBVMCA,HYKQXY'}
+      - name: crit
+        properties: {text: '-', align: center}
+        type: Label
+        layout_properties: {grid_position: 'JQRWMP,PKIBGN FAZVKE,NYMGLK'}
       - name: column_panel_1
         properties: {spacing_above: medium, spacing_below: none}
         type: ColumnPanel

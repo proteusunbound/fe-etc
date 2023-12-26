@@ -48,6 +48,7 @@ class fe3(fe3Template):
       name.bossdisplay()
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
+    self.crit.text = self.combat.duels[0].boss.crit
 
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -85,3 +86,8 @@ class fe3(fe3Template):
   def mainpage_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form("Landing")
+
+  def terrainbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    for number, name in self.combat.duels.items():
+        name.terrain = self.terrainbox.checked

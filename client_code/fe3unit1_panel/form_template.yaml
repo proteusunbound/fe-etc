@@ -143,7 +143,16 @@ components:
     - name: avoidlabel
       properties: {text: Avoids, align: center, font_size: null}
       type: Label
-      layout_properties: {grid_position: 'ZWALOY,WZAQGA'}
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF ZWALOY,WZAQGA'}
+    - name: critno
+      properties: {text: Crits, align: center}
+      type: Label
+      layout_properties: {grid_position: 'DAMDVU,LDHDTS LBNNKG,FHHKTF'}
+    - name: crit_drop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'DAMDVU,LDHDTS KCLEVF,QVIOWK'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -152,11 +161,20 @@ components:
         foreground: ''
         font_size: null
         visible: true
-        align: center
+        align: full
       type: DropDown
-      layout_properties: {grid_position: 'VKMUZG,XZSAGP'}
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF VKMUZG,XZSAGP'}
       event_bindings: {}
       data_bindings: []
+    - name: dodgelabel
+      properties: {text: Dodges, align: center}
+      type: Label
+      layout_properties: {grid_position: 'DAMDVU,SCOKIA IGCFXN,DXUTFY'}
+    - name: dodge_drop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'DAMDVU,SCOKIA EVHZJN,HJWYGR'}
   - name: column_panel_1
     properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
@@ -179,4 +197,12 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
       data_bindings: []
+    - name: critlabel
+      properties: {text: CRIT, align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,ESCBPT VGXSLW,CRRXZU'}
+    - name: crit
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,ESCBPT DPQIHN,LEDXWH'}
 is_package: true
