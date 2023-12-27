@@ -37,6 +37,12 @@ class CombatSim:
                 self.text += name.dueltext
                 name.reset_text()
         for number, name in self.duels.items():
+            if self.bosshp > 0 and name.unit.hitpoints > 0:
+                if name.boss.maxhp > self.bosshp and name.terrain is True:
+                    self.bosshp = min(self.bosshp + 10, name.boss.maxhp)
+                    self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
+                    break
+        for number, name in self.duels.items():
             if (
                 name.unit.hitpoints > 0
                 and self.bosshp > 0
@@ -59,6 +65,8 @@ class CombatSim:
             self.successrate *= (
                 (name.unithit**name.hitno)
                 * (name.unitavoid**name.iniavo)
+                * (name.unitcrit**name.inicrit)
+                * (name.unitdodge**name.iniddg)
             )
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."

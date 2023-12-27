@@ -30,6 +30,8 @@ class fe2unit2_panel(fe2unit2_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[1].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    self.equip_drop.selected_value = None
+    self.equip_drop.visible = True
     self.promodrop.selected_value = None
 
   def hide_click(self, **event_args):
@@ -60,6 +62,7 @@ class fe2unit2_panel(fe2unit2_panelTemplate):
     self.unit_drop.selected_value = None
     self.weapon_drop.selected_value = None
     self.promodrop.selected_value = None
+    self.equip_drop.selected_value = None
     self.visible = False
     self.customization.visible = False
 
@@ -114,3 +117,12 @@ class fe2unit2_panel(fe2unit2_panelTemplate):
     self.hit.text = self.parent.combat.duels[1].unit.hit
     self.crit.text = self.parent.combat.duels[1].unit.crit
     self.attackspeed.text = self.parent.combat.duels[1].unit.AS
+
+  def equip_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[1].setunitequip(self.equip_drop.selected_value)
+    self.parent.combat.duels[1].unitstatadjust()
+    self.speed.text = self.parent.combat.duels[1].unit.speed
+    self.luck.text = self.parent.combat.duels[1].unit.luck
+    self.defense.text = self.parent.combat.duels[1].unit.defense
+    self.resistance.text = self.parent.combat.duels[1].unit.resistance
