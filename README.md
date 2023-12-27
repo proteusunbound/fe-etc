@@ -1,5 +1,9 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 2.2
+- equipment options in FE2
+- terrain checks for FE2 and 3
+- critical hit, dodge, second combatant option for FE3
 ### version 2.1
 - Mila shrines and promotion in FE2
 - basic FE3 framework and customization
