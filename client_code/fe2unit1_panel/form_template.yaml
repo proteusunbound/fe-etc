@@ -182,7 +182,7 @@ components:
       layout_properties: {grid_position: 'CLSTUB,OOANRC RFJYOX,PQRBHI'}
       event_bindings: {pressed_enter: defshrine_pressed_enter}
   - name: xy_panel_2
-    properties: {height: '100'}
+    properties: {height: '120', spacing_below: none, spacing_above: none}
     type: XYPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
@@ -203,8 +203,16 @@ components:
       type: DropDown
       layout_properties: {x: 0, y: 0, width: 120}
       event_bindings: {change: promodrop_change}
+    - name: supportbox
+      properties: {text: Support, visible: false}
+      type: CheckBox
+      layout_properties: {x: 0, y: 40, width: 80}
+    - name: trianglecheck
+      properties: {text: Triangle Attack, visible: false}
+      type: CheckBox
+      layout_properties: {x: 0, y: 80, width: 120}
   - name: column_panel_3
-    properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
+    properties: {spacing_above: none, spacing_below: none, col_spacing: tiny}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
     components:
@@ -213,7 +221,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'ZWALOY,WZAQGA'}
     - name: critno
-      properties: {text: Crits, align: center}
+      properties: {text: Crits, align: center, bold: false}
       type: Label
       layout_properties: {grid_position: 'ZWALOY,FRQSWE'}
     - name: dodgelabel
@@ -255,7 +263,7 @@ components:
       type: DropDown
       layout_properties: {grid_position: 'YYIRTC,TWJUTX VKMUZG,FHXNYX'}
   - name: column_panel_1
-    properties: {spacing_above: small, spacing_below: small}
+    properties: {spacing_above: none, spacing_below: none}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
     components:
