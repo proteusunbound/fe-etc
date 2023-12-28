@@ -27,6 +27,8 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
         self.devil = 1
+        self.triangleattack = False
+        self.support = False
 
     def boosthp(self, number):
         """HP Boost"""
@@ -250,8 +252,13 @@ class DuelSim:
         if self.unitequip == "Prayer Ring" and self.unit.hitpoints < self.unit.maxhp / 2:
           self.unit.crit = 100
 
-    def damage
-
+    def damageadjust(self):
+      """Adjust Damage"""
+      if self.unit.charclass == "Falcon Knight" and self.boss.charclass in ("Bonewalker", "Revenant", "Necrodragon", "Gargoyle", "Mogall"):
+        self.unit.damage = self.unit.strength * 3 - self.boss.defense
+      if self.unit.support is True or self.unit.triangleattack is True:
+        self.unit.damage = (5 + self.unit.damage) * 3
+        
     def unitstatadjust(self):
       """Adjust Unit Stats"""
       if self.unitequip == "Angel Ring":
@@ -339,6 +346,7 @@ class DuelSim:
             physdamage(self.boss, self.unit)
         self.bosshitchance()
         self.devilcheck()
+        self.damageadjust()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
