@@ -33,6 +33,16 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         self.equip_drop.selected_value = None
         self.equip_drop.visible = True
         self.promodrop.selected_value = None
+        self.trianglecheck.checked = False
+        self.supportbox.checked = False
+        if self.parent.combat.duels[0].unit.name in ("Catria", "Palla", "Est"):
+            self.trianglecheck.visible = True
+        else:
+            self.trianglecheck.visible = False
+        if self.parent.combat.duels[0].unit.name == "Alm":
+          self.supportbox.visible = True
+        else:
+          self.supportbox.visible = False
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -65,6 +75,8 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         self.visible = False
         self.customization.visible = False
         self.equip_drop.selected_value = None
+        self.supportbox.visible = False
+        self.trianglecheck.visible = False
 
     def hpshrine_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
@@ -126,6 +138,14 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
       self.luck.text = self.parent.combat.duels[0].unit.luck
       self.defense.text = self.parent.combat.duels[0].unit.defense
       self.resistance.text = self.parent.combat.duels[0].unit.resistance
+
+    def supportbox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.support = self.supportbox.checked
+
+    def trianglecheck_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
 
 
 

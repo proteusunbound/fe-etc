@@ -207,10 +207,12 @@ components:
       properties: {text: Support, visible: false}
       type: CheckBox
       layout_properties: {x: 0, y: 40, width: 80}
+      event_bindings: {change: supportbox_change}
     - name: trianglecheck
       properties: {text: Triangle Attack, visible: false}
       type: CheckBox
       layout_properties: {x: 0, y: 80, width: 120}
+      event_bindings: {change: trianglecheck_change}
   - name: column_panel_3
     properties: {spacing_above: none, spacing_below: none, col_spacing: tiny}
     type: ColumnPanel
