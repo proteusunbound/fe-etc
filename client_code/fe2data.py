@@ -250,6 +250,8 @@ class DuelSim:
         if self.unitequip == "Prayer Ring" and self.unit.hitpoints < self.unit.maxhp / 2:
           self.unit.crit = 100
 
+    def damage
+
     def unitstatadjust(self):
       """Adjust Unit Stats"""
       if self.unitequip == "Angel Ring":
