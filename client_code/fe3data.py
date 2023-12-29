@@ -36,6 +36,8 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
+        self.minrange = weapon["Min Range"]
+        self.maxrange = weapon["Max Range"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -58,6 +60,7 @@ class ActiveBoss:
         self.attack = 0
         self.avoid = 0
         self.hitchance = 0
+        self.counter = False
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
@@ -174,6 +177,24 @@ class DuelSim:
       self.unitavoid = 1 - self.boss.hitchance
       self.unitdodge = 1 - max(0, (self.boss.crit - self.unit.luck) / 100)
 
+    def counterattack(self):
+        """Counter Attack"""
+        if self.bossweapon.name in ("Thunderbolt", "Arrowspate", "Stonehoist", "Hoistflamme", "Pachyderm"):
+          self.boss.counter = False
+          self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+        elif self.bossweapon.minrange != self.bossweapon.maxrange:
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        elif (
+            self.bossweapon.minrange == self.unitweapon.minrange
+            and self.bossweapon.maxrange == self.unitweapon.maxrange
+        ):
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        else:
+            self.boss.counter = False
+            self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+    
     def doubling(self):
         """Doubling Calculation"""
         if self.unit.AS >= (self.boss.AS + 3):

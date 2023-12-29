@@ -347,7 +347,90 @@ db_schema:
     - name: Crit
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: Min Range
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 6}
+      type: number
     title: FE3 Weapon Stats
+  fe3_supports:
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 74}
+      type: string
+    - name: Midia
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Est
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Minerva
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Abel
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Caeda
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Marth
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Ryan
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Sheena
+      admin_ui: {width: 200, order: 8}
+      type: number
+    - name: Samson
+      admin_ui: {width: 200, order: 9}
+      type: number
+    - name: Lena
+      admin_ui: {width: 200, order: 10}
+      type: number
+    - name: Nyna
+      admin_ui: {width: 200, order: 11}
+      type: number
+    - name: Roderick
+      admin_ui: {width: 200, order: 12}
+      type: number
+    - name: Tiki
+      admin_ui: {width: 200, order: 13}
+      type: number
+    - name: Navarre
+      admin_ui: {width: 200, order: 14}
+      type: number
+    - name: Elice
+      admin_ui: {width: 200, order: 15}
+      type: number
+    - name: Astram
+      admin_ui: {width: 200, order: 16}
+      type: number
+    - name: Maria
+      admin_ui: {width: 200, order: 17}
+      type: number
+    - name: Yuliya
+      admin_ui: {width: 200, order: 18}
+      type: number
+    - name: Jubelo
+      admin_ui: {width: 200, order: 19}
+      type: number
+    - name: Gordin
+      admin_ui: {width: 200, order: 20}
+      type: number
+    - name: Merric
+      admin_ui: {width: 200, order: 21}
+      type: number
+    - name: Cecil
+      admin_ui: {order: 22, width: 200}
+      type: number
+    - name: Julian
+      admin_ui: {width: 200, order: 23}
+      type: number
+    title: FE3 Supports
   fe1_boss_stats:
     client: search
     server: search
