@@ -355,8 +355,8 @@ db_schema:
       type: number
     title: FE3 Weapon Stats
   fe3_supports:
-    client: none
-    server: full
+    client: search
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 74}
@@ -383,7 +383,7 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     - name: Sheena
-      admin_ui: {width: 200, order: 8}
+      admin_ui: {order: 8, width: 50}
       type: number
     - name: Samson
       admin_ui: {width: 200, order: 9}
@@ -404,7 +404,7 @@ db_schema:
       admin_ui: {width: 200, order: 14}
       type: number
     - name: Elice
-      admin_ui: {width: 200, order: 15}
+      admin_ui: {order: 15, width: 50}
       type: number
     - name: Astram
       admin_ui: {width: 200, order: 16}
