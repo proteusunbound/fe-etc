@@ -66,7 +66,6 @@ def attack_speed(keyword, weapon):
     """Attack Speed"""
     keyword.AS = max(0, keyword.speed - weapon.weight)
 
-
 def hitrate(keyword, weapon):
     """Hit Rate"""
     keyword.hit = keyword.skill * 2 + weapon.hit
