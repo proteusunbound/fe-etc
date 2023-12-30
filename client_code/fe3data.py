@@ -37,13 +37,9 @@ class ActiveUnit:
       else:
         self.supports = ["None", "None"]
 
-    def setsupportbonus(self, check1, check2):
-      support1 = self.supports[0]
-      support2 = self.supports[1]
-      if check1 is True:
-        self.supportbonus += supports[self.name][support1]
-      if check2 is True:
-        self.supportbonus += supports[self.name][support2]
+    def setsupportbonus(self, keyword, check):
+      if check is True:
+        self.supportbonus += supports[self.name][keyword]
 
 @anvil.server.portable_class
 class ActiveWeapon:
