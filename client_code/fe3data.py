@@ -4,6 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from . import fe3support
+
+supports = fe3support.supportlist
 
 @anvil.server.portable_class
 class ActiveUnit:
@@ -24,6 +27,23 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
+        self.supports = []
+        self.supportbonus = 0
+
+    def setsupports(self):
+      if self.name in supports:
+        for name, number in supports[self.name].items():
+          self.supports.append(name)
+      else:
+        self.supports = ["None", "None"]
+
+    def setsupportbonus(self, check1, check2):
+      support1 = self.supports[0]
+      support2 = self.supports[1]
+      if check1 is True:
+        self.supportbonus += supports[self.name][support1]
+      if check2 is True:
+        self.supportbonus += supports[self.name][support2]
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -61,6 +81,7 @@ class ActiveBoss:
         self.avoid = 0
         self.hitchance = 0
         self.counter = False
+        self.supportbonus = 0
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
@@ -68,7 +89,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill * 2 + weapon.hit
+    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.supportbonus
 
 def get_attack(keyword, weapon):
     """Attack"""
@@ -76,7 +97,7 @@ def get_attack(keyword, weapon):
 
 def critical(keyword, weapon):
   """Critical"""
-  keyword.crit = keyword.skill + weapon.crit
+  keyword.crit = keyword.skill + weapon.crit + keyword.supportbonus
 
 def physdamage(attacker, defender):
     """Physical Damage"""
@@ -161,7 +182,7 @@ class DuelSim:
 
     def bosshitchance(self):
       """Boss Hit Chance"""
-      self.boss.hitchance = min((self.boss.hit - (self.unit.speed + self.unit.luck)) / 100, 1)
+      self.boss.hitchance = min((self.boss.hit - (self.unit.speed + self.unit.luck + self.unit.supportbonus)) / 100, 1)
 
     def precombat(self):
       """Pre-Combat Calculation"""
@@ -174,7 +195,7 @@ class DuelSim:
       self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
       self.unitcrit = (self.unit.crit - self.boss.luck) / 100
       self.unitavoid = 1 - self.boss.hitchance
-      self.unitdodge = 1 - max(0, (self.boss.crit - self.unit.luck) / 100)
+      self.unitdodge = 1 - max(0, (self.boss.crit - (self.unit.luck + self.unit.supportbonus)) / 100)
 
     def counterattack(self):
         """Counter Attack"""
