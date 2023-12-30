@@ -124,7 +124,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
   - name: xy_panel_2
-    properties: {height: '100'}
+    properties: {height: '50'}
     type: XYPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
@@ -205,4 +205,26 @@ components:
       properties: {text: '-', align: center}
       type: Label
       layout_properties: {grid_position: 'VEAZQA,ESCBPT DPQIHN,LEDXWH'}
+  - name: support
+    properties: {text: supports, role: null, background: 'theme:Surface Variant',
+      foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,TWJDZI'}
+- name: column_panel_4
+  properties: {visible: false}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'VBECKY,DXLDWQ'}
+  components:
+  - name: support1
+    properties: {text: None}
+    type: CheckBox
+    layout_properties: {grid_position: 'LAGTKO,OFHWKH'}
+  - name: support2
+    properties: {text: None}
+    type: CheckBox
+    layout_properties: {grid_position: 'LAGTKO,YZBRID'}
+  - name: hidesupport
+    properties: {text: hide supports, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'LAGTKO,USBEKT'}
 is_package: true
