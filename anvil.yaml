@@ -347,6 +347,12 @@ db_schema:
     - name: Crit
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: Min Range
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 6}
+      type: number
     title: FE3 Weapon Stats
   fe1_boss_stats:
     client: search

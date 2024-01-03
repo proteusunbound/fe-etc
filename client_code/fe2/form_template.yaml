@@ -26,19 +26,19 @@ components:
 - name: unit2_panel
   properties: {}
   type: form:fe2unit2_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU JYHFGP,EZRIVN'}
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU BZZQCZ,MEDNKQ'}
 - name: unit3_panel
   properties: {}
   type: form:fe2unit3_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU OIVZQK,TOJEXC'}
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU OZWZMO,LHPGJX'}
 - name: unit4_panel
   properties: {}
   type: form:fe2unit4_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU OGHBYP,OZLTYQ'}
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU JXQCJO,OGTFGS'}
 - name: unit5_panel
   properties: {}
   type: form:fe2unit5_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU TFSDBQ,YKXUFT'}
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU SPADJI,JEXDHO'}
 - name: boss_panel
   properties: {spacing_above: small, visible: false}
   type: ColumnPanel
