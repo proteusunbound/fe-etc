@@ -2,7 +2,7 @@
 Combat success rate and turn calculator for Fire Emblem.
 ### version 2.3
 - triangle attack and support bonus in FE2
-- supports and weapon range added in FE3
+- supports, weapon range, third combatant option added in FE3
 ### version 2.2
 - equipment options in FE2
 - terrain checks for FE2 and 3
