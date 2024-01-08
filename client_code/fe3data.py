@@ -54,6 +54,7 @@ class ActiveWeapon:
         self.crit = weapon["Crit"]
         self.minrange = weapon["Min Range"]
         self.maxrange = weapon["Max Range"]
+        self.type = weapon["Type"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -98,6 +99,10 @@ def critical(keyword, weapon):
 def physdamage(attacker, defender):
     """Physical Damage"""
     attacker.damage = max(0, attacker.attack - defender.defense)
+
+def magdamage(attacker, defender):
+    """Magical Damage"""
+    attacker.damage = max(1, attacker.attack - defender.resistance)
 
 @anvil.server.portable_class
 class DuelSim:
@@ -183,10 +188,16 @@ class DuelSim:
     def precombat(self):
       """Pre-Combat Calculation"""
       get_attack(self.unit, self.unitweapon)
-      physdamage(self.unit, self.boss)
+      if self.unitweapon.type == "Magical":
+        magdamage(self.unit, self.boss)
+      else:
+        physdamage(self.unit, self.boss)
       self.enemy_avoid()
       get_attack(self.boss, self.bossweapon)
-      physdamage(self.boss, self.unit)
+      if self.bossweapon.type == "Magical":
+        magdamage(self.boss, self.unit)
+      else:
+        physdamage(self.boss, self.unit)
       self.bosshitchance()
       self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
       self.unitcrit = (self.unit.crit - self.boss.luck) / 100
@@ -274,7 +285,7 @@ class DuelSim:
         ):
             if self.avoidno > 0:
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -297,7 +308,7 @@ class DuelSim:
         ):
             if self.avoidno > 0:
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0 :
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -309,7 +320,7 @@ class DuelSim:
         if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
             if self.avoidno > 0:
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -328,7 +339,7 @@ class DuelSim:
         ):
             if self.avoidno > 0:
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
                 self.bosscrit()
             else:
                 self.bossattack()

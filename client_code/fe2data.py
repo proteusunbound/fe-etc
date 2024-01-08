@@ -585,3 +585,5 @@ class DuelSim:
     def reset_text(self):
         """Reset"""
         self.dueltext = ""
+        self.unitequip = ""
+        self.bossequip = ""
