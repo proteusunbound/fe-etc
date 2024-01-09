@@ -1,5 +1,8 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 2.4
+- effective damage multiplier and magical damage in FE3
+- fourth combatant option
 ### version 2.3
 - triangle attack and support bonus in FE2
 - supports, weapon range, third combatant option added in FE3
