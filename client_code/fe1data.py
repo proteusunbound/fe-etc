@@ -273,6 +273,8 @@ class DuelSim:
         self.devilno = devilno
         self.inidev = devilno
 
+    
+
     def devilcheck(self):
         """Devil Weapon"""
         if self.unitweapon.name in ("Devil Sword", "Devil Axe"):
