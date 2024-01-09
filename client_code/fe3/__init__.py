@@ -16,7 +16,8 @@ class fe3(fe3Template):
     self.unitpanels = [
         self.unit1_panel,
         self.unit2_panel,
-        self.unit3_panel
+        self.unit3_panel,
+        self.unit4_panel
     ]
 
   def unit_number_change(self, **event_args):
@@ -62,6 +63,7 @@ class fe3(fe3Template):
     for number, name in self.combat.duels.items():
       name.counterattack()
       name.doubling()
+      name.effectivecheck()
       name.precombat()
     self.combat.battle()
     self.combatlog.content = self.combat.text

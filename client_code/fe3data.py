@@ -22,6 +22,7 @@ class ActiveUnit:
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -55,6 +56,7 @@ class ActiveWeapon:
         self.minrange = weapon["Min Range"]
         self.maxrange = weapon["Max Range"]
         self.type = weapon["Type"]
+        self.effco = 1
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -70,6 +72,7 @@ class ActiveBoss:
         self.luck = boss["Lck"]
         self.defense = boss["Def"]
         self.resistance = boss["Res"]
+        self.charclass = boss["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -90,7 +93,7 @@ def hitrate(keyword, weapon):
 
 def get_attack(keyword, weapon):
     """Attack"""
-    keyword.attack = keyword.strength + weapon.might
+    keyword.attack = keyword.strength + weapon.might * weapon.effco
 
 def critical(keyword, weapon):
   """Critical"""
@@ -103,6 +106,14 @@ def physdamage(attacker, defender):
 def magdamage(attacker, defender):
     """Magical Damage"""
     attacker.damage = max(1, attacker.attack - defender.resistance)
+
+def effectiveness(weapon, keyword):
+    """Effectiveness"""
+    effcheck = app_tables.fe3_effectiveness.get(Name=weapon.name)
+    if effcheck[keyword.charclass] is True:
+        weapon.effco = 3
+    else:
+        weapon.effco = 1
 
 @anvil.server.portable_class
 class DuelSim:
@@ -221,6 +232,15 @@ class DuelSim:
         else:
             self.boss.counter = False
             self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+
+    def effectivecheck(self):
+        """Effectiveness Log"""
+        effectiveness(self.unitweapon, self.boss)
+        if self.unitweapon.effco == 3:
+            self.dueltext += f"{self.unit.name}'s {self.unitweapon.name} deals effective damage against {self.boss.name}. \n"
+        effectiveness(self.bossweapon, self.unit)
+        if self.bossweapon.effco == 3:
+            self.dueltext += f"{self.boss.name}'s {self.bossweapon.name} deals effective damage against {self.unit.name}. \n"
     
     def doubling(self):
         """Doubling Calculation"""
