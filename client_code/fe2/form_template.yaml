@@ -155,23 +155,23 @@ components:
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA DNHOLR,YQFUYL'}
     - name: xy_panel_1
-      properties: {height: 112.94921875}
+      properties: {height: '100'}
       type: XYPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RECSOD,TYKGAS'}
       components:
       - name: bosshplabel
         properties: {text: 'Starting HP:', font_size: 15}
         type: Label
-        layout_properties: {x: 0, y: 50, width: 75}
+        layout_properties: {x: 0, y: 40, width: 75}
       - name: startinghp
         properties: {placeholder: '0', type: number}
         type: TextBox
-        layout_properties: {x: 75, y: 50, width: 50}
+        layout_properties: {x: 75, y: 40, width: 50}
         event_bindings: {}
       - name: terrainbox
         properties: {text: Terrain}
         type: CheckBox
-        layout_properties: {x: 140, y: 50, width: 75}
+        layout_properties: {x: 140, y: 40, width: 75}
         event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {}
@@ -203,10 +203,23 @@ components:
         type: Label
         layout_properties: {grid_position: 'JQRWMP,KNYIOA FVPPRO,JXGUQE'}
       - name: column_panel_1
-        properties: {spacing_above: medium, spacing_below: none}
+        properties: {spacing_above: medium, spacing_below: none, col_widths: '{"EZREEK":30,"JYGEWJ":20,"ONXBTE":10}'}
         type: ColumnPanel
         layout_properties: {grid_position: 'XCLNHC,UBHZPF'}
         components:
+        - name: rnglabel
+          properties: {text: RNG, align: center}
+          type: Label
+          layout_properties: {grid_position: 'WFJRDD,EZREEK'}
+        - name: rng
+          properties: {placeholder: '0', type: number}
+          type: TextBox
+          layout_properties: {grid_position: 'WFJRDD,JYGEWJ'}
+          event_bindings: {pressed_enter: rng_pressed_enter}
+        - name: bumper
+          properties: {height: 32}
+          type: Spacer
+          layout_properties: {grid_position: 'WFJRDD,ONXBTE'}
         - name: turn_drop
           properties:
             include_placeholder: true

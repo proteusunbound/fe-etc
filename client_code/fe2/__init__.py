@@ -109,3 +109,8 @@ class fe2(fe2Template):
         name.boss_stat_adjust()
       self.luck.text = self.combat.duels[0].boss.luck
       self.defense.text = self.combat.duels[0].boss.defense
+
+    def rng_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      for number, name in self.combat.duels.items():
+        name.setrng(self.rng.text)
