@@ -228,6 +228,7 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
+        self.rng = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -272,6 +273,10 @@ class DuelSim:
         """Set Avoid Backfire Number"""
         self.devilno = devilno
         self.inidev = devilno
+
+    def setrng(self, rng):
+      """Tweak RNG"""
+      self.rng = rng / 100
 
     def devilcheck(self):
         """Devil Weapon"""
@@ -361,6 +366,16 @@ class DuelSim:
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
         self.unitdodge = 1 - self.boss.crit / 100
+
+    def rngtweak(self):
+      if self.unithit > 0:
+        self.unithit = min(self.unithit + self.rng, 1)
+      if self.unitcrit > 0:
+        self.unitcrit += self.rng
+      if self.unitavoid > 0:
+        self.unitavoid = min(self.unitavoid + self.rng, 1)
+      if self.unitdodge > 0:
+        self.unitdodge = min(self.unitdodge + self.rng, 1)
 
     def effectivecheck(self):
         """Effectiveness Log"""

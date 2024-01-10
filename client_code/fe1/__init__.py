@@ -71,6 +71,7 @@ class fe1(fe1Template):
             name.doubling()
             name.effectivecheck()
             name.precombat()
+            name.rngtweak()
         self.combat.battle()
         self.combatlog.content = self.combat.text
         self.combatlog.visible = True
@@ -98,3 +99,8 @@ class fe1(fe1Template):
     def mainpage_click(self, **event_args):
         """This method is called when the button is clicked"""
         open_form("Landing")
+
+    def rng_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      for number, name in self.combat.duels.items():
+        name.setrng(self.rng.text)
