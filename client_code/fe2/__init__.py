@@ -68,6 +68,7 @@ class fe2(fe2Template):
             name.doubling()
             name.effectivecheck()
             name.precombat()
+            name.rngtweak()
         self.combat.battle()
         self.combatlog.content = self.combat.text
         self.combatlog.visible = True
