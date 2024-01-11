@@ -43,6 +43,9 @@ class fe3(fe3Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    if self.combat.duels[0].boss.name in ("Gharnef", "Medeus"):
+      self.book2box.visible = True
+      self.book2box.checked = False
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -83,6 +86,7 @@ class fe3(fe3Template):
     self.unit_number.selected_value = None
     self.reset.visible = False
     self.combatlog.visible = False
+    self.book2box.visible = False
 
   def turn_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -96,3 +100,19 @@ class fe3(fe3Template):
     """This method is called when this checkbox is checked or unchecked"""
     for number, name in self.combat.duels.items():
         name.terrain = self.terrainbox.checked
+
+  def book2box_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    for number, name in self.combat.duels.items():
+      name.boss.booktwo(self.book2box.checked)
+    self.hp.text = self.combat.duels[0].boss.maxhp
+    self.strength.text = self.combat.duels[0].boss.strength
+    self.skill.text = self.combat.duels[0].boss.skill
+    self.speed.text = self.combat.duels[0].boss.speed
+    self.luck.text = self.combat.duels[0].boss.luck
+    self.defense.text = self.combat.duels[0].boss.defense
+    self.resistance.text = self.combat.duels[0].boss.resistance
+    self.startinghp.text = self.combat.duels[0].boss.maxhp
+    self.weapon_drop.selected_value = None
+
+

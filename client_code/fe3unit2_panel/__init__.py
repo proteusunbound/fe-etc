@@ -37,6 +37,9 @@ class fe3unit2_panel(fe3unit2_panelTemplate):
       self.support.visible = True
       self.support1.text = self.parent.combat.duels[1].unit.supports[0]
       self.support2.text = self.parent.combat.duels[1].unit.supports[1]
+    if self.parent.combat.duels[1].unit.name not in ("Jagen", "Bord", "Cord", "Barst", "Vyland", "Sedgar", "Wolf", "Hardin", "Caesar", "Radd", "Dolph", "Macellan", "Tomas", "Boah", "Lorenz"):
+      self.book2box.visible = True
+      self.book2box.checked = False
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -68,6 +71,7 @@ class fe3unit2_panel(fe3unit2_panelTemplate):
     self.visible = False
     self.customization.visible = False
     self.supportpanel.visible = False
+    self.book2box.visible = False
 
   def support_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -90,3 +94,16 @@ class fe3unit2_panel(fe3unit2_panelTemplate):
     self.parent.combat.duels[1].unitdisplay()
     self.hit.text = self.parent.combat.duels[1].unit.hit
     self.crit.text = self.parent.combat.duels[1].unit.crit
+
+  def book2box_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].unit.booktwo(self.book2box.checked)
+    self.hp.text = self.parent.combat.duels[1].unit.maxhp
+    self.strength.text = self.parent.combat.duels[1].unit.strength
+    self.skill.text = self.parent.combat.duels[1].unit.skill
+    self.speed.text = self.parent.combat.duels[1].unit.speed
+    self.luck.text = self.parent.combat.duels[1].unit.luck
+    self.defense.text = self.parent.combat.duels[1].unit.defense
+    self.resistance.text = self.parent.combat.duels[1].unit.resistance
+    self.startinghp.text = self.parent.combat.duels[1].unit.maxhp
+    self.weapon_drop.selected_value = None

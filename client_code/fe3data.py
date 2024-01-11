@@ -43,6 +43,18 @@ class ActiveUnit:
       if check is True:
         self.supportbonus += supports[self.name][keyword]
 
+    def booktwo(self, check):
+      if check is True:
+        self.char = app_tables.fe3_book_2.get(Name=self.name)
+        self.maxhp = self.char["HP"]
+        self.strength = self.char["Str"]
+        self.skill = self.char["Skl"]
+        self.speed = self.char["Spd"]
+        self.defense = self.char["Def"]
+        self.luck = self.char["Lck"]
+        self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
+
 @anvil.server.portable_class
 class ActiveWeapon:
     """Active Weapon"""
@@ -84,6 +96,18 @@ class ActiveBoss:
         self.counter = False
         self.supportbonus = 0
 
+    def booktwo(self, check):
+      if check is True:
+        self.char = app_tables.fe3_book_2.get(Name=self.name)
+        self.maxhp = self.char["HP"]
+        self.strength = self.char["Str"]
+        self.skill = self.char["Skl"]
+        self.speed = self.char["Spd"]
+        self.defense = self.char["Def"]
+        self.luck = self.char["Lck"]
+        self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
+
 def attack_speed(keyword, weapon):
     """Attack Speed"""
     keyword.AS = max(0, keyword.speed - weapon.weight)
@@ -115,17 +139,6 @@ def effectiveness(weapon, keyword):
         weapon.effco = 3
     else:
         weapon.effco = 1
-
-def booktwo(keyword):
-      keyword.char = app_tables.fe3_book_2.get(Name=keyword.name)
-      keyword.maxhp = keyword.char["HP"]
-      keyword.strength = keyword.char["Str"]
-      keyword.skill = keyword.char["Skl"]
-      keyword.speed = keyword.char["Spd"]
-      keyword.defense = keyword.char["Def"]
-      keyword.luck = keyword.char["Lck"]
-      keyword.resistance = keyword.char["Res"]
-      keyword.charclass = keyword.char["Class"]
 
 @anvil.server.portable_class
 class DuelSim:
