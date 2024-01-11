@@ -31,7 +31,7 @@ class ActiveUnit:
         self.devil = 1
         self.supports = []
         self.supportbonus = 0
-
+      
     def setsupports(self):
       if self.name in supports:
         for name, number in supports[self.name].items():
@@ -115,6 +115,17 @@ def effectiveness(weapon, keyword):
         weapon.effco = 3
     else:
         weapon.effco = 1
+
+def booktwo(keyword):
+      keyword.char = app_tables.fe3_book_2.get(Name=keyword.name)
+      keyword.maxhp = keyword.char["HP"]
+      keyword.strength = keyword.char["Str"]
+      keyword.skill = keyword.char["Skl"]
+      keyword.speed = keyword.char["Spd"]
+      keyword.defense = keyword.char["Def"]
+      keyword.luck = keyword.char["Lck"]
+      keyword.resistance = keyword.char["Res"]
+      keyword.charclass = keyword.char["Class"]
 
 @anvil.server.portable_class
 class DuelSim:
