@@ -97,6 +97,38 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     title: FE2 Weapon Stats
+  fe3_book_2:
+    client: search
+    server: search
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 72}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Res
+      admin_ui: {order: 7, width: 50}
+      type: number
+    - name: Class
+      admin_ui: {width: 200, order: 8}
+      type: string
+    title: FE3 Book 2
   fe1_weapon_stats:
     client: search
     server: search
