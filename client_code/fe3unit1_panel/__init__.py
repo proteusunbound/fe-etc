@@ -49,6 +49,9 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
     self.attackspeed.text = self.parent.combat.duels[0].unit.AS
     self.hit.text = self.parent.combat.duels[0].unit.hit
     self.crit.text = self.parent.combat.duels[0].unit.crit
+    if self.parent.combat.duels[0].unitweapon.name in ("Devil Sword", "Devil Axe"):
+            self.devil_label.visible = True
+            self.devildrop.visible = True
 
   def setinfo(self):
     """Set Info"""
@@ -56,6 +59,7 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
     self.parent.combat.duels[0].setavoidno(int(self.avoid_drop.selected_value))
     self.parent.combat.duels[0].setcritno(int(self.crit_drop.selected_value))
     self.parent.combat.duels[0].setddgno(int(self.dodge_drop.selected_value))
+    self.parent.combat.duels[0].setdevilno(int(self.devildrop.selected_value))
 
   def reset(self):
     """Reset"""
