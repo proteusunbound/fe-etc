@@ -1,5 +1,9 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.0
+- RNG tweaker for FE1 and 2
+- all basic combat calculations for both books of FE3
+- fifth combatant option
 ### version 2.4
 - effective damage multiplier and magical damage in FE3
 - fourth combatant option
