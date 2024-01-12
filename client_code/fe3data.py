@@ -235,7 +235,7 @@ class DuelSim:
 
     def enemy_avoid(self):
       """Enemy Avoid"""
-      if self.terrain is True:
+      if self.terrain is True and self.boss.charclass not in ("Dracoknight", "Wyvern"):
         self.boss.avoid = self.boss.speed + self.boss.luck + 30
       else:
         self.boss.avoid = self.boss.speed + self.boss.luck
