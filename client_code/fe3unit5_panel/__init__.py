@@ -33,11 +33,52 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
     self.weapon_drop.visible = True
     self.support1.checked = False
     self.support2.checked = False
-    if self.parent.combat.duels[4].unit.name in ("Astram", "Abel", "Est", "Ogma", "Catria", "Gordin", "Samson", "Caeda", "Sheena", "Julian", "Sirius", "Cecil", "Palla", "Bantu", "Phina", "Merric", "Marth", "Midia", "Minerva", "Jubelo", "Yuliya", "Ryan", "Linde", "Luke", "Lena", "Roderick"):
+    if self.parent.combat.duels[4].unit.name in (
+      "Astram", 
+      "Abel", 
+      "Est", 
+      "Ogma", 
+      "Catria", 
+      "Gordin", 
+      "Samson", 
+      "Caeda", 
+      "Sheena", 
+      "Julian", 
+      "Sirius", 
+      "Cecil", 
+      "Palla", 
+      "Bantu", 
+      "Phina", 
+      "Merric", 
+      "Marth", 
+      "Midia", 
+      "Minerva", 
+      "Jubelo",
+      "Yuliya", 
+      "Ryan", 
+      "Linde", 
+      "Luke", 
+      "Lena", 
+      "Roderick"):
       self.support.visible = True
       self.support1.text = self.parent.combat.duels[4].unit.supports[0]
       self.support2.text = self.parent.combat.duels[4].unit.supports[1]
-    if self.parent.combat.duels[4].unit.name not in ("Jagen", "Bord", "Cord", "Barst", "Vyland", "Sedgar", "Wolf", "Hardin", "Caesar", "Radd", "Dolph", "Macellan", "Tomas", "Boah", "Lorenz"):
+    if self.parent.combat.duels[4].unit.name not in (
+      "Jagen", 
+      "Bord", 
+      "Cord", 
+      "Barst", 
+      "Vyland", 
+      "Sedgar", 
+      "Wolf", 
+      "Hardin", 
+      "Caesar", 
+      "Radd", 
+      "Dolph", 
+      "Macellan", 
+      "Tomas", 
+      "Boah", 
+      "Lorenz"):
       self.book2box.visible = True
       self.book2box.checked = False
 

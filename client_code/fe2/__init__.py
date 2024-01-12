@@ -18,7 +18,7 @@ class fe2(fe2Template):
             self.unit2_panel,
             self.unit3_panel,
             self.unit4_panel,
-            self.unit5_panel
+            self.unit5_panel,
         ]
 
     def unit_number_change(self, **event_args):
@@ -98,19 +98,19 @@ class fe2(fe2Template):
         open_form("Landing")
 
     def terrainbox_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      for number, name in self.combat.duels.items():
+        """This method is called when this checkbox is checked or unchecked"""
+        for number, name in self.combat.duels.items():
             name.terrain = self.terrainbox.checked
 
     def equip_drop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      for number, name in self.combat.duels.items():
-        name.setbossequip(self.equip_drop.selected_value)
-        name.boss_stat_adjust()
-      self.luck.text = self.combat.duels[0].boss.luck
-      self.defense.text = self.combat.duels[0].boss.defense
+        """This method is called when an item is selected"""
+        for number, name in self.combat.duels.items():
+            name.setbossequip(self.equip_drop.selected_value)
+            name.boss_stat_adjust()
+        self.luck.text = self.combat.duels[0].boss.luck
+        self.defense.text = self.combat.duels[0].boss.defense
 
     def rng_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      for number, name in self.combat.duels.items():
-        name.setrng(self.rng.text)
+        """This method is called when the user presses Enter in this text box"""
+        for number, name in self.combat.duels.items():
+            name.setrng(self.rng.text)
