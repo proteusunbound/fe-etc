@@ -5,6 +5,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe3data
 
+
 @anvil.server.portable_class
 class CombatSim:
     """Combat Sim"""
@@ -44,10 +45,7 @@ class CombatSim:
                     self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
                     break
         for number, name in self.duels.items():
-            if (
-                name.unit.hitpoints > 0
-                and self.bosshp > 0
-            ):
+            if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
                 name.hpthreshold()
                 name.enemyphase()
