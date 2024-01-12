@@ -40,9 +40,9 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         else:
             self.trianglecheck.visible = False
         if self.parent.combat.duels[0].unit.name == "Alm":
-          self.supportbox.visible = True
+            self.supportbox.visible = True
         else:
-          self.supportbox.visible = False
+            self.supportbox.visible = False
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -79,74 +79,70 @@ class fe2unit1_panel(fe2unit1_panelTemplate):
         self.trianglecheck.visible = False
 
     def hpshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boosthp(self.hpshrine.text)
-      self.hp.text = self.parent.combat.duels[0].unit.maxhp
-      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boosthp(self.hpshrine.text)
+        self.hp.text = self.parent.combat.duels[0].unit.maxhp
+        self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
 
     def strshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boost_strength(self.strshrine.text)
-      self.strength.text = self.parent.combat.duels[0].unit.strength
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boost_strength(self.strshrine.text)
+        self.strength.text = self.parent.combat.duels[0].unit.strength
 
     def sklshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boost_skill(self.sklshrine.text)
-      self.skill.text = self.parent.combat.duels[0].unit.skill
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boost_skill(self.sklshrine.text)
+        self.skill.text = self.parent.combat.duels[0].unit.skill
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def spdshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boost_speed(self.spdshrine.text)
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.parent.combat.duels[0].unitdisplay()
-      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boost_speed(self.spdshrine.text)
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.parent.combat.duels[0].unitdisplay()
+        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def lckshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boostluck(self.lckshrine.text)
-      self.luck.text = self.parent.combat.duels[0].unit.luck
-      self.parent.combat.duels[0].unitdisplay()
-      self.crit.text = self.parent.combat.duels[0].unit.crit
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boostluck(self.lckshrine.text)
+        self.luck.text = self.parent.combat.duels[0].unit.luck
+        self.parent.combat.duels[0].unitdisplay()
+        self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def defshrine_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      self.parent.combat.duels[0].unit.boostdefense(self.defshrine.text)
-      self.defense.text = self.parent.combat.duels[0].unit.defense
+        """This method is called when the user presses Enter in this text box"""
+        self.parent.combat.duels[0].unit.boostdefense(self.defshrine.text)
+        self.defense.text = self.parent.combat.duels[0].unit.defense
 
     def promodrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.promote(self.promodrop.selected_value)
-      self.hp.text = self.parent.combat.duels[0].unit.maxhp
-      self.strength.text = self.parent.combat.duels[0].unit.strength
-      self.skill.text = self.parent.combat.duels[0].unit.skill
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.defense.text = self.parent.combat.duels[0].unit.defense
-      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
-      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.promote(self.promodrop.selected_value)
+        self.hp.text = self.parent.combat.duels[0].unit.maxhp
+        self.strength.text = self.parent.combat.duels[0].unit.strength
+        self.skill.text = self.parent.combat.duels[0].unit.skill
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.defense.text = self.parent.combat.duels[0].unit.defense
+        self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
+        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def equip_drop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].setunitequip(self.equip_drop.selected_value)
-      self.parent.combat.duels[0].unitstatadjust()
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.luck.text = self.parent.combat.duels[0].unit.luck
-      self.defense.text = self.parent.combat.duels[0].unit.defense
-      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].setunitequip(self.equip_drop.selected_value)
+        self.parent.combat.duels[0].unitstatadjust()
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.luck.text = self.parent.combat.duels[0].unit.luck
+        self.defense.text = self.parent.combat.duels[0].unit.defense
+        self.resistance.text = self.parent.combat.duels[0].unit.resistance
 
     def supportbox_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].unit.support = self.supportbox.checked
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].unit.support = self.supportbox.checked
 
     def trianglecheck_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
-
-
-
-
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked

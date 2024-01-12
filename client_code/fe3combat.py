@@ -5,6 +5,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe3data
 
+
 @anvil.server.portable_class
 class CombatSim:
     """Combat Sim"""
@@ -32,6 +33,7 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.hpthreshold()
                 name.playerphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
@@ -43,11 +45,9 @@ class CombatSim:
                     self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
                     break
         for number, name in self.duels.items():
-            if (
-                name.unit.hitpoints > 0
-                and self.bosshp > 0
-            ):
+            if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.hpthreshold()
                 name.enemyphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
@@ -67,6 +67,7 @@ class CombatSim:
                 * (name.unitavoid**name.iniavo)
                 * (name.unitcrit**name.inicrit)
                 * (name.unitdodge**name.iniddg)
+                * (name.unit.devil**name.inidev)
             )
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."

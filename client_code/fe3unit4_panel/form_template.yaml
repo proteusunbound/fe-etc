@@ -20,7 +20,7 @@ components:
       include_placeholder: true
       placeholder: Select Unit
     type: DropDown
-    layout_properties: {x: 0, y: 0, width: 345}
+    layout_properties: {x: 0, y: 0, width: 260}
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
@@ -55,6 +55,11 @@ components:
     type: TextBox
     layout_properties: {x: 435, y: 0, width: 40}
     event_bindings: {}
+  - name: book2box
+    properties: {text: Book 2, visible: false}
+    type: CheckBox
+    layout_properties: {x: 270, y: 0, width: 70}
+    event_bindings: {change: book2box_change}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
     col_spacing: small}
@@ -175,6 +180,16 @@ components:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
       layout_properties: {grid_position: 'DAMDVU,SCOKIA EVHZJN,HJWYGR'}
+    - name: devil_label
+      properties: {visible: false, text: Devil, align: center}
+      type: Label
+      layout_properties: {grid_position: 'DAMDVU,SHTPGG YSPUOJ,IDICLC'}
+    - name: devildrop
+      properties:
+        visible: false
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'DAMDVU,SHTPGG KJXIBW,LDRENX'}
   - name: column_panel_1
     properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
