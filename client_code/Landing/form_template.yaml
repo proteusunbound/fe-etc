@@ -8,8 +8,13 @@ components:
   - name: fe1button
     properties: {text: FE1}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,KNDETV'}
+    layout_properties: {grid_position: 'BCPBTS,KNDETV PMKVAA,FDMVPH'}
     event_bindings: {click: fe1button_click}
+  - name: fe4button
+    properties: {text: FE4}
+    type: Button
+    layout_properties: {grid_position: 'BCPBTS,KNDETV DJESSQ,HTVIEF'}
+    event_bindings: {click: fe4button_click}
   - name: fe2button
     properties: {text: FE2}
     type: Button

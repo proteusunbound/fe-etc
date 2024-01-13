@@ -155,7 +155,7 @@ class DuelSim:
             self.unit.doubles = True
             self.boss.doubles = False
             self.dueltext += f"{self.unit.name} can make follow-up attacks. \n"
-        if self.boss.AS > self.unit.AS and self.boss.followup is True:
+        elif self.boss.AS > self.unit.AS and self.boss.followup is True:
             self.boss.doubles = True
             self.unit.doubles = False
             self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
@@ -191,11 +191,7 @@ class DuelSim:
                 self.bossmiss()
             else:
                 self.bossattack()
-        if (
-            self.unit.doubles is True
-            and self.unit.hitpoints > 0
-            and self.boss.hitpoints > 0
-        ):
+        if self.unit.doubles is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             self.unitattack()
         if (
             self.boss.doubles is True
