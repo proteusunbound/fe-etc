@@ -193,11 +193,6 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: string
     title: FE3 Unit Stats
-  table_15:
-    client: none
-    server: full
-    columns: []
-    title: Table 15
   fe1_unit_stats:
     client: search
     server: search
@@ -640,3 +635,11 @@ db_schema:
       admin_ui: {width: 200, order: 34}
       type: bool
     title: FE2 Effectiveness
+  fe4_boss_stats:
+    client: none
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: FE4 Boss Stats
