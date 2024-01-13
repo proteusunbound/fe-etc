@@ -442,7 +442,7 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -465,6 +465,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.avoidno > 0:
                 self.bossmiss()
@@ -477,7 +478,7 @@ class DuelSim:
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -496,6 +497,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.avoidno > 0:
                 self.bossmiss()
