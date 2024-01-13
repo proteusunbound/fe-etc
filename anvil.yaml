@@ -635,3 +635,38 @@ db_schema:
       admin_ui: {width: 200, order: 34}
       type: bool
     title: FE2 Effectiveness
+  fe4_boss_stats:
+    client: search
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 123}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Mag
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 8}
+      type: number
+    - name: Follow-Up
+      admin_ui: {width: 200, order: 9}
+      type: bool
+    title: FE4 Boss Stats
