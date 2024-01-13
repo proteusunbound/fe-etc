@@ -195,7 +195,7 @@ db_schema:
     title: FE3 Unit Stats
   fe4_unit_stats:
     client: search
-    server: full
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 66}
@@ -203,6 +203,30 @@ db_schema:
     - name: HP
       admin_ui: {width: 200, order: 1}
       type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Mag
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 8}
+      type: number
+    - name: Follow-Up
+      admin_ui: {width: 200, order: 9}
+      type: bool
     title: FE4 Unit Stats
   fe1_unit_stats:
     client: search
