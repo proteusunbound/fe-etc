@@ -33,6 +33,8 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         self.weapon_drop.visible = True
         self.support1.checked = False
         self.support2.checked = False
+        self.dismountbox.checked = False
+        self.promobox.checked = False
         if self.parent.combat.duels[0].unit.name in (
             "Astram",
             "Abel",
@@ -83,6 +85,10 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         ):
             self.book2box.visible = True
             self.book2box.checked = False
+        if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Paladin", "Horseman", "Pegasus Knight", "Dracoknight"):
+          self.dismountbox.visible = True
+        if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Armor Knight", "Archer", "Hunter", "Mercenary", "Mage", "Cleric", "Pegasus Knight"):
+          self.promobox.visible = True
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -154,3 +160,31 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         self.resistance.text = self.parent.combat.duels[0].unit.resistance
         self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
         self.weapon_drop.selected_value = None
+
+    def dismountbox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.dismount()
+      self.strength.text = self.parent.combat.duels[0].unit.strength
+      self.skill.text = self.parent.combat.duels[0].unit.skill
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+      self.parent.combat.duels[0].unitdisplay()
+      self.hit.text = self.parent.combat.duels[0].unit.hit
+      self.crit.text = self.parent.combat.duels[0].unit.crit
+      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+
+    def promobox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.promote()
+      self.hp.text = self.parent.combat.duels[0].unit.maxhp
+      self.strength.text = self.parent.combat.duels[0].unit.strength
+      self.skill.text = self.parent.combat.duels[0].unit.skill
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+      self.parent.combat.duels[0].unitdisplay()
+      self.hit.text = self.parent.combat.duels[0].unit.hit
+      self.crit.text = self.parent.combat.duels[0].unit.crit
+      self.attackspeed.text = self.parent.combat.duels[0].unit.AS

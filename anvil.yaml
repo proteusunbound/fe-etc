@@ -472,6 +472,9 @@ db_schema:
     - name: Mage Dragon
       admin_ui: {width: 200, order: 32}
       type: bool
+    - name: Knight
+      admin_ui: {width: 200, order: 33}
+      type: bool
     title: FE3 Effectiveness
   fe3_boss_stats:
     client: search
@@ -534,6 +537,35 @@ db_schema:
       admin_ui: {order: 7, width: 67}
       type: string
     title: FE3 Weapon Stats
+  fe3_class_change:
+    client: search
+    server: search
+    columns:
+    - name: FromClass
+      admin_ui: {order: 0, width: 104}
+      type: string
+    - name: ToClass
+      admin_ui: {order: 1, width: 84}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 7}
+      type: number
+    title: FE3 Class Change
   fe1_boss_stats:
     client: search
     server: search
