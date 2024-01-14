@@ -33,54 +33,62 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
     self.weapon_drop.visible = True
     self.support1.checked = False
     self.support2.checked = False
+    self.dismountbox.checked = False
+    self.promobox.checked = False
     if self.parent.combat.duels[4].unit.name in (
-      "Astram", 
-      "Abel", 
-      "Est", 
-      "Ogma", 
-      "Catria", 
-      "Gordin", 
-      "Samson", 
-      "Caeda", 
-      "Sheena", 
-      "Julian", 
-      "Sirius", 
-      "Cecil", 
-      "Palla", 
-      "Bantu", 
-      "Phina", 
-      "Merric", 
-      "Marth", 
-      "Midia", 
-      "Minerva", 
-      "Jubelo",
-      "Yuliya", 
-      "Ryan", 
-      "Linde", 
-      "Luke", 
-      "Lena", 
-      "Roderick"):
+        "Astram",
+        "Abel",
+        "Est",
+        "Ogma",
+        "Catria",
+        "Gordin",
+        "Samson",
+        "Caeda",
+        "Sheena",
+        "Julian",
+        "Sirius",
+        "Cecil",
+        "Palla",
+        "Bantu",
+        "Phina",
+        "Merric",
+        "Marth",
+        "Midia",
+        "Minerva",
+        "Jubelo",
+        "Yuliya",
+        "Ryan",
+        "Linde",
+        "Luke",
+        "Lena",
+        "Roderick",
+    ):
       self.support.visible = True
       self.support1.text = self.parent.combat.duels[4].unit.supports[0]
       self.support2.text = self.parent.combat.duels[4].unit.supports[1]
     if self.parent.combat.duels[4].unit.name not in (
-      "Jagen", 
-      "Bord", 
-      "Cord", 
-      "Barst", 
-      "Vyland", 
-      "Sedgar", 
-      "Wolf", 
-      "Hardin", 
-      "Caesar", 
-      "Radd", 
-      "Dolph", 
-      "Macellan", 
-      "Tomas", 
-      "Boah", 
-      "Lorenz"):
+        "Jagen",
+        "Bord",
+        "Cord",
+        "Barst",
+        "Vyland",
+        "Sedgar",
+        "Wolf",
+        "Hardin",
+        "Caesar",
+        "Radd",
+        "Dolph",
+        "Macellan",
+        "Tomas",
+        "Boah",
+        "Lorenz",
+    ):
       self.book2box.visible = True
       self.book2box.checked = False
+    if self.parent.combat.duels[4].unit.charclass in ("Cavalier", "Paladin", "Horseman", "Pegasus Knight", "Dracoknight"):
+      self.dismountbox.visible = True
+    if self.parent.combat.duels[4].unit.charclass in ("Cavalier", "Armor Knight", "Archer", "Hunter", "Mercenary", "Mage", "Cleric", "Pegasus Knight"):
+      self.promobox.visible = True
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -124,14 +132,18 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
 
   def support1_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
-    self.parent.combat.duels[4].unit.setsupportbonus(self.support1.text, self.support1.checked)
+    self.parent.combat.duels[4].unit.setsupportbonus(
+        self.support1.text, self.support1.checked
+    )
     self.parent.combat.duels[4].unitdisplay()
     self.hit.text = self.parent.combat.duels[4].unit.hit
     self.crit.text = self.parent.combat.duels[4].unit.crit
 
   def support2_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
-    self.parent.combat.duels[4].unit.setsupportbonus(self.support2.text, self.support2.checked)
+    self.parent.combat.duels[4].unit.setsupportbonus(
+        self.support2.text, self.support2.checked
+    )
     self.parent.combat.duels[4].unitdisplay()
     self.hit.text = self.parent.combat.duels[4].unit.hit
     self.crit.text = self.parent.combat.duels[4].unit.crit
@@ -148,3 +160,31 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
     self.resistance.text = self.parent.combat.duels[4].unit.resistance
     self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
     self.weapon_drop.selected_value = None
+
+  def dismountbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].unit.dismount()
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance
+    self.parent.combat.duels[4].unitdisplay()
+    self.hit.text = self.parent.combat.duels[4].unit.hit
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+    self.attackspeed.text = self.parent.combat.duels[4].unit.AS
+
+  def promobox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].unit.promote()
+    self.hp.text = self.parent.combat.duels[4].unit.maxhp
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance
+    self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
+    self.parent.combat.duels[4].unitdisplay()
+    self.hit.text = self.parent.combat.duels[4].unit.hit
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+    self.attackspeed.text = self.parent.combat.duels[4].unit.AS

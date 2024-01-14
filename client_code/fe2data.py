@@ -457,6 +457,16 @@ class DuelSim:
                 self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
                 self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
+    def enemyheal(self):
+      """Enemy Phase Heal"""
+      if self.boss.maxhp > self.boss.hitpoints:
+        if self.bossequip in ("Blessed Ring", "Angel Ring", "Mage Ring"):
+          self.boss.hitpoints = min(self.boss.hitpoints + 5, self.boss.maxhp)
+          self.dueltext += f"{self.boss.name} heals to {self.boss.hitpoints} HP at the start of the round. \n"
+        if self.terrain is True:
+          self.boss.hitpoints = min(self.boss.hitpoints + 5, self.boss.maxhp)
+          self.dueltext += f"{self.boss.name} heals to {self.boss.hitpoints} HP at the start of the round. \n"
+      
     def unit_crit(self):
         """Unit Crit"""
         self.hitno += 1
@@ -580,49 +590,48 @@ class DuelSim:
 
     def enemyphase(self):
         """Enemy Phase"""
-        self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
-            if self.avoidno > 0:
-                self.bossmiss()
-            elif self.boss.crit > 0:
-                self.bosscrit()
-            else:
-                self.bossattack()
-        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if self.unit.crit == 100:
-                self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-        if (
-            self.boss.doubles is True
-            and self.unit.hitpoints > 0
-            and self.boss.hitpoints > 0
-        ):
-            if self.avoidno > 0:
-                self.bossmiss()
-            elif self.boss.crit > 0:
-                self.bosscrit()
-            else:
-                self.bossattack()
-        if (
-            self.unit.doubles is True
-            and self.unit.hitpoints > 0
-            and self.boss.hitpoints > 0
-        ):
-            if self.unit.crit == 100:
-                self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-        self.dueltext += "\n"
+        if self.boss.counter is True:
+            self.dueltext += "#### Enemy Phase:\n"
+            if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+                if self.avoidno > 0:
+                    self.bossmiss()
+                elif self.boss.crit > 0:
+                    self.bosscrit()
+                else:
+                    self.bossattack()
+            if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+                if self.unit.crit == 100:
+                    self.unit_crit()
+                elif self.unit.crit > 0 and self.critno > 0:
+                    self.critno -= 1
+                    self.unit_crit()
+                else:
+                    self.unitattack()
+            if (
+                self.boss.doubles is True
+                and self.unit.hitpoints > 0
+                and self.boss.hitpoints > 0
+            ):
+                if self.avoidno > 0:
+                    self.bossmiss()
+                elif self.boss.crit > 0:
+                    self.bosscrit()
+                else:
+                    self.bossattack()
+            if (
+                self.unit.doubles is True
+                and self.unit.hitpoints > 0
+                and self.boss.hitpoints > 0
+            ):
+                if self.unit.crit == 100:
+                    self.unit_crit()
+                elif self.unit.crit > 0 and self.critno > 0:
+                    self.critno -= 1
+                    self.unit_crit()
+                else:
+                    self.unitattack()
+            self.dueltext += "\n"
 
     def reset_text(self):
         """Reset"""
         self.dueltext = ""
-        self.unitequip = ""
-        self.bossequip = ""

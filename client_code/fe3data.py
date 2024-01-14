@@ -59,6 +59,37 @@ class ActiveUnit:
             self.resistance = self.char["Res"]
             self.charclass = self.char["Class"]
 
+    def dismount(self):
+      """Dismount"""
+      if self.charclass == "Horseman":
+        penalty = app_tables.fe3_class_change.get(FromClass=self.charclass)
+      else:
+        penalty = app_tables.fe3_class_change.get(FromClass=self.charclass, ToClass="Knight")
+      self.charclass = penalty["ToClass"]
+      self.strength += penalty["Str"]
+      self.skill += penalty["Skl"]
+      self.speed += penalty["Spd"]
+      self.defense += penalty["Def"]
+      self.resistance += penalty["Res"]
+
+    def promote(self):
+      "Promotion"
+      if self.name == "Jubelo":
+        bonus = app_tables.fe3_class_change.get(FromClass="Mage (M)")
+      elif self.name == "Merric":
+        bonus = app_tables.fe3_class_change.get(FromClass="Mage (Merric)")
+      elif self.name == "Linde":
+        bonus = app_tables.fe3_class_change.get(FromClass="Mage (F)")
+      else:
+        bonus = app_tables.fe3_class_change.get(FromClass=self.charclass, ToClass=q.none_of("Knight"))
+      self.charclass = bonus['ToClass']
+      self.maxhp = max(self.char["HP"], bonus["HP"])
+      self.strength += bonus["Str"]
+      self.skill += bonus["Skl"]
+      self.speed += bonus["Spd"]
+      self.defense += bonus["Def"]
+      self.resistance += bonus["Res"]
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -442,7 +473,7 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -465,6 +496,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.avoidno > 0:
                 self.bossmiss()
@@ -477,7 +509,7 @@ class DuelSim:
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -496,6 +528,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.avoidno > 0:
                 self.bossmiss()

@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: titlelabel
-  properties: {role: headline, text: 'Fire Emblem: Mystery of the Emblem'}
+  properties: {role: headline, text: 'Fire Emblem: Genealogy of the Holy War'}
   type: Label
   layout_properties: {grid_position: 'GVOJNR,MRGUWM'}
 - name: column_panel_2
@@ -13,7 +13,7 @@ components:
     properties:
       include_placeholder: true
       placeholder: Select Unit Number
-      items: ['1', '2', '3', '4', '5']
+      items: ['1']
       spacing_below: none
       spacing_above: small
     type: DropDown
@@ -21,20 +21,8 @@ components:
     event_bindings: {change: unit_number_change}
 - name: unit1_panel
   properties: {}
-  type: form:fe3unit1_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU PAJTDM,FOZFVZ'}
-- name: unit2_panel
-  properties: {}
-  type: form:fe3unit2_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU YRBATC,MQWLQO'}
-- name: unit3_panel
-  properties: {}
-  type: form:fe3unit3_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU ULVVES,EVTWHZ'}
-- name: unit4_panel
-  properties: {}
-  type: form:fe3unit4_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU WFEANY,ZYGNUM'}
+  type: form:fe4unit1_panel
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU ROHLIT,GZLHGT'}
 - name: boss_panel
   properties: {spacing_above: small, visible: false}
   type: ColumnPanel
@@ -45,32 +33,28 @@ components:
       spacing_above: small
       include_placeholder: true
       placeholder: Select Boss
-      items: [Gazzak, Gomer, Hyman, Merach, Emereus, Harmein, Kannival, Zharov, Khozen,
-        Volzhin, Jiol, Bishop (Chapter 12), Hollstadt, Morzas, Tiki, Camus, Michalis,
-        Gharnef, Xemcel, Medeus, Lorenz, Lumel, Lykke, Gail, Torus, Lang, Dall, Jeorge,
-        Yodel, Arlen, Wyvern (Chapter 11), Fire Dragon (Chapter 12), Ice Dragon (Chapter 13),
-        Thief (Chapter 14), Eibel, Willow, Sheena, General (Chapter 18), Nehring,
-        Hardin, Dark Bishop (Chapter 21), Mage Dragon (Endgame 1)]
+      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement,
+        Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar,
+        Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danaan, Kutuzov, Ishtore,
+        Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah,
+        Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege),
+        Manfroy, Julius]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
     event_bindings: {change: boss_drop_change}
-  - name: book2box
-    properties: {text: Book 2, visible: false}
-    type: CheckBox
-    layout_properties: {grid_position: 'TKBHLU,NWUIUF'}
-    event_bindings: {change: book2box_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword,
-        Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion,
-        Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance,
-        Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow,
-        Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe,
-        Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist,
-        Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath,
-        Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur,
-        Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
+      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
+        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
+        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
+        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
+        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
+        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
+        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
+        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
+        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
+        Fenrir, Hel, Loptous]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -95,6 +79,10 @@ components:
         properties: {text: STR, align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,MXZZRH ZJNRER,XQSYJA'}
+      - name: maglabel
+        properties: {text: MAG, align: center}
+        type: Label
+        layout_properties: {grid_position: 'MTABZQ,MXZZRH KLRGNG,XGCBWE'}
       - name: skl_label
         properties: {text: SKL, align: center}
         type: Label
@@ -123,6 +111,10 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA UUUYEU,QWAMZD'}
+      - name: magic
+        properties: {text: '-', align: center}
+        type: Label
+        layout_properties: {grid_position: 'MTABZQ,LUVJVA CDUTJA,AVSJGV'}
       - name: skill
         properties: {text: '-', align: center}
         type: Label
@@ -144,7 +136,7 @@ components:
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA DNHOLR,YQFUYL'}
     - name: xy_panel_1
-      properties: {height: 112.94921875}
+      properties: {height: '120', spacing_above: medium, spacing_below: medium}
       type: XYPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RECSOD,TYKGAS'}
       components:
@@ -157,13 +149,8 @@ components:
         type: TextBox
         layout_properties: {x: 75, y: 50, width: 50}
         event_bindings: {}
-      - name: terrainbox
-        properties: {text: Terrain}
-        type: CheckBox
-        layout_properties: {x: 150, y: 50, width: 70}
-        event_bindings: {change: terrainbox_change}
     - name: column_panel_5
-      properties: {}
+      properties: {spacing_above: medium, spacing_below: medium}
       type: ColumnPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RZIILJ,DHMFUK'}
       components:
@@ -183,14 +170,6 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'JQRWMP,THJVMG OFPRXI,XUIRTP'}
-      - name: critlabel
-        properties: {text: CRIT, align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,PKIBGN ZBVMCA,HYKQXY'}
-      - name: crit
-        properties: {text: '-', align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,PKIBGN FAZVKE,NYMGLK'}
       - name: column_panel_1
         properties: {spacing_above: medium, spacing_below: none}
         type: ColumnPanel
