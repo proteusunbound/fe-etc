@@ -78,10 +78,10 @@ class ActiveUnit:
         bonus = app_tables.fe3_class_change.get(FromClass="Mage (M)")
       elif self.name == "Merric":
         bonus = app_tables.fe3_class_change.get(FromClass="Mage (Merric)")
-      elif self.charname == "Linde":
+      elif self.name == "Linde":
         bonus = app_tables.fe3_class_change.get(FromClass="Mage (F)")
       else:
-        bonus = app_tables.fe3_class_change.search(FromClass=self.charclass, ToClass=q.none_of("Knight"))
+        bonus = app_tables.fe3_class_change.get(FromClass=self.charclass, ToClass=q.none_of("Knight"))
       self.charclass = bonus['ToClass']
       self.maxhp = max(self.char["HP"], bonus["HP"])
       self.strength += bonus["Str"]
