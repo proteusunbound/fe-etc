@@ -590,47 +590,46 @@ class DuelSim:
 
     def enemyphase(self):
         """Enemy Phase"""
-        if self.boss.counter is True:
-            self.dueltext += "#### Enemy Phase:\n"
-            if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
-                if self.avoidno > 0:
-                    self.bossmiss()
-                elif self.boss.crit > 0:
-                    self.bosscrit()
-                else:
-                    self.bossattack()
-            if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-                if self.unit.crit == 100:
-                    self.unit_crit()
-                elif self.unit.crit > 0 and self.critno > 0:
-                    self.critno -= 1
-                    self.unit_crit()
-                else:
-                    self.unitattack()
-            if (
-                self.boss.doubles is True
-                and self.unit.hitpoints > 0
-                and self.boss.hitpoints > 0
-            ):
-                if self.avoidno > 0:
-                    self.bossmiss()
-                elif self.boss.crit > 0:
-                    self.bosscrit()
-                else:
-                    self.bossattack()
-            if (
-                self.unit.doubles is True
-                and self.unit.hitpoints > 0
-                and self.boss.hitpoints > 0
-            ):
-                if self.unit.crit == 100:
-                    self.unit_crit()
-                elif self.unit.crit > 0 and self.critno > 0:
-                    self.critno -= 1
-                    self.unit_crit()
-                else:
-                    self.unitattack()
-            self.dueltext += "\n"
+        self.dueltext += "#### Enemy Phase:\n"
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+            if self.avoidno > 0:
+                self.bossmiss()
+            elif self.boss.crit > 0:
+                self.bosscrit()
+            else:
+                self.bossattack()
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            if self.unit.crit == 100:
+                self.unit_crit()
+            elif self.unit.crit > 0 and self.critno > 0:
+                self.critno -= 1
+                self.unit_crit()
+            else:
+                self.unitattack()
+        if (
+            self.boss.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            if self.avoidno > 0:
+                self.bossmiss()
+            elif self.boss.crit > 0:
+                self.bosscrit()
+            else:
+                self.bossattack()
+        if (
+            self.unit.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            if self.unit.crit == 100:
+                self.unit_crit()
+            elif self.unit.crit > 0 and self.critno > 0:
+                self.critno -= 1
+                self.unit_crit()
+            else:
+                self.unitattack()
+        self.dueltext += "\n"
 
     def reset_text(self):
         """Reset"""
