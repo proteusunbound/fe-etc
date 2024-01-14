@@ -704,7 +704,7 @@ db_schema:
     title: FE2 Effectiveness
   fe4_boss_stats:
     client: search
-    server: full
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 123}
