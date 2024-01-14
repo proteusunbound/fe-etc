@@ -43,7 +43,7 @@ class CombatSim:
             if (
                 name.unit.hitpoints > 0
                 and self.bosshp > 0
-                and self.boss.counter is True
+                and name.boss.counter is True
             ):
                 name.setbosshp(self.bosshp)
                 name.enemyheal()
