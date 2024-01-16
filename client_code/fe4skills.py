@@ -17,5 +17,7 @@ skill_list = {
   "Brian": ["Follow-Up", "Accost"],
   "Hilda (Friege)": ["Follow-Up"],
   "Manfroy": ["Follow-Up"],
-  "Julius": ["Accost"]
+  "Julius": ["Accost"],
+  "Sigurd": ["Follow-Up"],
+  "Alec": ["Follow-Up"]
 }
