@@ -742,6 +742,9 @@ db_schema:
     - name: Critical
       admin_ui: {width: 200, order: 10}
       type: bool
+    - name: Leadership
+      admin_ui: {width: 200, order: 11}
+      type: number
     title: FE4 Boss Stats
   fe4_weapon_stats:
     client: search
@@ -759,4 +762,7 @@ db_schema:
     - name: Hit
       admin_ui: {width: 200, order: 3}
       type: number
+    - name: Type
+      admin_ui: {width: 200, order: 4}
+      type: string
     title: FE4 Weapon Stats

@@ -27,6 +27,13 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
+        self.leader = 0
+
+    def setleadership(self, keyword):
+      if keyword == "Sigurd":
+        self.leader = 10
+      if keyword == "Seliph":
+        self.leader = 20
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -38,6 +45,7 @@ class ActiveWeapon:
         self.might = weapon["Mgt"]
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
+        self.type = weapon["Type"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -56,6 +64,7 @@ class ActiveBoss:
         self.resistance = boss["Res"]
         self.followup = boss["Follow-Up"]
         self.critical = boss["Critical"]
+        self.leader = boss["Leadership"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -70,7 +79,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill * 2 + weapon.hit
+    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader
 
 def get_attack(keyword, weapon):
     """Attack"""
@@ -159,13 +168,13 @@ class DuelSim:
     def enemy_avoid(self):
       """Enemy Avoid"""
       if self.terrain is True:
-        self.boss.avoid = (self.boss.AS * 2) + self.boss.luck + 30
+        self.boss.avoid = (self.boss.AS * 2) + self.boss.luck + self.boss.leader + 30
       else:
-        self.boss.avoid = (self.boss.AS) * 2 + self.boss.luck
+        self.boss.avoid = (self.boss.AS) * 2 + self.boss.luck + self.boss.leader
 
     def bosshitchance(self):
       """Boss Hit Chance"""
-      hitchance = min(((self.boss.hit - ((self.unit.AS) * 2 + self.unit.luck)) / 100), 1)
+      hitchance = min(((self.boss.hit - (self.unit.AS * 2 + self.unit.luck + self.unit.leader)) / 100), 1)
       self.boss.hitchance = max(0, hitchance)
 
     def precombat(self):

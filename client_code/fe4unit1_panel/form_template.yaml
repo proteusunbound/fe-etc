@@ -145,6 +145,14 @@ components:
       layout_properties: {x: 125, y: 0, width: 100}
       event_bindings: {click: hide_click}
       data_bindings: []
+    - name: leaderdrop
+      properties:
+        include_placeholder: true
+        placeholder: Leadership
+        items: [Sigurd, Seliph]
+      type: DropDown
+      layout_properties: {x: 0, y: 0, width: 120}
+      event_bindings: {change: leaderdrop_change}
   - name: column_panel_3
     properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
     type: ColumnPanel

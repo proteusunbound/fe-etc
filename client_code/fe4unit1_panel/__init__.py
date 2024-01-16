@@ -57,3 +57,10 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
     self.weapon_drop.selected_value = None
     self.visible = False
     self.customization.visible = False
+
+  def leaderdrop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[0].unit.setleadership(self.leaderdrop.selected_value)
+    self.parent.combat.duels[0].unitdisplay()
+    self.hit.text = self.parent.combat.duels[0].unit.hit
+    
