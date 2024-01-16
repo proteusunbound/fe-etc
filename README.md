@@ -1,5 +1,8 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.1
+- promotion and dismount for FE3
+- basic FE4 framework and customization
 ### version 3.0
 - RNG tweaker for FE1 and 2
 - all basic combat calculations for both books of FE3
