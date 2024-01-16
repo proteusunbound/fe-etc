@@ -89,6 +89,7 @@ class DuelSim:
         self.iniavo = 0
         self.unithit = 0
         self.unitavoid = 0
+        self.terrain 
 
     def setunit(self, unit):
         """Set Unit"""
