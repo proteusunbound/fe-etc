@@ -46,6 +46,7 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.type = weapon["Type"]
+        self.weapontriangle = 0
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -79,7 +80,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader
+    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle
 
 def get_attack(keyword, weapon):
     """Attack"""
@@ -147,6 +148,17 @@ class DuelSim:
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def weapontriangle(self):
+      if (self.unitweapon.type == "Sword" and self.bossweapon.type == "Axe") or (self.unitweapon.type == "Lance" and self.bossweapon.type == "Sword") or (self.unitweapon.type == "Axe" and self.bossweapon.type == "Lance") or (self.unitweapon.type == "Fire" and self.bossweapon.type == "Wind") or (self.unitweapon.type == "Thunder" and self.bossweapon.type == "Fire") or (self.unitweapon.type == "Wind" and self.bossweapon.type == "Thunder") or (self.unitweapon.type in ("Light", "Dark") or self.bossweapon.type in ("Fire", "Wind", "Thunder")):
+        self.unitweapon.weapontriangle = 20
+        self.bossweapon.weapontriangle = -20
+      elif (self.bossweapon.type == "Sword" and self.unitweapon.type == "Axe") or (self.bossweapon.type == "Lance" and self.unitweapon.type == "Sword") or (self.bossweapon.type == "Axe" and self.unitweapon.type == "Lance") or (self.bossweapon.type == "Fire" and self.unitweapon.type == "Wind") or (self.bossweapon.type == "Thunder" and self.unitweapon.type == "Fire") or (self.bossweapon.type == "Wind" and self.unitweapon.type == "Thunder") or (self.bossweapon.type in ("Light", "Dark") or self.unitweapon.type in ("Fire", "Wind", "Thunder")):
+        self.bossweapon.weapontriangle = 20
+        self.unitweapon.weapontriangle = -20
+      else:
+        self.unitweapon.weapontriangle = 0
+        self.bossweapon.weapontriangle = 0
+
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
@@ -179,6 +191,9 @@ class DuelSim:
 
     def precombat(self):
       """Pre-Combat Calculation"""
+      self.weapontriangle()
+      hitrate(self.unit, self.unitweapon)
+      hitrate(self.boss, self.bossweapon)
       get_attack(self.unit, self.unitweapon)
       physdamage(self.unit, self.boss)
       self.enemy_avoid()
