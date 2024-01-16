@@ -456,16 +456,6 @@ class DuelSim:
             ):
                 self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
                 self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
-
-    def enemyheal(self):
-      """Enemy Phase Heal"""
-      if self.boss.maxhp > self.boss.hitpoints:
-        if self.bossequip in ("Blessed Ring", "Angel Ring", "Mage Ring"):
-          self.boss.hitpoints = min(self.boss.hitpoints + 5, self.boss.maxhp)
-          self.dueltext += f"{self.boss.name} heals to {self.boss.hitpoints} HP at the start of the round. \n"
-        if self.terrain is True:
-          self.boss.hitpoints = min(self.boss.hitpoints + 5, self.boss.maxhp)
-          self.dueltext += f"{self.boss.name} heals to {self.boss.hitpoints} HP at the start of the round. \n"
       
     def unit_crit(self):
         """Unit Crit"""

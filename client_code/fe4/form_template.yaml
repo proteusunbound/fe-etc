@@ -149,6 +149,11 @@ components:
         type: TextBox
         layout_properties: {x: 75, y: 50, width: 50}
         event_bindings: {}
+      - name: terrainbox
+        properties: {text: Terrain}
+        type: CheckBox
+        layout_properties: {x: 140, y: 50, width: 80}
+        event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {spacing_above: medium, spacing_below: medium}
       type: ColumnPanel
