@@ -42,11 +42,14 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
     self.parent.combat.duels[0].unitdisplay()
     self.attackspeed.text = self.parent.combat.duels[0].unit.AS
     self.hit.text = self.parent.combat.duels[0].unit.hit
+    self.crit.text = self.parent.combat.duels[0].unit.crit
 
   def setinfo(self):
     """Set Info"""
     self.parent.combat.duels[0].setunithp(self.startinghp.text)
     self.parent.combat.duels[0].setavoidno(int(self.avoid_drop.selected_value))
+    self.parent.combat.duels[0].setcritno(int(self.crit_drop.selected_value))
+    self.parent.combat.duels[0].setddgno(int(self.dodge_drop.selected_value))
 
   def reset(self):
     """Reset"""

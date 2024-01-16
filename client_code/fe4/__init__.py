@@ -49,6 +49,7 @@ class fe4(fe4Template):
       name.bossdisplay()
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
+    self.crit.text = self.combat.duels[0].boss.crit
 
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
