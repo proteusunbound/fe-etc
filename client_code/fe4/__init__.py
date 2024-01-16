@@ -86,3 +86,8 @@ class fe4(fe4Template):
   def mainpage_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form("Landing")
+
+  def terrainbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    for number, name in self.combat.duels.items():
+        name.terrain = self.terrainbox.checked
