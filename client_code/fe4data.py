@@ -89,6 +89,7 @@ class DuelSim:
         self.iniavo = 0
         self.unithit = 0
         self.unitavoid = 0
+        self.terrain = False
 
     def setunit(self, unit):
         """Set Unit"""
@@ -131,7 +132,10 @@ class DuelSim:
 
     def enemy_avoid(self):
       """Enemy Avoid"""
-      self.boss.avoid = (self.boss.AS) * 2 + self.boss.luck
+      if self.terrain is True:
+        self.boss.avoid = (self.boss.AS * 2) + self.boss.luck + 30
+      else:
+        self.boss.avoid = (self.boss.AS) * 2 + self.boss.luck
 
     def bosshitchance(self):
       """Boss Hit Chance"""

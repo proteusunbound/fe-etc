@@ -1,4 +1,5 @@
 """Combat"""
+import math
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -37,6 +38,12 @@ class CombatSim:
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
+        for number, name in self.duels.items():
+            if self.bosshp > 0 and name.unit.hitpoints > 0:
+                if name.boss.maxhp > self.bosshp and name.terrain is True:
+                    self.bosshp = min(self.bosshp + (math.floor(0.2 * name.boss.maxhp) - 1), name.boss.maxhp)
+                    self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
+                    break
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
