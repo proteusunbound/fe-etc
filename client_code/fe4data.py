@@ -29,6 +29,7 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
         self.leader = 0
+        self.accost = 1
         self.skills = []
 
     def setleadership(self, keyword):
@@ -112,11 +113,13 @@ class DuelSim:
         self.inicrit = 0
         self.ddgno = 0
         self.iniddg = 0
+        self.iniaccost = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
         self.terrain = False
+        self.noaccost = False
 
     def setunit(self, unit):
         """Set Unit"""
@@ -152,6 +155,10 @@ class DuelSim:
         """Set Dodge Number"""
         self.ddgno = ddgno
         self.iniddg = ddgno
+
+    def setiniaccost(self, accostnum):
+      """Set Accost Number"""
+      self.iniaccost = accostnum
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -351,6 +358,29 @@ class DuelSim:
             else:
                 self.unitattack()
         self.dueltext += "\n"
+
+    def accost(self):
+      accostavoid = 1
+      if "Accost" in self.boss.skills and self.noaccost is False:
+        ceiling = math.floor((self.boss.maxhp - 25) / self.unit.damage)
+        for i in range(0, ceiling):
+          if self.boss.hitpoints >= 25:
+            self.dueltext += f"{self.boss.name} activates Accost. \n"
+            self.enemyphase()
+          else:
+            break
+      elif self.noaccost is True:
+        accostavoid = 1 - (self.boss.AS - self.unit.AS + (self.boss.hitpoints / 2))
+      if "Accost" in self.unit.skills and self.iniaccost > 0:
+        for i in range (0, self.iniaccost):
+          if self.unit.hitpoints >= 25:
+            self.dueltext += f"{self.unit.name} activates Accost. \n"
+            self.playerphase()
+            self.unit.accost *= (self.unit.AS - self.boss.AS + (self.unit.hitpoints / 2))
+            self.iniaccost -= 1
+          else:
+            break
+      self.unit.accost *= accostavoid
 
     def reset_text(self):
         """Reset"""

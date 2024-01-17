@@ -42,6 +42,8 @@ class fe4(fe4Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    if "Accost" in self.combat.duels[0].boss.skills:
+      self.unit1_panel.noaccost.visible = True
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
