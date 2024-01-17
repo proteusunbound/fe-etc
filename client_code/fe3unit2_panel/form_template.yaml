@@ -68,7 +68,7 @@ components:
   components:
   - name: column_panel_2
     properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
+      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10,"GYGMYK":25,"KTYCLH":15,"PRQVCK":25,"GQPILK":15}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -80,6 +80,16 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+    - name: seraphlabel
+      properties: {text: Seraph Robes, align: left}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,GYGMYK'}
+    - name: seraphrobe
+      properties:
+        items: ['0', '1', '2', '3', '4', '5', '6']
+      type: DropDown
+      layout_properties: {grid_position: 'KTXRFX,KTYCLH'}
+      event_bindings: {change: seraphrobe_change}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -128,6 +138,72 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE BHLHRI,SKBZIL'}
+    - name: powerlabel
+      properties: {text: Power Rings}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK MFONWS,BDLUSR'}
+    - name: secretlabel
+      properties: {text: 'Secret Books
+
+          '}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK JMFJDR,LNORDL'}
+    - name: speedringlabel
+      properties: {text: 'Speed Rings
+
+          '}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK SJJIED,NKECZN'}
+    - name: goddesslabel
+      properties: {text: Goddess Icons}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK CKXCCT,UDJIPX'}
+    - name: dracoshieldlabel
+      properties: {text: Dracoshields}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK MKLMKU,GQCXJB'}
+    - name: talismanlabel
+      properties: {text: 'Talismans
+
+          '}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,PRQVCK XXZEVD,KAONOK'}
+    - name: powerdrop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK YRCKQR,ARMFOG'}
+      event_bindings: {change: powerdrop_change}
+    - name: secretdrop
+      properties:
+        items: ['0', '1', '2', '3', '4']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK ERRJPL,YXFCZX'}
+      event_bindings: {change: secretdrop_change}
+    - name: speedring_drop
+      properties:
+        items: ['0', '1', '2', '3', '4']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK MRLNXG,EWKGVA'}
+      event_bindings: {change: speedring_drop_change}
+    - name: goddessdrop
+      properties:
+        items: ['0', '1', '2', '3', '4']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK QRVOZJ,YNWJWK'}
+      event_bindings: {change: goddessdrop_change}
+    - name: dracoshield_drop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK BCCWDI,ZYXFRS'}
+      event_bindings: {change: dracoshield_drop_change}
+    - name: talismandrop
+      properties:
+        items: ['0', '1', '2', '3', '4', '5', '6', '7']
+      type: DropDown
+      layout_properties: {grid_position: 'CLSTUB,GQPILK NRTYMR,XZNXSA'}
+      event_bindings: {change: talismandrop_change}
   - name: xy_panel_2
     properties: {height: '100', spacing_above: none, spacing_below: none}
     type: XYPanel
