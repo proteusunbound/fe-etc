@@ -20,6 +20,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
   def unit_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
+    self.parent.combat.duels[0].unit.setskills()
     self.hp.text = self.parent.combat.duels[0].unit.maxhp
     self.strength.text = self.parent.combat.duels[0].unit.strength
     self.magic.text = self.parent.combat.duels[0].unit.magic

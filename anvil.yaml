@@ -224,12 +224,6 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
-    - name: Follow-Up
-      admin_ui: {width: 200, order: 9}
-      type: bool
-    - name: Critical
-      admin_ui: {width: 200, order: 10}
-      type: bool
     title: FE4 Unit Stats
   fe1_unit_stats:
     client: search
@@ -736,12 +730,6 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
-    - name: Follow-Up
-      admin_ui: {width: 200, order: 9}
-      type: bool
-    - name: Critical
-      admin_ui: {width: 200, order: 10}
-      type: bool
     - name: Leadership
       admin_ui: {width: 200, order: 11}
       type: number

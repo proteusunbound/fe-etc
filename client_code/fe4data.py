@@ -4,6 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from . import fe4skills
+
+skills = fe4skills.skill_list
 
 @anvil.server.portable_class
 class ActiveUnit:
@@ -20,20 +23,23 @@ class ActiveUnit:
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
-        self.followup = self.char["Follow-Up"]
-        self.critical = self.char["Critical"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
         self.hit = 0
         self.attack = 0
         self.leader = 0
+        self.skills = []
 
     def setleadership(self, keyword):
       if keyword == "Sigurd":
         self.leader = 10
       if keyword == "Seliph":
         self.leader = 20
+
+    def setskills(self):
+      if self.name in skills:
+        self.skills = skills[self.name]
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -63,8 +69,6 @@ class ActiveBoss:
         self.luck = boss["Lck"]
         self.defense = boss["Def"]
         self.resistance = boss["Res"]
-        self.followup = boss["Follow-Up"]
-        self.critical = boss["Critical"]
         self.leader = boss["Leadership"]
         self.hitpoints = 0
         self.doubles = False
@@ -73,6 +77,11 @@ class ActiveBoss:
         self.attack = 0
         self.avoid = 0
         self.hitchance = 0
+        self.skills = []
+
+    def setskills(self):
+      if self.name in skills:
+        self.skills = skills[self.name]
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
@@ -163,7 +172,7 @@ class DuelSim:
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
-        if self.unit.critical is True:
+        if "Critical" in self.unit.skills:
           self.unit.crit = self.unit.skill
         else:
           self.unit.crit = 0
@@ -172,7 +181,7 @@ class DuelSim:
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
         hitrate(self.boss, self.bossweapon)
-        if self.boss.critical is True:
+        if "Critical" in self.boss.skills:
           self.boss.crit = self.boss.skill
         else:
           self.boss.crit = 0
@@ -207,11 +216,11 @@ class DuelSim:
 
     def doubling(self):
         """Doubling Calculation"""
-        if self.unit.AS > self.boss.AS and self.unit.followup is True:
+        if self.unit.AS > self.boss.AS and "Follow-Up" in self.unit.skills:
             self.unit.doubles = True
             self.boss.doubles = False
             self.dueltext += f"{self.unit.name} can make follow-up attacks. \n"
-        elif self.boss.AS > self.unit.AS and self.boss.followup is True:
+        elif self.boss.AS > self.unit.AS and "Follow-Up" in self.boss.skills:
             self.boss.doubles = True
             self.unit.doubles = False
             self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
