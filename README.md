@@ -1,5 +1,10 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.2
+- stat boosters for FE3
+- critical hit and dodge in FE4
+- FE4 skill list update: Accost
+- second player combatant added
 ### version 3.1
 - promotion and dismount for FE3
 - basic FE4 framework and customization
