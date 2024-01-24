@@ -14,7 +14,8 @@ class fe4(fe4Template):
     self.init_components(**properties)
     self.combat = fe4combat.CombatSim()
     self.unitpanels = [
-        self.unit1_panel
+        self.unit1_panel,
+        self.unit2_panel
     ]
 
   def unit_number_change(self, **event_args):
@@ -30,6 +31,7 @@ class fe4(fe4Template):
     """This method is called when an item is selected"""
     for number, name in self.combat.duels.items():
       name.setboss(self.boss_drop.selected_value)
+      name.boss.setskills()
     self.hp.text = self.combat.duels[0].boss.maxhp
     self.strength.text = self.combat.duels[0].boss.strength
     self.magic.text = self.combat.duels[0].boss.magic
@@ -41,6 +43,9 @@ class fe4(fe4Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    if "Accost" in self.combat.duels[0].boss.skills:
+      for i in range(0, int(self.unit_number.selected_value)):
+        self.unitpanels[i].noaccost.visible = True
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -49,6 +54,7 @@ class fe4(fe4Template):
       name.bossdisplay()
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
+    self.crit.text = self.combat.duels[0].boss.crit
 
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""

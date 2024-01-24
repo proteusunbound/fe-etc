@@ -224,9 +224,6 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
-    - name: Follow-Up
-      admin_ui: {width: 200, order: 9}
-      type: bool
     title: FE4 Unit Stats
   fe1_unit_stats:
     client: search
@@ -719,13 +716,13 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: number
     - name: Skl
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 4, width: 50}
       type: number
     - name: Spd
       admin_ui: {width: 200, order: 5}
       type: number
     - name: Lck
-      admin_ui: {width: 200, order: 6}
+      admin_ui: {order: 6, width: 50}
       type: number
     - name: Def
       admin_ui: {width: 200, order: 7}
@@ -733,9 +730,9 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
-    - name: Follow-Up
-      admin_ui: {width: 200, order: 9}
-      type: bool
+    - name: Leadership
+      admin_ui: {width: 200, order: 11}
+      type: number
     title: FE4 Boss Stats
   fe4_weapon_stats:
     client: search
@@ -753,4 +750,7 @@ db_schema:
     - name: Hit
       admin_ui: {width: 200, order: 3}
       type: number
+    - name: Type
+      admin_ui: {width: 200, order: 4}
+      type: string
     title: FE4 Weapon Stats
