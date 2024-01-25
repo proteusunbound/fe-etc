@@ -233,6 +233,7 @@ class DuelSim:
         self.unitcrit = 0
         self.unitdodge = 0
         self.terrain = False
+        self.u
 
     def setunit(self, unit):
         """Set Unit"""
