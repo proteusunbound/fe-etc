@@ -301,6 +301,22 @@ class DuelSim:
         if self.boss.name == "Hardin" and "Lightsphere" not in self.equipment:
           self.unit.damage = 0
 
+    def effcoadjust(self):
+      """Adjust Weapon Effectiveness"""
+      if ("Lightsphere", "Iote's Shield") in self.equipment:
+        self.bossweapon.effco = 1
+      if self.boss.name == "Michalis":
+        self.unitweapon.effco = 1
+
+    def equipadjust(self):
+      """Adjust Based on Equipment"""
+      if "Geosphere" in self.equipment:
+        self.unit.hit += 10
+        self.unit.crit += 10
+      if "Lightsphere" in self.equipment:
+        self.terrain = False
+        self.boss.crit = 0
+
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
@@ -336,6 +352,7 @@ class DuelSim:
 
     def precombat(self):
         """Pre-Combat Calculation"""
+        self.equipadjust()
         if self.unitweapon.name == "Levin Sword":
             self.unit.attack = self.unitweapon.might
         else:
@@ -408,9 +425,10 @@ class DuelSim:
     def effectivecheck(self):
         """Effectiveness Log"""
         effectiveness(self.unitweapon, self.boss)
+        effectiveness(self.bossweapon, self.unit)
+        self.effcoadjust()
         if self.unitweapon.effco == 3:
             self.dueltext += f"{self.unit.name}'s {self.unitweapon.name} deals effective damage against {self.boss.name}. \n"
-        effectiveness(self.bossweapon, self.unit)
         if self.bossweapon.effco == 3:
             self.dueltext += f"{self.boss.name}'s {self.bossweapon.name} deals effective damage against {self.unit.name}. \n"
 
@@ -427,6 +445,12 @@ class DuelSim:
         else:
             self.boss.doubles = False
             self.unit.doubles = False
+
+    def hprecover(self):
+      """HP Recover"""
+      if "Lifesphere" in self.equipment:
+        self.unit.hitpoints = self.unit.maxhp
+        self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
     def unit_crit(self):
         """Unit Crit"""
