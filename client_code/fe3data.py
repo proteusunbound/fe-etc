@@ -303,31 +303,27 @@ class DuelSim:
 
     def effcoadjust(self):
       """Adjust Weapon Effectiveness"""
-      if ("Lightsphere", "Iote's Shield") in self.equipment:
+      if ("Lightsphere" in self.equipment) or ("Iote's Shield" in self.equipment):
         self.bossweapon.effco = 1
       if self.boss.name == "Michalis":
         self.unitweapon.effco = 1
-
-    def equipadjust(self):
-      """Adjust Based on Equipment"""
-      if "Geosphere" in self.equipment:
-        self.unit.hit += 10
-        self.unit.crit += 10
-      if "Lightsphere" in self.equipment:
-        self.terrain = False
-        self.boss.crit = 0
 
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
+        if "Geosphere" in self.equipment:
+          self.unit.hit += 10
+          self.unit.crit += 10
 
     def bossdisplay(self):
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
         hitrate(self.boss, self.bossweapon)
         critical(self.boss, self.bossweapon)
+        if "Lightsphere" in self.equipment:
+          self.boss.crit = 0
 
     def enemy_avoid(self):
         """Enemy Avoid"""
@@ -352,7 +348,8 @@ class DuelSim:
 
     def precombat(self):
         """Pre-Combat Calculation"""
-        self.equipadjust()
+        if "Lightsphere" in self.equipment:
+          self.terrain = False
         if self.unitweapon.name == "Levin Sword":
             self.unit.attack = self.unitweapon.might
         else:
@@ -448,7 +445,7 @@ class DuelSim:
 
     def hprecover(self):
       """HP Recover"""
-      if "Lifesphere" in self.equipment:
+      if ("Lifesphere" in self.equipment) and (self.unit.maxhp > self.unit.hitpoints):
         self.unit.hitpoints = self.unit.maxhp
         self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
