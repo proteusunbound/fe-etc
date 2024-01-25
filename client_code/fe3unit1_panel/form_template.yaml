@@ -310,8 +310,13 @@ components:
     properties: {text: supports, role: null, background: 'theme:Surface Variant',
       foreground: '#9ea9ff', visible: false, spacing_above: none, spacing_below: none}
     type: Button
-    layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,TWJDZI'}
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,YCAQGH'}
     event_bindings: {click: support_click}
+  - name: equipment
+    properties: {text: Equipment, background: 'theme:Surface Variant', spacing_above: none,
+      spacing_below: none, foreground: '#9ea9ff', visible: true}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,OGXQTV'}
 - name: supportpanel
   properties: {visible: false}
   type: ColumnPanel
@@ -332,4 +337,29 @@ components:
     type: Button
     layout_properties: {grid_position: 'LAGTKO,USBEKT'}
     event_bindings: {click: hidesupport_click}
+- name: equip_panel
+  properties: {visible: false}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'DBEDOY,ZYOTNP'}
+  components:
+  - name: geosphere
+    properties: {text: Geosphere}
+    type: CheckBox
+    layout_properties: {grid_position: 'IOMQSA,KZZTFB GIUCKZ,TQEWPE'}
+  - name: lifesphere
+    properties: {text: Lifesphere}
+    type: CheckBox
+    layout_properties: {grid_position: 'IOMQSA,KZZTFB MVGQCQ,UDGBRE'}
+  - name: lightsphere
+    properties: {text: Lightsphere}
+    type: CheckBox
+    layout_properties: {grid_position: 'IOMQSA,NHWEZH ZKBKFF,JDINNU'}
+  - name: iote
+    properties: {text: Iote's Shield}
+    type: CheckBox
+    layout_properties: {grid_position: 'IOMQSA,NHWEZH EIKPEZ,ZVKMDO'}
+  - name: hide_equip
+    properties: {text: Hide Equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'IOMQSA,RYBBGX'}
 is_package: true
