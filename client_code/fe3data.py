@@ -233,7 +233,7 @@ class DuelSim:
         self.unitcrit = 0
         self.unitdodge = 0
         self.terrain = False
-        self.u
+        self.equipment = []
 
     def setunit(self, unit):
         """Set Unit"""
@@ -250,6 +250,10 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setequipment(self, equipment):
+      """Set Equipment"""
+      self.equipment.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
