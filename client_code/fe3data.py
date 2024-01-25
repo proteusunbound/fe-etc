@@ -298,6 +298,8 @@ class DuelSim:
         """Adjust Damage"""
         if self.bossweapon.name == "Imhullu" and self.unitweapon.name != "Starlight":
             self.unit.damage = 0
+        if self.boss.name == "Hardin" and "Lightsphere" not in self.equipment:
+          self.unit.damage = 0
 
     def unitdisplay(self):
         """Unit Stat Display"""
