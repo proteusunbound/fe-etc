@@ -35,6 +35,10 @@ class fe3unit3_panel(fe3unit3_panelTemplate):
     self.support2.checked = False
     self.dismountbox.checked = False
     self.promobox.checked = False
+    self.lightsphere.checked = False
+    self.lifesphere.checked = False
+    self.geosphere.checked = False
+    self.iote.checked = False
     if self.parent.combat.duels[2].unit.name in (
         "Astram",
         "Abel",
@@ -121,6 +125,7 @@ class fe3unit3_panel(fe3unit3_panelTemplate):
     self.customization.visible = False
     self.supportpanel.visible = False
     self.book2box.visible = False
+    self.equip_panel.visible = False
 
   def support_click(self, **event_args):
     """This method is called when the button is clicked"""

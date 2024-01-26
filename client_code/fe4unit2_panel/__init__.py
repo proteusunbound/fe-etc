@@ -62,6 +62,7 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
     self.weapon_drop.selected_value = None
     self.visible = False
     self.customization.visible = False
+    self.supportpanel.visible = False
 
   def leaderdrop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -72,3 +73,24 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
   def noaccost_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
     self.parent.combat.duels[1].noaccost = self.noaccost.checked
+
+  def support_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.supportpanel.visible = True
+
+  def hidesupport_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.supportpanel.visible = False
+
+  def lover_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].unit.setlover(self.lover.checked)
+    self.parent.combat.duels[1].unitdisplay()
+    self.hit.text = self.parent.combat.duels[1].unit.hit
+    self.crit.text = self.parent.combat.duels[1].unit.crit
+
+  def sibling_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].unit.setsibling(self.sibling.checked)
+    self.parent.combat.duels[1].unitdisplay()
+    self.crit.text = self.parent.combat.duels[1].unit.crit

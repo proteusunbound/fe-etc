@@ -44,10 +44,12 @@ class ActiveUnit:
       if self.name in skills:
         self.skills = skills[self.name]
 
-    def setbonus(self, lover, sibling):
+    def setlover(self, lover):
       if lover is True:
         self.hitbonus = 10
         self.critbonus = 20
+      
+    def setsibling(self, sibling):
       if sibling is True:
         self.critbonus = 20
 
