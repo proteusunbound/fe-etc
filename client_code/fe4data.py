@@ -31,6 +31,8 @@ class ActiveUnit:
         self.leader = 0
         self.accost = 1
         self.skills = []
+        self.hitbonus = 0
+        self.critbonus = 0
 
     def setleadership(self, keyword):
       if keyword == "Sigurd":
@@ -41,6 +43,13 @@ class ActiveUnit:
     def setskills(self):
       if self.name in skills:
         self.skills = skills[self.name]
+
+    def setbonus(self, lover, sibling):
+      if lover is True:
+        self.hitbonus = 10
+        self.critbonus = 20
+      if sibling is True:
+        self.critbonus = 20
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -82,6 +91,7 @@ class ActiveBoss:
         self.hitchance = 0
         self.skills = []
         self.counter = False
+        self.hitbonus = 0
 
     def setskills(self):
       if self.name in skills:
@@ -93,7 +103,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle
+    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle + keyword.hitbonus
 
 def physattack(keyword, weapon):
     """Physical Attack"""
@@ -191,9 +201,9 @@ class DuelSim:
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         if "Critical" in self.unit.skills:
-          self.unit.crit = self.unit.skill
+          self.unit.crit = self.unit.skill + self.unit.critbonus
         else:
-          self.unit.crit = 0
+          self.unit.crit = self.unit.critbonus
 
     def bossdisplay(self):
         """Boss Stat Display"""
