@@ -95,13 +95,21 @@ def hitrate(keyword, weapon):
     """Hit Rate"""
     keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle
 
-def get_attack(keyword, weapon):
-    """Attack"""
+def physattack(keyword, weapon):
+    """Physical Attack"""
     keyword.attack = keyword.strength + weapon.might
+
+def magattack(keyword, weapon):
+  """Magical Attack"""
+  keyword.attack = keyword.magic + weapon.might
 
 def physdamage(attacker, defender):
     """Physical Damage"""
     attacker.damage = max(1, attacker.attack - defender.defense)
+
+def magdamage(attacker, defender):
+    """Magical Damage"""
+    attacker.damage = max(1, attacker.attack - defender.resistance)
 
 @anvil.server.portable_class
 class DuelSim:
@@ -213,11 +221,19 @@ class DuelSim:
       self.weapontriangle()
       hitrate(self.unit, self.unitweapon)
       hitrate(self.boss, self.bossweapon)
-      get_attack(self.unit, self.unitweapon)
-      physdamage(self.unit, self.boss)
+      if self.unitweapon.type in ("Sword", "Lance", "Axe", "Bow"):
+        physattack(self.unit, self.unitweapon)
+        physdamage(self.unit, self.boss)
+      else:
+        magattack(self.unit, self.unitweapon)
+        magdamage(self.unit, self.boss)
       self.enemy_avoid()
-      get_attack(self.boss, self.bossweapon)
-      physdamage(self.boss, self.unit)
+      if self.bossweapon.type in ("Sword", "Lance", "Axe", "Bow"):
+        physattack(self.boss, self.bossweapon)
+        physdamage(self.boss, self.unit)
+      else:
+        magattack(self.boss, self.bossweapon)
+        magdamage(self.boss, self.unit)
       self.bosshitchance()
       self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
       self.unitcrit = self.unit.crit / 100
