@@ -241,3 +241,33 @@ class fe3unit4_panel(fe3unit4_panelTemplate):
           int(self.talismandrop.selected_value)
     )
     self.resistance.text = self.parent.combat.duels[3].unit.resistance
+
+  def equipment_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = True
+
+  def hide_equip_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = False
+
+  def geosphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[3].setequipment("Geosphere")
+    self.parent.combat.duels[3].unitdisplay()
+    self.hit.text = self.parent.combat.duels[3].unit.hit
+    self.crit.text = self.parent.combat.duels[3].unit.crit
+
+  def lightsphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[3].setequipment("Lightsphere")
+    for number, name in self.parent.combat.duels.items():
+      name.bossdisplay()
+    self.parent.crit.text = self.parent.combat.duels[3].boss.crit
+
+  def lifesphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[3].setequipment("Lifesphere")
+
+  def iote_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[3].setequipment("Iote's Shield")
