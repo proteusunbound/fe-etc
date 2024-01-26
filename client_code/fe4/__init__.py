@@ -64,6 +64,7 @@ class fe4(fe4Template):
     for i in range(0, int(self.unit_number.selected_value)):
       self.unitpanels[i].setinfo()
     for number, name in self.combat.duels.items():
+      name.counterattack()
       name.doubling()
       name.precombat()
     self.combat.battle()
