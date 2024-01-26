@@ -123,6 +123,14 @@ def magdamage(attacker, defender):
     """Magical Damage"""
     attacker.damage = max(1, attacker.attack - defender.resistance)
 
+def physcrit(attacker, defender):
+  """Physical Crit"""
+  attacker.critdamage = max(1, 2 * attacker.attack - defender.defense)
+
+def magcrit(attacker, defender):
+  """Magical Crit"""
+  attacker.critdamage = max(1, 2 * attacker.attack - defender.resistance)
+
 @anvil.server.portable_class
 class DuelSim:
     """Duel Simulator"""
@@ -236,16 +244,20 @@ class DuelSim:
       if self.unitweapon.type in ("Sword", "Lance", "Axe", "Bow"):
         physattack(self.unit, self.unitweapon)
         physdamage(self.unit, self.boss)
+        physcrit(self.unit, self.boss)
       else:
         magattack(self.unit, self.unitweapon)
         magdamage(self.unit, self.boss)
+        magcrit(self.unit, self.boss)
       self.enemy_avoid()
       if self.bossweapon.type in ("Sword", "Lance", "Axe", "Bow"):
         physattack(self.boss, self.bossweapon)
         physdamage(self.boss, self.unit)
+        physcrit(self.boss, self.unit)
       else:
         magattack(self.boss, self.bossweapon)
         magdamage(self.boss, self.unit)
+        magcrit(self.boss, self.unit)
       self.bosshitchance()
       self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
       self.unitcrit = self.unit.crit / 100
@@ -287,7 +299,7 @@ class DuelSim:
     def unit_crit(self):
       """Unit Crit"""
       self.hitno += 1
-      self.boss.hitpoints = max(0, self.boss.hitpoints - 2 * self.unit.damage)
+      self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.critdamage)
       self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
 
     def unitattack(self):
@@ -307,7 +319,8 @@ class DuelSim:
           self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
           self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
       else:
-          self.unit.hitpoints = max(0, self.unit.hitpoints - 2 * self.boss.damage)
+          self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.critdamage)
+          self.dueltext += f"{self.boss.name} lands a critical hit and leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
     def bossattack(self):
         """Boss Attack"""
