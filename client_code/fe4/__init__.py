@@ -15,7 +15,8 @@ class fe4(fe4Template):
     self.combat = fe4combat.CombatSim()
     self.unitpanels = [
         self.unit1_panel,
-        self.unit2_panel
+        self.unit2_panel,
+        self.unit3_panel
     ]
 
   def unit_number_change(self, **event_args):
@@ -43,9 +44,9 @@ class fe4(fe4Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
-    if "Accost" in self.combat.duels[0].boss.skills:
+    if ("Accost" in self.combat.duels[0].boss.skills) or ("Adept" in self.combat.duels[0].boss.skills):
       for i in range(0, int(self.unit_number.selected_value)):
-        self.unitpanels[i].noaccost.visible = True
+        self.unitpanels[i].cancelproc.visible = True
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""

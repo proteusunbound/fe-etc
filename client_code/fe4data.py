@@ -570,7 +570,7 @@ class DuelSim:
       if "Accost" in self.boss.skills and self.noaccost is False:
         ceiling = math.floor((self.boss.maxhp - 25) / self.unit.damage)
         for i in range(0, ceiling):
-          if self.boss.hitpoints >= 25:
+          if self.boss.hitpoints >= 25 and self.unit.hitpoints > 0:
             self.dueltext += f"{self.boss.name} activates Accost. \n"
             self.enemyphase()
           else:
