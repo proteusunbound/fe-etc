@@ -33,6 +33,7 @@ class ActiveUnit:
         self.adeptrate = 1
         self.adeptcancel = 1
         self.solrate = 1
+        self.lunarate = 1
         self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
@@ -154,6 +155,8 @@ class DuelSim:
         self.canceladeptno = 0
         self.inisol = 0
         self.solno = 0
+        self.iniluna = 0
+        self.lunano = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -214,6 +217,11 @@ class DuelSim:
       """Set Sol Number"""
       self.inisol = solno
       self.solno = solno
+
+    def setlunano(self, lunano):
+      """Set Luna Number"""
+      self.iniluna = lunano
+      self.lunano = lunano
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -294,6 +302,8 @@ class DuelSim:
         self.unit.adeptcancel = 1 - ((self.boss.AS + 20) / 100)
       if "Sol" in self.unit.skills:
         self.unit.solrate = self.unit.skill / 100
+      if "Luna" in self.unit.skills:
+        self.unit.lunarate = self.unit.skill / 100
 
     def doubling(self):
         """Doubling Calculation"""
