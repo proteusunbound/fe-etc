@@ -233,6 +233,7 @@ class DuelSim:
         self.unitcrit = 0
         self.unitdodge = 0
         self.terrain = False
+        self.equipment = []
 
     def setunit(self, unit):
         """Set Unit"""
@@ -249,6 +250,10 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setequipment(self, equipment):
+      """Set Equipment"""
+      self.equipment.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -293,18 +298,32 @@ class DuelSim:
         """Adjust Damage"""
         if self.bossweapon.name == "Imhullu" and self.unitweapon.name != "Starlight":
             self.unit.damage = 0
+        if self.boss.name == "Hardin" and "Lightsphere" not in self.equipment:
+          self.unit.damage = 0
+
+    def effcoadjust(self):
+      """Adjust Weapon Effectiveness"""
+      if ("Lightsphere" in self.equipment) or ("Iote's Shield" in self.equipment):
+        self.bossweapon.effco = 1
+      if self.boss.name == "Michalis":
+        self.unitweapon.effco = 1
 
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
+        if "Geosphere" in self.equipment:
+          self.unit.hit += 10
+          self.unit.crit += 10
 
     def bossdisplay(self):
         """Boss Stat Display"""
         attack_speed(self.boss, self.bossweapon)
         hitrate(self.boss, self.bossweapon)
         critical(self.boss, self.bossweapon)
+        if "Lightsphere" in self.equipment:
+          self.boss.crit = 0
 
     def enemy_avoid(self):
         """Enemy Avoid"""
@@ -329,6 +348,8 @@ class DuelSim:
 
     def precombat(self):
         """Pre-Combat Calculation"""
+        if "Lightsphere" in self.equipment:
+          self.terrain = False
         if self.unitweapon.name == "Levin Sword":
             self.unit.attack = self.unitweapon.might
         else:
@@ -401,9 +422,10 @@ class DuelSim:
     def effectivecheck(self):
         """Effectiveness Log"""
         effectiveness(self.unitweapon, self.boss)
+        effectiveness(self.bossweapon, self.unit)
+        self.effcoadjust()
         if self.unitweapon.effco == 3:
             self.dueltext += f"{self.unit.name}'s {self.unitweapon.name} deals effective damage against {self.boss.name}. \n"
-        effectiveness(self.bossweapon, self.unit)
         if self.bossweapon.effco == 3:
             self.dueltext += f"{self.boss.name}'s {self.bossweapon.name} deals effective damage against {self.unit.name}. \n"
 
@@ -420,6 +442,12 @@ class DuelSim:
         else:
             self.boss.doubles = False
             self.unit.doubles = False
+
+    def hprecover(self):
+      """HP Recover"""
+      if ("Lifesphere" in self.equipment) and (self.unit.maxhp > self.unit.hitpoints):
+        self.unit.hitpoints = self.unit.maxhp
+        self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
     def unit_crit(self):
         """Unit Crit"""

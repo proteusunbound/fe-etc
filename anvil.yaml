@@ -739,18 +739,24 @@ db_schema:
     server: search
     columns:
     - name: Name
-      admin_ui: {order: 0, width: 141}
+      admin_ui: {order: 0, width: 103}
       type: string
     - name: Mgt
       admin_ui: {width: 200, order: 1}
       type: number
     - name: Wgt
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {order: 2, width: 50}
       type: number
     - name: Hit
       admin_ui: {width: 200, order: 3}
       type: number
     - name: Type
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 4, width: 69}
       type: string
+    - name: Min Range
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 6}
+      type: number
     title: FE4 Weapon Stats

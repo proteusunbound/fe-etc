@@ -35,6 +35,10 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
     self.support2.checked = False
     self.dismountbox.checked = False
     self.promobox.checked = False
+    self.lightsphere.checked = False
+    self.lifesphere.checked = False
+    self.geosphere.checked = False
+    self.iote.checked = False
     if self.parent.combat.duels[4].unit.name in (
         "Astram",
         "Abel",
@@ -121,6 +125,7 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
     self.customization.visible = False
     self.supportpanel.visible = False
     self.book2box.visible = False
+    self.equip_panel.visible = False
 
   def support_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -241,3 +246,33 @@ class fe3unit5_panel(fe3unit5_panelTemplate):
           int(self.talismandrop.selected_value)
     )
     self.resistance.text = self.parent.combat.duels[4].unit.resistance
+
+  def equipment_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = True
+
+  def hide_equip_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = False
+
+  def geosphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].setequipment("Geosphere")
+    self.parent.combat.duels[4].unitdisplay()
+    self.hit.text = self.parent.combat.duels[4].unit.hit
+    self.crit.text = self.parent.combat.duels[4].unit.crit
+
+  def lightsphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].setequipment("Lightsphere")
+    for number, name in self.parent.combat.duels.items():
+      name.bossdisplay()
+    self.parent.crit.text = self.parent.combat.duels[4].boss.crit
+
+  def lifesphere_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].setequipment("Lifesphere")
+
+  def iote_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[4].setequipment("Iote's Shield")

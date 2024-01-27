@@ -33,6 +33,7 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.hprecover()
                 name.hpthreshold()
                 name.playerphase()
                 self.bosshp = name.boss.hitpoints
