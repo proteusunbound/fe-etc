@@ -153,11 +153,6 @@ components:
       type: DropDown
       layout_properties: {x: 0, y: 0, width: 120}
       event_bindings: {change: leaderdrop_change}
-    - name: noaccost
-      properties: {text: Cancel Enemy Accost, visible: false}
-      type: CheckBox
-      layout_properties: {x: 0, y: 40, width: 150}
-      event_bindings: {change: noaccost_change}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
@@ -166,7 +161,7 @@ components:
     - name: avoidlabel
       properties: {text: Avoids, align: center, font_size: null}
       type: Label
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,CNDIRF ZWALOY,WZAQGA'}
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF ZWALOY,WZAQGA'}
     - name: avoid_drop
       properties:
         include_placeholder: false
@@ -177,38 +172,27 @@ components:
         visible: true
         align: full
       type: DropDown
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,CNDIRF VKMUZG,XZSAGP'}
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF VKMUZG,XZSAGP'}
       event_bindings: {}
       data_bindings: []
     - name: critno
       properties: {text: Crits, align: center}
       type: Label
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,PPFERC LEFXSN,GQUXUE'}
+      layout_properties: {grid_position: 'DAMDVU,PPFERC LEFXSN,GQUXUE'}
     - name: crit_drop
       properties:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,PPFERC UCQOSE,TEUMQM'}
+      layout_properties: {grid_position: 'DAMDVU,PPFERC UCQOSE,TEUMQM'}
     - name: dodgelabel
       properties: {text: Dodges, align: center}
       type: Label
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,CCZQUO CUNXHZ,GOFPRR'}
+      layout_properties: {grid_position: 'DAMDVU,CCZQUO CUNXHZ,GOFPRR'}
     - name: dodge_drop
       properties:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,CCZQUO SRNQDU,MTBGZM'}
-    - name: accostlabel
-      properties: {text: Accosts, visible: false, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,UINBWJ BSTVSB,IFEEDP'}
-    - name: accost_drop
-      properties:
-        items: ['0', '1', '2', '3', '4', '5']
-        visible: false
-      type: DropDown
-      layout_properties: {grid_position: 'CMQPGC,TEKEAZ DAMDVU,UINBWJ QBAPXI,UAMMPW'}
-      event_bindings: {}
+      layout_properties: {grid_position: 'DAMDVU,CCZQUO SRNQDU,MTBGZM'}
   - name: column_panel_1
     properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
@@ -244,6 +228,16 @@ components:
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,HPCKFU'}
     event_bindings: {click: support_click}
+  - name: skills
+    properties: {text: procs, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      visible: false}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,SLNSGZ'}
+  - name: cancelproc
+    properties: {text: enemy procs, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      visible: false}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,FQXNPV'}
 - name: supportpanel
   properties: {visible: false}
   type: ColumnPanel
@@ -255,7 +249,7 @@ components:
     layout_properties: {grid_position: 'JLEMXR,XQOYRK'}
     event_bindings: {change: lover_change}
   - name: sibling
-    properties: {text: Sibling}
+    properties: {text: Sibling, visible: false}
     type: CheckBox
     layout_properties: {grid_position: 'JLEMXR,TCZYDS'}
     event_bindings: {change: sibling_change}
@@ -264,4 +258,97 @@ components:
     type: Button
     layout_properties: {grid_position: 'JLEMXR,SOMPEH'}
     event_bindings: {click: hidesupport_click}
+  - name: procpanel
+    properties: {background: '#9ea9ff', foreground: '#000000', role: null, visible: false}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'OFECAA,QXOZNT'}
+    components:
+    - name: unitproc
+      properties: {visible: false}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'GSKFYC,RZXHLG'}
+      components:
+      - name: hideskills
+        properties: {text: hide procs, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+        type: Button
+        layout_properties: {grid_position: 'GHRPKQ,DKFTBK'}
+      - name: accostlabel
+        properties: {text: Accosts, visible: false, align: center}
+        type: Label
+        layout_properties: {grid_position: 'AMMZOK,YSWFCD'}
+      - name: adeptlabel
+        properties: {text: Adepts, visible: false, align: center}
+        type: Label
+        layout_properties: {grid_position: 'AMMZOK,TRWDBL'}
+      - name: sol_label
+        properties: {text: Sols, align: center, visible: false}
+        type: Label
+        layout_properties: {grid_position: 'AMMZOK,ZYBFGL'}
+      - name: accost_drop
+        properties:
+          items: ['0', '1', '2', '3', '4', '5']
+          visible: false
+          italic: false
+        type: DropDown
+        layout_properties: {grid_position: 'HIXCOR,GIRNDM WTQQNJ,AJJKCS'}
+        event_bindings: {}
+      - name: lunalabel
+        properties: {text: Lunas, align: center, visible: false}
+        type: Label
+        layout_properties: {grid_position: 'HIXCOR,GIRNDM LAFZOI,PPYUQN'}
+      - name: luna_drop
+        properties:
+          italic: false
+          items: ['0', '1', '2', '3', '4', '5']
+          visible: false
+        type: DropDown
+        layout_properties: {grid_position: 'HIXCOR,GIRNDM CLHUND,DOLXAW'}
+      - name: adept_drop
+        properties:
+          visible: false
+          items: ['0', '1', '2', '3', '4', '5']
+        type: DropDown
+        layout_properties: {grid_position: 'HIXCOR,QPUDZY CECVSI,QRNPGP'}
+      - name: astralabel
+        properties: {text: Astras, align: center, visible: false}
+        type: Label
+        layout_properties: {grid_position: 'HIXCOR,QPUDZY ZJTTVV,LMEBVH'}
+      - name: astra_drop
+        properties:
+          items: ['0', '1', '2', '3', '4', '5']
+          visible: false
+        type: DropDown
+        layout_properties: {grid_position: 'HIXCOR,QPUDZY SKLCWR,RUCNFZ'}
+      - name: sols_drop
+        properties:
+          items: ['0', '1', '2', '3', '4', '5']
+          visible: false
+        type: DropDown
+        layout_properties: {grid_position: 'HIXCOR,YQAYJG'}
+    - name: bossproc
+      properties: {visible: false}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'GSKFYC,ZHHXVF'}
+      components:
+      - name: hidecancel
+        properties: {text: hide enemy procs, background: 'theme:Surface Variant',
+          foreground: '#9ea9ff'}
+        type: Button
+        layout_properties: {grid_position: 'JHBKTJ,NRTDVY'}
+      - name: noaccost
+        properties: {text: Cancel Enemy Accost, visible: false}
+        type: CheckBox
+        layout_properties: {grid_position: 'GXDUKY,EQXPFZ'}
+        event_bindings: {change: noaccost_change}
+      - name: canceladept
+        properties: {text: Adept Cancels, align: center, visible: false}
+        type: Label
+        layout_properties: {grid_position: 'ERCGZR,WAIJMX'}
+      - name: canceladept_drop
+        properties:
+          align: center
+          items: ['0', '1', '2', '3', '4', '5']
+          visible: false
+        type: DropDown
+        layout_properties: {grid_position: 'WEGDEG,DQYHWG'}
 is_package: true
