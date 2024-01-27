@@ -1,8 +1,15 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.3
+- miscellaneous equipment in FE3
+- weapon range and magical damage in FE4
+- lover/sibling bonuses added to calculations
+- FE4 skill list update: Adept, Sol, Luna, Astra, Nihil
+- third player combatant
 ### version 3.2
 - stat boosters for FE3
 - critical hit and dodge in FE4
+- calculations adjusted for weapon triangle and leadership bonuses
 - FE4 skill list update: Accost
 - second player combatant added
 ### version 3.1
