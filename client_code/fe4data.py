@@ -32,6 +32,7 @@ class ActiveUnit:
         self.accostrate = 1
         self.adeptrate = 1
         self.adeptcancel = 1
+        self.solrate = 1
         self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
@@ -151,6 +152,8 @@ class DuelSim:
         self.adeptno = 0
         self.inicanceladept = 0
         self.canceladeptno = 0
+        self.inisol = 0
+        self.solno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -206,6 +209,11 @@ class DuelSim:
       """Set Adept Avoids"""
       self.inicanceladept = adeptavo
       self.canceladeptno = adeptavo
+
+    def setsolno(self, solno):
+      """Set Sol Number"""
+      self.inisol = solno
+      self.solno = solno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -284,6 +292,8 @@ class DuelSim:
         self.unit.adeptrate = (self.unit.AS + 20) / 100
       if "Adept" in self.boss.skills:
         self.unit.adeptcancel = 1 - ((self.boss.AS + 20) / 100)
+      if "Sol" in self.unit.skills:
+        self.unit.solrate = self.unit.skill / 100
 
     def doubling(self):
         """Doubling Calculation"""
@@ -331,15 +341,25 @@ class DuelSim:
 
     def unit_crit(self):
       """Unit Crit"""
-      self.hitno += 1
       self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.critdamage)
       self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+      if "Sol" in self.unit.skills and self.solno > 0 and self.unit.hitpoints < self.unit.maxhp:
+        self.solno -= 1
+        self.unit.hitpoints = min(self.unit.hitpoints + self.unit.critdamage, self.unit.maxhp)
+        self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+      else:
+        self.hitno += 1
 
     def unitattack(self):
         """Unit Attack"""
-        self.hitno += 1
         self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
         self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+        if "Sol" in self.unit.skills and self.solno > 0 and self.unit.hitpoints < self.unit.maxhp:
+          self.solno -= 1
+          self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
+          self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+        else:
+          self.hitno += 1
 
     def bossadept(self):
       """Boss Adept"""
