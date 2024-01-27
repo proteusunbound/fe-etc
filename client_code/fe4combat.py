@@ -68,7 +68,9 @@ class CombatSim:
                 * (name.unitavoid**name.iniavo)
                 * (name.unitcrit**name.inicrit)
                 * (name.unitdodge**name.iniddg)
-                * (name.unit.accost)
+                * (name.unit.accostrate)
+                * (name.unit.adeptrate**name.iniadept)
+                * (name.unit.adeptcancel**name.inicanceladept)
             )
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."

@@ -29,7 +29,9 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
         self.leader = 0
-        self.accost = 1
+        self.accostrate = 1
+        self.adeptrate = 1
+        self.adeptcancel = 1
         self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
@@ -145,6 +147,10 @@ class DuelSim:
         self.ddgno = 0
         self.iniddg = 0
         self.iniaccost = 0
+        self.iniadept = 0
+        self.adeptno = 0
+        self.inicanceladept = 0
+        self.canceladeptno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -191,11 +197,22 @@ class DuelSim:
       """Set Accost Number"""
       self.iniaccost = accostnum
 
+    def setadeptno(self, adeptnum):
+      """Set Adept Number"""
+      self.iniadept = adeptnum
+      self.adeptno = adeptnum
+
+    def setcanceladeptno(self, adeptavo):
+      """Set Adept Avoids"""
+      self.inicanceladept = adeptavo
+      self.canceladeptno = adeptavo
+
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
     def weapontriangle(self):
+      """Weapon Triangle"""
       if (self.unitweapon.type == "Sword" and self.bossweapon.type == "Axe") or (self.unitweapon.type == "Lance" and self.bossweapon.type == "Sword") or (self.unitweapon.type == "Axe" and self.bossweapon.type == "Lance") or (self.unitweapon.type == "Fire" and self.bossweapon.type == "Wind") or (self.unitweapon.type == "Thunder" and self.bossweapon.type == "Fire") or (self.unitweapon.type == "Wind" and self.bossweapon.type == "Thunder") or (self.unitweapon.type in ("Light", "Dark") or self.bossweapon.type in ("Fire", "Wind", "Thunder")):
         self.unitweapon.weapontriangle = 20
         self.bossweapon.weapontriangle = -20
@@ -263,6 +280,10 @@ class DuelSim:
       self.unitcrit = self.unit.crit / 100
       self.unitavoid = 1 - self.boss.hitchance
       self.unitdodge = 1 - (self.boss.crit / 100)
+      if "Adept" in self.unit.skills:
+        self.unit.adeptrate = (self.unit.AS + 20) / 100
+      if "Adept" in self.boss.skills:
+        self.unit.adeptcancel = 1 - ((self.boss.AS + 20) / 100)
 
     def doubling(self):
         """Doubling Calculation"""
@@ -296,6 +317,18 @@ class DuelSim:
         self.boss.counter = False
         self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
 
+    def unitadept(self):
+      """Unit Adept"""
+      if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+        self.dueltext += f"{self.unit.name} strikes twice consecutively."
+        if self.unit.crit == 100:
+          self.unit_crit()
+        elif self.unit.crit > 0 and self.critno > 0:
+          self.critno -= 1
+          self.unit_crit()
+        else:
+          self.unitattack()
+
     def unit_crit(self):
       """Unit Crit"""
       self.hitno += 1
@@ -308,6 +341,22 @@ class DuelSim:
         self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
         self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
 
+    def bossadept(self):
+      """Boss Adept"""
+      if self.canceladeptno > 0:
+        self.canceladeptno -= 1
+      elif self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
+        self.dueltext += f"{self.boss.name} strikes twice consecutively."
+        if self.boss.hitchance == 0:
+          self.bossmiss()
+        elif self.avoidno > 0:
+          self.avoidno -= 1
+          self.bossmiss()
+        elif self.boss.crit > 0:
+          self.bosscrit()
+        else:
+          self.bossattack() 
+  
     def bossmiss(self):
         """Boss Miss"""
         self.dueltext += f"{self.boss.name}'s attack misses.\n"
@@ -338,7 +387,10 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+            if "Adept" in self.unit.skills and self.adeptno > 0:
+              self.adeptno -= 1
+              self.unitadept()
+        if self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
             if self.boss.hitchance == 0:
                 self.bossmiss()
             elif self.avoidno > 0:
@@ -348,6 +400,8 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
+            if "Adept" in self.boss.skills:
+              self.bossadept()
         if self.unit.doubles is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             if self.unit.crit == 100:
                 self.unit_crit()
@@ -356,10 +410,14 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
+            if "Adept" in self.unit.skills and self.adeptno > 0:
+              self.adeptno -= 1
+              self.unitadept()
         if (
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.boss.hitchance == 0:
                 self.bossmiss()
@@ -370,12 +428,14 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
+            if "Adept" in self.boss.skills:
+              self.bossadept()
         self.dueltext += "\n"
 
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
             if self.boss.hitchance == 0:
                 self.bossmiss()
             elif self.avoidno > 0:
@@ -385,6 +445,8 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
+            if "Adept" in self.boss.skills:
+              self.bossadept()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             if self.unit.crit == 100:
                 self.unit_crit()
@@ -393,10 +455,14 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
+            if "Adept" in self.unit.skills and self.adeptno > 0:
+              self.adeptno -= 1
+              self.unitadept()
         if (
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             if self.boss.hitchance == 0:
                 self.bossmiss()
@@ -407,6 +473,8 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
+            if "Adept" in self.boss.skills:
+              self.bossadept()
         if (
             self.unit.doubles is True
             and self.unit.hitpoints > 0
@@ -419,6 +487,9 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
+            if "Adept" in self.unit.skills and self.adeptno > 0:
+              self.adeptno -= 1
+              self.unitadept()
         self.dueltext += "\n"
 
     def accost(self):
@@ -438,11 +509,11 @@ class DuelSim:
           if self.unit.hitpoints >= 25:
             self.dueltext += f"{self.unit.name} activates Accost. \n"
             self.playerphase()
-            self.unit.accost *= (self.unit.AS - self.boss.AS + (self.unit.hitpoints / 2))
+            self.unit.accostrate *= (self.unit.AS - self.boss.AS + (self.unit.hitpoints / 2))
             self.iniaccost -= 1
           else:
             break
-      self.unit.accost *= accostavoid
+      self.unit.accostrate *= accostavoid
 
     def reset_text(self):
         """Reset"""
