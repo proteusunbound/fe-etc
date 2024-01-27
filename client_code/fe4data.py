@@ -34,6 +34,7 @@ class ActiveUnit:
         self.adeptcancel = 1
         self.solrate = 1
         self.lunarate = 1
+        self.astrarate = 1
         self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
@@ -157,6 +158,8 @@ class DuelSim:
         self.solno = 0
         self.iniluna = 0
         self.lunano = 0
+        self.iniastra = 0
+        self.astrano = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -222,6 +225,11 @@ class DuelSim:
       """Set Luna Number"""
       self.iniluna = lunano
       self.lunano = lunano
+
+    def setastrano(self, astrano):
+      """Set Astra Number"""
+      self.iniastra = astrano
+      self.astrano = astrano
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -304,6 +312,8 @@ class DuelSim:
         self.unit.solrate = self.unit.skill / 100
       if "Luna" in self.unit.skills:
         self.unit.lunarate = self.unit.skill / 100
+      if "Astra" in self.unit.skills:
+        self.unit.astrarate = self.unit.skill / 100
 
     def doubling(self):
         """Doubling Calculation"""
@@ -340,14 +350,30 @@ class DuelSim:
     def unitadept(self):
       """Unit Adept"""
       if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-        self.dueltext += f"{self.unit.name} strikes twice consecutively."
-        if self.unit.crit == 100:
+        self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
+        if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
+          self.astrano -= 1
+          self.astra()
+        elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
           self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0:
+        elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
           self.critno -= 1
           self.unit_crit()
         else:
           self.unitattack()
+
+    def astra(self):
+      """Astra"""
+      self.dueltext += f"{self.unit.name} activates Astra. \n"
+      for i in range (0, 5):
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+          if self.unit.crit == 100:
+            self.unit_crit()
+          elif self.unit.crit > 0 and self.critno > 0:
+            self.critno -= 1
+            self.unit_crit()
+          else:
+            self.unitattack()
 
     def unit_crit(self):
       """Unit Crit"""
@@ -362,27 +388,32 @@ class DuelSim:
 
     def unitattack(self):
         """Unit Attack"""
-        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
-        self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
-        if "Sol" in self.unit.skills and self.solno > 0 and self.unit.hitpoints < self.unit.maxhp:
-          self.solno -= 1
-          self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
-          self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+        if "Luna" in self.unit.skills and self.lunano > 0:
+          self.lunano -= 1
+          self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.attack)
+          self.dueltext += f"{self.unit.name} activates Luna and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
         else:
-          self.hitno += 1
+          self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+          self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+          if "Sol" in self.unit.skills and self.solno > 0 and self.unit.hitpoints < self.unit.maxhp:
+            self.solno -= 1
+            self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
+            self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+          else:
+            self.hitno += 1
 
     def bossadept(self):
       """Boss Adept"""
       if self.canceladeptno > 0:
         self.canceladeptno -= 1
       elif self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
-        self.dueltext += f"{self.boss.name} strikes twice consecutively."
+        self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
         if self.boss.hitchance == 0:
           self.bossmiss()
         elif self.avoidno > 0:
           self.avoidno -= 1
           self.bossmiss()
-        elif self.boss.crit > 0:
+        elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
           self.bosscrit()
         else:
           self.bossattack() 
@@ -410,9 +441,12 @@ class DuelSim:
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if self.unit.crit == 100:
+            if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
+              self.astrano -= 1
+              self.astra()
+            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
                 self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
+            elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -426,16 +460,19 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
             if "Adept" in self.boss.skills:
               self.bossadept()
         if self.unit.doubles is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if self.unit.crit == 100:
+            if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
+              self.astrano -= 1
+              self.astra()
+            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
                 self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
+            elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -454,7 +491,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -471,16 +508,19 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
             if "Adept" in self.boss.skills:
               self.bossadept()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if self.unit.crit == 100:
+            if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
+              self.astrano -= 1
+              self.astra()
+            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
                 self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
+            elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -499,7 +539,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -510,9 +550,12 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            if self.unit.crit == 100:
+            if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
+              self.astrano -= 1
+              self.astra()
+            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
                 self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0:
+            elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
                 self.unit_crit()
             else:
