@@ -32,6 +32,7 @@ class ActiveUnit:
         self.devil = 1
         self.supports = []
         self.supportbonus = 0
+        self.triangleattack = False
 
     def setsupports(self):
         """Set Supports"""
@@ -234,6 +235,7 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.equipment = []
+        self.refreshes = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -278,6 +280,10 @@ class DuelSim:
         """Set Avoid Backfire Number"""
         self.devilno = devilno
         self.inidev = devilno
+
+    def setrefreshes(self, refreshno):
+      """Set Refreshes"""
+      self.refreshes = refreshno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -451,8 +457,11 @@ class DuelSim:
 
     def unit_crit(self):
         """Unit Crit"""
-        self.hitno += 1
-        if self.unit.devil == 1:
+        if self.unit.triangleattack is True:
+          self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+          self.dueltext += f"{self.unit.name} uses Triangle Attack and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+        elif self.unit.devil == 1:
+            self.hitno += 1
             self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
             self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
             if (
@@ -466,10 +475,12 @@ class DuelSim:
                     f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
                 )
         elif self.devilno > 0:
+            self.hitno += 1
             self.devilno -= 1
             self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
             self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
         else:
+            self.hitno += 1
             self.unit.hitpoints = max(0, self.unit.hitpoints - 3 * self.unit.damage)
             self.dueltext += f"{self.unit.name}'s attack backfires and leaves them with {self.unit.hitpoints} HP.\n"
 
@@ -521,7 +532,7 @@ class DuelSim:
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if self.unit.crit == 100:
+            if self.unit.crit == 100 or self.unit.triangleattack is True:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0:
                 self.critno -= 1
