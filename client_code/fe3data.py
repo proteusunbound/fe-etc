@@ -236,6 +236,7 @@ class DuelSim:
         self.terrain = False
         self.equipment = []
         self.refreshes = 0
+        self.rng = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -288,6 +289,10 @@ class DuelSim:
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
+
+    def setrng(self, rng):
+        """Tweak RNG"""
+        self.rng = rng / 100
 
     def devilcheck(self):
         """Devil Weapon"""
@@ -398,6 +403,17 @@ class DuelSim:
         self.unitdodge = 1 - max(
             0, (self.boss.crit - (self.unit.luck + self.unit.supportbonus)) / 100
         )
+
+    def rngtweak(self):
+        """Tweak RNG"""
+        if self.unithit > 0:
+            self.unithit = min(self.unithit + self.rng, 1)
+        if self.unitcrit > 0:
+            self.unitcrit += self.rng
+        if self.unitavoid > 0:
+            self.unitavoid = min(self.unitavoid + self.rng, 1)
+        if self.unitdodge > 0:
+            self.unitdodge = min(self.unitdodge + self.rng, 1)
 
     def counterattack(self):
         """Counter Attack"""
