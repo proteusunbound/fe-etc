@@ -235,6 +235,7 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.equipment = []
+        self.refreshes = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -279,6 +280,10 @@ class DuelSim:
         """Set Avoid Backfire Number"""
         self.devilno = devilno
         self.inidev = devilno
+
+    def setrefreshes(self, refreshno):
+      """Set Refreshes"""
+      self.refreshes = refreshno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
