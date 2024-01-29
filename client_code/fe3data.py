@@ -616,6 +616,14 @@ class DuelSim:
                 self.unitattack()
         self.dueltext += "\n"
 
+    def refresh(self):
+      for i in range(0, self.refreshes):
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+          self.dueltext += f"{self.unit.name} is refreshed. \n"
+          self.playerphase()
+        else:
+          break
+
     def reset_text(self):
         """Reset"""
         self.dueltext = ""

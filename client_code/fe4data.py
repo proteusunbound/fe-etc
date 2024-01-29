@@ -502,7 +502,7 @@ class DuelSim:
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.boss.hitchance == 0:
                 self.bossmiss()
             elif self.avoidno > 0:
