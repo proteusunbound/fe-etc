@@ -213,19 +213,31 @@ components:
       properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
         visible: true, border: ''}
       type: Button
-      layout_properties: {x: 125, y: 0, width: 100}
+      layout_properties: {x: 120, y: 0, width: 100}
       event_bindings: {click: hide_click}
       data_bindings: []
     - name: dismountbox
       properties: {text: Dismount, visible: false, enabled: true}
       type: CheckBox
-      layout_properties: {x: 0, y: 0, width: 85}
+      layout_properties: {x: 0, y: 70, width: 85}
       event_bindings: {change: dismountbox_change}
     - name: promobox
       properties: {text: Promote, visible: false}
       type: CheckBox
-      layout_properties: {x: 0, y: 40, width: 85}
+      layout_properties: {x: 0, y: 35, width: 85}
       event_bindings: {change: promobox_change}
+    - name: dancedrop
+      properties:
+        include_placeholder: true
+        items: ['0', '1', '2', '3', '4']
+        placeholder: Refreshes
+        visible: false
+      type: DropDown
+      layout_properties: {x: 0, y: 0, width: 100}
+    - name: trianglecheck
+      properties: {text: Triangle Attack, visible: false}
+      type: CheckBox
+      layout_properties: {x: 120, y: 35, width: 125}
   - name: column_panel_3
     properties: {spacing_above: none, spacing_below: none, col_spacing: tiny}
     type: ColumnPanel

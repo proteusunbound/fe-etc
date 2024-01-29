@@ -148,23 +148,23 @@ components:
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA DNHOLR,YQFUYL'}
     - name: xy_panel_1
-      properties: {height: 112.94921875}
+      properties: {height: '75'}
       type: XYPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RECSOD,TYKGAS'}
       components:
       - name: bosshplabel
         properties: {text: 'Starting HP:', font_size: 15}
         type: Label
-        layout_properties: {x: 0, y: 50, width: 75}
+        layout_properties: {x: 0, y: 30, width: 75}
       - name: startinghp
         properties: {placeholder: '0', type: number}
         type: TextBox
-        layout_properties: {x: 75, y: 50, width: 50}
+        layout_properties: {x: 75, y: 30, width: 50}
         event_bindings: {}
       - name: terrainbox
         properties: {text: Terrain}
         type: CheckBox
-        layout_properties: {x: 150, y: 50, width: 70}
+        layout_properties: {x: 150, y: 30, width: 70}
         event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {}
@@ -196,23 +196,35 @@ components:
         type: Label
         layout_properties: {grid_position: 'JQRWMP,PKIBGN FAZVKE,NYMGLK'}
       - name: column_panel_1
-        properties: {spacing_above: medium, spacing_below: none}
+        properties: {spacing_above: medium, spacing_below: none, col_widths: '{"HVJXRG":40,"XJLJQJ":20}'}
         type: ColumnPanel
-        layout_properties: {grid_position: 'XCLNHC,UBHZPF'}
+        layout_properties: {grid_position: 'ZJWBHB,CBOIXS'}
         components:
+        - name: rnglabel
+          properties: {text: RNG, align: center}
+          type: Label
+          layout_properties: {grid_position: 'COHHLI,RIPOVX EFFPUU,PSMOFE'}
         - name: turn_drop
           properties:
             include_placeholder: true
             placeholder: Turns
             items: ['1', '2', '3', '4', '5']
           type: DropDown
-          layout_properties: {grid_position: 'COHHLI,RIPOVX'}
+          layout_properties: {grid_position: 'COHHLI,RIPOVX ZLGRML,GBEZCX'}
           event_bindings: {change: turn_drop_change}
+        - name: rng
+          properties: {placeholder: '0', type: number, align: left}
+          type: TextBox
+          layout_properties: {grid_position: 'COHHLI,ZNLYSQ ZEFLLP,HVJXRG'}
+        - name: bumper
+          properties: {height: 32}
+          type: Spacer
+          layout_properties: {grid_position: 'COHHLI,ZNLYSQ ZEFLLP,XJLJQJ'}
         - name: calculatebutton
           properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
             align: center, font_size: 13, foreground: '#ff8585', visible: false}
           type: Button
-          layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
+          layout_properties: {grid_position: 'COHHLI,ZNLYSQ RTMZQK,HBROQM'}
           event_bindings: {click: calculatebutton_click}
 - name: combatlog
   properties: {visible: false}
