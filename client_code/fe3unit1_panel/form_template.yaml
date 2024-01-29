@@ -234,10 +234,12 @@ components:
         visible: false
       type: DropDown
       layout_properties: {x: 0, y: 0, width: 100}
+      event_bindings: {change: dancedrop_change}
     - name: trianglecheck
       properties: {text: Triangle Attack, visible: false}
       type: CheckBox
       layout_properties: {x: 120, y: 35, width: 125}
+      event_bindings: {change: trianglecheck_change}
   - name: column_panel_3
     properties: {spacing_above: none, spacing_below: none, col_spacing: tiny}
     type: ColumnPanel
