@@ -166,6 +166,8 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.noaccost = False
+        self.unitequip = []
+        self.bossequip = []
 
     def setunit(self, unit):
         """Set Unit"""
@@ -182,6 +184,14 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setunitequip(self, equipment):
+      """Set Unit Equipment"""
+      self.unitequip.append(equipment)
+
+    def setbossequip(self, equipment):
+      """Set Boss Equipment"""
+      self.bossequip.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -259,6 +269,21 @@ class DuelSim:
       else:
         self.enemy_avoid()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+
+    def unitstatadjust(self):
+      """Adjust Unit Stats"""
+      if "Power Ring" in self.unitequip:
+        self.unit.strength += 5
+      if "Magic Ring" in self.unitequip:
+        self.unit.magic += 5
+      if "Skill Ring" in self.unitequip:
+        self.unit.skill += 5
+      if "Speed Ring" in self.unitequip:
+        self.unit.speed += 5
+      if "Shield Ring" in self.unitequip:
+        self.unit.defense += 5
+      if "Barrier Ring" in self.unitequip:
+        self.unit.resistance += 5
 
     def unitdisplay(self):
         """Unit Stat Display"""
