@@ -360,6 +360,13 @@ class DuelSim:
         self.boss.counter = False
         self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
 
+    def hprecover(self):
+      """Player Phase HP Recover""";
+      if self.unit.maxhp > self.unit.hitpoints:
+        if "Renewal" in self.unit.skills:
+          self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
+          self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
+
     def unitadept(self):
       """Unit Adept"""
       if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
