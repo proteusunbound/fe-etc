@@ -247,6 +247,19 @@ class DuelSim:
         self.unitweapon.weapontriangle = 0
         self.bossweapon.weapontriangle = 0
 
+    def hpthreshold(self):
+      """HP Threshold"""
+      if "Miracle" in self.unit.skills and self.unit.hitpoints <= 10:
+        self.unitavoid = min(self.unitavoid + (11 - self.unit.hitpoints) / 10, 1)
+      else:
+        self.unitavoid = 1 - self.boss.hitchance
+      if "Miracle" in self.boss.skills and self.boss.hitpoints <= 10:
+        self.boss.avoid = self.boss.avoid + (11 - self.boss.hitpoints) * 10
+        self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+      else:
+        self.enemy_avoid()
+        self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)

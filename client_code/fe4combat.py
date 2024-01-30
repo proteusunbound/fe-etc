@@ -34,6 +34,7 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.hpthreshold()
                 if "Vantage" in name.boss.skills and name.boss.hitpoints < (name.boss.maxhp / 2):
                   self.text += f"{name.boss.name} activates Vantage. \n"
                   name.enemyphase()
@@ -52,6 +53,7 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.hpthreshold()
                 if "Vantage" in name.unit.skills and name.unit.hitpoints < (name.unit.maxhp / 2):
                   self.text += f"{name.unit.name} activates Vantage. \n"
                   name.playerphase()
