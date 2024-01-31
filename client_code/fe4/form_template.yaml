@@ -144,26 +144,30 @@ components:
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA DNHOLR,YQFUYL'}
     - name: xy_panel_1
-      properties: {height: '120', spacing_above: medium, spacing_below: medium}
+      properties: {height: '80', spacing_above: small, spacing_below: small}
       type: XYPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RECSOD,TYKGAS'}
       components:
       - name: bosshplabel
         properties: {text: 'Starting HP:', font_size: 15}
         type: Label
-        layout_properties: {x: 0, y: 50, width: 75}
+        layout_properties: {x: 0, y: 30, width: 75}
       - name: startinghp
         properties: {placeholder: '0', type: number}
         type: TextBox
-        layout_properties: {x: 75, y: 50, width: 50}
+        layout_properties: {x: 75, y: 30, width: 50}
         event_bindings: {}
       - name: terrainbox
         properties: {text: Terrain}
         type: CheckBox
-        layout_properties: {x: 140, y: 50, width: 80}
+        layout_properties: {x: 140, y: 30, width: 80}
         event_bindings: {change: terrainbox_change}
+    - name: skilldisplay
+      properties: {}
+      type: RichText
+      layout_properties: {grid_position: 'ZMMHVJ,GWUFHW UCMVMW,ITSSBH'}
     - name: column_panel_5
-      properties: {spacing_above: medium, spacing_below: medium}
+      properties: {spacing_above: small, spacing_below: small}
       type: ColumnPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RZIILJ,DHMFUK'}
       components:
@@ -196,6 +200,10 @@ components:
         type: ColumnPanel
         layout_properties: {grid_position: 'XCLNHC,UBHZPF'}
         components:
+        - name: equipment
+          properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#ff8585'}
+          type: Button
+          layout_properties: {grid_position: 'MJUZGB,DNXEQI'}
         - name: turn_drop
           properties:
             include_placeholder: true
@@ -210,6 +218,43 @@ components:
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}
+- name: equip_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'KJHVDW,LLIYSH PMCHFV,NEMJVT'}
+  components:
+  - name: power_ring
+    properties: {text: Power Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'YWKUZE,RBTIED'}
+  - name: magicring
+    properties: {text: Magic Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'YWKUZE,LWMQOB'}
+  - name: hide_equip
+    properties: {text: hide}
+    type: Button
+    layout_properties: {grid_position: 'YWKUZE,DEEKDQ'}
+  - name: skillring
+    properties: {text: Skill Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'TXHZVR,DMWQBW NSXGXZ,SKAHGN'}
+  - name: barrier_ring
+    properties: {text: Barrier Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'TXHZVR,DMWQBW WEMXIO,FVEYOT'}
+  - name: speedring
+    properties: {text: Speed Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'TXHZVR,HTYBND YYPSTW,RMONFA'}
+  - name: renewalband
+    properties: {text: Renewal Band}
+    type: CheckBox
+    layout_properties: {grid_position: 'TXHZVR,HTYBND KWUIYX,KGQXEY'}
+  - name: shieldring
+    properties: {text: Shield Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'TXHZVR,PYEEKR'}
 - name: combatlog
   properties: {visible: false}
   type: RichText

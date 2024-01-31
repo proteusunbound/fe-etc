@@ -59,7 +59,7 @@ components:
     event_bindings: {}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
-    col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35}'}
+    col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
@@ -224,12 +224,18 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,BIZCRA OXIHGR,CRADDC'}
   - name: support
-    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,HPCKFU'}
     event_bindings: {click: support_click}
+  - name: equipment
+    properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      font_size: 12}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,UFGLPY'}
   - name: skills
-    properties: {text: procs, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+    properties: {text: skills, background: 'theme:Surface Variant', foreground: '#9ea9ff',
       visible: false, font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,SLNSGZ'}
@@ -260,6 +266,15 @@ components:
     type: Button
     layout_properties: {grid_position: 'JLEMXR,SOMPEH'}
     event_bindings: {click: hidesupport_click}
+- name: equip_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'AFPQWB,YOTHYW'}
+  components:
+  - name: button_1
+    properties: {text: button_1}
+    type: Button
+    layout_properties: {grid_position: 'GTHLWX,PFRYSG'}
 - name: unitproc
   properties: {visible: false}
   type: ColumnPanel
@@ -270,6 +285,10 @@ components:
     type: Button
     layout_properties: {grid_position: 'GHRPKQ,DKFTBK'}
     event_bindings: {click: hideskills_click}
+  - name: skillslist
+    properties: {}
+    type: RichText
+    layout_properties: {grid_position: 'GLAMCW,YWSISU'}
   - name: accostlabel
     properties: {text: Accosts, visible: false, align: center}
     type: Label
