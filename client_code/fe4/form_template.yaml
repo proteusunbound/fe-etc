@@ -219,7 +219,7 @@ components:
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}
 - name: equip_panel
-  properties: {}
+  properties: {visible: false}
   type: ColumnPanel
   layout_properties: {grid_position: 'KJHVDW,LLIYSH PMCHFV,NEMJVT'}
   components:
