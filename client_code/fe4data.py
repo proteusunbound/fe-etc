@@ -285,6 +285,24 @@ class DuelSim:
       if "Barrier Ring" in self.unitequip:
         self.unit.resistance += 5
 
+    def adjustunitskills(self):
+      """Abju"""
+
+    def boss_stat_adjust(self):
+      """Adjust Boss Stats"""
+      if "Power Ring" in self.bossequip:
+        self.unit.strength += 5
+      if "Magic Ring" in self.bossequip:
+        self.unit.magic += 5
+      if "Skill Ring" in self.bossequip:
+        self.unit.skill += 5
+      if "Speed Ring" in self.bossequip:
+        self.unit.speed += 5
+      if "Shield Ring" in self.bossequip:
+        self.unit.defense += 5
+      if "Barrier Ring" in self.bossequip:
+        self.unit.resistance += 5
+
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
