@@ -305,17 +305,17 @@ class DuelSim:
     def boss_stat_adjust(self):
       """Adjust Boss Stats"""
       if "Power Ring" in self.bossequip:
-        self.unit.strength += 5
+        self.boss.strength += 5
       if "Magic Ring" in self.bossequip:
-        self.unit.magic += 5
+        self.boss.magic += 5
       if "Skill Ring" in self.bossequip:
-        self.unit.skill += 5
+        self.boss.skill += 5
       if "Speed Ring" in self.bossequip:
-        self.unit.speed += 5
+        self.boss.speed += 5
       if "Shield Ring" in self.bossequip:
-        self.unit.defense += 5
+        self.boss.defense += 5
       if "Barrier Ring" in self.bossequip:
-        self.unit.resistance += 5
+        self.boss.resistance += 5
 
     def unitdisplay(self):
         """Unit Stat Display"""
