@@ -286,7 +286,21 @@ class DuelSim:
         self.unit.resistance += 5
 
     def adjustunitskills(self):
-      """Abju"""
+      """Abjust Unit Skills"""
+      if "Renewal Band" in self.unitequip:
+        self.unit.skills.append("Renewal")
+      if "Miracle Band" in self.unitequip:
+        self.unit.skills.append("Miracle")
+      if "Follow-Up Ring" in self.unitequip:
+        self.unit.skills.append("Follow-Up")
+      if "Circlet" in self.unitequip:
+        self.unit.skills.append("Renewal")
+        self.unit.skills.append("Miracle")
+
+    def adjust_boss_skills(self):
+      """Adjust Boss Skills"""
+      if "Renewal Band" in self.bossequip:
+        self.boss.skills.append("Renewal")
 
     def boss_stat_adjust(self):
       """Adjust Boss Stats"""
