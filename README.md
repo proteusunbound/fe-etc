@@ -1,5 +1,11 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.4
+- triangle attack and refresh options in FE3
+- equipment in FE4
+- list of skills now displayed when unit or boss is selected
+- Renewal, Miracle, Vantage added
+- fourth player combatant
 ### version 3.3
 - miscellaneous equipment in FE3
 - weapon range and magical damage in FE4
@@ -9,7 +15,7 @@ Combat success rate and turn calculator for Fire Emblem.
 ### version 3.2
 - stat boosters for FE3
 - critical hit and dodge in FE4
-- calculations adjusted for weapon triangle and leadership bonuses
+- calculations adjusted for terrain, weapon triangle, and leadership bonuses
 - FE4 skill list update: Accost
 - second player combatant added
 ### version 3.1
