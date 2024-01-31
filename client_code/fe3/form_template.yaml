@@ -51,10 +51,10 @@ components:
       placeholder: Select Boss
       items: [Gazzak, Gomer, Hyman, Merach, Emereus, Harmein, Kannival, Zharov, Khozen,
         Volzhin, Jiol, Bishop (Chapter 12), Hollstadt, Morzas, Tiki, Camus, Michalis,
-        Gharnef, Xemcel, Medeus, Lorenz, Lumel, Lykke, Gail, Torus, Lang, Dall, Jeorge,
-        Yodel, Arlen, Wyvern (Chapter 11), Fire Dragon (Chapter 12), Ice Dragon (Chapter 13),
-        Thief (Chapter 14), Eibel, Willow, Sheena, General (Chapter 18), Nehring,
-        Hardin, Dark Bishop (Chapter 21), Mage Dragon (Endgame 1)]
+        Gharnef, Xemcel, Medeus, Brigand (Chapter 1), Lumel, Lykke, Gail, Torus, Lang,
+        Dall, Jeorge, Yodel, Arlen, Wyvern (Chapter 11), Fire Dragon (Chapter 12),
+        Ice Dragon (Chapter 13), Thief (Chapter 14), Eibel, Willow, Sheena, General (Chapter 18),
+        Nehring, Hardin, Dark Bishop (Chapter 21), Mage Dragon (Endgame 1)]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
