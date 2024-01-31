@@ -47,7 +47,7 @@ class CombatSim:
                     self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
                     break
         for number, name in self.duels.items():
-            if name.unit.hitpoints > 0 and self.bosshp > 0:
+            if name.unit.hitpoints > 0 and self.bosshp > 0 and name.boss.counter is True:
                 name.setbosshp(self.bosshp)
                 name.hpthreshold()
                 name.enemyphase()
