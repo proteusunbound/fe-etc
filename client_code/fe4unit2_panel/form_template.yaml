@@ -59,7 +59,7 @@ components:
     event_bindings: {}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
-    col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35}'}
+    col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
@@ -224,13 +224,20 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,BIZCRA OXIHGR,CRADDC'}
   - name: support
-    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,HPCKFU'}
     event_bindings: {click: support_click}
+  - name: equipment
+    properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      font_size: 12}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,UFGLPY'}
+    event_bindings: {click: equipment_click}
   - name: skills
-    properties: {text: procs, background: 'theme:Surface Variant', foreground: '#9ea9ff',
-      visible: false, font_size: 12}
+    properties: {text: skills, background: 'theme:Surface Variant', foreground: '#9ea9ff',
+      visible: true, font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,SLNSGZ'}
     event_bindings: {click: skills_click}
@@ -260,16 +267,80 @@ components:
     type: Button
     layout_properties: {grid_position: 'JLEMXR,SOMPEH'}
     event_bindings: {click: hidesupport_click}
+- name: equip_panel
+  properties: {visible: false}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'AFPQWB,YOTHYW'}
+  components:
+  - name: power_ring
+    properties: {text: Power Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AHMOXX AARJGV,WQPHNE'}
+    event_bindings: {change: power_ring_change}
+  - name: skillring
+    properties: {text: Skill Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AHMOXX DINXEZ,UWYYUW'}
+    event_bindings: {change: skillring_change}
+  - name: barrier_ring
+    properties: {text: Barrier Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AHMOXX YMQDIK,JYMHKZ'}
+    event_bindings: {change: barrier_ring_change}
+  - name: followupring
+    properties: {text: Follow-Up Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AHMOXX NJYMVR,GFBPJO'}
+    event_bindings: {change: followupring_change}
+  - name: magicring
+    properties: {text: Magic Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AIRMRP SSVOGI,IIOBLI'}
+    event_bindings: {change: magicring_change}
+  - name: speedring
+    properties: {text: Speed Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AIRMRP FSXBNL,EKYAVS'}
+    event_bindings: {change: speedring_change}
+  - name: renewalband
+    properties: {text: Renewal Band}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AIRMRP LYZHPP,SWKWRK'}
+    event_bindings: {change: renewalband_change}
+  - name: circlet
+    properties: {text: Circlet}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,AIRMRP KCIYOH,UAPNMN'}
+    event_bindings: {change: circlet_change}
+  - name: hide_equip
+    properties: {text: hide equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'GTHLWX,PFRYSG MNQABG,PCYBUB'}
+    event_bindings: {click: hide_equip_click}
+  - name: shieldring
+    properties: {text: Shield Ring}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,PFRYSG LDIMMX,NHUKQD'}
+    event_bindings: {change: shieldring_change}
+  - name: miracleband
+    properties: {text: Miracle Band}
+    type: CheckBox
+    layout_properties: {grid_position: 'GTHLWX,PFRYSG HSUNIX,GOCXXW'}
+    event_bindings: {change: miracleband_change}
 - name: unitproc
   properties: {visible: false}
   type: ColumnPanel
   layout_properties: {grid_position: 'RTHEGJ,LBPFUR'}
   components:
   - name: hideskills
-    properties: {text: hide procs, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    properties: {text: hide skills, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
     type: Button
     layout_properties: {grid_position: 'GHRPKQ,DKFTBK'}
     event_bindings: {click: hideskills_click}
+  - name: skillslist
+    properties: {}
+    type: RichText
+    layout_properties: {grid_position: 'GLAMCW,YWSISU'}
   - name: accostlabel
     properties: {text: Accosts, visible: false, align: center}
     type: Label

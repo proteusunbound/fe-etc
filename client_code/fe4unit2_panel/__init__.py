@@ -19,6 +19,7 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
 
   def unit_drop_change(self, **event_args):
     """This method is called when an item is selected"""
+    self.skillslist.content = ""
     self.parent.combat.duels[1].setunit(self.unit_drop.selected_value)
     self.parent.combat.duels[1].unit.setskills()
     self.hp.text = self.parent.combat.duels[1].unit.maxhp
@@ -32,8 +33,18 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[1].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
-    if ("Accost" in self.parent.combat.duels[1].unit.skills) or ("Adept" in self.parent.combat.duels[1].unit.skills) or ("Sol" in self.parent.combat.duels[1].unit.skills) or ("Luna" in self.parent.combat.duels[1].unit.skills) or ("Astra" in self.parent.combat.duels[1].unit.skills):
-      self.skills.visible = True
+    self.power_ring.checked = False
+    self.magicring.checked = False
+    self.skillring.checked = False
+    self.speedring.checked = False
+    self.shieldring.checked = False
+    self.barrier_ring.checked = False
+    self.renewalband.checked = False
+    self.miracleband.checked = False
+    self.followupring.checked = False
+    self.circlet.checked = False
+    for i in range(0, len(self.parent.combat.duels[1].unit.skills)):
+      self.skillslist.content += f"{self.parent.combat.duels[1].unit.skills[i]} \n"
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -69,6 +80,7 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
     self.supportpanel.visible = False
     self.unitproc.visible = False
     self.bossproc.visible = False
+    self.equip_panel.visible = False
 
   def leaderdrop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -186,3 +198,77 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
     self.sol_drop.visible = False
     self.lunalabel.visible = False
     self.luna_drop.visible = False
+
+  def equipment_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = True
+
+  def hide_equip_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.equip_panel.visible = False
+
+  def power_ring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Power Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.strength.text = self.parent.combat.duels[1].unit.strength
+
+  def magicring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Magic Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.magic.text = self.parent.combat.duels[1].unit.magic
+
+  def skillring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Skill Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.parent.combat.duels[1].unitdisplay()
+    self.skill.text = self.parent.combat.duels[1].unit.skill
+    self.hit.text = self.parent.combat.duels[1].unit.hit
+    self.crit.text = self.parent.combat.duels[1].unit.crit
+
+  def speedring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Speed Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.parent.combat.duels[1].unitdisplay()
+    self.speed.text = self.parent.combat.duels[1].unit.speed
+    self.attackspeed.text = self.parent.combat.duels[1].unit.AS
+
+  def shieldring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Shield Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.defense.text = self.parent.combat.duels[1].unit.defense
+
+  def barrier_ring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Barrier Ring")
+    self.parent.combat.duels[1].unitstatadjust()
+    self.resistance.text = self.parent.combat.duels[1].unit.resistance
+
+  def renewalband_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Renewal Band")
+    self.parent.combat.duels[1].adjustunitskills()
+    self.skillslist.content += "Renewal \n"
+
+  def miracleband_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Miracle Band")
+    self.parent.combat.duels[1].adjustunitskills()
+    self.skillslist.content += "Miracle \n"
+
+  def followupring_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Follow-Up Ring")
+    self.parent.combat.duels[1].adjustunitskills()
+    self.skillslist.content += "Follow-Up \n"
+
+  def circlet_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].setunitequip("Circlet")
+    self.parent.combat.duels[1].adjustunitskills()
+    self.skillslist.content += "Renewal \n"
+    self.skillslist.contet += "Miracle \n"

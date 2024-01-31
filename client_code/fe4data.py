@@ -166,6 +166,8 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.noaccost = False
+        self.unitequip = []
+        self.bossequip = []
 
     def setunit(self, unit):
         """Set Unit"""
@@ -182,6 +184,14 @@ class DuelSim:
     def setbossweapon(self, weapon):
         """Set Boss Weapon"""
         self.bossweapon = ActiveWeapon(weapon)
+
+    def setunitequip(self, equipment):
+      """Set Unit Equipment"""
+      self.unitequip.append(equipment)
+
+    def setbossequip(self, equipment):
+      """Set Boss Equipment"""
+      self.bossequip.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -246,6 +256,66 @@ class DuelSim:
       else:
         self.unitweapon.weapontriangle = 0
         self.bossweapon.weapontriangle = 0
+
+    def hpthreshold(self):
+      """HP Threshold"""
+      if "Miracle" in self.unit.skills and self.unit.hitpoints <= 10:
+        self.unitavoid = min(self.unitavoid + (11 - self.unit.hitpoints) / 10, 1)
+      else:
+        self.unitavoid = 1 - self.boss.hitchance
+      if "Miracle" in self.boss.skills and self.boss.hitpoints <= 10:
+        self.boss.avoid = self.boss.avoid + (11 - self.boss.hitpoints) * 10
+        self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+      else:
+        self.enemy_avoid()
+        self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+
+    def unitstatadjust(self):
+      """Adjust Unit Stats"""
+      if "Power Ring" in self.unitequip:
+        self.unit.strength += 5
+      if "Magic Ring" in self.unitequip:
+        self.unit.magic += 5
+      if "Skill Ring" in self.unitequip:
+        self.unit.skill += 5
+      if "Speed Ring" in self.unitequip:
+        self.unit.speed += 5
+      if "Shield Ring" in self.unitequip:
+        self.unit.defense += 5
+      if "Barrier Ring" in self.unitequip:
+        self.unit.resistance += 5
+
+    def adjustunitskills(self):
+      """Abjust Unit Skills"""
+      if "Renewal Band" in self.unitequip:
+        self.unit.skills.append("Renewal")
+      if "Miracle Band" in self.unitequip:
+        self.unit.skills.append("Miracle")
+      if "Follow-Up Ring" in self.unitequip:
+        self.unit.skills.append("Follow-Up")
+      if "Circlet" in self.unitequip:
+        self.unit.skills.append("Renewal")
+        self.unit.skills.append("Miracle")
+
+    def adjust_boss_skills(self):
+      """Adjust Boss Skills"""
+      if "Renewal Band" in self.bossequip:
+        self.boss.skills.append("Renewal")
+
+    def boss_stat_adjust(self):
+      """Adjust Boss Stats"""
+      if "Power Ring" in self.bossequip:
+        self.boss.strength += 5
+      if "Magic Ring" in self.bossequip:
+        self.boss.magic += 5
+      if "Skill Ring" in self.bossequip:
+        self.boss.skill += 5
+      if "Speed Ring" in self.bossequip:
+        self.boss.speed += 5
+      if "Shield Ring" in self.bossequip:
+        self.boss.defense += 5
+      if "Barrier Ring" in self.bossequip:
+        self.boss.resistance += 5
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -346,6 +416,13 @@ class DuelSim:
       else:
         self.boss.counter = False
         self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+
+    def hprecover(self):
+      """Player Phase HP Recover""";
+      if self.unit.maxhp > self.unit.hitpoints:
+        if "Renewal" in self.unit.skills:
+          self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
+          self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
     def unitadept(self):
       """Unit Adept"""
@@ -502,7 +579,7 @@ class DuelSim:
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
+        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
             if self.boss.hitchance == 0:
                 self.bossmiss()
             elif self.avoidno > 0:

@@ -36,6 +36,7 @@ class CombatSim:
                 name.hprecover()
                 name.hpthreshold()
                 name.playerphase()
+                name.refresh()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()

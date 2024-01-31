@@ -93,6 +93,10 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
           self.dismountbox.visible = True
         if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Armor Knight", "Archer", "Hunter", "Mercenary", "Mage", "Cleric", "Pegasus Knight"):
           self.promobox.visible = True
+        if self.parent.combat.duels[0].unit.name in ("Catria", "Palla", "Est"):
+            self.trianglecheck.visible = True
+        else:
+            self.trianglecheck.visible = False
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -126,6 +130,9 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         self.supportpanel.visible = False
         self.book2box.visible = False
         self.equip_panel.visible = False
+        self.trianglecheck.visible = False
+        self.dancedrop.selected_value = None
+        self.dancedrop.visible = False
 
     def support_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -165,6 +172,8 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         self.resistance.text = self.parent.combat.duels[0].unit.resistance
         self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
         self.weapon_drop.selected_value = None
+        self.dancedrop.visible = True
+        self.dancedrop.selected_value = None
 
     def dismountbox_change(self, **event_args):
       """This method is called when this checkbox is checked or unchecked"""
@@ -276,3 +285,11 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
     def iote_change(self, **event_args):
       """This method is called when this checkbox is checked or unchecked"""
       self.parent.combat.duels[0].setequipment("Iote's Shield")
+
+    def trianglecheck_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
+
+    def dancedrop_change(self, **event_args):
+      """This method is called when an item is selected"""
+      self.parent.combat.duels[0].setrefreshes(int(self.dancedrop.selected_value))
