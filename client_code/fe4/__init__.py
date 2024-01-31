@@ -16,7 +16,8 @@ class fe4(fe4Template):
     self.unitpanels = [
         self.unit1_panel,
         self.unit2_panel,
-        self.unit3_panel
+        self.unit3_panel,
+        self.unit4_panel
     ]
 
   def unit_number_change(self, **event_args):
