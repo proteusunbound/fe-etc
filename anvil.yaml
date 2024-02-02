@@ -224,6 +224,9 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 9}
+      type: string
     title: FE4 Unit Stats
   fe1_unit_stats:
     client: search
@@ -733,6 +736,9 @@ db_schema:
     - name: Leadership
       admin_ui: {width: 200, order: 11}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 12}
+      type: string
     title: FE4 Boss Stats
   fe4_weapon_stats:
     client: search
@@ -760,3 +766,23 @@ db_schema:
       admin_ui: {width: 200, order: 6}
       type: number
     title: FE4 Weapon Stats
+  fe4_effectiveness:
+    client: search
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 102}
+      type: string
+    - name: Cavalier
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    - name: Lance Knight
+      admin_ui: {width: 200, order: 2}
+      type: bool
+    - name: Arch Knight
+      admin_ui: {width: 200, order: 3}
+      type: bool
+    - name: Axe Knight
+      admin_ui: {width: 200, order: 4}
+      type: bool
+    title: FE4 Effectiveness
