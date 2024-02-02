@@ -783,6 +783,30 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: bool
     - name: Axe Knight
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 4, width: 50}
+      type: bool
+    - name: Free Knight
+      admin_ui: {width: 200, order: 5}
+      type: bool
+    - name: Troubadour
+      admin_ui: {width: 200, order: 6}
+      type: bool
+    - name: Knight Lord
+      admin_ui: {width: 200, order: 7}
+      type: bool
+    - name: Duke Knight
+      admin_ui: {width: 200, order: 8}
+      type: bool
+    - name: Master Knight
+      admin_ui: {width: 200, order: 9}
+      type: bool
+    - name: Paladin
+      admin_ui: {width: 200, order: 10}
+      type: bool
+    - name: Bow Knight
+      admin_ui: {width: 200, order: 11}
+      type: bool
+    - name: Ranger
+      admin_ui: {width: 200, order: 12}
       type: bool
     title: FE4 Effectiveness
