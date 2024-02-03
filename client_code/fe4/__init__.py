@@ -78,6 +78,7 @@ class fe4(fe4Template):
     for number, name in self.combat.duels.items():
       name.counterattack()
       name.doubling()
+      name.effectivecheck()
       name.precombat()
     self.combat.battle()
     self.combatlog.content = self.combat.text
