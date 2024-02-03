@@ -272,3 +272,9 @@ class fe4unit3_panel(fe4unit3_panelTemplate):
     self.parent.combat.duels[2].adjustunitskills()
     self.skillslist.content += "Renewal \n"
     self.skillslist.contet += "Miracle \n"
+
+  def charmbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[2].unit.setcharm(self.charmbox.checked)
+    self.parent.combat.duels[2].unitdisplay()
+    self.hit.text = self.parent.combat.duels[2].unit.hit
