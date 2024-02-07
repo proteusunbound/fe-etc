@@ -1,5 +1,9 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 3.5
+- weapon effectiveness
+- Charm and Pavise added
+- fifth player combatant
 ### version 3.4
 - triangle attack and refresh options in FE3
 - equipment in FE4
