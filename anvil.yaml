@@ -224,6 +224,9 @@ db_schema:
     - name: Res
       admin_ui: {width: 200, order: 8}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 9}
+      type: string
     title: FE4 Unit Stats
   fe1_unit_stats:
     client: search
@@ -733,6 +736,12 @@ db_schema:
     - name: Leadership
       admin_ui: {width: 200, order: 11}
       type: number
+    - name: Class
+      admin_ui: {width: 200, order: 12}
+      type: string
+    - name: Level
+      admin_ui: {width: 200, order: 13}
+      type: number
     title: FE4 Boss Stats
   fe4_weapon_stats:
     client: search
@@ -760,3 +769,158 @@ db_schema:
       admin_ui: {width: 200, order: 6}
       type: number
     title: FE4 Weapon Stats
+  fe4_effectiveness:
+    client: search
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 102}
+      type: string
+    - name: Cavalier
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    - name: Lance Knight
+      admin_ui: {width: 200, order: 2}
+      type: bool
+    - name: Arch Knight
+      admin_ui: {width: 200, order: 3}
+      type: bool
+    - name: Axe Knight
+      admin_ui: {order: 4, width: 50}
+      type: bool
+    - name: Free Knight
+      admin_ui: {width: 200, order: 5}
+      type: bool
+    - name: Troubadour
+      admin_ui: {width: 200, order: 6}
+      type: bool
+    - name: Knight Lord
+      admin_ui: {width: 200, order: 7}
+      type: bool
+    - name: Duke Knight
+      admin_ui: {width: 200, order: 8}
+      type: bool
+    - name: Master Knight
+      admin_ui: {width: 200, order: 9}
+      type: bool
+    - name: Paladin
+      admin_ui: {width: 200, order: 10}
+      type: bool
+    - name: Bow Knight
+      admin_ui: {width: 200, order: 11}
+      type: bool
+    - name: Ranger
+      admin_ui: {width: 200, order: 12}
+      type: bool
+    - name: Mage Knight
+      admin_ui: {width: 200, order: 13}
+      type: bool
+    - name: Great Knight
+      admin_ui: {width: 200, order: 14}
+      type: bool
+    - name: Pegasus Knight
+      admin_ui: {width: 200, order: 15}
+      type: bool
+    - name: Falcon Knight
+      admin_ui: {width: 200, order: 16}
+      type: bool
+    - name: Wyvern Rider
+      admin_ui: {width: 200, order: 17}
+      type: bool
+    - name: Wyvern Lord
+      admin_ui: {width: 200, order: 18}
+      type: bool
+    - name: Bow Fighter
+      admin_ui: {width: 200, order: 19}
+      type: bool
+    - name: Sword Fighter
+      admin_ui: {width: 200, order: 20}
+      type: bool
+    - name: Swordmaster
+      admin_ui: {width: 200, order: 21}
+      type: bool
+    - name: Sniper
+      admin_ui: {width: 200, order: 22}
+      type: bool
+    - name: Forrest
+      admin_ui: {width: 200, order: 23}
+      type: bool
+    - name: General
+      admin_ui: {width: 200, order: 24}
+      type: bool
+    - name: Emperor
+      admin_ui: {width: 200, order: 25}
+      type: bool
+    - name: Baron
+      admin_ui: {width: 200, order: 26}
+      type: bool
+    - name: Sword Armor
+      admin_ui: {width: 200, order: 27}
+      type: bool
+    - name: Axe Fighter
+      admin_ui: {width: 200, order: 28}
+      type: bool
+    - name: Warrior
+      admin_ui: {width: 200, order: 29}
+      type: bool
+    - name: Junior Lord
+      admin_ui: {width: 200, order: 30}
+      type: bool
+    - name: Mage Fighter
+      admin_ui: {width: 200, order: 31}
+      type: bool
+    - name: Prince
+      admin_ui: {width: 200, order: 32}
+      type: bool
+    - name: Princess
+      admin_ui: {width: 200, order: 33}
+      type: bool
+    - name: Queen
+      admin_ui: {width: 200, order: 34}
+      type: bool
+    - name: Dancer
+      admin_ui: {width: 200, order: 35}
+      type: bool
+    - name: Priest
+      admin_ui: {width: 200, order: 36}
+      type: bool
+    - name: Mage
+      admin_ui: {width: 200, order: 37}
+      type: bool
+    - name: Thunder Mage
+      admin_ui: {width: 200, order: 38}
+      type: bool
+    - name: Wind Mage
+      admin_ui: {width: 200, order: 39}
+      type: bool
+    - name: High Priest
+      admin_ui: {width: 200, order: 40}
+      type: bool
+    - name: Bishop
+      admin_ui: {width: 200, order: 41}
+      type: bool
+    - name: Sage
+      admin_ui: {width: 200, order: 42}
+      type: bool
+    - name: Bard
+      admin_ui: {width: 200, order: 43}
+      type: bool
+    - name: Light Priestess
+      admin_ui: {width: 200, order: 44}
+      type: bool
+    - name: Dark Mage
+      admin_ui: {width: 200, order: 45}
+      type: bool
+    - name: Dark Bishop
+      admin_ui: {width: 200, order: 46}
+      type: bool
+    - name: Thief
+      admin_ui: {width: 200, order: 47}
+      type: bool
+    - name: Thief Fighter
+      admin_ui: {width: 200, order: 48}
+      type: bool
+    - name: Dark Prince
+      admin_ui: {width: 200, order: 49}
+      type: bool
+    title: FE4 Effectiveness

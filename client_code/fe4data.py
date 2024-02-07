@@ -23,18 +23,21 @@ class ActiveUnit:
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
         self.hit = 0
         self.attack = 0
         self.leader = 0
+        self.charm = 0
         self.accostrate = 1
         self.adeptrate = 1
         self.adeptcancel = 1
         self.solrate = 1
         self.lunarate = 1
         self.astrarate = 1
+        self.pavisecancel = 1
         self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
@@ -44,6 +47,10 @@ class ActiveUnit:
         self.leader = 10
       if keyword == "Seliph":
         self.leader = 20
+
+    def setcharm(self, charmcheck):
+      if charmcheck is True:
+        self.charm = 10
 
     def setskills(self):
       if self.name in skills:
@@ -72,6 +79,7 @@ class ActiveWeapon:
         self.minrange = weapon["Min Range"]
         self.maxrange = weapon["Max Range"]
         self.weapontriangle = 0
+        self.effective = False
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -89,6 +97,9 @@ class ActiveBoss:
         self.defense = boss["Def"]
         self.resistance = boss["Res"]
         self.leader = boss["Leadership"]
+        self.charclass = boss["Class"]
+        self.level = boss["Level"]
+        self.charm = 0
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -110,7 +121,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle + keyword.hitbonus
+    keyword.hit = keyword.skill * 2 + weapon.hit + keyword.leader + weapon.weapontriangle + keyword.hitbonus + keyword.charm
 
 def physattack(keyword, weapon):
     """Physical Attack"""
@@ -136,6 +147,11 @@ def magcrit(attacker, defender):
   """Magical Crit"""
   attacker.critdamage = max(1, 2 * attacker.attack - defender.resistance)
 
+def effectiveness(weapon, keyword):
+  """Effectiveness"""
+  effcheck = app_tables.fe4_effectiveness.get(Name=weapon.name)
+  weapon.effective = effcheck[keyword.charclass]
+
 @anvil.server.portable_class
 class DuelSim:
     """Duel Simulator"""
@@ -160,6 +176,7 @@ class DuelSim:
         self.lunano = 0
         self.iniastra = 0
         self.astrano = 0
+        self.cancelpaviseno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -344,7 +361,7 @@ class DuelSim:
 
     def bosshitchance(self):
       """Boss Hit Chance"""
-      hitchance = min(((self.boss.hit - (self.unit.AS * 2 + self.unit.luck + self.unit.leader)) / 100), 1)
+      hitchance = min(((self.boss.hit - (self.unit.AS * 2 + self.unit.luck + self.unit.leader + self.unit.charm)) / 100), 1)
       self.boss.hitchance = max(0, hitchance)
 
     def precombat(self):
@@ -384,6 +401,17 @@ class DuelSim:
         self.unit.lunarate = self.unit.skill / 100
       if "Astra" in self.unit.skills:
         self.unit.astrarate = self.unit.skill / 100
+      if "Pavise" in self.boss.skills:
+        self.unit.pavisecancel = 1 - (self.boss.level / 100)
+
+    def effectivecheck(self):
+      """Effectiveness Log"""
+      effectiveness(self.unitweapon, self.boss)
+      effectiveness(self.bossweapon, self.unit)
+      if self.unitweapon.effective is True:
+        self.dueltext += f"{self.unit.name}'s {self.unitweapon.name} deals effective damage against {self.boss.name}. \n"
+      if self.bossweapon.effective is True:
+        self.dueltext += f"{self.boss.name}'s {self.bossweapon.name} deals effective damage against {self.unit.name}. \n"
 
     def doubling(self):
         """Doubling Calculation"""
@@ -460,6 +488,9 @@ class DuelSim:
         self.solno -= 1
         self.unit.hitpoints = min(self.unit.hitpoints + self.unit.critdamage, self.unit.maxhp)
         self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+      elif "Pavise" in self.boss.skills:
+        self.cancelpaviseno += 1
+        self.hitno += 1
       else:
         self.hitno += 1
 
@@ -476,6 +507,9 @@ class DuelSim:
             self.solno -= 1
             self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
             self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+          elif "Pavise" in self.boss.skills:
+            self.cancelpaviseno += 1
+            self.hitno += 1
           else:
             self.hitno += 1
 
@@ -501,7 +535,7 @@ class DuelSim:
 
     def bosscrit(self):
       """Boss Crit"""
-      if self.boss.crit < 100 and self.ddgno > 0:
+      if self.boss.crit < 100 and self.ddgno > 0 and self.bossweapon.effective is False:
           self.ddgno -= 1
           self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
           self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
@@ -521,7 +555,7 @@ class DuelSim:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
               self.astrano -= 1
               self.astra()
-            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
+            elif (self.unit.crit == 100 or self.unitweapon.effective is True) and "Nihil" not in self.boss.skills:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
@@ -537,7 +571,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
+            elif (self.boss.crit > 0 or self.bossweapon.effective is True) and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -547,7 +581,7 @@ class DuelSim:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
               self.astrano -= 1
               self.astra()
-            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
+            elif (self.unit.crit == 100 or self.unitweapon.effective is True) and "Nihil" not in self.boss.skills:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
@@ -568,7 +602,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
+            elif (self.boss.crit > 0 or self.bossweapon.effective is True) and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -585,7 +619,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
+            elif (self.boss.crit > 0 or self.bossweapon.effective is True) and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -595,7 +629,7 @@ class DuelSim:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
               self.astrano -= 1
               self.astra()
-            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
+            elif (self.unit.crit == 100 or self.unitweapon.effective is True) and "Nihil" not in self.boss.skills:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
@@ -616,7 +650,7 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and "Nihil" not in self.unit.skills:
+            elif (self.boss.crit > 0 or self.bossweapon.effective is True) and "Nihil" not in self.unit.skills:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -630,7 +664,7 @@ class DuelSim:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
               self.astrano -= 1
               self.astra()
-            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
+            elif (self.unit.crit == 100 or self.unitweapon.effective is True) and "Nihil" not in self.boss.skills:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
                 self.critno -= 1
