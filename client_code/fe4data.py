@@ -313,6 +313,7 @@ class DuelSim:
       if "Circlet" in self.unitequip:
         self.unit.skills.append("Renewal")
         self.unit.skills.append("Miracle")
+        
 
     def adjust_boss_skills(self):
       """Adjust Boss Skills"""
