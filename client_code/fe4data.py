@@ -337,6 +337,10 @@ class DuelSim:
         self.unit.skills.append("Miracle")
       if self.unitweapon.name in ("Mystletainn", "Killer Bow"):
         self.unit.skills.append("Critical")
+      if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+        if "Adept" not in self.unit.skills:
+          self.unit.skills.append("Adept")
+        self.unit.adeptrate = 1
 
     def adjust_boss_skills(self):
       """Adjust Boss Skills"""
@@ -346,6 +350,10 @@ class DuelSim:
         self.boss.skills.append("Miracle")
       if (self.unitweapon.name in ("Lands Sword", "Nosferatu")) and ("Pavise" in self.boss.skills):
         self.boss.skills.remove("Pavise")
+      if self.bossweapon.name in ("Brave Axe", "Brave Bow"):
+        if "Adept" not in self.boss.skills:
+          self.boss.skills.append("Adept")
+        self.unit.adeptcancel = 0
 
     def boss_stat_adjust(self):
       """Adjust Boss Stats"""
@@ -557,7 +565,7 @@ class DuelSim:
 
     def bossadept(self):
       """Boss Adept"""
-      if self.canceladeptno > 0:
+      if self.canceladeptno > 0 and self.unit.adeptcancel > 0:
         self.canceladeptno -= 1
       elif self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
         self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
