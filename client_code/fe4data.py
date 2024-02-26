@@ -557,6 +557,10 @@ class DuelSim:
             self.solno -= 1
             self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
             self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+          elif self.unitweapon.name == "Nosferatu" and self.unit.hitpoints < self.unit.maxhp:
+            self.hitno += 1
+            self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
+            self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
           elif "Pavise" in self.boss.skills:
             self.cancelpaviseno += 1
             self.hitno += 1
