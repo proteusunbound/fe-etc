@@ -64,9 +64,9 @@ class fe4(fe4Template):
     """This method is called when an item is selected"""
     for number, name in self.combat.duels.items():
       name.setbossweapon(self.weapon_drop.selected_value)
-      name.bossdisplay()
       name.adjust_boss_skills()
       name.boss_stat_adjust()
+      name.bossdisplay()
     self.skilldisplay.content = ""
     for i in range(0, len(self.combat.duels[0].boss.skills)):
       self.skilldisplay.content += f"{self.combat.duels[0].boss.skills[i]} \n"

@@ -53,9 +53,9 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     self.parent.combat.duels[3].setunitweapon(self.weapon_drop.selected_value)
-    self.parent.combat.duels[3].unitdisplay()
     self.parent.combat.duels[3].adjustunitskills()
     self.parent.combat.duels[3].unitstatadjust()
+    self.parent.combat.duels[3].unitdisplay()
     self.skillslist.content = ""
     for i in range(0, len(self.parent.combat.duels[3].unit.skills)):
       self.skillslist.content += f"{self.parent.combat.duels[3].unit.skills[i]} \n"
