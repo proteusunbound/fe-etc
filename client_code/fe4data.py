@@ -292,6 +292,10 @@ class DuelSim:
       else:
         self.boss.crit = 0
         self.boss.damage = 0
+      if ("Wrath" in self.boss.skills) and (self.boss.hitpoints < self.boss.maxhp / 2) and ("Nihil" not in self.unit.skills):
+        self.boss.crit = 100
+      if ("Wrath" in self.unit.skills) and (self.unit.hitpoints < self.unit.maxhp / 2) and ("Nihil" not in self.boss.skills):
+        self.unit.crit = 100
 
     def unitstatadjust(self):
       """Adjust Unit Stats"""
