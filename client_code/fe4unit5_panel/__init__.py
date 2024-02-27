@@ -55,9 +55,17 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
     self.parent.combat.duels[4].setunitweapon(self.weapon_drop.selected_value)
     self.parent.combat.duels[4].unitdisplay()
     self.parent.combat.duels[4].adjustunitskills()
+    self.parent.combat.duels[4].unitstatadjust()
     self.skillslist.content = ""
     for i in range(0, len(self.parent.combat.duels[4].unit.skills)):
       self.skillslist.content += f"{self.parent.combat.duels[4].unit.skills[i]} \n"
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.magic.text = self.parent.combat.duels[4].unit.magic
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.luck.text = self.parent.combat.duels[4].unit.luck
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance
     self.attackspeed.text = self.parent.combat.duels[4].unit.AS
     self.hit.text = self.parent.combat.duels[4].unit.hit
     self.crit.text = self.parent.combat.duels[4].unit.crit

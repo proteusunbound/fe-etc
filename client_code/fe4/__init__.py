@@ -66,9 +66,17 @@ class fe4(fe4Template):
       name.setbossweapon(self.weapon_drop.selected_value)
       name.bossdisplay()
       name.adjust_boss_skills()
+      name.boss_stat_adjust()
     self.skilldisplay.content = ""
     for i in range(0, len(self.combat.duels[0].boss.skills)):
       self.skilldisplay.content += f"{self.combat.duels[0].boss.skills[i]} \n"
+    self.strength.text = self.combat.duels[0].boss.strength
+    self.magic.text = self.combat.duels[0].boss.magic
+    self.skill.text = self.combat.duels[0].boss.skill
+    self.speed.text = self.combat.duels[0].boss.speed
+    self.luck.text = self.combat.duels[0].boss.luck
+    self.defense.text = self.combat.duels[0].boss.defense
+    self.resistance.text = self.combat.duels[0].boss.resistance
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
     self.crit.text = self.combat.duels[0].boss.crit
