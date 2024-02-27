@@ -286,6 +286,12 @@ class DuelSim:
       else:
         self.enemy_avoid()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+      if self.bossweapon.name == "Hel" and self.unit.hitpoints > 1:
+        self.boss.crit = 0
+        self.boss.damage = self.unit.hitpoints - 1
+      else:
+        self.boss.crit = 0
+        self.boss.damage = 0
 
     def unitstatadjust(self):
       """Adjust Unit Stats"""
