@@ -54,6 +54,10 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
     """This method is called when an item is selected"""
     self.parent.combat.duels[4].setunitweapon(self.weapon_drop.selected_value)
     self.parent.combat.duels[4].unitdisplay()
+    self.parent.combat.duels[4].adjustunitskills()
+    self.skillslist.content = ""
+    for i in range(0, len(self.parent.combat.duels[4].unit.skills)):
+      self.skillslist.content += f"{self.parent.combat.duels[4].unit.skills[i]} \n"
     self.attackspeed.text = self.parent.combat.duels[4].unit.AS
     self.hit.text = self.parent.combat.duels[4].unit.hit
     self.crit.text = self.parent.combat.duels[4].unit.crit
