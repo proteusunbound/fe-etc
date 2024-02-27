@@ -286,6 +286,12 @@ class DuelSim:
       else:
         self.enemy_avoid()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+      if self.bossweapon.name == "Hel" and self.unit.hitpoints > 1:
+        self.boss.crit = 0
+        self.boss.damage = self.unit.hitpoints - 1
+      else:
+        self.boss.crit = 0
+        self.boss.damage = 0
 
     def unitstatadjust(self):
       """Adjust Unit Stats"""
@@ -301,23 +307,59 @@ class DuelSim:
         self.unit.defense += 5
       if "Barrier Ring" in self.unitequip:
         self.unit.resistance += 5
+      if self.unitweapon.name == "Barrier Blade":
+        self.unit.resistance += 7
+      if self.unitweapon.name == "Safeguard":
+        self.unit.defense += 7
+      if self.unitweapon.name in ("Tyrfing", "Balmung", "Gae Bolg", "Forseti"):
+        self.unit.skill += 10
+      if self.unitweapon.name in ("Tyrfing", "Yewfelle"):
+        self.unit.speed += 10
+      if self.unitweapn.name in ("Tyrfing", "Naga"):
+        self.unit.resistance += 20
+      if self.unitweapon.name in ("Mystletainn", "Naga"):
+        self.unit.skill += 20
+      if self.unitweapon.name == "Mystletainn":
+        self.unit.resistance += 10
+      if self.unitweapon.name in ("Balmung", "Forseti", "Naga"):
+        self.unit.speed += 20
+      if self.unitweapon.name in ("Gae Bolg", "Yewfelle"):
+        self.unit.strength += 10
+      if self.unitweapon.name == "Gae Bolg":
+        self.unit.defense += 10
+      if self.unitweapon.name == "Naga":
+        self.unit.defense += 20
 
     def adjustunitskills(self):
       """Abjust Unit Skills"""
-      if "Renewal Band" in self.unitequip:
+      if ("Renewal Band" in self.unitequip) or (self.unitweapon.name == "Yewfelle"):
         self.unit.skills.append("Renewal")
-      if "Miracle Band" in self.unitequip:
+      if ("Miracle Band" in self.unitequip) or (self.unitweapon.name in ("Miracle Sword", "Tyrfing")):
         self.unit.skills.append("Miracle")
       if "Follow-Up Ring" in self.unitequip:
         self.unit.skills.append("Follow-Up")
       if "Circlet" in self.unitequip:
         self.unit.skills.append("Renewal")
         self.unit.skills.append("Miracle")
+      if self.unitweapon.name in ("Mystletainn", "Killer Bow"):
+        self.unit.skills.append("Critical")
+      if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+        if "Adept" not in self.unit.skills:
+          self.unit.skills.append("Adept")
+        self.unit.adeptrate = 1
 
     def adjust_boss_skills(self):
       """Adjust Boss Skills"""
       if "Renewal Band" in self.bossequip:
         self.boss.skills.append("Renewal")
+      if self.bossweapon.name == "Miracle Sword":
+        self.boss.skills.append("Miracle")
+      if (self.unitweapon.name in ("Lands Sword", "Nosferatu")) and ("Pavise" in self.boss.skills):
+        self.boss.skills.remove("Pavise")
+      if self.bossweapon.name in ("Brave Axe", "Brave Bow"):
+        if "Adept" not in self.boss.skills:
+          self.boss.skills.append("Adept")
+        self.unit.adeptcancel = 0
 
     def boss_stat_adjust(self):
       """Adjust Boss Stats"""
@@ -331,8 +373,22 @@ class DuelSim:
         self.boss.speed += 5
       if "Shield Ring" in self.bossequip:
         self.boss.defense += 5
-      if "Barrier Ring" in self.bossequip:
+      if ("Barrier Ring" in self.bossequip) or (self.bossweapon.name == "Loptous"):
         self.boss.resistance += 5
+      if self.bossweapon.name == "Gungnir":
+        self.boss.strength += 10
+      if self.bossweapon.name in ("Gungnir", "Mjolnir"):
+        self.boss.speed += 10
+      if self.bossweapon.name in ("Gungnir", "Valflame"):
+        self.boss.defense += 10
+      if self.bossweapon.name == "Helswath":
+        self.boss.defense += 20
+      if self.bossweapon.name in ("Helswath", "Valflame"):
+        self.boss.resistance += 10
+      if self.bossweapon.name == "Valflame":
+        self.boss.magic += 10
+      if self.bossweapon.name == "Mjolnir":
+        self.boss.skill += 20
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -507,6 +563,10 @@ class DuelSim:
             self.solno -= 1
             self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
             self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
+          elif self.unitweapon.name == "Nosferatu" and self.unit.hitpoints < self.unit.maxhp:
+            self.hitno += 1
+            self.unit.hitpoints = min(self.unit.hitpoints + self.unit.damage, self.unit.maxhp)
+            self.dueltext += f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
           elif "Pavise" in self.boss.skills:
             self.cancelpaviseno += 1
             self.hitno += 1
@@ -515,7 +575,7 @@ class DuelSim:
 
     def bossadept(self):
       """Boss Adept"""
-      if self.canceladeptno > 0:
+      if self.canceladeptno > 0 and self.unit.adeptcancel > 0:
         self.canceladeptno -= 1
       elif self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
         self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
