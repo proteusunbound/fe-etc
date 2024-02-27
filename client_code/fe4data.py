@@ -427,10 +427,14 @@ class DuelSim:
       hitrate(self.boss, self.bossweapon)
       if self.unitweapon.type in ("Sword", "Lance", "Axe", "Bow"):
         physattack(self.unit, self.unitweapon)
+        if self.bossweapon.name == "Loptous":
+          self.unit.attack = math.floor(self.unit.attack / 2)
         physdamage(self.unit, self.boss)
         physcrit(self.unit, self.boss)
       else:
         magattack(self.unit, self.unitweapon)
+        if self.bossweapon.name == "Loptous" and self.unitweapon.name != "Naga":
+          self.unit.attack = math.floor(self.unit.attack / 2)
         magdamage(self.unit, self.boss)
         magcrit(self.unit, self.boss)
       self.enemy_avoid()
