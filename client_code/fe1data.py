@@ -5,29 +5,22 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-@anvil.server.portable_class
-class UnitData:
-    """Unit Data"""
-    
-    def __init__(self, data):
-        self.data = data
-        self.name = self.data["Name"]
-        self.maxhp = self.data["HP"]
-        self.strength = self.data["Str"]
-        self.skill = self.data["Skl"]
-        self.speed = self.data["Spd"]
-        self.defense = self.data["Def"]
-        self.luck = self.data["Lck"]
-        self.resistance = self.data["Res"]
-        self.charclass = self.data["Class"]
-
 
 @anvil.server.portable_class
-class ActiveUnit(UnitData):
+class ActiveUnit:
     """Active Unit"""
 
     def __init__(self, keyword):
-        super().__init__(app_tables.fe1_unit_stats.get(Name=keyword))
+        self.char = app_tables.fe1_unit_stats.get(Name=keyword)
+        self.name = self.char["Name"]
+        self.maxhp = self.char["HP"]
+        self.strength = self.char["Str"]
+        self.skill = self.char["Skl"]
+        self.speed = self.char["Spd"]
+        self.defense = self.char["Def"]
+        self.luck = self.char["Lck"]
+        self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
         self.hitpoints = 0
         self.doubles = False
         self.devil = 1
@@ -38,76 +31,76 @@ class ActiveUnit(UnitData):
 
     def boosthp(self, number):
         """Seraph Robe"""
-        self.maxhp = min(self.data["HP"] + 9 * number, 52)
+        self.maxhp = min(self.char["HP"] + 9 * number, 52)
 
     def boostluck(self, number):
         """Goddess Icon"""
-        self.luck = min(self.data["Lck"] + 7 * number, 20)
+        self.luck = min(self.char["Lck"] + 7 * number, 20)
 
     def boost_speed(self, number):
         """Speed Ring"""
-        self.speed = min(self.data["Spd"] + 6 * number, 20)
+        self.speed = min(self.char["Spd"] + 6 * number, 20)
 
     def boost_strength(self, number):
         """Power Ring"""
-        self.strength = min(self.data["Str"] + 4 * number, 20)
+        self.strength = min(self.char["Str"] + 4 * number, 20)
 
     def boostresistance(self, number):
         """Talisman"""
-        self.resistance = min(self.data["Res"] + 7 * number, 7)
+        self.resistance = min(self.char["Res"] + 7 * number, 7)
 
     def boostdefense(self, number):
         """Dracoshield"""
-        self.defense = min(self.data["Def"] + 3 * number, 20)
+        self.defense = min(self.char["Def"] + 3 * number, 20)
 
     def boost_skill(self, number):
         """Secret Book"""
-        self.skill = min(self.data["Skl"] + 5 * number, 20)
+        self.skill = min(self.char["Skl"] + 5 * number, 20)
 
     def paladin(self):
         """Paladin Stats"""
         self.charclass = "Paladin"
-        self.maxhp = max(22, self.data["HP"])
-        self.strength = max(8, self.data["Str"])
-        self.skill = max(7, self.data["Skl"])
-        self.speed = max(11, self.data["Spd"])
-        self.defense = max(9, self.data["Def"])
+        self.maxhp = max(22, self.char["HP"])
+        self.strength = max(8, self.char["Str"])
+        self.skill = max(7, self.char["Skl"])
+        self.speed = max(11, self.char["Spd"])
+        self.defense = max(9, self.char["Def"])
 
     def hero(self):
         """Hero Stats"""
         self.charclass = "Hero"
-        self.maxhp = max(24, self.data["HP"])
-        self.strength = max(8, self.data["Str"])
-        self.skill = max(14, self.data["Skl"])
-        self.speed = max(14, self.data["Spd"])
-        self.defense = max(8, self.data["Def"])
+        self.maxhp = max(24, self.char["HP"])
+        self.strength = max(8, self.char["Str"])
+        self.skill = max(14, self.char["Skl"])
+        self.speed = max(14, self.char["Spd"])
+        self.defense = max(8, self.char["Def"])
 
     def sniper(self):
         """Sniper Stats"""
         self.charclass = "Sniper"
-        self.maxhp = max(24, self.data["HP"])
-        self.strength = max(7, self.data["Str"])
-        self.skill = max(10, self.data["Skl"])
-        self.speed = max(14, self.data["Spd"])
-        self.defense = max(7, self.data["Def"])
+        self.maxhp = max(24, self.char["HP"])
+        self.strength = max(7, self.char["Str"])
+        self.skill = max(10, self.char["Skl"])
+        self.speed = max(14, self.char["Spd"])
+        self.defense = max(7, self.char["Def"])
 
     def bishop(self):
         """Bishop Stats"""
         self.charclass = "Bishop"
-        self.maxhp = max(22, self.data["HP"])
-        self.strength = max(3, self.data["Str"])
-        self.skill = max(1, self.data["Skl"])
-        self.speed = max(14, self.data["Spd"])
-        self.defense = max(8, self.data["Def"])
+        self.maxhp = max(22, self.char["HP"])
+        self.strength = max(3, self.char["Str"])
+        self.skill = max(1, self.char["Skl"])
+        self.speed = max(14, self.char["Spd"])
+        self.defense = max(8, self.char["Def"])
 
     def wyvernknight(self):
         """Wyvern Knight Stats"""
         self.charclass = "Wyvern Knight"
-        self.maxhp = max(22, self.data["HP"])
-        self.strength = max(9, self.data["Str"])
-        self.skill = max(3, self.data["Skl"])
-        self.speed = max(6, self.data["Spd"])
-        self.defense = max(14, self.data["Def"])
+        self.maxhp = max(22, self.char["HP"])
+        self.strength = max(9, self.char["Str"])
+        self.skill = max(3, self.char["Skl"])
+        self.speed = max(6, self.char["Spd"])
+        self.defense = max(14, self.char["Def"])
 
     def promote(self):
         "Promotion"
