@@ -93,6 +93,7 @@ class fe4(fe4Template):
       name.doubling()
       name.effectivecheck()
       name.precombat()
+      name.skillprocs()
     self.combat.battle()
     self.combatlog.content = self.combat.text
     self.combatlog.visible = True

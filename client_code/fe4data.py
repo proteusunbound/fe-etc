@@ -338,40 +338,31 @@ class DuelSim:
 
     def unitstatadjust(self):
         """Adjust Unit Stats"""
-        if "Power Ring" in self.unitequip:
-            self.unit.strength += 5
-        if "Magic Ring" in self.unitequip:
-            self.unit.magic += 5
-        if "Skill Ring" in self.unitequip:
-            self.unit.skill += 5
-        if "Speed Ring" in self.unitequip:
-            self.unit.speed += 5
-        if "Shield Ring" in self.unitequip:
-            self.unit.defense += 5
-        if "Barrier Ring" in self.unitequip:
-            self.unit.resistance += 5
-        if self.unitweapon.name == "Barrier Blade":
-            self.unit.resistance += 7
-        if self.unitweapon.name == "Safeguard":
-            self.unit.defense += 7
-        if self.unitweapon.name in ("Tyrfing", "Balmung", "Gae Bolg", "Forseti"):
-            self.unit.skill += 10
-        if self.unitweapon.name in ("Tyrfing", "Yewfelle"):
-            self.unit.speed += 10
-        if self.unitweapon.name in ("Tyrfing", "Naga"):
-            self.unit.resistance += 20
-        if self.unitweapon.name in ("Mystletainn", "Naga"):
-            self.unit.skill += 20
-        if self.unitweapon.name == "Mystletainn":
-            self.unit.resistance += 10
-        if self.unitweapon.name in ("Balmung", "Forseti", "Naga"):
-            self.unit.speed += 20
-        if self.unitweapon.name in ("Gae Bolg", "Yewfelle"):
-            self.unit.strength += 10
-        if self.unitweapon.name == "Gae Bolg":
-            self.unit.defense += 10
-        if self.unitweapon.name == "Naga":
-            self.unit.defense += 20
+        rings = {
+            "Power Ring": "strength",
+            "Magic Ring": "magic",
+            "Skill Ring": "skill",
+            "Speed Ring": "speed",
+            "Shield Ring": "defense",
+            "Barrier Ring": "resistance"
+        }
+        weapons = {
+            "Barrier Blade": {"resistance": 7},
+            "Safeguard": {"defense": 7},
+            "Tyrfing": {"skill": 10, "speed": 10, "resistance": 20},
+            "Yewfelle": {"speed": 10, "strength": 10},
+            "Balmung": {"skill": 10, "speed": 20},
+            "Gae Bolg": {"skill": 10, "strength": 10, "defense": 10},
+            "Forseti": {"skill": 10, "speed": 20},
+            "Naga": {"resistance": 20, "skill": 20, "speed": 20, "defense": 20},
+            "Mystletainn": {"skill": 20, "resistance": 10}
+        }
+        for ring, stat in rings.items():
+            if ring in self.unitequip:
+                setattr(self.unit, stat, getattr(self.unit, stat) + 5)
+        if self.unitweapon.name in weapons:
+            for stat, bonus in weapons[self.unitweapon.name].items():
+                setattr(self.unit, stat, getattr(self.unit, stat) + bonus)
 
     def adjustunitskills(self):
         """Abjust Unit Skills"""
@@ -398,32 +389,27 @@ class DuelSim:
 
     def boss_stat_adjust(self):
         """Adjust Boss Stats"""
-        if "Power Ring" in self.bossequip:
-            self.boss.strength += 5
-        if "Magic Ring" in self.bossequip:
-            self.boss.magic += 5
-        if "Skill Ring" in self.bossequip:
-            self.boss.skill += 5
-        if "Speed Ring" in self.bossequip:
-            self.boss.speed += 5
-        if "Shield Ring" in self.bossequip:
-            self.boss.defense += 5
-        if ("Barrier Ring" in self.bossequip) or (self.bossweapon.name == "Loptous"):
-            self.boss.resistance += 5
-        if self.bossweapon.name == "Gungnir":
-            self.boss.strength += 10
-        if self.bossweapon.name in ("Gungnir", "Mjolnir"):
-            self.boss.speed += 10
-        if self.bossweapon.name in ("Gungnir", "Valflame"):
-            self.boss.defense += 10
-        if self.bossweapon.name == "Helswath":
-            self.boss.defense += 20
-        if self.bossweapon.name in ("Helswath", "Valflame"):
-            self.boss.resistance += 10
-        if self.bossweapon.name == "Valflame":
-            self.boss.magic += 10
-        if self.bossweapon.name == "Mjolnir":
-            self.boss.skill += 20
+        rings = {
+            "Power Ring": "strength",
+            "Magic Ring": "magic",
+            "Skill Ring": "skill",
+            "Speed Ring": "speed",
+            "Shield Ring": "defense",
+            "Barrier Ring": "resistance"
+        }
+        weapons = {
+            "Loptous": {"resistance": 5},
+            "Gungnir": {"strength": 10, "speed": 10, "defense": 10},
+            "Mjolnir": {"speed": 10, "skill": 20},
+            "Valflame": {"defense": 10, "resistance": 10, "magic": 10},
+            "Helswath": {"defense": 10, "resistance": 10},
+        }
+        for ring, stat in rings.items():
+            if ring in self.bossequip:
+                setattr(self.boss, stat, getattr(self.boss, stat) + 5)
+        if self.bossweapon.name in weapons:
+            for stat, bonus in weapons[self.bossweapon.name].items():
+                setattr(self.boss, stat, getattr(self.boss, stat) + bonus)
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -502,6 +488,9 @@ class DuelSim:
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
         self.unitdodge = 1 - (self.boss.crit / 100)
+    
+    def skillprocs(self):
+        """Skill Procs"""
         if "Adept" in self.unit.skills:
             self.unit.adeptrate = (self.unit.AS + 20) / 100
         if "Adept" in self.boss.skills:
