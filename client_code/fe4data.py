@@ -289,7 +289,7 @@ class DuelSim:
       if self.bossweapon.name == "Hel" and self.unit.hitpoints > 1:
         self.boss.crit = 0
         self.boss.damage = self.unit.hitpoints - 1
-      else:
+      elif self.bossweapon.name == "Hel" and self.unit.hitpoints == 1:
         self.boss.crit = 0
         self.boss.damage = 0
       if ("Wrath" in self.boss.skills) and (self.boss.hitpoints < self.boss.maxhp / 2) and ("Nihil" not in self.unit.skills):
