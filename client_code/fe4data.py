@@ -457,15 +457,9 @@ class DuelSim:
         self.unit.astrarate = self.unit.skill / 100
       if "Pavise" in self.boss.skills:
         self.unit.pavisecancel = 1 - (self.boss.level / 100)
-      if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
-        if "Adept" not in self.unit.skills:
-          self.unit.skills.append("Adept")
-        self.unit.adeptrate = 1
       if self.unitweapon.name in ("Lands Sword", "Nosferatu"):
         self.unit.pavisecancel = 1
       if self.bossweapon.name in ("Brave Axe", "Brave Bow"):
-        if "Adept" not in self.boss.skills:
-          self.boss.skills.append("Adept")
         self.unit.adeptcancel = 0
 
     def effectivecheck(self):
@@ -630,7 +624,10 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-            if "Adept" in self.unit.skills and self.adeptno > 0:
+            if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+              self.unit.adeptrate = 1
+              self.unitadept()
+            elif "Adept" in self.unit.skills and self.adeptno > 0:
               self.adeptno -= 1
               self.unitadept()
         if self.boss.hitpoints > 0 and self.unit.hitpoints and self.boss.counter is True > 0:
@@ -643,7 +640,7 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
-            if "Adept" in self.boss.skills:
+            if ("Adept" in self.boss.skills) or (self.bossweapon in ("Brave Axe", "Brave Bow")):
               self.bossadept()
         if self.unit.doubles is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
@@ -656,7 +653,10 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-            if "Adept" in self.unit.skills and self.adeptno > 0:
+            if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+              self.unit.adeptrate = 1
+              self.unitadept()
+            elif "Adept" in self.unit.skills and self.adeptno > 0:
               self.adeptno -= 1
               self.unitadept()
         if (
@@ -674,7 +674,7 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
-            if "Adept" in self.boss.skills:
+            if ("Adept" in self.boss.skills) or (self.bossweapon in ("Brave Axe", "Brave Bow")):
               self.bossadept()
         self.dueltext += "\n"
 
@@ -691,7 +691,7 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
-            if "Adept" in self.boss.skills:
+            if ("Adept" in self.boss.skills) or (self.bossweapon in ("Brave Axe", "Brave Bow")):
               self.bossadept()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             if "Astra" in self.unit.skills and self.astrano > 0 and "Nihil" not in self.boss.skills:
@@ -704,7 +704,10 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-            if "Adept" in self.unit.skills and self.adeptno > 0:
+            if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+              self.unit.adeptrate = 1
+              self.unitadept()
+            elif "Adept" in self.unit.skills and self.adeptno > 0:
               self.adeptno -= 1
               self.unitadept()
         if (
@@ -722,7 +725,7 @@ class DuelSim:
                 self.bosscrit()
             else:
                 self.bossattack()
-            if "Adept" in self.boss.skills:
+            if ("Adept" in self.boss.skills) or (self.bossweapon in ("Brave Axe", "Brave Bow")):
               self.bossadept()
         if (
             self.unit.doubles is True
@@ -739,7 +742,10 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-            if "Adept" in self.unit.skills and self.adeptno > 0:
+            if self.unitweapon.name in ("Brave Sword", "Brave Lance", "Brave Axe", "Brave Bow"):
+              self.unit.adeptrate = 1
+              self.unitadept()
+            elif "Adept" in self.unit.skills and self.adeptno > 0:
               self.adeptno -= 1
               self.unitadept()
         self.dueltext += "\n"
