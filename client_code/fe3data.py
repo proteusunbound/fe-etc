@@ -33,6 +33,7 @@ class ActiveUnit:
         self.supports = []
         self.supportbonus = 0
         self.triangleattack = False
+        self.crit = 0
 
     def setsupports(self):
         """Set Supports"""
@@ -61,35 +62,39 @@ class ActiveUnit:
             self.charclass = self.char["Class"]
 
     def dismount(self):
-      """Dismount"""
-      if self.charclass == "Horseman":
-        penalty = app_tables.fe3_class_change.get(FromClass=self.charclass)
-      else:
-        penalty = app_tables.fe3_class_change.get(FromClass=self.charclass, ToClass="Knight")
-      self.charclass = penalty["ToClass"]
-      self.strength += penalty["Str"]
-      self.skill += penalty["Skl"]
-      self.speed += penalty["Spd"]
-      self.defense += penalty["Def"]
-      self.resistance += penalty["Res"]
+        """Dismount"""
+        if self.charclass == "Horseman":
+            penalty = app_tables.fe3_class_change.get(FromClass=self.charclass)
+        else:
+            penalty = app_tables.fe3_class_change.get(
+                FromClass=self.charclass, ToClass="Knight"
+            )
+        self.charclass = penalty["ToClass"]
+        self.strength += penalty["Str"]
+        self.skill += penalty["Skl"]
+        self.speed += penalty["Spd"]
+        self.defense += penalty["Def"]
+        self.resistance += penalty["Res"]
 
     def promote(self):
-      "Promotion"
-      if self.name == "Jubelo":
-        bonus = app_tables.fe3_class_change.get(FromClass="Mage (M)")
-      elif self.name == "Merric":
-        bonus = app_tables.fe3_class_change.get(FromClass="Mage (Merric)")
-      elif self.name == "Linde":
-        bonus = app_tables.fe3_class_change.get(FromClass="Mage (F)")
-      else:
-        bonus = app_tables.fe3_class_change.get(FromClass=self.charclass, ToClass=q.none_of("Knight"))
-      self.charclass = bonus['ToClass']
-      self.maxhp = max(self.char["HP"], bonus["HP"])
-      self.strength += bonus["Str"]
-      self.skill += bonus["Skl"]
-      self.speed += bonus["Spd"]
-      self.defense += bonus["Def"]
-      self.resistance += bonus["Res"]
+        "Promotion"
+        if self.name == "Jubelo":
+            bonus = app_tables.fe3_class_change.get(FromClass="Mage (M)")
+        elif self.name == "Merric":
+            bonus = app_tables.fe3_class_change.get(FromClass="Mage (Merric)")
+        elif self.name == "Linde":
+            bonus = app_tables.fe3_class_change.get(FromClass="Mage (F)")
+        else:
+            bonus = app_tables.fe3_class_change.get(
+                FromClass=self.charclass, ToClass=q.none_of("Knight")
+            )
+        self.charclass = bonus["ToClass"]
+        self.maxhp = max(self.char["HP"], bonus["HP"])
+        self.strength += bonus["Str"]
+        self.skill += bonus["Skl"]
+        self.speed += bonus["Spd"]
+        self.defense += bonus["Def"]
+        self.resistance += bonus["Res"]
 
     def boosthp(self, number):
         """Seraph Robe"""
@@ -118,6 +123,7 @@ class ActiveUnit:
     def boost_skill(self, number):
         """Secret Book"""
         self.skill = min(self.char["Skl"] + 5 * number, 20)
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -160,6 +166,7 @@ class ActiveBoss:
         self.hitchance = 0
         self.counter = False
         self.supportbonus = 0
+        self.crit = 0
 
     def booktwo(self, check):
         """Book 2 Stats"""
@@ -255,8 +262,8 @@ class DuelSim:
         self.bossweapon = ActiveWeapon(weapon)
 
     def setequipment(self, equipment):
-      """Set Equipment"""
-      self.equipment.append(equipment)
+        """Set Equipment"""
+        self.equipment.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -283,8 +290,8 @@ class DuelSim:
         self.inidev = devilno
 
     def setrefreshes(self, refreshno):
-      """Set Refreshes"""
-      self.refreshes = refreshno
+        """Set Refreshes"""
+        self.refreshes = refreshno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -310,14 +317,14 @@ class DuelSim:
         if self.bossweapon.name == "Imhullu" and self.unitweapon.name != "Starlight":
             self.unit.damage = 0
         if self.boss.name == "Hardin" and "Lightsphere" not in self.equipment:
-          self.unit.damage = 0
+            self.unit.damage = 0
 
     def effcoadjust(self):
-      """Adjust Weapon Effectiveness"""
-      if ("Lightsphere" in self.equipment) or ("Iote's Shield" in self.equipment):
-        self.bossweapon.effco = 1
-      if self.boss.name == "Michalis":
-        self.unitweapon.effco = 1
+        """Adjust Weapon Effectiveness"""
+        if ("Lightsphere" in self.equipment) or ("Iote's Shield" in self.equipment):
+            self.bossweapon.effco = 1
+        if self.boss.name == "Michalis":
+            self.unitweapon.effco = 1
 
     def unitdisplay(self):
         """Unit Stat Display"""
@@ -325,8 +332,8 @@ class DuelSim:
         hitrate(self.unit, self.unitweapon)
         critical(self.unit, self.unitweapon)
         if "Geosphere" in self.equipment:
-          self.unit.hit += 10
-          self.unit.crit += 10
+            self.unit.hit += 10
+            self.unit.crit += 10
 
     def bossdisplay(self):
         """Boss Stat Display"""
@@ -334,7 +341,7 @@ class DuelSim:
         hitrate(self.boss, self.bossweapon)
         critical(self.boss, self.bossweapon)
         if "Lightsphere" in self.equipment:
-          self.boss.crit = 0
+            self.boss.crit = 0
 
     def enemy_avoid(self):
         """Enemy Avoid"""
@@ -360,7 +367,7 @@ class DuelSim:
     def precombat(self):
         """Pre-Combat Calculation"""
         if "Lightsphere" in self.equipment:
-          self.terrain = False
+            self.terrain = False
         if self.unitweapon.name == "Levin Sword":
             self.unit.attack = self.unitweapon.might
         else:
@@ -466,16 +473,16 @@ class DuelSim:
             self.unit.doubles = False
 
     def hprecover(self):
-      """HP Recover"""
-      if ("Lifesphere" in self.equipment) and (self.unit.maxhp > self.unit.hitpoints):
-        self.unit.hitpoints = self.unit.maxhp
-        self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
+        """HP Recover"""
+        if ("Lifesphere" in self.equipment) and (self.unit.maxhp > self.unit.hitpoints):
+            self.unit.hitpoints = self.unit.maxhp
+            self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
 
     def unit_crit(self):
         """Unit Crit"""
         if self.unit.triangleattack is True:
-          self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
-          self.dueltext += f"{self.unit.name} uses Triangle Attack and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+            self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
+            self.dueltext += f"{self.unit.name} uses Triangle Attack and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
         elif self.unit.devil == 1:
             self.hitno += 1
             self.boss.hitpoints = max(0, self.boss.hitpoints - 3 * self.unit.damage)
@@ -555,7 +562,11 @@ class DuelSim:
                 self.unit_crit()
             else:
                 self.unitattack()
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
+        if (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
+        ):
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -591,7 +602,11 @@ class DuelSim:
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
-        if self.boss.hitpoints > 0 and self.unit.hitpoints > 0 and self.boss.counter is True:
+        if (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
+        ):
             if self.avoidno > 0:
                 self.bossmiss()
             elif self.boss.crit - (self.unit.luck + self.unit.supportbonus) > 0:
@@ -633,12 +648,13 @@ class DuelSim:
         self.dueltext += "\n"
 
     def refresh(self):
-      for i in range(0, self.refreshes):
-        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-          self.dueltext += f"{self.unit.name} is refreshed. \n"
-          self.playerphase()
-        else:
-          break
+        """Refresh"""
+        for i in range(0, self.refreshes):
+            if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+                self.dueltext += f"{self.unit.name} is refreshed. \n"
+                self.playerphase()
+            else:
+                break
 
     def reset_text(self):
         """Reset"""

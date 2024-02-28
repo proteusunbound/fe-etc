@@ -29,6 +29,7 @@ class ActiveUnit:
         self.devil = 1
         self.triangleattack = False
         self.support = False
+        self.crit = 0
 
     def boosthp(self, number):
         """HP Boost"""
@@ -114,6 +115,7 @@ class ActiveBoss:
         self.attack = 0
         self.avoid = 0
         self.hitchance = 0
+        self.crit = 0
 
 
 def attack_speed(keyword, weapon):
@@ -456,7 +458,7 @@ class DuelSim:
             ):
                 self.unit.hitpoints = min(self.unit.hitpoints + 5, self.unit.maxhp)
                 self.dueltext += f"{self.unit.name} heals to {self.unit.hitpoints} HP at the start of the round.\n"
-      
+
     def unit_crit(self):
         """Unit Crit"""
         self.hitno += 1
