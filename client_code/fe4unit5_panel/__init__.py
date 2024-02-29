@@ -43,8 +43,8 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
     self.miracleband.checked = False
     self.followupring.checked = False
     self.circlet.checked = False
-    for i in range(0, len(self.parent.combat.duels[4].unit.skills)):
-      self.skillslist.content += f"{self.parent.combat.duels[4].unit.skills[i]} \n"
+    for i, skill in enumerate(self.parent.combat.duels[4].units.skills):
+      self.skillslist.content += f"{skill} \n"
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -53,7 +53,19 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     self.parent.combat.duels[4].setunitweapon(self.weapon_drop.selected_value)
+    self.parent.combat.duels[4].adjustunitskills()
+    self.parent.combat.duels[4].unitstatadjust()
     self.parent.combat.duels[4].unitdisplay()
+    self.skillslist.content = ""
+    for i, skill in enumerate(self.parent.combat.duels[4].units.skills):
+      self.skillslist.content += f"{skill} \n"
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.magic.text = self.parent.combat.duels[4].unit.magic
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.luck.text = self.parent.combat.duels[4].unit.luck
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance
     self.attackspeed.text = self.parent.combat.duels[4].unit.AS
     self.hit.text = self.parent.combat.duels[4].unit.hit
     self.crit.text = self.parent.combat.duels[4].unit.crit

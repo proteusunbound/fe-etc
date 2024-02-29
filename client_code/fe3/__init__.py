@@ -118,6 +118,6 @@ class fe3(fe3Template):
         self.weapon_drop.selected_value = None
 
     def rng_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      for number, name in self.combat.duels.items():
-          name.setrng(self.rng.text)
+        """This method is called when the user presses Enter in this text box"""
+        for number, name in self.combat.duels.items():
+            name.setrng(self.rng.text)

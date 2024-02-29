@@ -36,19 +36,24 @@ class CombatSim:
                 name.setbosshp(self.bosshp)
                 name.hprecover()
                 name.hpthreshold()
-                if "Vantage" in name.boss.skills and name.boss.hitpoints < (name.boss.maxhp / 2):
-                  self.text += f"{name.boss.name} activates Vantage. \n"
-                  name.enemyphase()
+                if "Vantage" in name.boss.skills and name.boss.hitpoints < (
+                    name.boss.maxhp / 2
+                ):
+                    self.text += f"{name.boss.name} activates Vantage. \n"
+                    name.enemyphase()
                 else:
-                  name.playerphase()
-                  name.accost()
+                    name.playerphase()
+                    name.accost()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
         for number, name in self.duels.items():
             if self.bosshp > 0 and name.unit.hitpoints > 0:
                 if name.boss.maxhp > self.bosshp and name.terrain is True:
-                    self.bosshp = min(self.bosshp + (math.floor(0.2 * name.boss.maxhp) - 1), name.boss.maxhp)
+                    self.bosshp = min(
+                        self.bosshp + (math.floor(0.2 * name.boss.maxhp) - 1),
+                        name.boss.maxhp,
+                    )
                     self.text += f"{name.boss.name} heals to {self.bosshp} HP at the start of the round.\n"
                 if "Renewal" in name.boss.skills and name.boss.maxhp > self.bosshp:
                     self.bosshp = min(self.bosshp + 10, name.boss.maxhp)
@@ -58,17 +63,19 @@ class CombatSim:
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
                 name.hpthreshold()
-                if "Vantage" in name.unit.skills and name.unit.hitpoints < (name.unit.maxhp / 2):
-                  self.text += f"{name.unit.name} activates Vantage. \n"
-                  name.playerphase()
+                if "Vantage" in name.unit.skills and name.unit.hitpoints < (
+                    name.unit.maxhp / 2
+                ):
+                    self.text += f"{name.unit.name} activates Vantage. \n"
+                    name.playerphase()
                 else:
-                  name.enemyphase()
-                  name.accost()
+                    name.enemyphase()
+                    name.accost()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
                 break
-    
+
     def battle(self):
         """Battle"""
         for self.turn in range(self.turns):
