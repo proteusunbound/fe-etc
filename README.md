@@ -1,5 +1,8 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 4.0
+- all basic combat calculations for FE4
+- Wrath and brave effect added
 ### version 3.5
 - weapon effectiveness
 - Charm and Pavise added
