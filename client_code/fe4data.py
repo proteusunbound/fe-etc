@@ -292,13 +292,26 @@ class DuelSim:
 
     def weapontriangle(self):
         """Weapon Triangle"""
-        triangle_logic = {"Sword": "Axe", "Lance": "Sword", "Axe": "Lance", "Fire": "Wind", "Thunder": "Fire", "Wind": "Thunder"}
+        triangle_logic = {
+            "Sword": "Axe",
+            "Lance": "Sword",
+            "Axe": "Lance",
+            "Fire": "Wind",
+            "Thunder": "Fire",
+            "Wind": "Thunder",
+        }
         anima = ["Fire", "Wind", "Thunder"]
         light_dark = ["Light", "Dark"]
-        if (self.unitweapon.type in triangle_logic and triangle_logic[self.unitweapon.type] == self.bossweapon.type) or (self.unitweapon.type in light_dark and self.bossweapon.type in anima):
+        if (
+            self.unitweapon.type in triangle_logic
+            and triangle_logic[self.unitweapon.type] == self.bossweapon.type
+        ) or (self.unitweapon.type in light_dark and self.bossweapon.type in anima):
             self.unitweapon.weapontriangle = 20
             self.bossweapon.weapontriangle = -20
-        elif (self.bossweapon.type in triangle_logic and triangle_logic[self.bossweapon.type] == self.unitweapon.type) or (self.bossweapon.type in light_dark and self.unitweapon.type in anima):
+        elif (
+            self.bossweapon.type in triangle_logic
+            and triangle_logic[self.bossweapon.type] == self.unitweapon.type
+        ) or (self.bossweapon.type in light_dark and self.unitweapon.type in anima):
             self.bossweapon.weapontriangle = 20
             self.unitweapon.weapontriangle = -20
         else:
@@ -344,7 +357,7 @@ class DuelSim:
             "Skill Ring": "skill",
             "Speed Ring": "speed",
             "Shield Ring": "defense",
-            "Barrier Ring": "resistance"
+            "Barrier Ring": "resistance",
         }
         weapons = {
             "Barrier Blade": {"resistance": 7},
@@ -355,7 +368,7 @@ class DuelSim:
             "Gae Bolg": {"skill": 10, "strength": 10, "defense": 10},
             "Forseti": {"skill": 10, "speed": 20},
             "Naga": {"resistance": 20, "skill": 20, "speed": 20, "defense": 20},
-            "Mystletainn": {"skill": 20, "resistance": 10}
+            "Mystletainn": {"skill": 20, "resistance": 10},
         }
         for ring, stat in rings.items():
             if ring in self.unitequip:
@@ -395,7 +408,7 @@ class DuelSim:
             "Skill Ring": "skill",
             "Speed Ring": "speed",
             "Shield Ring": "defense",
-            "Barrier Ring": "resistance"
+            "Barrier Ring": "resistance",
         }
         weapons = {
             "Loptous": {"resistance": 5},
@@ -488,7 +501,7 @@ class DuelSim:
         self.unitcrit = self.unit.crit / 100
         self.unitavoid = 1 - self.boss.hitchance
         self.unitdodge = 1 - (self.boss.crit / 100)
-    
+
     def skillprocs(self):
         """Skill Procs"""
         if "Adept" in self.unit.skills:
@@ -695,118 +708,78 @@ class DuelSim:
         self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
         self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
+    def dodamage(self):
+        """Unit Attack Checks"""
+        if (
+            "Astra" in self.unit.skills
+            and self.astrano > 0
+            and "Nihil" not in self.boss.skills
+        ):
+            self.astrano -= 1
+            self.astra()
+        elif (
+            self.unit.crit == 100 or self.unitweapon.effective is True
+        ) and "Nihil" not in self.boss.skills:
+            self.unit_crit()
+        elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
+            self.critno -= 1
+            self.unit_crit()
+        else:
+            self.unitattack()
+        if self.unitweapon.name in (
+            "Brave Sword",
+            "Brave Lance",
+            "Brave Axe",
+            "Brave Bow",
+        ):
+            self.unit.adeptrate = 1
+            self.unitadept()
+        elif "Adept" in self.unit.skills and self.adeptno > 0:
+            self.adeptno -= 1
+            self.unitadept()
+
+    def counterdamage(self):
+        """Boss Attack Checks"""
+        if self.boss.hitchance == 0:
+            self.bossmiss()
+        elif self.avoidno > 0:
+            self.avoidno -= 1
+            self.bossmiss()
+        elif (
+            self.boss.crit > 0 or self.bossweapon.effective is True
+        ) and "Nihil" not in self.unit.skills:
+            self.bosscrit()
+        else:
+            self.bossattack()
+        if ("Adept" in self.boss.skills) or (
+            self.bossweapon in ("Brave Axe", "Brave Bow")
+        ):
+            self.bossadept()
+
     def playerphase(self):
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if (
-                "Astra" in self.unit.skills
-                and self.astrano > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.astrano -= 1
-                self.astra()
-            elif (
-                self.unit.crit == 100 or self.unitweapon.effective is True
-            ) and "Nihil" not in self.boss.skills:
-                self.unit_crit()
-            elif (
-                self.unit.crit > 0
-                and self.critno > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-            if self.unitweapon.name in (
-                "Brave Sword",
-                "Brave Lance",
-                "Brave Axe",
-                "Brave Bow",
-            ):
-                self.unit.adeptrate = 1
-                self.unitadept()
-            elif "Adept" in self.unit.skills and self.adeptno > 0:
-                self.adeptno -= 1
-                self.unitadept()
+            self.dodamage()
         if (
             self.boss.hitpoints > 0
             and self.unit.hitpoints
             and self.boss.counter is True > 0
         ):
-            if self.boss.hitchance == 0:
-                self.bossmiss()
-            elif self.avoidno > 0:
-                self.avoidno -= 1
-                self.bossmiss()
-            elif (
-                self.boss.crit > 0 or self.bossweapon.effective is True
-            ) and "Nihil" not in self.unit.skills:
-                self.bosscrit()
-            else:
-                self.bossattack()
-            if ("Adept" in self.boss.skills) or (
-                self.bossweapon in ("Brave Axe", "Brave Bow")
-            ):
-                self.bossadept()
+            self.counterdamage()
         if (
             self.unit.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            if (
-                "Astra" in self.unit.skills
-                and self.astrano > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.astrano -= 1
-                self.astra()
-            elif (
-                self.unit.crit == 100 or self.unitweapon.effective is True
-            ) and "Nihil" not in self.boss.skills:
-                self.unit_crit()
-            elif (
-                self.unit.crit > 0
-                and self.critno > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-            if self.unitweapon.name in (
-                "Brave Sword",
-                "Brave Lance",
-                "Brave Axe",
-                "Brave Bow",
-            ):
-                self.unit.adeptrate = 1
-                self.unitadept()
-            elif "Adept" in self.unit.skills and self.adeptno > 0:
-                self.adeptno -= 1
-                self.unitadept()
+            self.dodamage()
         if (
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
             and self.boss.counter is True
         ):
-            if self.boss.hitchance == 0:
-                self.bossmiss()
-            elif self.avoidno > 0:
-                self.avoidno -= 1
-                self.bossmiss()
-            elif (
-                self.boss.crit > 0 or self.bossweapon.effective is True
-            ) and "Nihil" not in self.unit.skills:
-                self.bosscrit()
-            else:
-                self.bossattack()
-            if ("Adept" in self.boss.skills) or (
-                self.bossweapon in ("Brave Axe", "Brave Bow")
-            ):
-                self.bossadept()
+            self.counterdamage()
         self.dueltext += "\n"
 
     def enemyphase(self):
@@ -817,110 +790,22 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.counter is True
         ):
-            if self.boss.hitchance == 0:
-                self.bossmiss()
-            elif self.avoidno > 0:
-                self.avoidno -= 1
-                self.bossmiss()
-            elif (
-                self.boss.crit > 0 or self.bossweapon.effective is True
-            ) and "Nihil" not in self.unit.skills:
-                self.bosscrit()
-            else:
-                self.bossattack()
-            if ("Adept" in self.boss.skills) or (
-                self.bossweapon in ("Brave Axe", "Brave Bow")
-            ):
-                self.bossadept()
+            self.counterdamage()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            if (
-                "Astra" in self.unit.skills
-                and self.astrano > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.astrano -= 1
-                self.astra()
-            elif (
-                self.unit.crit == 100 or self.unitweapon.effective is True
-            ) and "Nihil" not in self.boss.skills:
-                self.unit_crit()
-            elif (
-                self.unit.crit > 0
-                and self.critno > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-            if self.unitweapon.name in (
-                "Brave Sword",
-                "Brave Lance",
-                "Brave Axe",
-                "Brave Bow",
-            ):
-                self.unit.adeptrate = 1
-                self.unitadept()
-            elif "Adept" in self.unit.skills and self.adeptno > 0:
-                self.adeptno -= 1
-                self.unitadept()
+            self.dodamage()
         if (
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
             and self.boss.counter is True
         ):
-            if self.boss.hitchance == 0:
-                self.bossmiss()
-            elif self.avoidno > 0:
-                self.avoidno -= 1
-                self.bossmiss()
-            elif (
-                self.boss.crit > 0 or self.bossweapon.effective is True
-            ) and "Nihil" not in self.unit.skills:
-                self.bosscrit()
-            else:
-                self.bossattack()
-            if ("Adept" in self.boss.skills) or (
-                self.bossweapon in ("Brave Axe", "Brave Bow")
-            ):
-                self.bossadept()
+            self.counterdamage()
         if (
             self.unit.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            if (
-                "Astra" in self.unit.skills
-                and self.astrano > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.astrano -= 1
-                self.astra()
-            elif (
-                self.unit.crit == 100 or self.unitweapon.effective is True
-            ) and "Nihil" not in self.boss.skills:
-                self.unit_crit()
-            elif (
-                self.unit.crit > 0
-                and self.critno > 0
-                and "Nihil" not in self.boss.skills
-            ):
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-            if self.unitweapon.name in (
-                "Brave Sword",
-                "Brave Lance",
-                "Brave Axe",
-                "Brave Bow",
-            ):
-                self.unit.adeptrate = 1
-                self.unitadept()
-            elif "Adept" in self.unit.skills and self.adeptno > 0:
-                self.adeptno -= 1
-                self.unitadept()
+            self.counterdamage()
         self.dueltext += "\n"
 
     def accost(self):

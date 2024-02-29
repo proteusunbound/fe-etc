@@ -89,10 +89,25 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         ):
             self.book2box.visible = True
             self.book2box.checked = False
-        if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Paladin", "Horseman", "Pegasus Knight", "Dracoknight"):
-          self.dismountbox.visible = True
-        if self.parent.combat.duels[0].unit.charclass in ("Cavalier", "Armor Knight", "Archer", "Hunter", "Mercenary", "Mage", "Cleric", "Pegasus Knight"):
-          self.promobox.visible = True
+        if self.parent.combat.duels[0].unit.charclass in (
+            "Cavalier",
+            "Paladin",
+            "Horseman",
+            "Pegasus Knight",
+            "Dracoknight",
+        ):
+            self.dismountbox.visible = True
+        if self.parent.combat.duels[0].unit.charclass in (
+            "Cavalier",
+            "Armor Knight",
+            "Archer",
+            "Hunter",
+            "Mercenary",
+            "Mage",
+            "Cleric",
+            "Pegasus Knight",
+        ):
+            self.promobox.visible = True
         if self.parent.combat.duels[0].unit.name in ("Catria", "Palla", "Est"):
             self.trianglecheck.visible = True
         else:
@@ -176,120 +191,120 @@ class fe3unit1_panel(fe3unit1_panelTemplate):
         self.dancedrop.selected_value = None
 
     def dismountbox_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].unit.dismount()
-      self.strength.text = self.parent.combat.duels[0].unit.strength
-      self.skill.text = self.parent.combat.duels[0].unit.skill
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.defense.text = self.parent.combat.duels[0].unit.defense
-      self.resistance.text = self.parent.combat.duels[0].unit.resistance
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
-      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].unit.dismount()
+        self.strength.text = self.parent.combat.duels[0].unit.strength
+        self.skill.text = self.parent.combat.duels[0].unit.skill
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.defense.text = self.parent.combat.duels[0].unit.defense
+        self.resistance.text = self.parent.combat.duels[0].unit.resistance
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
+        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def promobox_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].unit.promote()
-      self.hp.text = self.parent.combat.duels[0].unit.maxhp
-      self.strength.text = self.parent.combat.duels[0].unit.strength
-      self.skill.text = self.parent.combat.duels[0].unit.skill
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.defense.text = self.parent.combat.duels[0].unit.defense
-      self.resistance.text = self.parent.combat.duels[0].unit.resistance
-      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
-      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].unit.promote()
+        self.hp.text = self.parent.combat.duels[0].unit.maxhp
+        self.strength.text = self.parent.combat.duels[0].unit.strength
+        self.skill.text = self.parent.combat.duels[0].unit.skill
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.defense.text = self.parent.combat.duels[0].unit.defense
+        self.resistance.text = self.parent.combat.duels[0].unit.resistance
+        self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
+        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def seraphrobe_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boosthp(int(self.seraphrobe.selected_value))
-      self.hp.text = self.parent.combat.duels[0].unit.maxhp
-      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boosthp(int(self.seraphrobe.selected_value))
+        self.hp.text = self.parent.combat.duels[0].unit.maxhp
+        self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
 
     def powerdrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boost_strength(
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boost_strength(
             int(self.powerdrop.selected_value)
-      )
-      self.strength.text = self.parent.combat.duels[0].unit.strength
+        )
+        self.strength.text = self.parent.combat.duels[0].unit.strength
 
     def secretdrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boost_skill(
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boost_skill(
             int(self.secretdrop.selected_value)
-      )
-      self.skill.text = self.parent.combat.duels[0].unit.skill
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
+        )
+        self.skill.text = self.parent.combat.duels[0].unit.skill
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def speedring_drop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boost_speed(
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boost_speed(
             int(self.speedring_drop.selected_value)
-      )
-      self.speed.text = self.parent.combat.duels[0].unit.speed
-      self.parent.combat.duels[0].unitdisplay()
-      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        )
+        self.speed.text = self.parent.combat.duels[0].unit.speed
+        self.parent.combat.duels[0].unitdisplay()
+        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def goddessdrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boostluck(int(self.goddessdrop.selected_value))
-      self.luck.text = self.parent.combat.duels[0].unit.luck
-      self.parent.combat.duels[0].unitdisplay()
-      self.crit.text = self.parent.combat.duels[0].unit.crit
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boostluck(int(self.goddessdrop.selected_value))
+        self.luck.text = self.parent.combat.duels[0].unit.luck
+        self.parent.combat.duels[0].unitdisplay()
+        self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def dracoshield_drop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boostdefense(
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boostdefense(
             int(self.dracoshield_drop.selected_value)
-      )
-      self.defense.text = self.parent.combat.duels[0].unit.defense
+        )
+        self.defense.text = self.parent.combat.duels[0].unit.defense
 
     def talismandrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].unit.boostresistance(
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].unit.boostresistance(
             int(self.talismandrop.selected_value)
-      )
-      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+        )
+        self.resistance.text = self.parent.combat.duels[0].unit.resistance
 
     def equipment_click(self, **event_args):
-      """This method is called when the button is clicked"""
-      self.equip_panel.visible = True
+        """This method is called when the button is clicked"""
+        self.equip_panel.visible = True
 
     def hide_equip_click(self, **event_args):
-      """This method is called when the button is clicked"""
-      self.equip_panel.visible = False
+        """This method is called when the button is clicked"""
+        self.equip_panel.visible = False
 
     def geosphere_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].setequipment("Geosphere")
-      self.parent.combat.duels[0].unitdisplay()
-      self.hit.text = self.parent.combat.duels[0].unit.hit
-      self.crit.text = self.parent.combat.duels[0].unit.crit
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].setequipment("Geosphere")
+        self.parent.combat.duels[0].unitdisplay()
+        self.hit.text = self.parent.combat.duels[0].unit.hit
+        self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def lightsphere_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].setequipment("Lightsphere")
-      for number, name in self.parent.combat.duels.items():
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].setequipment("Lightsphere")
+        for number, name in self.parent.combat.duels.items():
             name.bossdisplay()
-      self.parent.crit.text = self.parent.combat.duels[0].boss.crit
+        self.parent.crit.text = self.parent.combat.duels[0].boss.crit
 
     def lifesphere_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].setequipment("Lifesphere")
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].setequipment("Lifesphere")
 
     def iote_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].setequipment("Iote's Shield")
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].setequipment("Iote's Shield")
 
     def trianglecheck_change(self, **event_args):
-      """This method is called when this checkbox is checked or unchecked"""
-      self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
+        """This method is called when this checkbox is checked or unchecked"""
+        self.parent.combat.duels[0].unit.triangleattack = self.trianglecheck.checked
 
     def dancedrop_change(self, **event_args):
-      """This method is called when an item is selected"""
-      self.parent.combat.duels[0].setrefreshes(int(self.dancedrop.selected_value))
+        """This method is called when an item is selected"""
+        self.parent.combat.duels[0].setrefreshes(int(self.dancedrop.selected_value))
