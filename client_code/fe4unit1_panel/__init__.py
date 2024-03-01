@@ -43,7 +43,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.miracleband.checked = False
         self.followupring.checked = False
         self.circlet.checked = False
-        for i, skill in enumerate(self.parent.combat.duels[0].units.skills):
+        for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
             self.skillslist.content += f"{skill} \n"
 
     def hide_click(self, **event_args):
@@ -57,7 +57,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.parent.combat.duels[0].unitstatadjust()
         self.parent.combat.duels[0].unitdisplay()
         self.skillslist.content = ""
-        for i, skill in enumerate(self.parent.combat.duels[0].units.skills):
+        for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
             self.skillslist.content += f"{skill} \n"
         self.strength.text = self.parent.combat.duels[0].unit.strength
         self.magic.text = self.parent.combat.duels[0].unit.magic

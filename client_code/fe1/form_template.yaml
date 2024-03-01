@@ -133,12 +133,12 @@ components:
       - name: startinghp
         properties: {placeholder: '0', type: number}
         type: TextBox
-        layout_properties: {x: 75, y: 10, width: 40}
+        layout_properties: {x: 75, y: 10, width: 70}
         event_bindings: {}
       - name: terrainbox
         properties: {text: Terrain, font_size: 15, foreground: '', background: ''}
         type: CheckBox
-        layout_properties: {x: 140, y: 10, width: 75}
+        layout_properties: {x: 150, y: 10, width: 75}
         event_bindings: {change: terrainbox_change}
     - name: column_panel_5
       properties: {}
