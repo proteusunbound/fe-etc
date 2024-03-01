@@ -20,7 +20,7 @@ components:
       include_placeholder: true
       placeholder: Select Unit
     type: DropDown
-    layout_properties: {x: 0, y: 0, width: 260}
+    layout_properties: {x: 0, y: 0, width: 250}
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
@@ -48,17 +48,17 @@ components:
   - name: sethplabel
     properties: {text: 'Starting HP:', font_size: 15}
     type: Label
-    layout_properties: {x: 360, y: 0, width: 75}
+    layout_properties: {x: 330, y: 0, width: 75}
   - name: startinghp
     properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
       foreground: '', type: number}
     type: TextBox
-    layout_properties: {x: 435, y: 0, width: 40}
+    layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
   - name: book2box
     properties: {text: Book 2, visible: false}
     type: CheckBox
-    layout_properties: {x: 270, y: 0, width: 70}
+    layout_properties: {x: 255, y: 0, width: 70}
     event_bindings: {change: book2box_change}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',

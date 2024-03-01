@@ -163,12 +163,12 @@ components:
       - name: startinghp
         properties: {placeholder: '0', type: number}
         type: TextBox
-        layout_properties: {x: 75, y: 30, width: 50}
+        layout_properties: {x: 75, y: 30, width: 70}
         event_bindings: {}
       - name: terrainbox
         properties: {text: Terrain}
         type: CheckBox
-        layout_properties: {x: 140, y: 30, width: 80}
+        layout_properties: {x: 150, y: 30, width: 80}
         event_bindings: {change: terrainbox_change}
     - name: skilldisplay
       properties: {}
