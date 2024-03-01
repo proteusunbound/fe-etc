@@ -47,7 +47,7 @@ components:
     properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
       foreground: '', type: number}
     type: TextBox
-    layout_properties: {x: 435, y: 0, width: 40}
+    layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
   - name: equip_drop
     properties:
