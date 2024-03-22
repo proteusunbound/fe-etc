@@ -111,10 +111,19 @@ db_schema:
       admin_ui: {width: 200, order: 2}
       type: number
     - name: Mag
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {order: 3, width: 50}
       type: number
     - name: Skl
       admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 7}
       type: number
     title: FE4 Class Change
   fe3_book_2:
