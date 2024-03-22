@@ -102,7 +102,10 @@ db_schema:
     server: full
     columns:
     - name: FromClass
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {order: 0, width: 112}
+      type: string
+    - name: ToClass
+      admin_ui: {order: 1, width: 98}
       type: string
     title: FE4 Class Change
   fe3_book_2:
