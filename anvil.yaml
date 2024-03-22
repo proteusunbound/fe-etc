@@ -97,6 +97,14 @@ db_schema:
       admin_ui: {width: 200, order: 7}
       type: number
     title: FE2 Weapon Stats
+  fe4_class_change:
+    client: none
+    server: full
+    columns:
+    - name: FromClass
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: FE4 Class Change
   fe3_book_2:
     client: search
     server: search
