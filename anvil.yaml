@@ -107,6 +107,9 @@ db_schema:
     - name: ToClass
       admin_ui: {order: 1, width: 98}
       type: string
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
     title: FE4 Class Change
   fe3_book_2:
     client: search
