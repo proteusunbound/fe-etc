@@ -72,6 +72,9 @@ class ActiveUnit:
         if sibling is True:
             self.critbonus = 20
 
+    def promote(self):
+      """Promotion"""
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
