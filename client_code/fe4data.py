@@ -74,6 +74,27 @@ class ActiveUnit:
 
     def promote(self):
       """Promotion"""
+      if self.name in ("Chulainn", "Scathach", "Dalvin", "Creidne"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Sword Fighter (A)")
+      elif self.name in ("Ayra", "Larcei"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Sword Fighter (B)")
+      elif self.name == "Tine":
+        bonus = app_tables.fe4_class_change.get(FromClass="Mage (B)")
+      elif self.name in ("Azelle", "Arthur"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Mage (A)")
+      else:
+        bonus = app_tables.fe4_class_change.get(FromClass=self.charclass)
+      self.charclass = bonus["ToClass"]
+      self.strength += bonus["Str"]
+      self.magic += bonus["Mag"]
+      self.skill += bonus["Skl"]
+      self.speed += bonus["Spd"]
+      self.defense += bonus["Def"]
+      self.resistance += bonus["Res"]
+      if self.charclass in ("Master Knight", "Thief Fighter", "Wyvern Lord"):
+        self.skills.append("Follow-Up")
+      elif self.charclass in ("Ranger", "Swordmaster", "Sage", "Mage Fighter", "Falcon Knight"):
+        self.skills.append("Adept")
 
 
 @anvil.server.portable_class
