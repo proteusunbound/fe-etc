@@ -95,6 +95,8 @@ class ActiveUnit:
         self.skills.append("Follow-Up")
       elif self.charclass in ("Ranger", "Swordmaster", "Sage", "Mage Fighter", "Falcon Knight"):
         self.skills.append("Adept")
+      elif self.charclass == "General":
+        self.skills.append("Pavise")
 
 
 @anvil.server.portable_class

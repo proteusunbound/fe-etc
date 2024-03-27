@@ -88,7 +88,7 @@ skill_list = {
     "Asaello": ["Follow-Up", "Accost"],
     "Ced": ["Follow-Up", "Critical", "Adept"],
     "Hawk": ["Follow-Up", "Adept"],
-    "Hannibal": ["Adept", "Vantage"],
+    "Hannibal": ["Adept", "Vantage", "Pavise"],
     "Coirpre": ["Adept", "Miracle"],
-    "Altena": ["Critical", "Adept"],
+    "Altena": ["Critical", "Adept"]
 }
