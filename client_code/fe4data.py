@@ -25,6 +25,7 @@ class ActiveUnit:
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
         self.charclass = self.char["Class"]
+        self.level = 1
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
