@@ -233,6 +233,8 @@ class DuelSim:
         self.iniastra = 0
         self.astrano = 0
         self.cancelpaviseno = 0
+        self.inipavise = 0
+        self.paviseno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
