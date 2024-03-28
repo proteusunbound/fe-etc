@@ -39,6 +39,7 @@ class ActiveUnit:
         self.solrate = 1
         self.lunarate = 1
         self.astrarate = 1
+        self.paviserate = 1
         self.pavisecancel = 1
         self.skills = []
         self.hitbonus = 0
