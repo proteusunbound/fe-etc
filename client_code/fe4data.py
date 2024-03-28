@@ -549,6 +549,8 @@ class DuelSim:
             self.unit.lunarate = self.unit.skill / 100
         if "Astra" in self.unit.skills:
             self.unit.astrarate = self.unit.skill / 100
+        if "Pavise" in self.unit.skills:
+            self.unit.paviserate = self.unit.level / 100
         if "Pavise" in self.boss.skills:
             self.unit.pavisecancel = 1 - (self.boss.level / 100)
         if self.unitweapon.name in ("Lands Sword", "Nosferatu"):
