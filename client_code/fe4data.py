@@ -316,6 +316,11 @@ class DuelSim:
         self.iniastra = astrano
         self.astrano = astrano
 
+    def setpaviseno(self, paviseno):
+      """Set Pavise Number"""
+      self.inipavise = paviseno
+      self.paviseno = paviseno
+
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
