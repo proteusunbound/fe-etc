@@ -74,6 +74,10 @@ class ActiveUnit:
         if sibling is True:
             self.critbonus = 20
 
+    def setlevel(self, level):
+      """Set Level"""
+      self.level = level
+
     def promote(self):
       """Promotion"""
       if self.name in ("Chulainn", "Scathach", "Dalvin", "Creidne"):
@@ -781,6 +785,9 @@ class DuelSim:
             self.bossmiss()
         elif self.avoidno > 0:
             self.avoidno -= 1
+            self.bossmiss()
+        elif self.paviseno > 0:
+            self.paviseno -= 1
             self.bossmiss()
         elif (
             self.boss.crit > 0 or self.bossweapon.effective is True
