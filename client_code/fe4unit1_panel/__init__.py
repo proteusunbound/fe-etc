@@ -323,3 +323,20 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.parent.combat.duels[0].unit.setcharm(self.charmbox.checked)
         self.parent.combat.duels[0].unitdisplay()
         self.hit.text = self.parent.combat.duels[0].unit.hit
+
+    def promobox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.promote()
+      self.strength.text = self.parent.combat.duels[0].unit.strength
+      self.magic.text = self.parent.combat.duels[0].unit.magic
+      self.skill.text = self.parent.combat.duels[0].unit.skill
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+      self.parent.combat.duels[0].unitdisplay()
+      self.hit.text = self.parent.combat.duels[0].unit.hit
+      self.crit.text = self.parent.combat.duels[0].unit.crit
+      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+      self.skillslist.content = ""
+      for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
+          self.skillslist.content += f"{skill} \n"
