@@ -45,6 +45,8 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.circlet.checked = False
         for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
             self.skillslist.content += f"{skill} \n"
+        if self.parent.combat.duels[0].unit.charclass in ("Junior Lord", "Princess", "Prince", "Cavalier", "Troubadour", "Free Knight", "Lance Knight", "Axe Knight", "Arch Knight", "Sword Armor", "Sword Fighter", "Axe Fighter", "Bow Fighter", "Thief", "Priest", "Bard", "Light Priestess", "Mage", "Thunder Mage", "Wind Mage", "Pegasus Knight", "Wyvern Rider"):
+          self.promobox.visible = True
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
