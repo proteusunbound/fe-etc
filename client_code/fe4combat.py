@@ -96,6 +96,7 @@ class CombatSim:
                 * (name.unit.lunarate**name.iniluna)
                 * (name.unit.astrarate**name.iniastra)
                 * (name.unit.pavisecancel**name.cancelpaviseno)
+                * (name.unit.paviserate**name.inipavise)
             )
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."
