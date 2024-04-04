@@ -158,6 +158,10 @@ components:
       type: CheckBox
       layout_properties: {x: 0, y: 50, width: 100}
       event_bindings: {change: charmbox_change}
+    - name: promobox
+      properties: {text: Promote, visible: false}
+      type: CheckBox
+      layout_properties: {x: 120, y: 50, width: 100}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
