@@ -340,3 +340,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
       self.skillslist.content = ""
       for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
           self.skillslist.content += f"{skill} \n"
+
+    def levelbox_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.setlevel(self.levelbox.text)

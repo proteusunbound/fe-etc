@@ -61,6 +61,7 @@ components:
     properties: {placeholder: Level, type: number}
     type: TextBox
     layout_properties: {x: 260, y: 0, width: 55}
+    event_bindings: {pressed_enter: levelbox_pressed_enter}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
     col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
