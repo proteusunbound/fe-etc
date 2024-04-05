@@ -415,8 +415,19 @@ components:
       visible: false
       align: center
     type: DropDown
-    layout_properties: {grid_position: 'HIXCOR,YQAYJG'}
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG YLXUWK,HHXMGY'}
     event_bindings: {change: sol_drop_change}
+  - name: paviselabel
+    properties: {visible: false, text: Pavises, align: center}
+    type: Label
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG DAHVKO,UWJBQL'}
+  - name: pavise_drop
+    properties:
+      align: center
+      items: ['0', '1', '2', '3', '4', '5']
+      visible: false
+    type: DropDown
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG IRMLAE,AGCUUN'}
 - name: bossproc
   properties: {visible: false}
   type: ColumnPanel
