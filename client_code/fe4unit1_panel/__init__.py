@@ -86,6 +86,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.parent.combat.duels[0].setsolno(int(self.sol_drop.selected_value))
         self.parent.combat.duels[0].setlunano(int(self.luna_drop.selected_value))
         self.parent.combat.duels[0].setastrano(int(self.astra_drop.selected_value))
+        self.parent.combat.duels[0].setpaviseno(int(self.pavise_drop.selected_value))
 
     def reset(self):
         """Reset"""
