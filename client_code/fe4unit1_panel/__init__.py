@@ -201,6 +201,10 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         if "Pavise" in self.parent.combat.duels[0].unit.skills:
             self.paviselabel.visible = True
             self.pavise_drop.visible = True
+        else:
+            self.paviselabel.visible = False
+            self.pavise_drop.selected_value = 0
+            self.pavise_drop.visible = False
 
     def hideskills_click(self, **event_args):
         """This method is called when the button is clicked"""
