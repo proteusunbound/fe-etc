@@ -608,6 +608,9 @@ db_schema:
     - name: Str
       admin_ui: {width: 200, order: 2}
       type: number
+    - name: Mag
+      admin_ui: {width: 200, order: 3}
+      type: number
     title: FE5 Boss Stats
   fe1_boss_stats:
     client: search
