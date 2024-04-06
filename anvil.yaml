@@ -602,6 +602,9 @@ db_schema:
     - name: Name
       admin_ui: {order: 0, width: 159}
       type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
     title: FE5 Boss Stats
   fe1_boss_stats:
     client: search
