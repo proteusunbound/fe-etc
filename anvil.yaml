@@ -18,8 +18,11 @@ db_schema:
     server: full
     columns:
     - name: Name
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {order: 0, width: 70}
       type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
     title: FE5 Unit Stats
   fe2_class_change:
     client: search
