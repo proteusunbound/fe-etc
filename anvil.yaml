@@ -21,7 +21,10 @@ db_schema:
       admin_ui: {order: 0, width: 70}
       type: string
     - name: HP
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {order: 1, width: 50}
+      type: number
+    - name: Str
+      admin_ui: {order: 2, width: 200}
       type: number
     title: FE5 Unit Stats
   fe2_class_change:
