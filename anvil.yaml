@@ -27,7 +27,10 @@ db_schema:
       admin_ui: {order: 2, width: 200}
       type: number
     - name: Mag
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {order: 3, width: 50}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
       type: number
     title: FE5 Unit Stats
   fe2_class_change:
