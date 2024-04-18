@@ -25,3 +25,13 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
+
+@anvil.server.portable_class
+class ActiveWeapon:
+    """Active Weapon"""
+    def __init__(self, keyword):
+        weapon = app_tables.fe5_weapon_stats.get(Name=keyword)
+        self.name = weapon["Name"]
+        self.might = weapon["Mgt"]
+        self.weight = weapon["Wgt"]
+        self.hit = weapon["Hit"]
