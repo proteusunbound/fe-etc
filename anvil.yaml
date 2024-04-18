@@ -58,6 +58,9 @@ db_schema:
     - name: Def
       admin_ui: {width: 200, order: 7}
       type: number
+    - name: Bld
+      admin_ui: {width: 200, order: 8}
+      type: number
     title: FE5 Unit Stats
   fe2_class_change:
     client: search
