@@ -27,3 +27,7 @@ class Landing(LandingTemplate):
     def fe4button_click(self, **event_args):
         """This method is called when the button is clicked"""
         open_form("fe4")
+
+    def fe5button_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      open_form("fe5")
