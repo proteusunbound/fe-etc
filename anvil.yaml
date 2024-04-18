@@ -20,6 +20,12 @@ db_schema:
     - name: Name
       admin_ui: {order: 0, width: 107}
       type: string
+    - name: Mgt
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Wgt
+      admin_ui: {width: 200, order: 2}
+      type: number
     title: FE5 Weapon Stats
   fe5_unit_stats:
     client: search
