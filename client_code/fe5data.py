@@ -20,6 +20,7 @@ class ActiveUnit:
         self.speed = self.char["Spd"]
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
+        self.build = self.char["Bld"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -56,3 +57,7 @@ class ActiveBoss:
         self.attack = 0
         self.avoid = 0
         self.hitchance = 0
+
+def attack_speed(keyword, weapon):
+    """Attack Speed"""
+    keyword.AS = keyword.speed - (weapon.weight - keyword.build)
