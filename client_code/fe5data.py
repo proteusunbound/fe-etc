@@ -50,6 +50,7 @@ class ActiveBoss:
         self.speed = boss["Spd"]
         self.luck = boss["Lck"]
         self.defense = boss["Def"]
+        self.build = boss["Bld"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
