@@ -71,3 +71,6 @@ def attack(keyword, weapon):
     """Attack"""
     keyword.attack = keyword.strength + weapon.might
 
+def damage(attacker, defender):
+    """Damage"""
+    attacker.damage = max(0, attacker.attacker - defender.defense)
