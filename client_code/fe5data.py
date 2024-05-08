@@ -62,3 +62,7 @@ class ActiveBoss:
 def attack_speed(keyword, weapon):
     """Attack Speed"""
     keyword.AS = keyword.speed - (weapon.weight - keyword.build)
+
+def hitrate(keyword, weapon):
+    """Hit Rate"""
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck
