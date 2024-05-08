@@ -66,3 +66,8 @@ def attack_speed(keyword, weapon):
 def hitrate(keyword, weapon):
     """Hit Rate"""
     keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck
+
+def attack(keyword, weapon):
+    """Attack"""
+    keyword.attack = keyword.strength + weapon.might
+
