@@ -74,3 +74,46 @@ def attack(keyword, weapon):
 def damage(attacker, defender):
     """Damage"""
     attacker.damage = max(0, attacker.attacker - defender.defense)
+
+@anvil.server.portable_class
+class DuelSim:
+    """Duel Simulator"""
+
+    def __init__(self):
+        self.dueltext = ""
+        self.hitno = 0
+        self.avoidno = 0
+        self.iniavo = 0
+        self.unithit = 0
+        self.unitavoid = 0
+
+    def setunit(self, unit):
+        """Set Unit"""
+        self.unit = ActiveUnit(unit)
+
+    def setboss(self, boss):
+        """Set Boss"""
+        self.boss = ActiveBoss(boss)
+
+    def setunitweapon(self, weapon):
+        """Set Unit Weapon"""
+        self.unitweapon = ActiveWeapon(weapon)
+
+    def setbossweapon(self, weapon):
+        """Set Boss Weapon"""
+        self.bossweapon = ActiveWeapon(weapon)
+
+    def setunithp(self, hitpoints):
+        """Set Unit HP"""
+        self.unit.hitpoints = hitpoints
+
+    def setavoidno(self, avoidno):
+        """Set Avoid Number"""
+        self.avoidno = avoidno
+        self.iniavo = avoidno
+
+    def setbosshp(self, hitpoints):
+        """Set Boss HP"""
+        self.boss.hitpoints = hitpoints
+
+    
