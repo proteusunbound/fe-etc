@@ -116,4 +116,18 @@ class DuelSim:
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def unitdisplay(self):
+        """Unit Stat Display"""
+        attack_speed(self.unit, self.unitweapon)
+        hitrate(self.unit, self.unitweapon)
+
+    def bossdisplay(self):
+        """Boss Stat Display"""
+        attack_speed(self.boss, self.bossweapon)
+        hitrate(self.boss, self.bossweapon)
+
+    def enemy_avoid(self):
+        """Enemy Avoid"""
+        self.boss.avoid = (2 * self.boss.AS) + self.boss.luck
+
     
