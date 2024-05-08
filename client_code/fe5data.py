@@ -130,4 +130,7 @@ class DuelSim:
         """Enemy Avoid"""
         self.boss.avoid = (2 * self.boss.AS) + self.boss.luck
 
-    
+    def bosshitchance(self):
+        """Boss Hit Chance"""
+        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck)) / 100), 0.99)
+        self.boss.hitchance = max(0.01, hitchance)
