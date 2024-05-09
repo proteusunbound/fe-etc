@@ -61,3 +61,10 @@ class CombatSim:
         self.etc = self.turns / (self.successrate)
         self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."
         return self.text
+
+    def reset(self):
+        """Reset"""
+        for number, name in self.duels.items():
+            name.hitno = 0
+        self.text = ""
+        self.successrate = 1
