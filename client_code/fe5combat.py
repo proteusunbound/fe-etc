@@ -27,3 +27,9 @@ class CombatSim:
         """Set Duels"""
         for i in range(0, duelno):
             self.duels[i] = fe5data.DuelSim()
+
+    def combatround(self):
+        """Combat Round"""
+        for number, name in self.duels.items():
+            if name.unit.hitpoints > 0 and self.bosshp > 0:
+                name.setbosshp(self.bosshp)
