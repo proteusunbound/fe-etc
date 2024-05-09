@@ -236,3 +236,7 @@ class DuelSim:
         ):
             self.counterdamage()
         self.dueltext += "\n"
+
+    def reset_text(self):
+        """Reset"""
+        self.dueltext = ""
