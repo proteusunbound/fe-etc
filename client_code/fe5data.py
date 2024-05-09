@@ -178,3 +178,37 @@ class DuelSim:
     def dodamage(self):
         """Unit Attack Checks"""
         self.unitattack()
+
+    def counterdamage(self):
+        """Boss Attack Checks"""
+        if self.boss.hitchance == 0:
+            self.bossmiss()
+        elif self.avoidno > 0:
+            self.avoidno -= 1
+            self.bossmiss()
+        else:
+            self.bossattack()
+
+    def playerphase(self):
+        """Player Phase"""
+        self.dueltext += "#### Player Phase:\n"
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dodamage()
+        if (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+        ):
+            self.counterdamage()
+        if (
+            self.unit.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.dodamage()
+        if (
+            self.boss.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.counterdamage()
+        self.dueltext += "\n"

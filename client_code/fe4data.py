@@ -807,8 +807,8 @@ class DuelSim:
             self.dodamage()
         if (
             self.boss.hitpoints > 0
-            and self.unit.hitpoints
-            and self.boss.counter is True > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         if (
