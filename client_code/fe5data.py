@@ -148,3 +148,20 @@ class DuelSim:
 
     def doubling(self):
         """Doubling Calculation"""
+        if self.unit.AS >= (self.boss.AS + 4):
+            self.unit.doubles = True
+            self.boss.doubles = False
+            self.dueltext += f"{self.unit.name} can make follow-up attacks. \n"
+        elif self.boss.AS >= (self.unit.AS + 4):
+            self.boss.doubles = True
+            self.unit.doubles = False
+            self.dueltext += f"{self.boss.name} can make follow-up attacks. \n"
+        else:
+            self.boss.doubles = False
+            self.unit.doubles = False
+
+    def unitattack(self):
+        """Unit Attack"""
+        self.hitno += 1
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
+        self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
