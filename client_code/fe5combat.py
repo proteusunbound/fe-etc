@@ -22,3 +22,8 @@ class CombatSim:
     def set_turns(self, turnno):
         """Set Turns"""
         self.turns = turnno
+
+    def setduels(self, duelno):
+        """Set Duels"""
+        for i in range(0, duelno):
+            self.duels[i] = fe5data.DuelSim()
