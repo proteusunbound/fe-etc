@@ -134,3 +134,17 @@ class DuelSim:
         """Boss Hit Chance"""
         hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck)) / 100), 0.99)
         self.boss.hitchance = max(0.01, hitchance)
+
+    def precombat(self):
+        """Pre-Combat Calculation"""
+        attack(self.unit, self.unitweapon)
+        damage(self.unit, self.boss)
+        self.enemy_avoid()
+        attack(self.boss, self.bossweapon)
+        damage(self.boss, self.unit)
+        self.bosshitchance()
+        self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
+        self.unitavoid = 1 - self.boss.hitchance
+
+    def doubling(self):
+        """Doubling Calculation"""
