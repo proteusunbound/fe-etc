@@ -212,3 +212,27 @@ class DuelSim:
         ):
             self.counterdamage()
         self.dueltext += "\n"
+
+    def enemyphase(self):
+        """Enemy Phase"""
+        self.dueltext += "#### Enemy Phase:\n"
+        if (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+        ):
+            self.counterdamage()
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dodamage()
+        if (
+            self.boss.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.counterdamage()
+        if (
+            self.unit.doubles is True
+            and self.unit.hitpoints > 0
+            and self.boss.hitpoints > 0
+        ):
+            self.counterdamage()
+        self.dueltext += "\n"
