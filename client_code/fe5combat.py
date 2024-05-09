@@ -33,3 +33,31 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
+                name.playerphase()
+                self.bosshp = name.boss.hitpoints
+                self.text += name.dueltext
+                name.reset_text()
+        for number, name in self.duels.items():
+            if self.bosshp > 0 and name.unit.hitpoints > 0:
+                name.setbosshp(self.bosshp)
+                name.enemyphase()
+                self.bosshp = name.boss.hitpoints
+                self.text += name.dueltext
+                name.reset_text()
+                break
+              
+    def battle(self):
+        """Battle"""
+        for self.turn in range(self.turns):
+            if self.turn == 0:
+                self.bosshp = self.duels[0].boss.hitpoints
+            self.combatround()
+            self.turn += 1
+        for number, name in self.duels.items():
+            self.successrate *= (
+                (name.unithit**name.hitno)
+                * (name.unitavoid**name.iniavo)
+            )
+        self.etc = self.turns / (self.successrate)
+        self.text += f"This outcome has a {self.successrate: 0.2f} chance of occurring. The Estimated Turn Count is {self.etc: 0.2f}."
+        return self.text
