@@ -5,7 +5,7 @@ from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import fe4combat
+from .. import fe5combat
 
 
 class fe5(fe5Template):
@@ -13,13 +13,9 @@ class fe5(fe5Template):
 
   def __init__(self, **properties):
     self.init_components(**properties)
-    self.combat = fe4combat.CombatSim()
+    self.combat = fe5combat.CombatSim()
     self.unitpanels = [
-      self.unit1_panel,
-      self.unit2_panel,
-      self.unit3_panel,
-      self.unit4_panel,
-      self.unit5_panel,
+      self.unit1_panel
     ]
 
   def unit_number_change(self, **event_args):
