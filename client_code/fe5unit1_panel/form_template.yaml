@@ -9,13 +9,12 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Sigurd, Naoise, Alec, Arden, Azelle, Lex, Quan, Finn, Ethlyn, Midir,
-        Dew, Edain, Ayra, Deirdre, Jamke, Chulainn, Lachesis, Beowolf, Lewyn, Silvia,
-        Erinys, Brigid, Tailtiu, Claud, Seliph, Scathach, Dalvin, Larcei, Creidne,
-        Lana, Muirne, Diarmuid, Tristan, Lester, Deimne, Oifey, Julia, Fee, Hermina,
-        Arthur, Amid, Iucharba, Iuchar, Leif, Finn, Nanna, Jeanne, Shannan, Patty,
-        Daisy, Ares, Lene, Laylea, Tine, Linda, Febail, Asaello, Ced, Hawk, Hannibal,
-        Coirpre, Charlot, Altena]
+      items: [Leif, Finn, Osian, Halvan, Eyvel, Dagdar, Tanya, Marty, Ronan, Safy,
+        Lifis, Machyua, Brighton, Lara, Fergus, Karin, Dalsin, Asbel, Nanna, Hicks,
+        Shiva, Carrion, Selphina, Cain, Alva, Robert, Fred, Olwen, Mareeta, Salem,
+        Perne, Troude, Tina, Glade, Deen, Eda, Homer, Linoan, Ralf, Ilios, Sleuf,
+        Misha, Sara, Shannam, Miranda, Xavier, Amalda, Conomor, Diarmuid, Saias, Ced,
+        Galzus]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -25,16 +24,19 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
-        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
-        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
-        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
-        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
-        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
-        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
-        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
-        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
-        Fenrir, Hel, Loptous]
+      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge,
+        Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword,
+        Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword,
+        Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword,
+        Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance,
+        Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance,
+        Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance,
+        Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe,
+        Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow,
+        Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen,
+        Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder,
+        Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu,
+        Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
