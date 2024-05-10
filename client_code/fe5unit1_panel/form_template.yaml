@@ -1,0 +1,184 @@
+container:
+  type: ColumnPanel
+  properties: {visible: false, wrap_on: mobile}
+components:
+- name: xy_panel_1
+  properties: {height: '70', spacing_above: none, spacing_below: small}
+  type: XYPanel
+  layout_properties: {grid_position: 'QIXASK,RJPYQE'}
+  components:
+  - name: unit_drop
+    properties:
+      items: [Sigurd, Naoise, Alec, Arden, Azelle, Lex, Quan, Finn, Ethlyn, Midir,
+        Dew, Edain, Ayra, Deirdre, Jamke, Chulainn, Lachesis, Beowolf, Lewyn, Silvia,
+        Erinys, Brigid, Tailtiu, Claud, Seliph, Scathach, Dalvin, Larcei, Creidne,
+        Lana, Muirne, Diarmuid, Tristan, Lester, Deimne, Oifey, Julia, Fee, Hermina,
+        Arthur, Amid, Iucharba, Iuchar, Leif, Finn, Nanna, Jeanne, Shannan, Patty,
+        Daisy, Ares, Lene, Laylea, Tine, Linda, Febail, Asaello, Ced, Hawk, Hannibal,
+        Coirpre, Charlot, Altena]
+      spacing_above: small
+      spacing_below: small
+      include_placeholder: true
+      placeholder: Select Unit
+    type: DropDown
+    layout_properties: {x: 0, y: 0, width: 320}
+    event_bindings: {change: unit_drop_change}
+  - name: weapon_drop
+    properties:
+      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
+        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
+        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
+        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
+        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
+        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
+        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
+        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
+        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
+        Fenrir, Hel, Loptous]
+      include_placeholder: true
+      placeholder: Select Weapon
+      visible: false
+    type: DropDown
+    layout_properties: {x: 0, y: 45, width: 345}
+    event_bindings: {change: weapon_drop_change}
+  - name: custombutton
+    properties: {text: Customize, align: full, role: null, background: 'theme:Surface
+        Variant', foreground: '#9ea9ff', font_size: 15}
+    type: Button
+    layout_properties: {x: 355, y: 45, width: 120}
+    event_bindings: {click: custombutton_click}
+  - name: sethplabel
+    properties: {text: 'Starting HP:', font_size: 15}
+    type: Label
+    layout_properties: {x: 330, y: 0, width: 75}
+  - name: startinghp
+    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
+      foreground: '', type: number}
+    type: TextBox
+    layout_properties: {x: 405, y: 0, width: 70}
+    event_bindings: {}
+- name: customization
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
+    col_spacing: small, col_widths: '{"FQXNPV":35}'}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
+  components:
+  - name: column_panel_2
+    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
+      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
+    components:
+    - name: hplabel
+      properties: {text: HP, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,UEJOCT', full_width_row: false}
+    - name: hp
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+    - name: strlabel
+      properties: {text: STR, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR GYRYBB,TAPVOF'}
+    - name: maglabel
+      properties: {text: MAG, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR JSPVGR,KGYMRG'}
+    - name: skl_label
+      properties: {text: SKL, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR YEDAHM,XEDNFW'}
+    - name: spdlabel
+      properties: {text: SPD, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR MSWAXB,WVUMZS'}
+    - name: lcklabel
+      properties: {text: LCK, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR PDBIDL,WAOREX'}
+    - name: deflabel
+      properties: {text: DEF, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR DYRMEN,ZMLJID'}
+    - name: strength
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE PQZPMB,KXSLRR'}
+    - name: magic
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE HQBBZY,LQTRTZ'}
+    - name: skill
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE CRNPVZ,RWLPKA'}
+    - name: speed
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE RLVUXH,WWEMQZ'}
+    - name: luck
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE AXGWJW,GKYSZT'}
+    - name: defense
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE QCKJYR,PLZMCT'}
+  - name: xy_panel_2
+    properties: {height: '75', spacing_above: small, spacing_below: small}
+    type: XYPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
+    components:
+    - name: hide
+      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
+        visible: true, border: ''}
+      type: Button
+      layout_properties: {x: 125, y: 0, width: 100}
+      event_bindings: {click: hide_click}
+      data_bindings: []
+  - name: column_panel_3
+    properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
+    components:
+    - name: avoidlabel
+      properties: {text: Avoids, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF ZWALOY,WZAQGA'}
+    - name: avoid_drop
+      properties:
+        include_placeholder: false
+        placeholder: ''
+        items: ['0', '1', '2', '3', '4', '5']
+        foreground: ''
+        font_size: null
+        visible: true
+        align: center
+      type: DropDown
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF VKMUZG,XZSAGP'}
+      event_bindings: {}
+      data_bindings: []
+  - name: column_panel_1
+    properties: {spacing_above: small, spacing_below: small}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
+    components:
+    - name: aslabel
+      properties: {text: AS, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
+    - name: attackspeed
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}
+    - name: hitlabel
+      properties: {text: HIT, align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR FNRQCP,BBKNCJ'}
+    - name: hit
+      properties: {text: '-', align: center, font_size: null}
+      type: Label
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
+      data_bindings: []
+is_package: true
