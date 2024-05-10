@@ -29,10 +29,8 @@ class fe5(fe5Template):
 
   def boss_drop_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.skilldisplay.content = ""
     for number, name in self.combat.duels.items():
       name.setboss(self.boss_drop.selected_value)
-      name.boss.setskills()
     self.hp.text = self.combat.duels[0].boss.maxhp
     self.strength.text = self.combat.duels[0].boss.strength
     self.magic.text = self.combat.duels[0].boss.magic
@@ -40,45 +38,17 @@ class fe5(fe5Template):
     self.speed.text = self.combat.duels[0].boss.speed
     self.luck.text = self.combat.duels[0].boss.luck
     self.defense.text = self.combat.duels[0].boss.defense
-    self.resistance.text = self.combat.duels[0].boss.resistance
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
-    if ("Accost" in self.combat.duels[0].boss.skills) or (
-      "Adept" in self.combat.duels[0].boss.skills
-    ):
-      for i in range(0, int(self.unit_number.selected_value)):
-        self.unitpanels[i].cancelproc.visible = True
-    for i, skill in enumerate(self.combat.duels[0].boss.skills):
-      self.skilldisplay.content += f"{skill} \n"
-    self.power_ring.checked = False
-    self.magicring.checked = False
-    self.skillring.checked = False
-    self.speedring.checked = False
-    self.shieldring.checked = False
-    self.barrier_ring.checked = False
-    self.renewalband.checked = False
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
     for number, name in self.combat.duels.items():
       name.setbossweapon(self.weapon_drop.selected_value)
-      name.adjust_boss_skills()
-      name.boss_stat_adjust()
       name.bossdisplay()
-    self.skilldisplay.content = ""
-    for i, skill in enumerate(self.combat.duels[0].boss.skills):
-      self.skilldisplay.content += f"{skill} \n"
-    self.strength.text = self.combat.duels[0].boss.strength
-    self.magic.text = self.combat.duels[0].boss.magic
-    self.skill.text = self.combat.duels[0].boss.skill
-    self.speed.text = self.combat.duels[0].boss.speed
-    self.luck.text = self.combat.duels[0].boss.luck
-    self.defense.text = self.combat.duels[0].boss.defense
-    self.resistance.text = self.combat.duels[0].boss.resistance
     self.attackspeed.text = self.combat.duels[0].boss.AS
     self.hit.text = self.combat.duels[0].boss.hit
-    self.crit.text = self.combat.duels[0].boss.crit
 
   def calculatebutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -88,11 +58,8 @@ class fe5(fe5Template):
     for i in range(0, int(self.unit_number.selected_value)):
       self.unitpanels[i].setinfo()
     for number, name in self.combat.duels.items():
-      name.counterattack()
       name.doubling()
-      name.effectivecheck()
       name.precombat()
-      name.skillprocs()
     self.combat.battle()
     self.combatlog.content = self.combat.text
     self.combatlog.visible = True
@@ -111,7 +78,6 @@ class fe5(fe5Template):
     self.unit_number.selected_value = None
     self.reset.visible = False
     self.combatlog.visible = False
-    self.equip_panel.visible = False
 
   def turn_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -120,70 +86,3 @@ class fe5(fe5Template):
   def mainpage_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form("Landing")
-
-  def terrainbox_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.terrain = self.terrainbox.checked
-
-  def power_ring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Power Ring")
-      name.boss_stat_adjust()
-    self.strength.text = self.combat.duels[0].boss.strength
-
-  def magicring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Magic Ring")
-      name.boss_stat_adjust()
-    self.magic.text = self.combat.duels[0].boss.magic
-
-  def skillring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Skill Ring")
-      name.boss_stat_adjust()
-      name.bossdisplay()
-    self.skill.text = self.combat.duels[0].boss.skill
-    self.hit.text = self.combat.duels[0].boss.hit
-    self.crit.text = self.combat.duels[0].boss.crit
-
-  def speedring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Speed Ring")
-      name.boss_stat_adjust()
-      name.bossdisplay()
-    self.speed.text = self.combat.duels[0].boss.speed
-    self.attackspeed.text = self.combat.duels[0].boss.AS
-
-  def shieldring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Shield Ring")
-      name.boss_stat_adjust()
-    self.defense.text = self.combat.duels[0].boss.defense
-
-  def barrier_ring_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Barrier Ring")
-      name.boss_stat_adjust()
-    self.resistance.text = self.combat.duels[0].boss.resistance
-
-  def renewalband_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    for number, name in self.combat.duels.items():
-      name.setbossequip("Renewal Band")
-      name.adjust_boss_skills()
-    self.skilldisplay.content += "Renewal \n"
-
-  def equipment_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.equip_panel.visible = True
-
-  def hide_equip_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.equip_panel.visible = False
