@@ -103,6 +103,10 @@ components:
       properties: {text: DEF, align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,EORSAR DYRMEN,ZMLJID'}
+    - name: buildlabel
+      properties: {text: BLD, align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,EORSAR IMRYFG,XCHNWJ'}
     - name: strength
       properties: {text: '-', align: center, font_size: null}
       type: Label
@@ -127,6 +131,10 @@ components:
       properties: {text: '-', align: center, font_size: null}
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE QCKJYR,PLZMCT'}
+    - name: build
+      properties: {text: '-', align: center}
+      type: Label
+      layout_properties: {grid_position: 'CLSTUB,INCKSE JINCUW,WWCLYP'}
   - name: xy_panel_2
     properties: {height: '75', spacing_above: small, spacing_below: small}
     type: XYPanel

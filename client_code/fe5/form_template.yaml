@@ -100,6 +100,10 @@ components:
         properties: {text: DEF, align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,MXZZRH VBAOBG,VMXWXH'}
+      - name: buildlabel
+        properties: {text: BLD, align: center}
+        type: Label
+        layout_properties: {grid_position: 'MTABZQ,MXZZRH DXMBNC,WQGKBD'}
       - name: hp
         properties: {text: '-', align: center}
         type: Label
@@ -128,6 +132,10 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA MWDCIW,AOOASK'}
+      - name: build
+        properties: {text: '-', align: center}
+        type: Label
+        layout_properties: {grid_position: 'MTABZQ,LUVJVA RGIRIQ,LTJVNA'}
     - name: xy_panel_1
       properties: {height: '80', spacing_above: medium, spacing_below: medium}
       type: XYPanel
