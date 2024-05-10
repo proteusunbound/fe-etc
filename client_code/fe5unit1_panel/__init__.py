@@ -28,6 +28,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.speed.text = self.parent.combat.duels[0].unit.speed
     self.luck.text = self.parent.combat.duels[0].unit.luck
     self.defense.text = self.parent.combat.duels[0].unit.defense
+    self.build.text = self.parent.combat.duels[0].unit.build
     self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True

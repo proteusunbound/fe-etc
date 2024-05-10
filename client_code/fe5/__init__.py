@@ -38,6 +38,7 @@ class fe5(fe5Template):
     self.speed.text = self.combat.duels[0].boss.speed
     self.luck.text = self.combat.duels[0].boss.luck
     self.defense.text = self.combat.duels[0].boss.defense
+    self.build.text = self.combat.duels[0].boss.build
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
