@@ -21,7 +21,7 @@ components:
       include_placeholder: true
       placeholder: Select Unit
     type: DropDown
-    layout_properties: {x: 0, y: 0, width: 300}
+    layout_properties: {x: 0, y: 0, width: 250}
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
@@ -50,13 +50,18 @@ components:
   - name: sethplabel
     properties: {text: 'Starting HP:', font_size: 15}
     type: Label
-    layout_properties: {x: 315, y: 0, width: 75}
+    layout_properties: {x: 330, y: 0, width: 75}
   - name: startinghp
     properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
       foreground: '', type: number}
     type: TextBox
     layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
+  - name: levelbox
+    properties: {placeholder: Level, type: number}
+    type: TextBox
+    layout_properties: {x: 260, y: 0, width: 55}
+    event_bindings: {pressed_enter: levelbox_pressed_enter}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
     col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
@@ -158,6 +163,11 @@ components:
       type: CheckBox
       layout_properties: {x: 0, y: 50, width: 100}
       event_bindings: {change: charmbox_change}
+    - name: promobox
+      properties: {text: Promote, visible: false}
+      type: CheckBox
+      layout_properties: {x: 120, y: 50, width: 100}
+      event_bindings: {change: promobox_change}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
@@ -405,8 +415,19 @@ components:
       visible: false
       align: center
     type: DropDown
-    layout_properties: {grid_position: 'HIXCOR,YQAYJG'}
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG YLXUWK,HHXMGY'}
     event_bindings: {change: sol_drop_change}
+  - name: paviselabel
+    properties: {visible: false, text: Pavises, align: center}
+    type: Label
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG DAHVKO,UWJBQL'}
+  - name: pavise_drop
+    properties:
+      align: center
+      items: ['0', '1', '2', '3', '4', '5']
+      visible: false
+    type: DropDown
+    layout_properties: {grid_position: 'HIXCOR,YQAYJG IRMLAE,AGCUUN'}
 - name: bossproc
   properties: {visible: false}
   type: ColumnPanel

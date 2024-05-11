@@ -25,6 +25,7 @@ class ActiveUnit:
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
         self.charclass = self.char["Class"]
+        self.level = 1
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -38,6 +39,7 @@ class ActiveUnit:
         self.solrate = 1
         self.lunarate = 1
         self.astrarate = 1
+        self.paviserate = 1
         self.pavisecancel = 1
         self.skills = []
         self.hitbonus = 0
@@ -71,6 +73,36 @@ class ActiveUnit:
         """Set Sibling"""
         if sibling is True:
             self.critbonus = 20
+
+    def setlevel(self, level):
+      """Set Level"""
+      self.level = level
+
+    def promote(self):
+      """Promotion"""
+      if self.name in ("Chulainn", "Scathach", "Dalvin", "Creidne"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Sword Fighter (A)")
+      elif self.name in ("Ayra", "Larcei"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Sword Fighter (B)")
+      elif self.name == "Tine":
+        bonus = app_tables.fe4_class_change.get(FromClass="Mage (B)")
+      elif self.name in ("Azelle", "Arthur"):
+        bonus = app_tables.fe4_class_change.get(FromClass="Mage (A)")
+      else:
+        bonus = app_tables.fe4_class_change.get(FromClass=self.charclass)
+      self.charclass = bonus["ToClass"]
+      self.strength += bonus["Str"]
+      self.magic += bonus["Mag"]
+      self.skill += bonus["Skl"]
+      self.speed += bonus["Spd"]
+      self.defense += bonus["Def"]
+      self.resistance += bonus["Res"]
+      if self.charclass in ("Master Knight", "Thief Fighter", "Wyvern Lord"):
+        self.skills.append("Follow-Up")
+      elif self.charclass in ("Ranger", "Swordmaster", "Sage", "Mage Fighter", "Falcon Knight"):
+        self.skills.append("Adept")
+      elif self.charclass == "General":
+        self.skills.append("Pavise")
 
 
 @anvil.server.portable_class
@@ -205,6 +237,8 @@ class DuelSim:
         self.iniastra = 0
         self.astrano = 0
         self.cancelpaviseno = 0
+        self.inipavise = 0
+        self.paviseno = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
@@ -285,6 +319,11 @@ class DuelSim:
         """Set Astra Number"""
         self.iniastra = astrano
         self.astrano = astrano
+
+    def setpaviseno(self, paviseno):
+      """Set Pavise Number"""
+      self.inipavise = paviseno
+      self.paviseno = paviseno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -514,6 +553,8 @@ class DuelSim:
             self.unit.lunarate = self.unit.skill / 100
         if "Astra" in self.unit.skills:
             self.unit.astrarate = self.unit.skill / 100
+        if "Pavise" in self.unit.skills:
+            self.unit.paviserate = self.unit.level / 100
         if "Pavise" in self.boss.skills:
             self.unit.pavisecancel = 1 - (self.boss.level / 100)
         if self.unitweapon.name in ("Lands Sword", "Nosferatu"):
@@ -745,6 +786,9 @@ class DuelSim:
         elif self.avoidno > 0:
             self.avoidno -= 1
             self.bossmiss()
+        elif self.paviseno > 0:
+            self.paviseno -= 1
+            self.bossmiss()
         elif (
             self.boss.crit > 0 or self.bossweapon.effective is True
         ) and "Nihil" not in self.unit.skills:
@@ -763,8 +807,8 @@ class DuelSim:
             self.dodamage()
         if (
             self.boss.hitpoints > 0
-            and self.unit.hitpoints
-            and self.boss.counter is True > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         if (

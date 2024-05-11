@@ -45,6 +45,8 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.circlet.checked = False
         for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
             self.skillslist.content += f"{skill} \n"
+        if self.parent.combat.duels[0].unit.charclass in ("Junior Lord", "Princess", "Prince", "Cavalier", "Troubadour", "Free Knight", "Lance Knight", "Axe Knight", "Arch Knight", "Sword Armor", "Sword Fighter", "Axe Fighter", "Bow Fighter", "Thief", "Priest", "Bard", "Light Priestess", "Mage", "Thunder Mage", "Wind Mage", "Pegasus Knight", "Wyvern Rider"):
+          self.promobox.visible = True
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -84,6 +86,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.parent.combat.duels[0].setsolno(int(self.sol_drop.selected_value))
         self.parent.combat.duels[0].setlunano(int(self.luna_drop.selected_value))
         self.parent.combat.duels[0].setastrano(int(self.astra_drop.selected_value))
+        self.parent.combat.duels[0].setpaviseno(int(self.pavise_drop.selected_value))
 
     def reset(self):
         """Reset"""
@@ -196,6 +199,13 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
             self.astralabel.visible = False
             self.astra_drop.selected_value = 0
             self.astra_drop.visible = False
+        if "Pavise" in self.parent.combat.duels[0].unit.skills:
+            self.paviselabel.visible = True
+            self.pavise_drop.visible = True
+        else:
+            self.paviselabel.visible = False
+            self.pavise_drop.selected_value = 0
+            self.pavise_drop.visible = False
 
     def hideskills_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -321,3 +331,24 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.parent.combat.duels[0].unit.setcharm(self.charmbox.checked)
         self.parent.combat.duels[0].unitdisplay()
         self.hit.text = self.parent.combat.duels[0].unit.hit
+
+    def promobox_change(self, **event_args):
+      """This method is called when this checkbox is checked or unchecked"""
+      self.parent.combat.duels[0].unit.promote()
+      self.strength.text = self.parent.combat.duels[0].unit.strength
+      self.magic.text = self.parent.combat.duels[0].unit.magic
+      self.skill.text = self.parent.combat.duels[0].unit.skill
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+      self.parent.combat.duels[0].unitdisplay()
+      self.hit.text = self.parent.combat.duels[0].unit.hit
+      self.crit.text = self.parent.combat.duels[0].unit.crit
+      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+      self.skillslist.content = ""
+      for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
+          self.skillslist.content += f"{skill} \n"
+
+    def levelbox_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.setlevel(self.levelbox.text)

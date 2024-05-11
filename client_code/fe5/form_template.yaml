@@ -1,19 +1,19 @@
 container: {type: ColumnPanel}
 components:
 - name: titlelabel
-  properties: {role: headline, text: 'Fire Emblem: Genealogy of the Holy War'}
+  properties: {role: headline, text: 'Fire Emblem: Thracia 776'}
   type: Label
   layout_properties: {grid_position: 'GVOJNR,MRGUWM'}
 - name: column_panel_2
   properties: {spacing_below: none}
   type: ColumnPanel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU SDCYAS,PVSTYG'}
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU YNMTSK,DPYBXP'}
   components:
   - name: unit_number
     properties:
       include_placeholder: true
       placeholder: Select Unit Number
-      items: ['1', '2', '3', '4', '5']
+      items: ['1']
       spacing_below: none
       spacing_above: small
     type: DropDown
@@ -21,24 +21,8 @@ components:
     event_bindings: {change: unit_number_change}
 - name: unit1_panel
   properties: {}
-  type: form:fe4unit1_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU ROHLIT,GZLHGT'}
-- name: unit2_panel
-  properties: {}
-  type: form:fe4unit2_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU IMHTGA,EVTXBB'}
-- name: unit3_panel
-  properties: {}
-  type: form:fe4unit3_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU QNTJPM,XMFEMI'}
-- name: unit4_panel
-  properties: {}
-  type: form:fe4unit4_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU TZSBUS,EAECMH'}
-- name: unit5_panel
-  properties: {}
-  type: form:fe4unit5_panel
-  layout_properties: {grid_position: 'KJHVDW,CRTGEU QYCBZZ,PGPEOD'}
+  type: form:fe5unit1_panel
+  layout_properties: {grid_position: 'KJHVDW,CRTGEU BCWYIF,QDUAYA'}
 - name: boss_panel
   properties: {spacing_above: small, visible: false}
   type: ColumnPanel
@@ -49,28 +33,29 @@ components:
       spacing_above: small
       include_placeholder: true
       placeholder: Select Boss
-      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement,
-        Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar,
-        Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danaan, Kutuzov, Ishtore,
-        Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah,
-        Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege),
-        Manfroy, Julius]
+      items: [Weismann, Bucks, Pirate (Chapter 2x), Lobos, Lance Armor (Chapter 4),
+        Bandol, Truman, Eisenau, Rumei, Gomez, Merlock, Largo, Kempf, Oltoph, Cullough,
+        Perne, List, Paulus, Codda, Zyle, Brook, Nikalaf, Linecock, Palman, Gustaf,
+        Wolf, Barath, Fraus, Zaom, Cohen, Alphand, Raydrick, Veld]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
     event_bindings: {change: boss_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
-        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
-        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
-        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
-        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
-        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
-        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
-        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
-        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
-        Fenrir, Hel, Loptous]
+      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge,
+        Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword,
+        Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword,
+        Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword,
+        Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance,
+        Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance,
+        Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance,
+        Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe,
+        Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow,
+        Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen,
+        Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder,
+        Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu,
+        Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -115,10 +100,10 @@ components:
         properties: {text: DEF, align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,MXZZRH VBAOBG,VMXWXH'}
-      - name: reslabel
-        properties: {text: RES, align: center}
+      - name: buildlabel
+        properties: {text: BLD, align: center}
         type: Label
-        layout_properties: {grid_position: 'MTABZQ,MXZZRH BEJKRE,DPDKWA'}
+        layout_properties: {grid_position: 'MTABZQ,MXZZRH DXMBNC,WQGKBD'}
       - name: hp
         properties: {text: '-', align: center}
         type: Label
@@ -147,12 +132,12 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'MTABZQ,LUVJVA MWDCIW,AOOASK'}
-      - name: resistance
+      - name: build
         properties: {text: '-', align: center}
         type: Label
-        layout_properties: {grid_position: 'MTABZQ,LUVJVA DNHOLR,YQFUYL'}
+        layout_properties: {grid_position: 'MTABZQ,LUVJVA RGIRIQ,LTJVNA'}
     - name: xy_panel_1
-      properties: {height: '80', spacing_above: small, spacing_below: small}
+      properties: {height: '80', spacing_above: medium, spacing_below: medium}
       type: XYPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RECSOD,TYKGAS'}
       components:
@@ -165,17 +150,8 @@ components:
         type: TextBox
         layout_properties: {x: 75, y: 30, width: 70}
         event_bindings: {}
-      - name: terrainbox
-        properties: {text: Terrain}
-        type: CheckBox
-        layout_properties: {x: 150, y: 30, width: 80}
-        event_bindings: {change: terrainbox_change}
-    - name: skilldisplay
-      properties: {}
-      type: RichText
-      layout_properties: {grid_position: 'ZMMHVJ,GWUFHW UCMVMW,ITSSBH'}
     - name: column_panel_5
-      properties: {spacing_above: small, spacing_below: small}
+      properties: {spacing_above: medium, spacing_below: medium}
       type: ColumnPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RZIILJ,DHMFUK'}
       components:
@@ -195,24 +171,11 @@ components:
         properties: {text: '-', align: center}
         type: Label
         layout_properties: {grid_position: 'JQRWMP,THJVMG OFPRXI,XUIRTP'}
-      - name: critlabel
-        properties: {text: CRIT, align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,ABJQVL PBVIBU,QEOSTN'}
-      - name: crit
-        properties: {text: '-', align: center}
-        type: Label
-        layout_properties: {grid_position: 'JQRWMP,ABJQVL IYEWCK,UOLQXD'}
       - name: column_panel_1
         properties: {spacing_above: medium, spacing_below: none}
         type: ColumnPanel
         layout_properties: {grid_position: 'XCLNHC,UBHZPF'}
         components:
-        - name: equipment
-          properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#ff8585'}
-          type: Button
-          layout_properties: {grid_position: 'MJUZGB,DNXEQI'}
-          event_bindings: {click: equipment_click}
         - name: turn_drop
           properties:
             include_placeholder: true
@@ -227,51 +190,6 @@ components:
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}
-- name: equip_panel
-  properties: {visible: false}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'KJHVDW,LLIYSH PMCHFV,NEMJVT'}
-  components:
-  - name: power_ring
-    properties: {text: Power Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'YWKUZE,RBTIED'}
-    event_bindings: {change: power_ring_change}
-  - name: magicring
-    properties: {text: Magic Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'YWKUZE,LWMQOB'}
-    event_bindings: {change: magicring_change}
-  - name: hide_equip
-    properties: {text: hide}
-    type: Button
-    layout_properties: {grid_position: 'YWKUZE,DEEKDQ'}
-    event_bindings: {click: hide_equip_click}
-  - name: skillring
-    properties: {text: Skill Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'TXHZVR,DMWQBW NSXGXZ,SKAHGN'}
-    event_bindings: {change: skillring_change}
-  - name: barrier_ring
-    properties: {text: Barrier Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'TXHZVR,DMWQBW WEMXIO,FVEYOT'}
-    event_bindings: {change: barrier_ring_change}
-  - name: speedring
-    properties: {text: Speed Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'TXHZVR,HTYBND YYPSTW,RMONFA'}
-    event_bindings: {change: speedring_change}
-  - name: renewalband
-    properties: {text: Renewal Band}
-    type: CheckBox
-    layout_properties: {grid_position: 'TXHZVR,HTYBND KWUIYX,KGQXEY'}
-    event_bindings: {change: renewalband_change}
-  - name: shieldring
-    properties: {text: Shield Ring}
-    type: CheckBox
-    layout_properties: {grid_position: 'TXHZVR,PYEEKR'}
-    event_bindings: {change: shieldring_change}
 - name: combatlog
   properties: {visible: false}
   type: RichText
