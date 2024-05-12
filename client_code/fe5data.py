@@ -183,6 +183,9 @@ class DuelSim:
 
     def unit_crit(self):
         """Unit Crit"""
+        self.hitno += 1
+        self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.critdamage)
+        self.dueltext += f"{self.unit.name} lands a critical hit and leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
 
     def unitattack(self):
         """Unit Attack"""
@@ -201,6 +204,8 @@ class DuelSim:
 
     def dodamage(self):
         """Unit Attack Checks"""
+        if self.unit.crit == 100:
+            self.unit_crit()
         self.unitattack()
 
     def counterdamage(self):
