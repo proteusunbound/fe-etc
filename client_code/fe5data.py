@@ -90,6 +90,8 @@ class DuelSim:
         self.hitno = 0
         self.avoidno = 0
         self.iniavo = 0
+        self.critno = 0
+        self.inicrit = 0
         self.unithit = 0
         self.unitavoid = 0
 
@@ -117,6 +119,11 @@ class DuelSim:
         """Set Avoid Number"""
         self.avoidno = avoidno
         self.iniavo = avoidno
+
+    def setcritno(self, critno):
+        """Set Crit Number"""
+        self.critno = critno
+        self.inicrit = critno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
