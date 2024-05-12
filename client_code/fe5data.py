@@ -94,6 +94,7 @@ class DuelSim:
         self.inicrit = 0
         self.unithit = 0
         self.unitavoid = 0
+        self.unitcrit = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -160,6 +161,7 @@ class DuelSim:
         self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
         self.unitavoid = 1 - self.boss.hitchance
+        self.unitcrit = (self.unit.crit - (self.boss.luck / 2)) / 100
 
     def doubling(self):
         """Doubling Calculation"""
