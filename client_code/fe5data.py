@@ -96,9 +96,12 @@ class DuelSim:
         self.iniavo = 0
         self.critno = 0
         self.inicrit = 0
+        self.ddgno = 0
+        self.iniddg = 0
         self.unithit = 0
         self.unitavoid = 0
         self.unitcrit = 0
+        self.unitdodge = 0
 
     def setunit(self, unit):
         """Set Unit"""
@@ -129,6 +132,11 @@ class DuelSim:
         """Set Crit Number"""
         self.critno = critno
         self.inicrit = critno
+
+    def setddgno(self, ddgno):
+        """Set Dodge Number"""
+        self.ddgno = ddgno
+        self.iniddg = ddgno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
