@@ -59,6 +59,7 @@ class ActiveBoss:
         self.attack = 0
         self.avoid = 0
         self.hitchance = 0
+        self.crit = 0
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
