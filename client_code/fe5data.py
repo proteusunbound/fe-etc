@@ -26,6 +26,7 @@ class ActiveUnit:
         self.damage = 0
         self.hit = 0
         self.attack = 0
+        self.crit = 0
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -75,7 +76,9 @@ def damage(attacker, defender):
     """Damage"""
     attacker.damage = max(0, attacker.attack - defender.defense)
 
-def crit
+def critical(keyword, weapon):
+    "Critical"
+    keyword.crit = keyword.skill + weapon.critical
 
 @anvil.server.portable_class
 class DuelSim:
