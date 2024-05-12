@@ -75,6 +75,8 @@ def damage(attacker, defender):
     """Damage"""
     attacker.damage = max(0, attacker.attack - defender.defense)
 
+def crit
+
 @anvil.server.portable_class
 class DuelSim:
     """Duel Simulator"""
