@@ -206,7 +206,11 @@ class DuelSim:
         """Unit Attack Checks"""
         if self.unit.crit == 100:
             self.unit_crit()
-        self.unitattack()
+        elif self.unit.crit > 0 and self.critno > 0:
+            self.critno -= 1
+            self.unit_crit()
+        else:
+            self.unitattack()
 
     def counterdamage(self):
         """Boss Attack Checks"""
