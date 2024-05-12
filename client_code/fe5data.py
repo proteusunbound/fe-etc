@@ -81,6 +81,10 @@ def critical(keyword, weapon):
     "Critical"
     keyword.crit = keyword.skill + weapon.critical
 
+def critdamage(attacker, defender):
+    """Critical Hit Damage"""
+    attacker.critdamage = max(0, 2 * attacker.attack - defender.defense)
+
 @anvil.server.portable_class
 class DuelSim:
     """Duel Simulator"""
@@ -176,6 +180,9 @@ class DuelSim:
         else:
             self.boss.doubles = False
             self.unit.doubles = False
+
+    def unit_crit(self):
+        """Unit Crit"""
 
     def unitattack(self):
         """Unit Attack"""
