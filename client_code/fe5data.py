@@ -167,13 +167,16 @@ class DuelSim:
         """Pre-Combat Calculation"""
         attack(self.unit, self.unitweapon)
         damage(self.unit, self.boss)
+        critdamage(self.unit, self.boss)
         self.enemy_avoid()
         attack(self.boss, self.bossweapon)
         damage(self.boss, self.unit)
+        critdamage(self.boss, self.unit)
         self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
         self.unitavoid = 1 - self.boss.hitchance
         self.unitcrit = (self.unit.crit - (self.boss.luck / 2)) / 100
+        self.unitdodge = 1 - max(0, (self.boss.crit - (self.unit.luck / 2)) / 100)
 
     def doubling(self):
         """Doubling Calculation"""
