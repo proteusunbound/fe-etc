@@ -37,6 +37,7 @@ class ActiveWeapon:
         self.might = weapon["Mgt"]
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
+        self.crit = weapon["Crit"]
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -79,7 +80,7 @@ def damage(attacker, defender):
 
 def critical(keyword, weapon):
     "Critical"
-    keyword.crit = keyword.skill + weapon.critical
+    keyword.crit = keyword.skill + weapon.crit
 
 def critdamage(attacker, defender):
     """Critical Hit Damage"""
