@@ -208,6 +208,9 @@ class DuelSim:
         """Boss Miss"""
         self.dueltext += f"{self.boss.name}'s attack misses.\n"
 
+    def bosscrit(self):
+        """Boss Crit"""
+
     def bossattack(self):
         """Boss Attack"""
         self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
