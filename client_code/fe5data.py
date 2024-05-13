@@ -210,6 +210,13 @@ class DuelSim:
 
     def bosscrit(self):
         """Boss Crit"""
+        if self.boss.crit < 100 and self.ddgno > 0:
+            self.ddgno -= 1
+            self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
+            self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
+        else:
+            self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.critdamage)
+            self.dueltext += f"{self.boss.name} lands a critical hit and leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
 
     def bossattack(self):
         """Boss Attack"""
@@ -233,6 +240,8 @@ class DuelSim:
         elif self.avoidno > 0:
             self.avoidno -= 1
             self.bossmiss()
+        elif self.boss.crit > 0:
+            self.bosscrit()
         else:
             self.bossattack()
 
