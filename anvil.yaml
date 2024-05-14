@@ -32,6 +32,9 @@ db_schema:
     - name: Crit
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: Type
+      admin_ui: {width: 200, order: 5}
+      type: string
     title: FE5 Weapon Stats
   fe5_unit_stats:
     client: search

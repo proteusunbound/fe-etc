@@ -39,6 +39,7 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
+        self.type = weapon["Type"]
         self.weapontriangle = 0
 
 @anvil.server.portable_class
