@@ -34,9 +34,10 @@ components:
       include_placeholder: true
       placeholder: Select Boss
       items: [Weismann, Bucks, Pirate (Chapter 2x), Lobos, Lance Armor (Chapter 4),
-        Bandol, Truman, Eisenau, Rumei, Gomez, Merlock, Largo, Kempf, Oltoph, Cullough,
-        Perne, List, Paulus, Codda, Zyle, Brook, Nikalaf, Linecock, Palman, Gustaf,
-        Wolf, Barath, Fraus, Zaom, Cohen, Alphand, Raydrick, Veld]
+        Soldier (Chapter 4x), Bandol, Truman, Eisenau, Rumei, Gomez, Merlock, Largo,
+        Kempf, Oltoph, Cullough, Perne, List, Paulus, Codda, Zyle, Brook, Nikalaf,
+        Linecock, Palman, Gustaf, Wolf, Barath, Fraus, Zaom, Cohen, Alphand, Raydrick,
+        Dark Bishop (Chapter 24x), Veld]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}

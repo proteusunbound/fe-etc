@@ -103,6 +103,7 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
+        self.terrain = "None"
 
     def setunit(self, unit):
         """Set Unit"""
@@ -157,7 +158,12 @@ class DuelSim:
 
     def enemy_avoid(self):
         """Enemy Avoid"""
-        self.boss.avoid = (2 * self.boss.AS) + self.boss.luck
+        if self.terrain == "Throne":
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 30
+        elif self.terrain == "Seal":
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 20
+        else:
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck
 
     def bosshitchance(self):
         """Boss Hit Chance"""
