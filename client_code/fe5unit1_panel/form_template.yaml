@@ -147,6 +147,14 @@ components:
       layout_properties: {x: 125, y: 0, width: 100}
       event_bindings: {click: hide_click}
       data_bindings: []
+    - name: leadershiplabel
+      properties: {text: Leadership Stars}
+      type: Label
+      layout_properties: {x: 0, y: 50, width: 100}
+    - name: starsbox
+      properties: {placeholder: '0'}
+      type: TextBox
+      layout_properties: {x: 100, y: 50, width: 50}
   - name: column_panel_3
     properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
     type: ColumnPanel
