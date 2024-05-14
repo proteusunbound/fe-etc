@@ -58,3 +58,9 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.weapon_drop.selected_value = None
     self.visible = False
     self.customization.visible = False
+
+  def starsbox_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[0].unit.leaderstars = self.starsbox.text
+    self.parent.combat.duels[0].unitdisplay()
+    self.hit.text = self.parent.combat.duels[0].unit.hit
