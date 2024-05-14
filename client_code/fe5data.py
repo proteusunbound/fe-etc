@@ -27,6 +27,7 @@ class ActiveUnit:
         self.hit = 0
         self.attack = 0
         self.crit = 0
+        self.leaderstars = 0
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -54,6 +55,7 @@ class ActiveBoss:
         self.luck = boss["Lck"]
         self.defense = boss["Def"]
         self.build = boss["Bld"]
+        self.leaderstars = boss["Leadership"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -69,7 +71,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars)
 
 def attack(keyword, weapon):
     """Attack"""
@@ -195,15 +197,15 @@ class DuelSim:
     def enemy_avoid(self):
         """Enemy Avoid"""
         if self.terrain == "Throne":
-            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 30
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 30 + (3 * self.boss.leaderstars)
         elif self.terrain == "Seal":
-            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 20
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + 20 + (3 * self.boss.leaderstars)
         else:
-            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck
+            self.boss.avoid = (2 * self.boss.AS) + self.boss.luck + (3 * self.boss.leaderstars)
 
     def bosshitchance(self):
         """Boss Hit Chance"""
-        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck)) / 100), 0.99)
+        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars)) / 100), 0.99)
         self.boss.hitchance = max(0.01, hitchance)
 
     def precombat(self):
