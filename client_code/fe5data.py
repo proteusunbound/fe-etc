@@ -38,6 +38,7 @@ class ActiveWeapon:
         self.weight = weapon["Wgt"]
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
+        self.weapontriangle = 0
 
 @anvil.server.portable_class
 class ActiveBoss:
@@ -68,7 +69,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle
 
 def attack(keyword, weapon):
     """Attack"""
@@ -144,6 +145,34 @@ class DuelSim:
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def weapontriangle(self):
+        """Weapon Triangle"""
+        triangle_logic = {
+            "Sword": "Axe",
+            "Lance": "Sword",
+            "Axe": "Lance",
+            "Fire": "Wind",
+            "Thunder": "Fire",
+            "Wind": "Thunder",
+        }
+        anima = ["Fire", "Wind", "Thunder"]
+        light_dark = ["Light", "Dark"]
+        if (
+            self.unitweapon.type in triangle_logic
+            and triangle_logic[self.unitweapon.type] == self.bossweapon.type
+        ) or (self.unitweapon.type in light_dark and self.bossweapon.type in anima):
+            self.unitweapon.weapontriangle = 5
+            self.bossweapon.weapontriangle = -5
+        elif (
+            self.bossweapon.type in triangle_logic
+            and triangle_logic[self.bossweapon.type] == self.unitweapon.type
+        ) or (self.bossweapon.type in light_dark and self.unitweapon.type in anima):
+            self.bossweapon.weapontriangle = 5
+            self.unitweapon.weapontriangle = -5
+        else:
+            self.unitweapon.weapontriangle = 0
+            self.bossweapon.weapontriangle = 0
+
     def boss_stat_adjust(self):
         """Adjust Boss Stats"""
         if self.terrain == "Throne":
@@ -179,6 +208,9 @@ class DuelSim:
 
     def precombat(self):
         """Pre-Combat Calculation"""
+        self.weapontriangle()
+        hitrate(self.unit, self.unitweapon)
+        hitrate(self.boss, self.bossweapon)
         attack(self.unit, self.unitweapon)
         damage(self.unit, self.boss)
         critdamage(self.unit, self.boss)
