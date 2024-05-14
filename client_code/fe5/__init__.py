@@ -88,3 +88,8 @@ class fe5(fe5Template):
   def mainpage_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form("Landing")
+
+  def terrain_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    for number, name in self.combat.duels.items():
+        name.terrain = self.terrain_drop.selected_value

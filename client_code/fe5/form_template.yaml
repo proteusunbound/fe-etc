@@ -160,6 +160,7 @@ components:
           items: [None, Throne, Seal]
         type: DropDown
         layout_properties: {x: 75, y: 60, width: 100}
+        event_bindings: {change: terrain_drop_change}
     - name: column_panel_5
       properties: {spacing_above: medium, spacing_below: medium}
       type: ColumnPanel
