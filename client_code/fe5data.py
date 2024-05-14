@@ -144,6 +144,13 @@ class DuelSim:
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def boss_stat_adjust(self):
+        """Adjust Boss Stats"""
+        if self.terrain == "Throne":
+            self.boss.defense += 10
+        elif self.terrain == "Seal":
+            self.boss.magic += 10
+
     def unitdisplay(self):
         """Unit Stat Display"""
         attack_speed(self.unit, self.unitweapon)
