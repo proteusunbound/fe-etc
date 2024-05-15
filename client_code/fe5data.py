@@ -75,6 +75,12 @@ class ActiveBoss:
         self.avoid = 0
         self.hitchance = 0
         self.crit = 0
+        self.skills = []
+
+    def setskills(self):
+        """Set Skills"""
+        if self.name in skills:
+            self.skills = skills[self.name]
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
