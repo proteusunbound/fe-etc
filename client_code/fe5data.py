@@ -1,10 +1,10 @@
 """Data"""
-
 import math
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from . import fe5skills
 
 @anvil.server.portable_class
 class ActiveUnit:
