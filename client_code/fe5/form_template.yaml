@@ -161,8 +161,12 @@ components:
         type: DropDown
         layout_properties: {x: 75, y: 60, width: 100}
         event_bindings: {change: terrain_drop_change}
+    - name: skilldisplay
+      properties: {}
+      type: RichText
+      layout_properties: {grid_position: 'ZMMHVJ,GWUFHW ICQBPV,YXRSRI'}
     - name: column_panel_5
-      properties: {spacing_above: medium, spacing_below: medium}
+      properties: {spacing_above: small, spacing_below: small}
       type: ColumnPanel
       layout_properties: {grid_position: 'ZMMHVJ,GWUFHW RZIILJ,DHMFUK'}
       components:
