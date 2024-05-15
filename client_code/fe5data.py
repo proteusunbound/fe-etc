@@ -123,6 +123,10 @@ class DuelSim:
         self.unitavoid = 0
         self.unitcrit = 0
         self.unitdodge = 0
+        self.iniadept = 0
+        self.adeptno = 0
+        self.inicanceladept = 0
+        self.canceladeptno = 0
         self.terrain = "None"
 
     def setunit(self, unit):
@@ -159,6 +163,16 @@ class DuelSim:
         """Set Dodge Number"""
         self.ddgno = ddgno
         self.iniddg = ddgno
+
+    def setadeptno(self, adeptnum):
+        """Set Adept Number"""
+        self.iniadept = adeptnum
+        self.adeptno = adeptnum
+
+    def setcanceladeptno(self, adeptavo):
+        """Set Adept Avoids"""
+        self.inicanceladept = adeptavo
+        self.canceladeptno = adeptavo
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
@@ -243,6 +257,13 @@ class DuelSim:
         self.unitcrit = (self.unit.crit - (self.boss.luck / 2)) / 100
         self.unitdodge = 1 - max(0, (self.boss.crit - (self.unit.luck / 2)) / 100)
 
+    def skillprocs(self):
+        """Skill Procs"""
+        if "Adept" in self.unit.skills:
+            self.unit.adeptrate = self.unit.AS / 100
+        if "Adept" in self.boss.skills:
+            self.unit.adeptcancel = 1 - (self.boss.AS / 100)
+
     def doubling(self):
         """Doubling Calculation"""
         if self.unit.AS >= (self.boss.AS + 4):
@@ -257,6 +278,21 @@ class DuelSim:
             self.boss.doubles = False
             self.unit.doubles = False
 
+    def unitadept(self):
+        """Unit Adept"""
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
+            if self.unit.crit == 100:
+                self.unit_crit()
+            elif (
+                self.unit.crit > 0
+                and self.critno > 0
+            ):
+                self.critno -= 1
+                self.unit_crit()
+            else:
+                self.unitattack()
+
     def unit_crit(self):
         """Unit Crit"""
         self.hitno += 1
@@ -268,6 +304,25 @@ class DuelSim:
         self.hitno += 1
         self.boss.hitpoints = max(0, self.boss.hitpoints - self.unit.damage)
         self.dueltext += f"{self.unit.name}'s attack leaves {self.boss.name} with {self.boss.hitpoints} HP.\n"
+
+    def bossadept(self):
+        """Boss Adept"""
+        if self.canceladeptno > 0 and self.unit.adeptcancel > 0:
+            self.canceladeptno -= 1
+        elif (
+            self.boss.hitpoints > 0
+            and self.unit.hitpoints > 0
+        ):
+            self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
+            if self.boss.hitchance == 0:
+                self.bossmiss()
+            elif self.avoidno > 0:
+                self.avoidno -= 1
+                self.bossmiss()
+            elif self.boss.crit > 0:
+                self.bosscrit()
+            else:
+                self.bossattack()
 
     def bossmiss(self):
         """Boss Miss"""
@@ -297,6 +352,9 @@ class DuelSim:
             self.unit_crit()
         else:
             self.unitattack()
+        if "Adept" in self.unit.skills and self.adeptno > 0:
+            self.adeptno -= 1
+            self.unitadept()
 
     def counterdamage(self):
         """Boss Attack Checks"""
@@ -309,6 +367,8 @@ class DuelSim:
             self.bosscrit()
         else:
             self.bossattack()
+        if "Adept" in self.boss.skills:
+            self.bossadept()
 
     def playerphase(self):
         """Player Phase"""

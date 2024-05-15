@@ -712,8 +712,8 @@ class DuelSim:
             self.canceladeptno -= 1
         elif (
             self.boss.hitpoints > 0
-            and self.unit.hitpoints
-            and self.boss.counter is True > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
             if self.boss.hitchance == 0:
