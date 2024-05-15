@@ -29,8 +29,10 @@ class fe5(fe5Template):
 
   def boss_drop_change(self, **event_args):
     """This method is called when an item is selected"""
+    self.skilldisplay.content = ""
     for number, name in self.combat.duels.items():
-      name.setboss(self.boss_drop.selected_value)
+        name.setboss(self.boss_drop.selected_value)
+        name.boss.setskills()
     self.hp.text = self.combat.duels[0].boss.maxhp
     self.strength.text = self.combat.duels[0].boss.strength
     self.magic.text = self.combat.duels[0].boss.magic
@@ -42,6 +44,8 @@ class fe5(fe5Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    for i, skill in enumerate(self.combat.duels[0].boss.skills):
+        self.skilldisplay.content += f"{skill} \n"
 
   def weapon_drop_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -62,6 +66,7 @@ class fe5(fe5Template):
     for number, name in self.combat.duels.items():
       name.doubling()
       name.precombat()
+      name.skillprocs()
     self.combat.battle()
     self.combatlog.content = self.combat.text
     self.combatlog.visible = True
