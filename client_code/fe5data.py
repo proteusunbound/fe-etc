@@ -31,7 +31,7 @@ class ActiveUnit:
         self.crit = 0
         self.leaderstars = 0
         self.adeptrate = 1
-        self.canceladept = 1
+        self.adeptcancel = 1
         self.skills = []
 
     def setskills(self):

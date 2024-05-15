@@ -22,6 +22,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     """This method is called when an item is selected"""
     self.skillslist.content = ""
     self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
+    self.parent.combat.duels[0].unit.setskills()
     self.hp.text = self.parent.combat.duels[0].unit.maxhp
     self.strength.text = self.parent.combat.duels[0].unit.strength
     self.magic.text = self.parent.combat.duels[0].unit.magic
