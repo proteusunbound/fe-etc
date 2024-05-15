@@ -20,6 +20,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
 
   def unit_drop_change(self, **event_args):
     """This method is called when an item is selected"""
+    self.skillslist.content = ""
     self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
     self.hp.text = self.parent.combat.duels[0].unit.maxhp
     self.strength.text = self.parent.combat.duels[0].unit.strength
@@ -32,6 +33,8 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
+        self.skillslist.content += f"{skill} \n"
     
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -51,6 +54,10 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.parent.combat.duels[0].setavoidno(int(self.avoid_drop.selected_value))
     self.parent.combat.duels[0].setcritno(int(self.crit_drop.selected_value))
     self.parent.combat.duels[0].setddgno(int(self.dodge_drop.selected_value))
+    self.parent.combat.duels[0].setadeptno(int(self.adept_drop.selected_value))
+    self.parent.combat.duels[0].setcanceladeptno(
+        int(self.canceladept_drop.selected_value)
+    )
 
   def reset(self):
     """Reset"""
@@ -58,6 +65,8 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.weapon_drop.selected_value = None
     self.visible = False
     self.customization.visible = False
+    self.unitproc.visible = False
+    self.bossproc.visible = False
 
   def starsbox_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
@@ -65,6 +74,32 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.parent.combat.duels[0].unitdisplay()
     self.hit.text = self.parent.combat.duels[0].unit.hit
 
+  def skills_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.unitproc.visible = True
+    if "Adept" in self.parent.combat.duels[0].unit.skills:
+        self.adeptlabel.visible = True
+        self.adept_drop.visible = True
+    else:
+        self.adeptlabel.visible = False
+        self.adept_drop.selected_value = 0
+        self.adept_drop.visible = False
+
+  def hideskills_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.unitproc.visible = False
+
+  def cancelproc_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.bossproc.visible = True
+    if "Adept" in self.parent.combat.duels[0].boss.skills:
+        self.canceladept.visible = True
+        self.canceladept_drop.visible = True
+    else:
+        self.canceladept.visible = False
+        self.canceladept_drop.selected_value = 0
+        self.canceladept_drop.visible = False
+
   def hidecancel_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.bossproc.visible = False

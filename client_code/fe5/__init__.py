@@ -44,6 +44,9 @@ class fe5(fe5Template):
     self.startinghp.text = self.combat.duels[0].boss.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    if "Adept" in self.combat.duels[0].boss.skills:
+        for i in range(0, int(self.unit_number.selected_value)):
+            self.unitpanels[i].cancelproc.visible = True
     for i, skill in enumerate(self.combat.duels[0].boss.skills):
         self.skilldisplay.content += f"{skill} \n"
 
