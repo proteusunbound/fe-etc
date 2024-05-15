@@ -6,6 +6,8 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe5skills
 
+skills = fe5skills.skills_list
+
 @anvil.server.portable_class
 class ActiveUnit:
     """Active Unit"""
@@ -28,6 +30,14 @@ class ActiveUnit:
         self.attack = 0
         self.crit = 0
         self.leaderstars = 0
+        self.adeptrate = 1
+        self.canceladept = 1
+        self.skills = []
+
+    def setskills(self):
+        """Set Skills"""
+        if self.name in skills:
+            self.skills = skills[self.name]
 
 @anvil.server.portable_class
 class ActiveWeapon:
