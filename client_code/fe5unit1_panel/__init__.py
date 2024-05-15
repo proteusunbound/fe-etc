@@ -64,3 +64,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.parent.combat.duels[0].unit.leaderstars = self.starsbox.text
     self.parent.combat.duels[0].unitdisplay()
     self.hit.text = self.parent.combat.duels[0].unit.hit
+
+  def hidecancel_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

@@ -136,7 +136,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'CLSTUB,INCKSE JINCUW,WWCLYP'}
   - name: xy_panel_2
-    properties: {height: '75', spacing_above: medium, spacing_below: medium}
+    properties: {height: '75', spacing_above: small, spacing_below: small}
     type: XYPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
@@ -157,7 +157,7 @@ components:
       layout_properties: {x: 100, y: 50, width: 50}
       event_bindings: {pressed_enter: starsbox_pressed_enter}
   - name: column_panel_3
-    properties: {spacing_above: medium, spacing_below: medium, col_spacing: tiny}
+    properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
     components:
@@ -197,7 +197,7 @@ components:
       type: DropDown
       layout_properties: {grid_position: 'DAMDVU,UQVIUJ DXPEGS,RNMBPC'}
   - name: column_panel_1
-    properties: {spacing_above: medium, spacing_below: medium}
+    properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
     components:
@@ -226,4 +226,58 @@ components:
       properties: {text: '-', align: center}
       type: Label
       layout_properties: {grid_position: 'VEAZQA,ZIXKZV TMZCBX,LGEHNJ'}
+  - name: skills
+    properties: {text: SKILLS, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,OWKWMX'}
+  - name: cancelproc
+    properties: {text: enemy procs, visible: false, background: 'theme:Surface Variant',
+      foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,CUYJIQ'}
+- name: unitproc
+  properties: {visible: false}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'JHQCQW,YVFPRK'}
+  components:
+  - name: hideskills
+    properties: {text: hide skills, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'HATWNA,UILAJR'}
+  - name: skillslist
+    properties: {}
+    type: RichText
+    layout_properties: {grid_position: 'JQEDOS,HGOTQO'}
+  - name: adeptlabel
+    properties: {text: Adepts, align: center, visible: false}
+    type: Label
+    layout_properties: {grid_position: 'XWELLE,QLQVEC'}
+  - name: adept_drop
+    properties:
+      items: ['0', '1', '2', '3', '4', '5']
+      align: center
+      visible: false
+    type: DropDown
+    layout_properties: {grid_position: 'FXGNJJ,VIIIZT'}
+- name: bossproc
+  properties: {visible: false}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'JHQCQW,BJCOIT'}
+  components:
+  - name: hidecancel
+    properties: {text: hide enemy procs, enabled: true, background: 'theme:Surface
+        Variant', foreground: '#9ea9ff'}
+    type: Button
+    layout_properties: {grid_position: 'OCBONJ,DHMDAC'}
+    event_bindings: {click: hidecancel_click}
+  - name: canceladept
+    properties: {text: Cancel Adepts, visible: false, align: center}
+    type: Label
+    layout_properties: {grid_position: 'VRASEL,IHHPAO'}
+  - name: canceladept_drop
+    properties:
+      items: ['0', '1', '2', '3', '4', '5']
+      align: center
+    type: DropDown
+    layout_properties: {grid_position: 'WYLWID,LAJFEI'}
 is_package: true
