@@ -104,6 +104,14 @@ class ActiveUnit:
       elif self.charclass == "General":
         self.skills.append("Pavise")
 
+    def boosthp(self, number):
+        """HP Boost"""
+        self.maxhp = min(self.char["HP"] + number, 80)
+
+    def boost_strength(self, number):
+        """Strength Boost"""
+        self.strength = min(self.char["Str"] + number, 27)
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
