@@ -154,6 +154,10 @@ class ActiveWeapon:
         self.effective = False
         self.killcount = 0
 
+    def setkillcount(self, count):
+        """Set Kill Count"""
+        self.killcount = count
+
 
 @anvil.server.portable_class
 class ActiveBoss:

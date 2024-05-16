@@ -63,9 +63,10 @@ components:
     layout_properties: {x: 260, y: 0, width: 55}
     event_bindings: {pressed_enter: levelbox_pressed_enter}
   - name: killcount
-    properties: {placeholder: Kills, type: number}
+    properties: {placeholder: Kills, type: number, visible: false}
     type: TextBox
     layout_properties: {x: 285, y: 45, width: 55}
+    event_bindings: {pressed_enter: killcount_pressed_enter}
 - name: customization
   properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
     col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
@@ -94,6 +95,7 @@ components:
       properties: {placeholder: '0', type: number, spacing_above: small}
       type: TextBox
       layout_properties: {grid_position: 'KTXRFX,OBDJVN'}
+      event_bindings: {pressed_enter: hpboost_pressed_enter}
     - name: strlabel
       properties: {text: STR, align: center, font_size: null}
       type: Label
@@ -182,30 +184,37 @@ components:
       properties: {placeholder: '0', type: number, spacing_below: small}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ SITEUF,IDWOSS'}
+      event_bindings: {pressed_enter: strboost_pressed_enter}
     - name: magboost
       properties: {placeholder: '0', type: number, spacing_below: small}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ XGBKYQ,RUJQLN'}
+      event_bindings: {pressed_enter: magboost_pressed_enter}
     - name: sklboost
       properties: {type: number, placeholder: '0', spacing_below: medium}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ DDDDKF,BRQDCN'}
+      event_bindings: {pressed_enter: sklboost_pressed_enter}
     - name: spdboost
       properties: {placeholder: '0', type: number}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ CEIYKJ,PHLAQT'}
+      event_bindings: {pressed_enter: spdboost_pressed_enter}
     - name: lckboost
       properties: {placeholder: '0', type: number}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ RLFZYQ,YTMKZO'}
+      event_bindings: {pressed_enter: lckboost_pressed_enter}
     - name: defboost
       properties: {placeholder: '0', type: number}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ OBDNZN,HBUKKK'}
+      event_bindings: {pressed_enter: defboost_pressed_enter}
     - name: resboost
       properties: {placeholder: '0', type: number}
       type: TextBox
       layout_properties: {grid_position: 'CLSTUB,TJTCKQ KKJOXL,JIEEUG'}
+      event_bindings: {pressed_enter: resboost_pressed_enter}
   - name: xy_panel_2
     properties: {height: '75', spacing_above: small, spacing_below: small}
     type: XYPanel
