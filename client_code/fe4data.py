@@ -462,7 +462,7 @@ class DuelSim:
         if "Circlet" in self.unitequip:
             self.unit.skills.append("Renewal")
             self.unit.skills.append("Miracle")
-        if self.unitweapon.name in ("Mystletainn", "Killer Bow"):
+        if self.unitweapon.name in ("Mystletainn", "Killer Bow") or self.unitweapon.killcount >= 50:
             self.unit.skills.append("Critical")
 
     def adjust_boss_skills(self):
@@ -501,7 +501,7 @@ class DuelSim:
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         if "Critical" in self.unit.skills:
-            self.unit.crit = self.unit.skill + self.unit.critbonus
+            self.unit.crit = self.unit.skill + self.unit.critbonus + (self.unitweapon.killcount - 50)
         else:
             self.unit.crit = self.unit.critbonus
 
