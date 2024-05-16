@@ -152,6 +152,7 @@ class ActiveWeapon:
         self.maxrange = weapon["Max Range"]
         self.weapontriangle = 0
         self.effective = False
+        self.killcount = 0
 
 
 @anvil.server.portable_class
