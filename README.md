@@ -1,5 +1,11 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 4.2
+- stat boosts and crit modifier based on weapon kills in FE4
+- critical hit and dodge in FE5
+- terrain, weapon triangle, leadership stars calculation adjustments
+- FE5 skill list update: Adept
+- second player combatant
 ### version 4.1
 - promotion for FE4
 - Pavise for player units
