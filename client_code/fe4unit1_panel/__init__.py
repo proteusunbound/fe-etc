@@ -403,5 +403,6 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
     def killcount_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
       self.parent.combat.duels[0].unitweapon.setkillcount(self.killcount.text)
+      self.parent.combat.duels[0].adjustunitskills()
       self.parent.combat.duels[0].unitdisplay()
       self.crit.text = self.parent.combat.duels[0].unit.crit
