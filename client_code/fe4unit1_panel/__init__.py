@@ -33,6 +33,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
         self.weapon_drop.selected_value = None
         self.weapon_drop.visible = True
+        self.killcount.visible = True
         self.power_ring.checked = False
         self.magicring.checked = False
         self.skillring.checked = False
@@ -352,3 +353,56 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
     def levelbox_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
       self.parent.combat.duels[0].unit.setlevel(self.levelbox.text)
+
+    def hpboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boosthp(self.hpboost.text)
+      self.hp.text = self.parent.combat.duels[0].unit.maxhp
+      self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+
+    def strboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boost_strength(self.strboost.text)
+      self.strength.text = self.parent.combat.duels[0].unit.strength
+
+    def magboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boostmagic(self.magboost.text)
+      self.magic.text = self.parent.combat.duels[0].unit.magic
+
+    def sklboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boost_skill(self.sklboost.text)
+      self.skill.text = self.parent.combat.duels[0].unit.skill
+      self.parent.combat.duels[0].unitdisplay()
+      self.hit.text = self.parent.combat.duels[0].unit.hit
+      self.crit.text = self.parent.combat.duels[0].unit.crit
+
+    def spdboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boost_speed(self.spdboost.text)
+      self.speed.text = self.parent.combat.duels[0].unit.speed
+      self.parent.combat.duels[0].unitdisplay()
+      self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+
+    def lckboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boostluck(self.lckboost.text)
+      self.luck.text = self.parent.combat.duels[0].unit.luck
+
+    def defboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boostdefense(self.defboost.text)
+      self.defense.text = self.parent.combat.duels[0].unit.defense
+
+    def resboost_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unit.boostresistance(self.resboost.text)
+      self.resistance.text = self.parent.combat.duels[0].unit.resistance
+
+    def killcount_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      self.parent.combat.duels[0].unitweapon.setkillcount(self.killcount.text)
+      self.parent.combat.duels[0].adjustunitskills()
+      self.parent.combat.duels[0].unitdisplay()
+      self.crit.text = self.parent.combat.duels[0].unit.crit

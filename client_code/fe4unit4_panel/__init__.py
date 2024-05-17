@@ -1,4 +1,5 @@
 """Unit 4 Panel"""
+
 from ._anvil_designer import fe4unit4_panelTemplate
 from anvil import *
 import anvil.tables as tables
@@ -33,6 +34,7 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[3].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    self.killcount.visible = True
     self.power_ring.checked = False
     self.magicring.checked = False
     self.skillring.checked = False
@@ -45,7 +47,30 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
     self.circlet.checked = False
     for i, skill in enumerate(self.parent.combat.duels[3].unit.skills):
       self.skillslist.content += f"{skill} \n"
-    if self.parent.combat.duels[3].unit.charclass in ("Junior Lord", "Princess", "Prince", "Cavalier", "Troubadour", "Free Knight", "Lance Knight", "Axe Knight", "Arch Knight", "Sword Armor", "Sword Fighter", "Axe Fighter", "Bow Fighter", "Thief", "Priest", "Bard", "Light Priestess", "Mage", "Thunder Mage", "Wind Mage", "Pegasus Knight", "Wyvern Rider"):
+    if self.parent.combat.duels[3].unit.charclass in (
+      "Junior Lord",
+      "Princess",
+      "Prince",
+      "Cavalier",
+      "Troubadour",
+      "Free Knight",
+      "Lance Knight",
+      "Axe Knight",
+      "Arch Knight",
+      "Sword Armor",
+      "Sword Fighter",
+      "Axe Fighter",
+      "Bow Fighter",
+      "Thief",
+      "Priest",
+      "Bard",
+      "Light Priestess",
+      "Mage",
+      "Thunder Mage",
+      "Wind Mage",
+      "Pegasus Knight",
+      "Wyvern Rider",
+    ):
       self.promobox.visible = True
 
   def hide_click(self, **event_args):
@@ -81,7 +106,7 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
     self.parent.combat.duels[3].setiniaccost(int(self.accost_drop.selected_value))
     self.parent.combat.duels[3].setadeptno(int(self.adept_drop.selected_value))
     self.parent.combat.duels[3].setcanceladeptno(
-        int(self.canceladept_drop.selected_value)
+      int(self.canceladept_drop.selected_value)
     )
     self.parent.combat.duels[3].setsolno(int(self.sol_drop.selected_value))
     self.parent.combat.duels[3].setlunano(int(self.luna_drop.selected_value))
@@ -113,34 +138,34 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
     """This method is called when the button is clicked"""
     self.supportpanel.visible = True
     if self.parent.combat.duels[3].unit.name not in (
-        "Naoise",
-        "Alec",
-        "Arden",
-        "Azelle",
-        "Lex",
-        "Quan",
-        "Finn",
-        "Midir",
-        "Dew",
-        "Ayra",
-        "Deirdre",
-        "Jamke",
-        "Chulainn",
-        "Lachesis",
-        "Beowolf",
-        "Lewyn",
-        "Silvia",
-        "Erinys",
-        "Tailtiu",
-        "Claud",
-        "Seliph",
-        "Oifey",
-        "Julia",
-        "Iucharba",
-        "Iuchar",
-        "Shannan",
-        "Ares",
-        "Hannibal",
+      "Naoise",
+      "Alec",
+      "Arden",
+      "Azelle",
+      "Lex",
+      "Quan",
+      "Finn",
+      "Midir",
+      "Dew",
+      "Ayra",
+      "Deirdre",
+      "Jamke",
+      "Chulainn",
+      "Lachesis",
+      "Beowolf",
+      "Lewyn",
+      "Silvia",
+      "Erinys",
+      "Tailtiu",
+      "Claud",
+      "Seliph",
+      "Oifey",
+      "Julia",
+      "Iucharba",
+      "Iuchar",
+      "Shannan",
+      "Ares",
+      "Hannibal",
     ):
       self.sibling.visible = True
 
@@ -352,3 +377,56 @@ class fe4unit4_panel(fe4unit4_panelTemplate):
   def levelbox_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
     self.parent.combat.duels[3].unit.setlevel(self.levelbox.text)
+
+  def hpboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boosthp(self.hpboost.text)
+    self.hp.text = self.parent.combat.duels[3].unit.maxhp
+    self.startinghp.text = self.parent.combat.duels[3].unit.maxhp
+
+  def strboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boost_strength(self.strboost.text)
+    self.strength.text = self.parent.combat.duels[3].unit.strength
+
+  def magboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boostmagic(self.magboost.text)
+    self.magic.text = self.parent.combat.duels[3].unit.magic
+
+  def sklboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boost_skill(self.sklboost.text)
+    self.skill.text = self.parent.combat.duels[3].unit.skill
+    self.parent.combat.duels[3].unitdisplay()
+    self.hit.text = self.parent.combat.duels[3].unit.hit
+    self.crit.text = self.parent.combat.duels[3].unit.crit
+
+  def spdboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boost_speed(self.spdboost.text)
+    self.speed.text = self.parent.combat.duels[3].unit.speed
+    self.parent.combat.duels[3].unitdisplay()
+    self.attackspeed.text = self.parent.combat.duels[3].unit.AS
+
+  def lckboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boostluck(self.lckboost.text)
+    self.luck.text = self.parent.combat.duels[3].unit.luck
+
+  def defboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boostdefense(self.defboost.text)
+    self.defense.text = self.parent.combat.duels[3].unit.defense
+
+  def resboost_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unit.boostresistance(self.resboost.text)
+    self.resistance.text = self.parent.combat.duels[3].unit.resistance
+
+  def killcount_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.parent.combat.duels[3].unitweapon.setkillcount(self.killcount.text)
+    self.parent.combat.duels[3].adjustunitskills()
+    self.parent.combat.duels[3].unitdisplay()
+    self.crit.text = self.parent.combat.duels[3].unit.crit

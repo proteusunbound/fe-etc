@@ -104,6 +104,38 @@ class ActiveUnit:
       elif self.charclass == "General":
         self.skills.append("Pavise")
 
+    def boosthp(self, number):
+        """HP Boost"""
+        self.maxhp = min(self.char["HP"] + number, 80)
+
+    def boost_strength(self, number):
+        """Strength Boost"""
+        self.strength = min(self.char["Str"] + number, 27)
+
+    def boostmagic(self, number):
+        """Magic Boost"""
+        self.magic = min(self.char["Mag"] + number, 30)
+
+    def boost_skill(self, number):
+        """Skill Boost"""
+        self.skill = min(self.char["Skl"] + number, 30)
+
+    def boost_speed(self, number):
+        """Speed Boost"""
+        self.speed = min(self.char["Spd"] + number, 30)
+
+    def boostluck(self, number):
+        """Luck Boost"""
+        self.luck = min(self.char["Lck"] + number, 30)
+
+    def boostdefense(self, number):
+        """Defense Boost"""
+        self.defense = min(self.char["Def"] + number, 29)
+
+    def boostresistance(self, number):
+        """Resistance Boost"""
+        self.resistance = min(self.char["Res"] + number, 27)
+
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -120,6 +152,11 @@ class ActiveWeapon:
         self.maxrange = weapon["Max Range"]
         self.weapontriangle = 0
         self.effective = False
+        self.killcount = 0
+
+    def setkillcount(self, count):
+        """Set Kill Count"""
+        self.killcount = count
 
 
 @anvil.server.portable_class
@@ -429,7 +466,7 @@ class DuelSim:
         if "Circlet" in self.unitequip:
             self.unit.skills.append("Renewal")
             self.unit.skills.append("Miracle")
-        if self.unitweapon.name in ("Mystletainn", "Killer Bow"):
+        if self.unitweapon.name in ("Mystletainn", "Killer Bow") or self.unitweapon.killcount >= 50:
             self.unit.skills.append("Critical")
 
     def adjust_boss_skills(self):
@@ -468,7 +505,7 @@ class DuelSim:
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         if "Critical" in self.unit.skills:
-            self.unit.crit = self.unit.skill + self.unit.critbonus
+            self.unit.crit = self.unit.skill + self.unit.critbonus + (self.unitweapon.killcount - 50)
         else:
             self.unit.crit = self.unit.critbonus
 
@@ -712,8 +749,8 @@ class DuelSim:
             self.canceladeptno -= 1
         elif (
             self.boss.hitpoints > 0
-            and self.unit.hitpoints
-            and self.boss.counter is True > 0
+            and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.dueltext += f"{self.boss.name} strikes twice consecutively. \n"
             if self.boss.hitchance == 0:
