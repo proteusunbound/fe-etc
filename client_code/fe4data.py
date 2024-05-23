@@ -284,6 +284,7 @@ class DuelSim:
         self.noaccost = False
         self.unitequip = []
         self.bossequip = []
+        self.refre
 
     def setunit(self, unit):
         """Set Unit"""
