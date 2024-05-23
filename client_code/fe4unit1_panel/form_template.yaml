@@ -249,6 +249,7 @@ components:
       properties: {text: Refresh}
       type: CheckBox
       layout_properties: {x: 160, y: 50, width: 75}
+      event_bindings: {change: refreshbox_change}
   - name: column_panel_3
     properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
     type: ColumnPanel
