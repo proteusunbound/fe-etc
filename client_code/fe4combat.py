@@ -44,6 +44,14 @@ class CombatSim:
                 else:
                     name.playerphase()
                     name.accost()
+                if name.unit.hitpoints > 0 and name.boss.hitpoints > 0 and name.refresh is True:
+                    self.dueltext += f"{self.unit.name} is refreshed. \n"
+                    if "Vantage" in name.boss.skills and name.boss.hitpoints < (name.boss.maxhp / 2):
+                        self.text += f"{name.boss.name} activates Vantage. \n"
+                        name.enemyphase()
+                    else:
+                        name.playerphase()
+                        name.accost()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
