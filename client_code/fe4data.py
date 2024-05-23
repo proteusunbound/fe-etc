@@ -887,7 +887,7 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            self.counterdamage()
+            self.dodamage()
         self.dueltext += "\n"
 
     def accost(self):
@@ -915,6 +915,17 @@ class DuelSim:
                 else:
                     break
         self.unit.accostrate *= accostavoid
+
+    def vantage(self, vantageuser):
+        """Vantage"""
+        self.dueltext += f"{vantageuser.name} activates Vantage. \n"
+        if vantageuser.name == self.boss.name:
+            self.enemyphase()
+        elif vantageuser.name == self.unit.name:
+            self.playerphase()
+
+    def refresh(self):
+        """Refresh"""
 
     def reset_text(self):
         """Reset"""
