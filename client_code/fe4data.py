@@ -924,8 +924,12 @@ class DuelSim:
         elif vantageuser.name == self.unit.name:
             self.playerphase()
 
-    def refresh(self):
-        """Refresh"""
+    def dance(self):
+        """Dance"""
+        if self.refresh is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dueltext += f"{self.unit.name} is refreshed. \n"
+            self.playerphase()
+            self.accost()
 
     def reset_text(self):
         """Reset"""

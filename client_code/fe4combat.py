@@ -43,6 +43,7 @@ class CombatSim:
                 else:
                     name.playerphase()
                     name.accost()
+                name.dance()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
