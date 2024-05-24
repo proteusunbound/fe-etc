@@ -98,9 +98,13 @@ def magattack(keyword, weapon):
     """Magical Attack"""
     keyword.attack = keyword.magic + weapon.might
 
-def damage(attacker, defender):
-    """Damage"""
+def physdamage(attacker, defender):
+    """Physical Damage"""
     attacker.damage = max(0, attacker.attack - defender.defense)
+
+def magdamage(attacker, defender):
+    """Magical Damage"""
+    attacker.damage = max(0, attacker.attack - defender.magic)
 
 def critical(keyword, weapon):
     "Critical"
