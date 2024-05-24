@@ -256,13 +256,23 @@ class DuelSim:
         self.weapontriangle()
         hitrate(self.unit, self.unitweapon)
         hitrate(self.boss, self.bossweapon)
-        attack(self.unit, self.unitweapon)
-        damage(self.unit, self.boss)
-        critdamage(self.unit, self.boss)
+        if self.unitweapon.type in ("Sword", "Lance", "Axe", "Bow"):
+            physattack(self.unit, self.unitweapon)
+            physdamage(self.unit, self.boss)
+            physcrit(self.unit, self.boss)
+        else:
+            magattack(self.unit, self.unitweapon)
+            magdamage(self.unit, self.boss)
+            magcrit(self.unit, self.boss)
         self.enemy_avoid()
-        attack(self.boss, self.bossweapon)
-        damage(self.boss, self.unit)
-        critdamage(self.boss, self.unit)
+        if self.bossweapon.type in ("Sword", "Lance", "Axe", "Bow"):
+            physattack(self.boss, self.bossweapon)
+            physdamage(self.boss, self.unit)
+            physcrit(self.boss, self.unit)
+        else:
+            magattack(self.boss, self.bossweapon)
+            magdamage(self.boss, self.unit)
+            magcrit(self.boss, self.unit)
         self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
         self.unitavoid = 1 - self.boss.hitchance
