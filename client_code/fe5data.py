@@ -50,6 +50,8 @@ class ActiveWeapon:
         self.hit = weapon["Hit"]
         self.crit = weapon["Crit"]
         self.type = weapon["Type"]
+        self.minrange = weapon ["Min Range"]
+        self.maxrange = weapon["Max Range"]
         self.weapontriangle = 0
 
 @anvil.server.portable_class
@@ -76,6 +78,7 @@ class ActiveBoss:
         self.hitchance = 0
         self.crit = 0
         self.skills = []
+        self.counter = False
 
     def setskills(self):
         """Set Skills"""
@@ -299,6 +302,24 @@ class DuelSim:
         else:
             self.boss.doubles = False
             self.unit.doubles = False
+
+    def counterattack(self):
+        """Counter Attack"""
+        if self.bossweapon.name in ("Meteor", "Bolting", "Blizzard", "Fenrir", "Poison", "Petrify"):
+            self.boss.counter = False
+            self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
+        elif self.bossweapon.minrange != self.bossweapon.maxrange:
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        elif (
+            self.bossweapon.minrange == self.unitweapon.minrange
+            and self.bossweapon.maxrange == self.unitweapon.maxrange
+        ):
+            self.boss.counter = True
+            self.dueltext += f"{self.boss.name} can counter-attack. \n"
+        else:
+            self.boss.counter = False
+            self.dueltext += f"{self.boss.name} cannot counter-attack. \n"
 
     def unitadept(self):
         """Unit Adept"""
