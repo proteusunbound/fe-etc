@@ -107,11 +107,11 @@ def magdamage(attacker, defender):
     attacker.damage = max(0, attacker.attack - defender.magic)
 
 def critical(keyword, weapon):
-    "Critical"
+    """Critical"""
     keyword.crit = keyword.skill + weapon.crit
 
-def critdamage(attacker, defender):
-    """Critical Hit Damage"""
+def physcrit(attacker, defender):
+    """Physic """
     attacker.critdamage = max(0, 2 * attacker.attack - defender.defense)
 
 @anvil.server.portable_class
