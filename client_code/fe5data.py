@@ -90,9 +90,13 @@ def hitrate(keyword, weapon):
     """Hit Rate"""
     keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars)
 
-def attack(keyword, weapon):
-    """Attack"""
+def physattack(keyword, weapon):
+    """Physical Attack"""
     keyword.attack = keyword.strength + weapon.might
+
+def magattack(keyword, weapon):
+    """Magical Attack"""
+    keyword.attack = keyword.magic + weapon.might
 
 def damage(attacker, defender):
     """Damage"""

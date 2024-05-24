@@ -38,6 +38,9 @@ db_schema:
     - name: Min Range
       admin_ui: {width: 200, order: 6}
       type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 7}
+      type: number
     title: FE5 Weapon Stats
   fe5_unit_stats:
     client: search
