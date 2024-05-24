@@ -111,8 +111,12 @@ def critical(keyword, weapon):
     keyword.crit = keyword.skill + weapon.crit
 
 def physcrit(attacker, defender):
-    """Physic """
+    """Physical Crit """
     attacker.critdamage = max(0, 2 * attacker.attack - defender.defense)
+
+def magcrit(attacker, defender):
+    """Magical Crit"""
+    attacker.critdamage = max(0, 2 * attacker.attack - defender.magic)
 
 @anvil.server.portable_class
 class DuelSim:
