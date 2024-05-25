@@ -421,6 +421,7 @@ class DuelSim:
         if (
             self.boss.hitpoints > 0
             and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         if (
@@ -433,6 +434,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         self.dueltext += "\n"
@@ -443,6 +445,7 @@ class DuelSim:
         if (
             self.boss.hitpoints > 0
             and self.unit.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
@@ -451,6 +454,7 @@ class DuelSim:
             self.boss.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
+            and self.boss.counter is True
         ):
             self.counterdamage()
         if (

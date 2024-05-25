@@ -38,7 +38,7 @@ class CombatSim:
                 self.text += name.dueltext
                 name.reset_text()
         for number, name in self.duels.items():
-            if self.bosshp > 0 and name.unit.hitpoints > 0:
+            if self.bosshp > 0 and name.unit.hitpoints > 0 and name.boss.counter is True:
                 name.setbosshp(self.bosshp)
                 name.enemyphase()
                 self.bosshp = name.boss.hitpoints
