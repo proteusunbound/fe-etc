@@ -330,11 +330,19 @@ class DuelSim:
             self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
             if self.unit.crit == 100:
                 self.unit_crit()
-            elif (
-                self.unit.crit > 0
-                and self.critno > 0
-                and self.unit.fcm == 0
-            ):
+            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0:
+                self.critno -= 1
+                self.unit_crit()
+            else:
+                self.unitattack()
+
+    def unitfollowupadept(self):
+        """Unit Follow Up Adept"""
+        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
+            if self.unit.crit == 100:
+                self.unit_crit()
+            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -402,6 +410,19 @@ class DuelSim:
         if "Adept" in self.unit.skills and self.adeptno > 0:
             self.adeptno -= 1
             self.unitadept()
+
+    def unitfollowup(self):
+        """Unit Follow-Up"""
+        if self.unit.crit == 100:
+            self.unit_crit()
+        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0:
+            self.critno -= 1
+            self.unit_crit()
+        else:
+            self.unitattack()
+        if "Adept" in self.unit.skills and self.adeptno > 0:
+            self.adeptno -= 1
+            self.unitfollowupadept()
 
     def counterdamage(self):
         """Boss Attack Checks"""
