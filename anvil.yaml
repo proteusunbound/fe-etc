@@ -690,6 +690,9 @@ db_schema:
     - name: Leadership
       admin_ui: {width: 200, order: 9}
       type: number
+    - name: FCM
+      admin_ui: {width: 200, order: 10}
+      type: number
     title: FE5 Boss Stats
   fe1_boss_stats:
     client: search
