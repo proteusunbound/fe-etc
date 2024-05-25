@@ -145,6 +145,8 @@ class DuelSim:
         self.inicanceladept = 0
         self.canceladeptno = 0
         self.terrain = "None"
+        self.unitfollowup = False
+        self.bossfollowup = False
 
     def setunit(self, unit):
         """Set Unit"""
@@ -339,7 +341,10 @@ class DuelSim:
             self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
             if self.unit.crit == 100:
                 self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0:
+            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0 and self.unitfollowup is True:
+                self.critno -= 1
+                self.unit_crit()
+            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0 and self.unitfollowup is False:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -399,7 +404,10 @@ class DuelSim:
         """Unit Attack Checks"""
         if self.unit.crit == 100:
             self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0:
+        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0 and self.unitfollowup is True:
+            self.critno -= 1
+            self.unit_crit()
+        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0 and self.unitfollowup is False:
             self.critno -= 1
             self.unit_crit()
         else:
