@@ -89,7 +89,7 @@ class ActiveBoss:
 
 def attack_speed(keyword, weapon):
     """Attack Speed"""
-    keyword.AS = keyword.speed - (weapon.weight - keyword.build)
+    keyword.AS = max(0, keyword.speed - (weapon.weight - keyword.build))
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
@@ -376,7 +376,9 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0:
+            elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+                self.bosscrit()
+            elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -423,7 +425,9 @@ class DuelSim:
         elif self.avoidno > 0:
             self.avoidno -= 1
             self.bossmiss()
-        elif self.boss.crit > 0:
+        elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+            self.bosscrit()
+        elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
             self.bosscrit()
         else:
             self.bossattack()
@@ -433,6 +437,8 @@ class DuelSim:
     def playerphase(self):
         """Player Phase"""
         self.dueltext += "#### Player Phase:\n"
+        self.unitfollowup = False
+        self.bossfollowup = False
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
             self.dodamage()
         if (
@@ -446,6 +452,7 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
+            self.unitfollowup = True
             self.dodamage()
         if (
             self.boss.doubles is True
@@ -453,12 +460,15 @@ class DuelSim:
             and self.boss.hitpoints > 0
             and self.boss.counter is True
         ):
+            self.bossfollowup = True
             self.counterdamage()
         self.dueltext += "\n"
 
     def enemyphase(self):
         """Enemy Phase"""
         self.dueltext += "#### Enemy Phase:\n"
+        self.bossfollowup = False
+        self.unitfollowup = False
         if (
             self.boss.hitpoints > 0
             and self.unit.hitpoints > 0
@@ -473,13 +483,15 @@ class DuelSim:
             and self.boss.hitpoints > 0
             and self.boss.counter is True
         ):
+            self.bossfollowup = True
             self.counterdamage()
         if (
             self.unit.doubles is True
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            self.counterdamage()
+            self.unitfollowup = True
+            self.dodamage()
         self.dueltext += "\n"
 
     def reset_text(self):
