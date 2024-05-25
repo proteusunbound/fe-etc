@@ -281,9 +281,18 @@ class DuelSim:
         self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
         self.unitavoid = 1 - self.boss.hitchance
-        self.unitcrit = min(0.25, (self.unit.crit - (self.boss.luck / 2)) / 100)
-        self.unitfcm = min((self.unit.fcm * (self.unit.crit - (self.boss.luck / 2))) / 100, 1)
-        self.unitdodge = 1 - max(0, (self.boss.crit - (self.unit.luck / 2)) / 100)
+        unitcritrate = min(0.25, (self.unit.crit - (self.boss.luck / 2)) / 100)
+        unitfcm = min((self.unit.fcm * (self.unit.crit - (self.boss.luck / 2))) / 100, 1)
+        if self.unit.fcm > 0:
+            self.unitcrit = unitcritrate
+        else:
+            self.unitcrit = unitfcm
+        bosscritrate = min(0.25, (self.boss.crit - (self.unit.luck / 2)) / 100)
+        bossfcm = min((self.boss.fcm * (self.boss.crit - (self.unit.luck / 2))) / 100, 1)
+        if self.boss.fcm > 0:
+            self.unitdodge = 1 - bossfcm
+        else:
+            self.unitdodge = 1 - bosscritrate
 
     def skillprocs(self):
         """Skill Procs"""
@@ -331,18 +340,6 @@ class DuelSim:
             if self.unit.crit == 100:
                 self.unit_crit()
             elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0:
-                self.critno -= 1
-                self.unit_crit()
-            else:
-                self.unitattack()
-
-    def unitfollowupadept(self):
-        """Unit Follow Up Adept"""
-        if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-            self.dueltext += f"{self.unit.name} strikes twice consecutively. \n"
-            if self.unit.crit == 100:
-                self.unit_crit()
-            elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0:
                 self.critno -= 1
                 self.unit_crit()
             else:
@@ -402,7 +399,7 @@ class DuelSim:
         """Unit Attack Checks"""
         if self.unit.crit == 100:
             self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0:
+        elif self.unit.crit > 0 and self.critno > 0:
             self.critno -= 1
             self.unit_crit()
         else:
@@ -410,19 +407,6 @@ class DuelSim:
         if "Adept" in self.unit.skills and self.adeptno > 0:
             self.adeptno -= 1
             self.unitadept()
-
-    def unitfollowup(self):
-        """Unit Follow-Up"""
-        if self.unit.crit == 100:
-            self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm > 0:
-            self.critno -= 1
-            self.unit_crit()
-        else:
-            self.unitattack()
-        if "Adept" in self.unit.skills and self.adeptno > 0:
-            self.adeptno -= 1
-            self.unitfollowupadept()
 
     def counterdamage(self):
         """Boss Attack Checks"""
