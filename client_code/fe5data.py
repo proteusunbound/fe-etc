@@ -281,7 +281,8 @@ class DuelSim:
         self.bosshitchance()
         self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 0.99)
         self.unitavoid = 1 - self.boss.hitchance
-        self.unitcrit = (self.unit.crit - (self.boss.luck / 2)) / 100
+        self.unitcrit = min(0.25, (self.unit.crit - (self.boss.luck / 2)) / 100)
+        self.unitfcm = min((self.unit.fcm * (self.unit.crit - (self.boss.luck / 2))) / 100, 1)
         self.unitdodge = 1 - max(0, (self.boss.crit - (self.unit.luck / 2)) / 100)
 
     def skillprocs(self):
@@ -332,6 +333,7 @@ class DuelSim:
             elif (
                 self.unit.crit > 0
                 and self.critno > 0
+                and self.unit.fcm == 0
             ):
                 self.critno -= 1
                 self.unit_crit()
@@ -392,7 +394,7 @@ class DuelSim:
         """Unit Attack Checks"""
         if self.unit.crit == 100:
             self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0:
+        elif self.unit.crit > 0 and self.critno > 0 and self.unit.fcm == 0:
             self.critno -= 1
             self.unit_crit()
         else:
