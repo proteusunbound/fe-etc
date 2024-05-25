@@ -23,6 +23,7 @@ class ActiveUnit:
         self.defense = self.char["Def"]
         self.luck = self.char["Lck"]
         self.build = self.char["Bld"]
+        self.fcm = self.char["FCM"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -69,6 +70,7 @@ class ActiveBoss:
         self.defense = boss["Def"]
         self.build = boss["Bld"]
         self.leaderstars = boss["Leadership"]
+        self.fcm = boss["FCM"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
