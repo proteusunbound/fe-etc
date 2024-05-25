@@ -73,6 +73,9 @@ db_schema:
     - name: Bld
       admin_ui: {width: 200, order: 8}
       type: number
+    - name: FCM
+      admin_ui: {width: 200, order: 9}
+      type: number
     title: FE5 Unit Stats
   fe2_class_change:
     client: search
