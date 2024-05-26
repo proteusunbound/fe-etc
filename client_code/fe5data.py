@@ -513,6 +513,14 @@ class DuelSim:
             self.dodamage()
         self.dueltext += "\n"
 
+    def vantage(self, vantageuser):
+        """Vantage"""
+        self.dueltext += f"{vantageuser.name} activates Vantage. \n"
+        if vantageuser.name == self.boss.name:
+            self.enemyphase()
+        elif vantageuser.name == self.unit.name:
+            self.playerphase()
+
     def reset_text(self):
         """Reset"""
         self.dueltext = ""

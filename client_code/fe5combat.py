@@ -33,14 +33,20 @@ class CombatSim:
         for number, name in self.duels.items():
             if name.unit.hitpoints > 0 and self.bosshp > 0:
                 name.setbosshp(self.bosshp)
-                name.playerphase()
+                if "Vantage" in name.boss.skills:
+                    name.vantage(name.boss)
+                else:
+                    name.playerphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
         for number, name in self.duels.items():
             if self.bosshp > 0 and name.unit.hitpoints > 0 and name.boss.counter is True:
                 name.setbosshp(self.bosshp)
-                name.enemyphase()
+                if "Vantage" in name.unit.skills:
+                    name.vantage(name.unit)
+                else:
+                    name.enemyphase()
                 self.bosshp = name.boss.hitpoints
                 self.text += name.dueltext
                 name.reset_text()
