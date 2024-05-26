@@ -310,6 +310,8 @@ class DuelSim:
             self.unit.adeptrate = self.unit.AS / 100
         if "Adept" in self.boss.skills:
             self.unit.adeptcancel = 1 - (self.boss.AS / 100)
+        if "Miracle" in self.unit.skills:
+            self.unit.miraclerate = (self.unit.luck * 3) / 100
 
     def doubling(self):
         """Doubling Calculation"""
@@ -432,6 +434,9 @@ class DuelSim:
             self.bossmiss()
         elif self.avoidno > 0:
             self.avoidno -= 1
+            self.bossmiss()
+        elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
+            self.miracleno -= 1
             self.bossmiss()
         elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
             self.bosscrit()
