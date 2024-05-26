@@ -59,6 +59,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.parent.combat.duels[0].setcanceladeptno(
         int(self.canceladept_drop.selected_value)
     )
+    self.parent.combat.duels[0].setmiracleno(int(self.miracle_drop.selected_value))
 
   def reset(self):
     """Reset"""
