@@ -85,6 +85,13 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
         self.adeptlabel.visible = False
         self.adept_drop.selected_value = 0
         self.adept_drop.visible = False
+    if "Miracle" in self.parent.combat.duels[0].unit.skills:
+        self.miraclelabel.visible = True
+        self.miracle_drop.visible = True
+    else:
+        self.miraclelabel.visible = False
+        self.miracle_drop.selected_value = 0
+        self.miracle_drop.visible = False
 
   def hideskills_click(self, **event_args):
     """This method is called when the button is clicked"""
