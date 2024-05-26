@@ -386,6 +386,9 @@ class DuelSim:
             elif self.avoidno > 0:
                 self.avoidno -= 1
                 self.bossmiss()
+            elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
+                self.miracleno -= 1
+                self.bossmiss()
             elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
                 self.bosscrit()
             elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
