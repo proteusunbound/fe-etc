@@ -33,6 +33,7 @@ class ActiveUnit:
         self.leaderstars = 0
         self.adeptrate = 1
         self.adeptcancel = 1
+        self.miraclerate = 1
         self.skills = []
 
     def setskills(self):
@@ -144,6 +145,8 @@ class DuelSim:
         self.adeptno = 0
         self.inicanceladept = 0
         self.canceladeptno = 0
+        self.miracleno = 0
+        self.inimiracle = 0
         self.terrain = "None"
         self.unitfollowup = False
         self.bossfollowup = False
@@ -192,6 +195,11 @@ class DuelSim:
         """Set Adept Avoids"""
         self.inicanceladept = adeptavo
         self.canceladeptno = adeptavo
+
+    def setmiracleno(self, miracleno):
+        """Set Miracle Number"""
+        self.inimiracle = miracleno
+        self.miracleno = miracleno
 
     def setbosshp(self, hitpoints):
         """Set Boss HP"""
