@@ -406,6 +406,9 @@ class DuelSim:
             self.ddgno -= 1
             self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.damage)
             self.dueltext += f"{self.boss.name}'s attack leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
+        elif (self.unit.hitpoints - self.boss.critdamage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
+            self.miracleno -= 1
+            self.bossmiss()
         else:
             self.unit.hitpoints = max(0, self.unit.hitpoints - self.boss.critdamage)
             self.dueltext += f"{self.boss.name} lands a critical hit and leaves {self.unit.name} with {self.unit.hitpoints} HP.\n"
