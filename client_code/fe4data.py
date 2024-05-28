@@ -284,6 +284,7 @@ class DuelSim:
         self.noaccost = False
         self.unitequip = []
         self.bossequip = []
+        self.refresh = False
 
     def setunit(self, unit):
         """Set Unit"""
@@ -886,7 +887,7 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.hitpoints > 0
         ):
-            self.counterdamage()
+            self.dodamage()
         self.dueltext += "\n"
 
     def accost(self):
@@ -914,6 +915,21 @@ class DuelSim:
                 else:
                     break
         self.unit.accostrate *= accostavoid
+
+    def vantage(self, vantageuser):
+        """Vantage"""
+        self.dueltext += f"{vantageuser.name} activates Vantage. \n"
+        if vantageuser.name == self.boss.name:
+            self.enemyphase()
+        elif vantageuser.name == self.unit.name:
+            self.playerphase()
+
+    def dance(self):
+        """Dance"""
+        if self.refresh is True and self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            self.dueltext += f"{self.unit.name} is refreshed. \n"
+            self.playerphase()
+            self.accost()
 
     def reset_text(self):
         """Reset"""

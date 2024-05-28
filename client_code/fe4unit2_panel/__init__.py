@@ -430,3 +430,7 @@ class fe4unit2_panel(fe4unit2_panelTemplate):
     self.parent.combat.duels[1].adjustunitskills()
     self.parent.combat.duels[1].unitdisplay()
     self.crit.text = self.parent.combat.duels[1].unit.crit
+
+  def refreshbox_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[1].refresh = self.refreshbox.checked

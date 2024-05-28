@@ -35,6 +35,12 @@ db_schema:
     - name: Type
       admin_ui: {width: 200, order: 5}
       type: string
+    - name: Min Range
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Max Range
+      admin_ui: {width: 200, order: 7}
+      type: number
     title: FE5 Weapon Stats
   fe5_unit_stats:
     client: search
@@ -66,6 +72,9 @@ db_schema:
       type: number
     - name: Bld
       admin_ui: {width: 200, order: 8}
+      type: number
+    - name: FCM
+      admin_ui: {width: 200, order: 9}
       type: number
     title: FE5 Unit Stats
   fe2_class_change:
@@ -683,6 +692,9 @@ db_schema:
       type: number
     - name: Leadership
       admin_ui: {width: 200, order: 9}
+      type: number
+    - name: FCM
+      admin_ui: {width: 200, order: 10}
       type: number
     title: FE5 Boss Stats
   fe1_boss_stats:
