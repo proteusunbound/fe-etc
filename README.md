@@ -1,5 +1,11 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 4.3
+- refresh in FE4
+- weapon range and magical damage in FE5
+- critical calculations altered to accomodate for FCM
+- skill list update: Miracle, Vantage
+- third player combatant
 ### version 4.2
 - stat boosts and crit modifier based on weapon kills in FE4
 - critical hit and dodge in FE5
