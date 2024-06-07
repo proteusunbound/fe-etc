@@ -713,6 +713,9 @@ db_schema:
     - name: Mag
       admin_ui: {width: 200, order: 3}
       type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
     title: FE4 Scathach Inheritance
   fe1_boss_stats:
     client: search
