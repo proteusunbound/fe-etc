@@ -15,7 +15,7 @@ native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=E
 db_schema:
   fe5_weapon_stats:
     client: search
-    server: full
+    server: search
     columns:
     - name: Name
       admin_ui: {order: 0, width: 107}
@@ -697,6 +697,14 @@ db_schema:
       admin_ui: {width: 200, order: 10}
       type: number
     title: FE5 Boss Stats
+  fe4_scathach_inheritance:
+    client: none
+    server: full
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 61}
+      type: string
+    title: FE4 Scathach Inheritance
   fe1_boss_stats:
     client: search
     server: search
