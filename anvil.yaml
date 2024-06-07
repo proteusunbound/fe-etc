@@ -704,6 +704,9 @@ db_schema:
     - name: Father
       admin_ui: {order: 0, width: 61}
       type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
     title: FE4 Scathach Inheritance
   fe1_boss_stats:
     client: search
