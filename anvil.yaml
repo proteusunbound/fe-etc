@@ -232,6 +232,9 @@ db_schema:
     - name: HP
       admin_ui: {width: 200, order: 1}
       type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
     title: FE4 Larcei Inheritance
   fe1_weapon_stats:
     client: search
