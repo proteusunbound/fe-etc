@@ -241,6 +241,9 @@ db_schema:
     - name: Skl
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
     title: FE4 Larcei Inheritance
   fe1_weapon_stats:
     client: search
