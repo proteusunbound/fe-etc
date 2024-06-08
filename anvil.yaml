@@ -318,6 +318,20 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: string
     title: FE3 Unit Stats
+  fe4_lana_inheritance:
+    client: none
+    server: full
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 63}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    title: FE4 Lana Inheritance
   fe4_unit_stats:
     client: search
     server: search
