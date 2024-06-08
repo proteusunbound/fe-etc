@@ -222,6 +222,17 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: string
     title: FE3 Book 2
+  fe4_larcei_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 57}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    title: FE4 Larcei Inheritance
   fe1_weapon_stats:
     client: search
     server: search
@@ -699,7 +710,7 @@ db_schema:
     title: FE5 Boss Stats
   fe4_scathach_inheritance:
     client: search
-    server: full
+    server: search
     columns:
     - name: Father
       admin_ui: {order: 0, width: 61}
