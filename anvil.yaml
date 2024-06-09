@@ -77,6 +77,14 @@ db_schema:
       admin_ui: {width: 200, order: 9}
       type: number
     title: FE5 Unit Stats
+  fe4_fee_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 67}
+      type: string
+    title: FE4 Fee Inheritance
   fe2_class_change:
     client: search
     server: search
