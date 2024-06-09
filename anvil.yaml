@@ -537,10 +537,13 @@ db_schema:
       admin_ui: {width: 200, order: 1}
       type: number
     - name: Str
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {order: 2, width: 50}
       type: number
     - name: Mag
       admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
       type: number
     title: FE4 Diarmuid Inheritance
   fe3_effectiveness:
