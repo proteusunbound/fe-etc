@@ -526,6 +526,14 @@ db_schema:
       admin_ui: {width: 200, order: 21}
       type: bool
     title: FE1 Effectiveness
+  fe4_diarmuid_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 67}
+      type: string
+    title: FE4 Diarmuid Inheritance
   fe3_effectiveness:
     client: search
     server: search
