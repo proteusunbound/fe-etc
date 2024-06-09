@@ -548,6 +548,15 @@ db_schema:
     - name: Spd
       admin_ui: {width: 200, order: 5}
       type: number
+    - name: Lck
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Def
+      admin_ui: {width: 200, order: 7}
+      type: number
+    - name: Res
+      admin_ui: {width: 200, order: 8}
+      type: number
     title: FE4 Diarmuid Inheritance
   fe3_effectiveness:
     client: search
