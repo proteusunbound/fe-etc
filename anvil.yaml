@@ -1224,7 +1224,19 @@ db_schema:
       admin_ui: {order: 0, width: 63}
       type: string
     - name: HP
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {order: 1, width: 50}
+      type: number
+    - name: Str
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: Mag
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
       type: number
     title: FE4 Arthur Inheritance
   fe3_weapon_stats:
