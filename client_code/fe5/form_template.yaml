@@ -41,30 +41,14 @@ components:
       spacing_above: small
       include_placeholder: true
       placeholder: Select Boss
-      items: [Weismann, Bucks, Pirate (Chapter 2x), Lobos, Lance Armor (Chapter 4),
-        Soldier (Chapter 4x), Bandol, Truman, Eisenau, Rumei, Gomez, Merlock, Largo,
-        Kempf, Oltoph, Cullough, Perne, List, Paulus, Codda, Zyle, Brook, Nikalaf,
-        Linecock, Palman, Gustaf, Wolf, Barath, Fraus, Zaom, Cohen, Alphand, Raydrick,
-        Dark Bishop (Chapter 24x), Veld]
+      items: [Weismann, Bucks, Pirate (Chapter 2x), Lobos, Lance Armor (Chapter 4), Soldier (Chapter 4x), Bandol, Truman, Eisenau, Rumei, Gomez, Merlock, Largo, Kempf, Oltoph, Cullough, Perne, List, Paulus, Codda, Zyle, Brook, Nikalaf, Linecock, Palman, Gustaf, Wolf, Barath, Fraus, Zaom, Cohen, Alphand, Raydrick, Dark Bishop (Chapter 24x), Veld]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
     event_bindings: {change: boss_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge,
-        Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword,
-        Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword,
-        Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword,
-        Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance,
-        Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance,
-        Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance,
-        Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe,
-        Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow,
-        Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen,
-        Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder,
-        Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu,
-        Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
+      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge, Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword, Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword, Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword, Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance, Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance, Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe, Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow, Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen, Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder, Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu, Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -216,8 +200,7 @@ components:
           layout_properties: {grid_position: 'COHHLI,RIPOVX'}
           event_bindings: {change: turn_drop_change}
         - name: calculatebutton
-          properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
-            align: center, font_size: 13, foreground: '#ff8585', visible: false}
+          properties: {text: Generate, background: 'theme:Secondary Container', role: filled, align: center, font_size: 13, foreground: '#ff8585', visible: false}
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}

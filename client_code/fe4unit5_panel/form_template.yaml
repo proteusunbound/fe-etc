@@ -9,13 +9,7 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Sigurd, Naoise, Alec, Arden, Azelle, Lex, Quan, Finn, Ethlyn, Midir,
-        Dew, Edain, Ayra, Deirdre, Jamke, Chulainn, Lachesis, Beowolf, Lewyn, Silvia,
-        Erinys, Brigid, Tailtiu, Claud, Seliph, Scathach, Dalvin, Larcei, Creidne,
-        Lana, Muirne, Diarmuid, Tristan, Lester, Deimne, Oifey, Julia, Fee, Hermina,
-        Arthur, Amid, Iucharba, Iuchar, Leif, Finn, Nanna, Jeanne, Shannan, Patty,
-        Daisy, Ares, Lene, Laylea, Tine, Linda, Febail, Asaello, Ced, Hawk, Hannibal,
-        Coirpre, Charlot, Altena]
+      items: [Sigurd, Naoise, Alec, Arden, Azelle, Lex, Quan, Finn, Ethlyn, Midir, Dew, Edain, Ayra, Deirdre, Jamke, Chulainn, Lachesis, Beowolf, Lewyn, Silvia, Erinys, Brigid, Tailtiu, Claud, Seliph, Scathach, Dalvin, Larcei, Creidne, Lana, Muirne, Diarmuid, Tristan, Lester, Deimne, Oifey, Julia, Fee, Hermina, Arthur, Amid, Iucharba, Iuchar, Leif, Finn, Nanna, Jeanne, Shannan, Patty, Daisy, Ares, Lene, Laylea, Tine, Linda, Febail, Asaello, Ced, Hawk, Hannibal, Coirpre, Charlot, Altena]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -25,16 +19,7 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
-        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
-        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
-        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
-        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
-        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
-        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
-        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
-        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
-        Fenrir, Hel, Loptous]
+      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade, Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword, Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword, Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance, Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg, Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow, Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone, Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind, Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand, Fenrir, Hel, Loptous]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -42,8 +27,7 @@ components:
     layout_properties: {x: 0, y: 45, width: 275}
     event_bindings: {change: weapon_drop_change}
   - name: custombutton
-    properties: {text: Customize, align: full, role: null, background: 'theme:Surface
-        Variant', foreground: '#9ea9ff', font_size: 15}
+    properties: {text: Customize, align: full, role: null, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 15}
     type: Button
     layout_properties: {x: 355, y: 45, width: 120}
     event_bindings: {click: custombutton_click}
@@ -52,8 +36,7 @@ components:
     type: Label
     layout_properties: {x: 330, y: 0, width: 75}
   - name: startinghp
-    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
-      foreground: '', type: number}
+    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant', foreground: '', type: number}
     type: TextBox
     layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
@@ -68,14 +51,12 @@ components:
     layout_properties: {x: 285, y: 45, width: 55}
     event_bindings: {pressed_enter: killcount_pressed_enter}
 - name: customization
-  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
-    col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000', col_spacing: small, col_widths: '{"SLNSGZ":25,"FQXNPV":35,"HPCKFU":30,"UFGLPY":30}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
   - name: column_panel_2
-    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":12,"GWNBQZ":12,"EORSAR":12,"INCKSE":12,"AWWBSE":18,"WWNXDG":18}'}
+    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never, col_widths: '{"UEJOCT":12,"GWNBQZ":12,"EORSAR":12,"INCKSE":12,"AWWBSE":18,"WWNXDG":18}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -221,8 +202,7 @@ components:
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
     - name: hide
-      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
-        visible: true, border: ''}
+      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff', visible: true, border: ''}
       type: Button
       layout_properties: {x: 125, y: 0, width: 100}
       event_bindings: {click: hide_click}
@@ -321,26 +301,22 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,BIZCRA OXIHGR,CRADDC'}
   - name: support
-    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff',
-      font_size: 12}
+    properties: {text: Support, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,HPCKFU'}
     event_bindings: {click: support_click}
   - name: equipment
-    properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff',
-      font_size: 12}
+    properties: {text: equipment, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW CAJSYC,UFGLPY'}
     event_bindings: {click: equipment_click}
   - name: skills
-    properties: {text: skills, background: 'theme:Surface Variant', foreground: '#9ea9ff',
-      visible: true, font_size: 12}
+    properties: {text: skills, background: 'theme:Surface Variant', foreground: '#9ea9ff', visible: true, font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,SLNSGZ'}
     event_bindings: {click: skills_click}
   - name: cancelproc
-    properties: {text: enemy procs, background: 'theme:Surface Variant', foreground: '#9ea9ff',
-      visible: false, font_size: 12, align: full}
+    properties: {text: enemy procs, background: 'theme:Surface Variant', foreground: '#9ea9ff', visible: false, font_size: 12, align: full}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW FQIISJ,FQXNPV'}
     event_bindings: {click: cancelproc_click}

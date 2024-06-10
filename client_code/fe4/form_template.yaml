@@ -49,28 +49,14 @@ components:
       spacing_above: small
       include_placeholder: true
       placeholder: Select Boss
-      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement,
-        Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar,
-        Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danaan, Kutuzov, Ishtore,
-        Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah,
-        Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege),
-        Manfroy, Julius]
+      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement, Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar, Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danaan, Kutuzov, Ishtore, Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah, Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege), Manfroy, Julius]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
     event_bindings: {change: boss_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade,
-        Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword,
-        Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword,
-        Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance,
-        Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg,
-        Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow,
-        Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone,
-        Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind,
-        Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand,
-        Fenrir, Hel, Loptous]
+      items: [Iron Sword, Steel Sword, Silver Sword, Iron Blade, Steel Blade, Silver Blade, Miracle Sword, Thief's Sword, Barrier Blade, Berserk Sword, Brave Sword, Sleep Sword, Slim Sword, Safeguard, Flame Sword, Lands Sword, Lightning Sword, Wind Sword, Light Brand, Tyrfing, Mystletainn, Balmung, Armorslayer, Wing Clipper, Iron Lance, Steel Lance, Silver Lance, Javelin, Ridersbane, Brave Lance, Slim Lance, Gae Bolg, Gungnir, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Brave Axe, Helswath, Iron Bow, Steel Bow, Silver Bow, Brave Bow, Killer Bow, Yewfelle, Fire, Elfire, Bolganone, Meteor, Valflame, Thunder, Elthunder, Thoron, Bolting, Mjolnir, Wind, Elwind, Tornado, Blizzard, Forseti, Lightning, Aura, Nosferatu, Naga, Jormungand, Fenrir, Hel, Loptous]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -222,8 +208,7 @@ components:
           layout_properties: {grid_position: 'COHHLI,RIPOVX'}
           event_bindings: {change: turn_drop_change}
         - name: calculatebutton
-          properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
-            align: center, font_size: 13, foreground: '#ff8585', visible: false}
+          properties: {text: Generate, background: 'theme:Secondary Container', role: filled, align: center, font_size: 13, foreground: '#ff8585', visible: false}
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ'}
           event_bindings: {click: calculatebutton_click}

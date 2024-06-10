@@ -49,12 +49,7 @@ components:
       spacing_above: small
       include_placeholder: true
       placeholder: Select Boss
-      items: [Gazzak, Gomer, Hyman, Merach, Emereus, Harmein, Kannival, Zharov, Khozen,
-        Volzhin, Jiol, Bishop (Chapter 12), Hollstadt, Morzas, Tiki, Camus, Michalis,
-        Gharnef, Xemcel, Medeus, Brigand (Chapter 1), Lumel, Lykke, Gail, Torus, Lang,
-        Dall, Jeorge, Yodel, Arlen, Wyvern (Chapter 11), Fire Dragon (Chapter 12),
-        Ice Dragon (Chapter 13), Thief (Chapter 14), Eibel, Willow, Sheena, General (Chapter 18),
-        Nehring, Hardin, Dark Bishop (Chapter 21), Mage Dragon (Endgame 1)]
+      items: [Gazzak, Gomer, Hyman, Merach, Emereus, Harmein, Kannival, Zharov, Khozen, Volzhin, Jiol, Bishop (Chapter 12), Hollstadt, Morzas, Tiki, Camus, Michalis, Gharnef, Xemcel, Medeus, Brigand (Chapter 1), Lumel, Lykke, Gail, Torus, Lang, Dall, Jeorge, Yodel, Arlen, Wyvern (Chapter 11), Fire Dragon (Chapter 12), Ice Dragon (Chapter 13), Thief (Chapter 14), Eibel, Willow, Sheena, General (Chapter 18), Nehring, Hardin, Dark Bishop (Chapter 21), Mage Dragon (Endgame 1)]
       enabled: true
     type: DropDown
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
@@ -66,15 +61,7 @@ components:
     event_bindings: {change: book2box_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword,
-        Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion,
-        Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance,
-        Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow,
-        Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe,
-        Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist,
-        Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath,
-        Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur,
-        Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
+      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword, Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion, Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance, Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow, Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe, Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist, Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath, Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur, Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -222,8 +209,7 @@ components:
           type: Spacer
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ ZEFLLP,XJLJQJ'}
         - name: calculatebutton
-          properties: {text: Generate, background: 'theme:Secondary Container', role: filled,
-            align: center, font_size: 13, foreground: '#ff8585', visible: false}
+          properties: {text: Generate, background: 'theme:Secondary Container', role: filled, align: center, font_size: 13, foreground: '#ff8585', visible: false}
           type: Button
           layout_properties: {grid_position: 'COHHLI,ZNLYSQ RTMZQK,HBROQM'}
           event_bindings: {click: calculatebutton_click}

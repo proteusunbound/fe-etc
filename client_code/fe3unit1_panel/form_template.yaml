@@ -9,12 +9,7 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Bord, Cord, Barst, Ogma,
-        Castor, Julian, Lena, Navarre, Roshea, Vyland, Sedgar, Wolf, Hardin, Matthis,
-        Merric, Wendell, Rickard, Bantu, Caesar, Radd, Maria, Minerva, Jeorge, Linde,
-        Dolph, Macellan, Tomas, Boah, Midia, Astram, Catria, Palla, Arran, Samson,
-        Xane, Tiki, Est, Lorenz, Elice, Luke, Cecil, Roderick, Ryan, Marisha, Warren,
-        Yuliya, Jubelo, Sirius, Samuel, Phina, Arlen, Sheena, Nyna]
+      items: [Marth, Abel, Cain, Jagen, Gordin, Draug, Caeda, Bord, Cord, Barst, Ogma, Castor, Julian, Lena, Navarre, Roshea, Vyland, Sedgar, Wolf, Hardin, Matthis, Merric, Wendell, Rickard, Bantu, Caesar, Radd, Maria, Minerva, Jeorge, Linde, Dolph, Macellan, Tomas, Boah, Midia, Astram, Catria, Palla, Arran, Samson, Xane, Tiki, Est, Lorenz, Elice, Luke, Cecil, Roderick, Ryan, Marisha, Warren, Yuliya, Jubelo, Sirius, Samuel, Phina, Arlen, Sheena, Nyna]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -24,15 +19,7 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword,
-        Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion,
-        Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance,
-        Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow,
-        Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe,
-        Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist,
-        Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath,
-        Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur,
-        Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
+      items: [Iron Sword, Steel Sword, Silver Sword, Rapier, Killing Edge, Devil Sword, Broken Sword, Meisterschwert, Ladyblade, Levin Sword, Mercurius, Falchion, Armorslayer, Wyrmslayer, Swordslayer, Iron Lance, Steel Lance, Silver Lance, Ridersbane, Javelin, Broken Lance, Killer Lance, Slim Lance, Gradivus, Iron Bow, Broken Bow, Steel Bow, Silver Bow, Killer Bow, Parthia, Iron Axe, Steel Axe, Hand Axe, Silver Axe, Devil Axe, Broken Axe, Thunderbolt, Arrowspate, Stonehoist, Hoistflamme, Pachyderm, Fire Breath, Ice Breath, Dark Breath, Fog Breath, Fire, Thunder, Blizzard, Cutting Gale, Elfire, Thoron, Bolganone, Excalibur, Aura, Starlight, Imhullu, Dulam, Nosferatu, Meteor, Swarm]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -40,8 +27,7 @@ components:
     layout_properties: {x: 0, y: 45, width: 345}
     event_bindings: {change: weapon_drop_change}
   - name: custombutton
-    properties: {text: Customize, align: full, role: null, background: 'theme:Surface
-        Variant', foreground: '#9ea9ff', font_size: 15}
+    properties: {text: Customize, align: full, role: null, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 15}
     type: Button
     layout_properties: {x: 355, y: 45, width: 120}
     event_bindings: {click: custombutton_click}
@@ -50,8 +36,7 @@ components:
     type: Label
     layout_properties: {x: 330, y: 0, width: 75}
   - name: startinghp
-    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
-      foreground: '', type: number}
+    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant', foreground: '', type: number}
     type: TextBox
     layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
@@ -61,14 +46,12 @@ components:
     layout_properties: {x: 255, y: 0, width: 70}
     event_bindings: {change: book2box_change}
 - name: customization
-  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
-    col_spacing: small}
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000', col_spacing: small}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
   - name: column_panel_2
-    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10,"GYGMYK":25,"KTYCLH":15,"PRQVCK":25,"GQPILK":15}'}
+    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never, col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10,"GYGMYK":25,"KTYCLH":15,"PRQVCK":25,"GQPILK":15}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -143,15 +126,15 @@ components:
       type: Label
       layout_properties: {grid_position: 'CLSTUB,PRQVCK MFONWS,BDLUSR'}
     - name: secretlabel
-      properties: {text: 'Secret Books
-
-          '}
+      properties:
+        text: |
+          Secret Books
       type: Label
       layout_properties: {grid_position: 'CLSTUB,PRQVCK JMFJDR,LNORDL'}
     - name: speedringlabel
-      properties: {text: 'Speed Rings
-
-          '}
+      properties:
+        text: |
+          Speed Rings
       type: Label
       layout_properties: {grid_position: 'CLSTUB,PRQVCK SJJIED,NKECZN'}
     - name: goddesslabel
@@ -163,9 +146,9 @@ components:
       type: Label
       layout_properties: {grid_position: 'CLSTUB,PRQVCK MKLMKU,GQCXJB'}
     - name: talismanlabel
-      properties: {text: 'Talismans
-
-          '}
+      properties:
+        text: |
+          Talismans
       type: Label
       layout_properties: {grid_position: 'CLSTUB,PRQVCK XXZEVD,KAONOK'}
     - name: powerdrop
@@ -210,8 +193,7 @@ components:
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
     - name: hide
-      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
-        visible: true, border: ''}
+      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff', visible: true, border: ''}
       type: Button
       layout_properties: {x: 120, y: 0, width: 100}
       event_bindings: {click: hide_click}
@@ -321,15 +303,12 @@ components:
       type: Label
       layout_properties: {grid_position: 'VEAZQA,ESCBPT DPQIHN,LEDXWH'}
   - name: support
-    properties: {text: supports, role: null, background: 'theme:Surface Variant',
-      foreground: '#9ea9ff', visible: false, spacing_above: none, spacing_below: none,
-      font_size: 12}
+    properties: {text: supports, role: null, background: 'theme:Surface Variant', foreground: '#9ea9ff', visible: false, spacing_above: none, spacing_below: none, font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,YCAQGH'}
     event_bindings: {click: support_click}
   - name: equipment
-    properties: {text: Equipment, background: 'theme:Surface Variant', spacing_above: none,
-      spacing_below: none, foreground: '#9ea9ff', visible: true, font: '', font_size: 12}
+    properties: {text: Equipment, background: 'theme:Surface Variant', spacing_above: none, spacing_below: none, foreground: '#9ea9ff', visible: true, font: '', font_size: 12}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW ZJVYQN,OGXQTV'}
     event_bindings: {click: equipment_click}

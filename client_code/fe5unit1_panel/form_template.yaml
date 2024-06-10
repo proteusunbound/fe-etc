@@ -9,12 +9,7 @@ components:
   components:
   - name: unit_drop
     properties:
-      items: [Leif, Finn, Osian, Halvan, Eyvel, Dagdar, Tanya, Marty, Ronan, Safy,
-        Lifis, Machyua, Brighton, Lara, Fergus, Karin, Dalsin, Asbel, Nanna, Hicks,
-        Shiva, Carrion, Selphina, Cain, Alva, Robert, Fred, Olwen, Mareeta, Salem,
-        Perne, Troude, Tina, Glade, Deen, Eda, Homer, Linoan, Ralf, Ilios, Sleuf,
-        Misha, Sara, Shannam, Miranda, Xavier, Amalda, Conomor, Diarmuid, Saias, Ced,
-        Galzus]
+      items: [Leif, Finn, Osian, Halvan, Eyvel, Dagdar, Tanya, Marty, Ronan, Safy, Lifis, Machyua, Brighton, Lara, Fergus, Karin, Dalsin, Asbel, Nanna, Hicks, Shiva, Carrion, Selphina, Cain, Alva, Robert, Fred, Olwen, Mareeta, Salem, Perne, Troude, Tina, Glade, Deen, Eda, Homer, Linoan, Ralf, Ilios, Sleuf, Misha, Sara, Shannam, Miranda, Xavier, Amalda, Conomor, Diarmuid, Saias, Ced, Galzus]
       spacing_above: small
       spacing_below: small
       include_placeholder: true
@@ -24,19 +19,7 @@ components:
     event_bindings: {change: unit_drop_change}
   - name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge,
-        Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword,
-        Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword,
-        Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword,
-        Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance,
-        Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance,
-        Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance,
-        Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe,
-        Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow,
-        Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen,
-        Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder,
-        Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu,
-        Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
+      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge, Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword, Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword, Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword, Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance, Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance, Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe, Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow, Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen, Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder, Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu, Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       include_placeholder: true
       placeholder: Select Weapon
       visible: false
@@ -44,8 +27,7 @@ components:
     layout_properties: {x: 0, y: 45, width: 345}
     event_bindings: {change: weapon_drop_change}
   - name: custombutton
-    properties: {text: Customize, align: full, role: null, background: 'theme:Surface
-        Variant', foreground: '#9ea9ff', font_size: 15}
+    properties: {text: Customize, align: full, role: null, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 15}
     type: Button
     layout_properties: {x: 355, y: 45, width: 120}
     event_bindings: {click: custombutton_click}
@@ -54,20 +36,17 @@ components:
     type: Label
     layout_properties: {x: 330, y: 0, width: 75}
   - name: startinghp
-    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant',
-      foreground: '', type: number}
+    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant', foreground: '', type: number}
     type: TextBox
     layout_properties: {x: 405, y: 0, width: 70}
     event_bindings: {}
 - name: customization
-  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000',
-    col_spacing: small, col_widths: '{"FQXNPV":35}'}
+  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000', col_spacing: small, col_widths: '{"FQXNPV":35}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
   components:
   - name: column_panel_2
-    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never,
-      col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
+    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never, col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
     components:
@@ -141,8 +120,7 @@ components:
     layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
     components:
     - name: hide
-      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff',
-        visible: true, border: ''}
+      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff', visible: true, border: ''}
       type: Button
       layout_properties: {x: 125, y: 0, width: 100}
       event_bindings: {click: hide_click}
@@ -232,8 +210,7 @@ components:
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,OWKWMX'}
     event_bindings: {click: skills_click}
   - name: cancelproc
-    properties: {text: enemy procs, visible: false, background: 'theme:Surface Variant',
-      foreground: '#9ea9ff'}
+    properties: {text: enemy procs, visible: false, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
     type: Button
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,CUYJIQ'}
     event_bindings: {click: cancelproc_click}
@@ -278,8 +255,7 @@ components:
   layout_properties: {grid_position: 'JHQCQW,BJCOIT'}
   components:
   - name: hidecancel
-    properties: {text: hide enemy procs, enabled: true, background: 'theme:Surface
-        Variant', foreground: '#9ea9ff'}
+    properties: {text: hide enemy procs, enabled: true, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
     type: Button
     layout_properties: {grid_position: 'OCBONJ,DHMDAC'}
     event_bindings: {click: hidecancel_click}
