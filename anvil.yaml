@@ -1244,6 +1244,9 @@ db_schema:
     - name: Def
       admin_ui: {width: 200, order: 7}
       type: number
+    - name: Res
+      admin_ui: {width: 200, order: 8}
+      type: number
     title: FE4 Arthur Inheritance
   fe3_weapon_stats:
     client: search
