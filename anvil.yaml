@@ -610,6 +610,17 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: number
     title: FE4 Lester Inheritance
+  fe4_nanna_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 67}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    title: FE4 Nanna Inheritance
   fe4_class_change:
     client: search
     server: full
