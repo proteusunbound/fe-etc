@@ -687,6 +687,12 @@ db_schema:
     - name: Mag
       admin_ui: {width: 200, order: 3}
       type: number
+    - name: Skl
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Spd
+      admin_ui: {width: 200, order: 5}
+      type: number
     title: FE4 Patty Inheritance
   fe4_scathach_inheritance:
     client: search
