@@ -18,6 +18,9 @@ db_schema:
     - name: Father
       admin_ui: {width: 200, order: 0}
       type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
     title: FE4 Ced Inheritance
   fe4_tine_inheritance:
     client: search
