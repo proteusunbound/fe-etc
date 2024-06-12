@@ -11,6 +11,17 @@ metadata: {title: FE Calculator, description: Combat success and turn calculator
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
+  fe4_tine_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 67}
+      type: string
+    - name: HP
+      admin_ui: {width: 200, order: 1}
+      type: number
+    title: FE4 Tine Inheritance
   fe2_weapon_stats:
     client: search
     server: search
