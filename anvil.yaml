@@ -11,6 +11,14 @@ metadata: {title: FE Calculator, description: Combat success and turn calculator
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
+  fe4_ced_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: FE4 Ced Inheritance
   fe4_tine_inheritance:
     client: search
     server: search
