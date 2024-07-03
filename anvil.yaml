@@ -674,6 +674,14 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: number
     title: FE4 Lester Inheritance
+  fe4_coirpre_inheritance:
+    client: search
+    server: search
+    columns:
+    - name: Father
+      admin_ui: {order: 0, width: 71}
+      type: string
+    title: FE4 Coirpre Inheritance
   fe4_lene_inheritance:
     client: search
     server: search
