@@ -684,6 +684,9 @@ db_schema:
     - name: HP
       admin_ui: {width: 200, order: 1}
       type: number
+    - name: Str
+      admin_ui: {order: 2, width: 200}
+      type: number
     title: FE4 Coirpre Inheritance
   fe4_lene_inheritance:
     client: search
