@@ -77,7 +77,11 @@ skill_list = {
       "Claud": ["Astra", "Nihil", "Follow-Up"]
     },
     "Dalvin": ["Follow-Up", "Vantage"],
-    "Larcei": ["Follow-Up", "Nihil", "Astra", "Luna"],
+    "Larcei": {
+      "Chulainn": ["Follow-Up", "Nihil", "Astra", "Luna"],
+      "Naoise": ["Accost", "Astra", "Critical", "Nihil", "Follow-Up"],
+      
+    },
     "Creidne": ["Follow-Up"],
     "Lana": ["Accost", "Adept"],
     "Diarmuid": ["Follow-Up", "Accost"],
