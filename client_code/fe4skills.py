@@ -128,7 +128,15 @@ skill_list = {
       "Naoise": ["Accost", "Critical"],
       "Alec": ["Nihil", "Follow-Up"],
       "Arden": ["Vantage"],
-      
+      "Azelle": ["Follow-Up"],
+      "Lex": ["Vantage"],
+      "Finn": ["Miracle", "Follow-Up"],
+      "Midir": ["Accost", "Follow-Up"],
+      "Dew": [],
+      "Chulainn": [],
+      "Beowolf": ["Accost", "Follow-Up"],
+      "Lewyn": ["Adept", "Critical"],
+      "Claud": []
     },
     "Deimne": ["Follow-Up"],
     "Oifey": ["Follow-Up", "Critical"],
