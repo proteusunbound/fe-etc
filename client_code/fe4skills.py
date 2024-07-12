@@ -126,7 +126,9 @@ skill_list = {
     "Lester": {
       "Jamke": ["Accost", "Adept"],
       "Naoise": ["Accost", "Critical"],
-      "Alec": ["Nihil", "Follow-Up"]
+      "Alec": ["Nihil", "Follow-Up"],
+      "Arden": ["Vantage"],
+      
     },
     "Deimne": ["Follow-Up"],
     "Oifey": ["Follow-Up", "Critical"],
