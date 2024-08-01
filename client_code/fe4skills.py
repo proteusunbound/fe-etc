@@ -157,7 +157,10 @@ skill_list = {
       "Claud": ["Follow-Up"]
     },
     "Hermina": ["Adept"],
-    "Arthur": ["Follow-Up", "Wrath"],
+    "Arthur": {
+      "Azelle": ["Follow-Up", "Wrath"],
+      "Naoise": ["Accost", "Critical", "Wrath"],
+    },
     "Amid": ["Adept"],
     "Leif": ["Critical", "Adept"],
     "Nanna": ["Follow-Up", "Accost"],
