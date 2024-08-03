@@ -177,6 +177,7 @@ skill_list = {
     "Nanna": {
       "Beowolf": ["Follow-Up", "Accost"],
       "Naoise": ["Accost", "Critical"],
+      "Alec": ["Nihil", "Follow-Up"],
       
     },
     "Shannan": ["Follow-Up", "Astra", "Adept"],
