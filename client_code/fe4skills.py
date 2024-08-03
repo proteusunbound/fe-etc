@@ -174,7 +174,11 @@ skill_list = {
     },
     "Amid": ["Adept"],
     "Leif": ["Critical", "Adept"],
-    "Nanna": ["Follow-Up", "Accost"],
+    "Nanna": {
+      "Beowolf": ["Follow-Up", "Accost"],
+      "Naoise": ["Accost", "Critical"],
+      
+    },
     "Shannan": ["Follow-Up", "Astra", "Adept"],
     "Patty": ["Follow-Up", "Accost"],
     "Daisy": ["Miracle"],
