@@ -190,7 +190,11 @@ skill_list = {
       "Claud": []
     },
     "Shannan": ["Follow-Up", "Astra", "Adept"],
-    "Patty": ["Follow-Up", "Accost"],
+    "Patty": {
+      "Midir": ["Follow-Up", "Accost"],
+      "Naoise": ["Accost", "Critical"],
+      
+    },
     "Daisy": ["Miracle"],
     "Ares": ["Follow-Up", "Adept", "Vantage"],
     "Lene": ["Adept", "Miracle"],
