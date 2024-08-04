@@ -194,7 +194,7 @@ skill_list = {
       "Midir": ["Follow-Up", "Accost"],
       "Naoise": ["Accost", "Critical"],
       "Alec": ["Nihil", "Follow-Up"],
-      
+      "Arden": ["Vantage"],
     },
     "Daisy": ["Miracle"],
     "Ares": ["Follow-Up", "Adept", "Vantage"],
