@@ -193,6 +193,7 @@ skill_list = {
     "Patty": {
       "Midir": ["Follow-Up", "Accost"],
       "Naoise": ["Accost", "Critical"],
+      "Alec": ["Nihil", "Follow-Up"],
       
     },
     "Daisy": ["Miracle"],
