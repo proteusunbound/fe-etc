@@ -227,7 +227,15 @@ skill_list = {
       "Naoise": ["Accost", "Critical", "Wrath"],
       "Alec": ["Nihil", "Follow-Up", "Wrath"],
       "Arden": ["Vantage", "Wrath"],
-      
+      "Lex": ["Vantage", "Wrath"],
+      "Finn": ["Miracle", "Follow-Up", "Wrath"],
+      "Midir": ["Accost", "Wrath"],
+      "Dew": ["Wrath"],
+      "Jamke": ["Accost", "Adept", "Wrath"],
+      "Chulainn": ["Wrath"],
+      "Beowolf": ["Accost", "Follow-Up", "Wrath"],
+      "Lewyn": ["Adept", "Critical", "Wrath"],
+      "Claud": ["Wrath"]
     },
     "Linda": ["Wrath"],
     "Febail": ["Follow-Up", "Accost"],
