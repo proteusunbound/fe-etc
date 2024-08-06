@@ -222,7 +222,11 @@ skill_list = {
       "Beowolf": ["Accost", "Adept", "Miracle", "Follow-Up"],
       "Lewyn": ["Adept", "Critical", "Miracle"]
     },
-    "Tine": ["Follow-Up", "Wrath"],
+    "Tine": {
+      "Azelle": ["Follow-Up", "Wrath"],
+      "Naoise": ["Accost", "Critical", "Wrath"],
+      
+    },
     "Linda": ["Wrath"],
     "Febail": ["Follow-Up", "Accost"],
     "Asaello": ["Follow-Up", "Accost"],
