@@ -226,6 +226,7 @@ skill_list = {
       "Azelle": ["Follow-Up", "Wrath"],
       "Naoise": ["Accost", "Critical", "Wrath"],
       "Alec": ["Nihil", "Follow-Up", "Wrath"],
+      "Arden": ["Vantage", "Wrath"],
       
     },
     "Linda": ["Wrath"],
