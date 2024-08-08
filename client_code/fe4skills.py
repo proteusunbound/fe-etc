@@ -241,6 +241,8 @@ skill_list = {
     "Febail": {
       "Midir": ["Follow-Up", "Accost"],
       "Naoise": ["Accost", "Critical", "Follow-Up"],
+      "Alec": ["Nihil", "Follow-Up"],
+      
     },
     "Asaello": ["Follow-Up", "Accost"],
     "Ced": ["Follow-Up", "Critical", "Adept"],
