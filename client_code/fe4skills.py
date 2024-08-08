@@ -238,7 +238,10 @@ skill_list = {
       "Claud": ["Wrath"]
     },
     "Linda": ["Wrath"],
-    "Febail": ["Follow-Up", "Accost"],
+    "Febail": {
+      "Midir": ["Follow-Up", "Accost"],
+      "Naoise": ["Accost", "Critical", "Follow-Up"],
+    },
     "Asaello": ["Follow-Up", "Accost"],
     "Ced": ["Follow-Up", "Critical", "Adept"],
     "Hawk": ["Follow-Up", "Adept"],
