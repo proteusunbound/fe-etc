@@ -242,6 +242,7 @@ skill_list = {
       "Midir": ["Follow-Up", "Accost"],
       "Naoise": ["Accost", "Critical", "Follow-Up"],
       "Alec": ["Nihil", "Follow-Up"],
+      "Arden": ["Follow-Up", "Vantage"],
       
     },
     "Asaello": ["Follow-Up", "Accost"],
