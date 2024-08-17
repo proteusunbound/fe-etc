@@ -245,6 +245,8 @@ skill_list = {
       "Arden": ["Follow-Up", "Vantage"],
       "Azelle": ["Follow-Up"],
       "Lex": ["Follow-Up", "Vantage"],
+      "Finn": ["Miracle", "Follow-Up"],
+      "Dew": ["Follow-Up"],
       
     },
     "Asaello": ["Follow-Up", "Accost"],
