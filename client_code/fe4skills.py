@@ -254,7 +254,11 @@ skill_list = {
       "Claud": ["Follow-Up"]
     },
     "Asaello": ["Follow-Up", "Accost"],
-    "Ced": ["Follow-Up", "Critical", "Adept"],
+    "Ced": {
+      "Lewyn": ["Follow-Up", "Critical", "Adept"],
+      "Naoise": ["Accost", "Adept", "Critical", "Follow-Up"],
+      
+    },
     "Hawk": ["Follow-Up", "Adept"],
     "Hannibal": ["Adept", "Vantage", "Pavise"],
     "Coirpre": ["Adept", "Miracle"],
