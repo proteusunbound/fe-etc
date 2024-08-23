@@ -248,7 +248,10 @@ skill_list = {
       "Finn": ["Miracle", "Follow-Up"],
       "Dew": ["Follow-Up"],
       "Jamke": ["Accost", "Adept", "Follow-Up"],
-      
+      "Chulainn": ["Follow-Up"],
+      "Beowolf": ["Accost", "Follow-Up"],
+      "Lewyn": ["Adept", "Critical", "Follow-Up"],
+      "Claud": ["Follow-Up"]
     },
     "Asaello": ["Follow-Up", "Accost"],
     "Ced": ["Follow-Up", "Critical", "Adept"],
