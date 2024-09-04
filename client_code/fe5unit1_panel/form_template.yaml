@@ -1,272 +1,272 @@
-container:
-  type: ColumnPanel
-  properties: {visible: false, wrap_on: mobile}
 components:
-- name: xy_panel_1
-  properties: {height: '70', spacing_above: none, spacing_below: small}
-  type: XYPanel
-  layout_properties: {grid_position: 'QIXASK,RJPYQE'}
-  components:
-  - name: unit_drop
+- components:
+  - event_bindings: {change: unit_drop_change}
+    layout_properties: {width: 320, x: 0, y: 0}
+    name: unit_drop
     properties:
+      include_placeholder: true
       items: [Leif, Finn, Osian, Halvan, Eyvel, Dagdar, Tanya, Marty, Ronan, Safy, Lifis, Machyua, Brighton, Lara, Fergus, Karin, Dalsin, Asbel, Nanna, Hicks, Shiva, Carrion, Selphina, Cain, Alva, Robert, Fred, Olwen, Mareeta, Salem, Perne, Troude, Tina, Glade, Deen, Eda, Homer, Linoan, Ralf, Ilios, Sleuf, Misha, Sara, Shannam, Miranda, Xavier, Amalda, Conomor, Diarmuid, Saias, Ced, Galzus]
+      placeholder: Select Unit
       spacing_above: small
       spacing_below: small
-      include_placeholder: true
-      placeholder: Select Unit
     type: DropDown
-    layout_properties: {x: 0, y: 0, width: 320}
-    event_bindings: {change: unit_drop_change}
-  - name: weapon_drop
+  - event_bindings: {change: weapon_drop_change}
+    layout_properties: {width: 345, x: 0, y: 45}
+    name: weapon_drop
     properties:
-      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge, Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword, Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword, Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword, Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance, Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance, Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe, Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow, Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen, Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder, Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu, Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       include_placeholder: true
+      items: [Iron Sword, Steel Sword, Silver Sword, Slim Sword, Iron Blade, Killing Edge, Venin Sword, Berserk Sword, Sleep Sword, Beo's Sword, Blessed Sword, Loptr Sword, Bragi Sword, Light Brand, Brave Sword, King Sword, Lands Sword, Wind Sword, Flame Sword, Lightning Sword, Paragon Sword, Armorslayer, Rapier, Short Sword, Long Sword, Great Sword, Meisterschwert, Shadow Sword, Mareeta's Sword, Iron Lance, Steel Lance, Silver Lance, Slim Lance, Poison Lance, Dragon Lance, Brave Lance, Short Lance, Long Lance, Great Lance, Javelin, Master Lance, Ridersbane, Killer Lance, Iron Axe, Steel Axe, Silver Axe, Hand Axe, Hammer, Killer Axe, Vouge, Brave Axe, Devil Axe, Battle Axe, Poleaxe, Master Axe, Iron Bow, Steel Bow, Silver Bow, Poison Bow, Killer Bow, Brave Bow, Short Bow, Long Bow, Great Bow, Meisterbogen, Ballista, Iron Ballista, Poison Ballista, Fire, Elfire, Bolganone, Thunder, Dire Thunder, Thoron, Wind, Grafcalibur, Tornado, Forseti, Lightning, Nosferatu, Jormungand, Fenrir, Hel, Meteor, Bolting, Blizzard, Poison, Petrify]
       placeholder: Select Weapon
       visible: false
     type: DropDown
-    layout_properties: {x: 0, y: 45, width: 345}
-    event_bindings: {change: weapon_drop_change}
-  - name: custombutton
-    properties: {text: Customize, align: full, role: null, background: 'theme:Surface Variant', foreground: '#9ea9ff', font_size: 15}
+  - event_bindings: {click: custombutton_click}
+    layout_properties: {width: 120, x: 355, y: 45}
+    name: custombutton
+    properties: {align: full, background: 'theme:Surface Variant', font_size: 15, foreground: '#9ea9ff', role: null, text: Customize}
     type: Button
-    layout_properties: {x: 355, y: 45, width: 120}
-    event_bindings: {click: custombutton_click}
-  - name: sethplabel
-    properties: {text: 'Starting HP:', font_size: 15}
+  - layout_properties: {width: 75, x: 330, y: 0}
+    name: sethplabel
+    properties: {font_size: 15, text: 'Starting HP:'}
     type: Label
-    layout_properties: {x: 330, y: 0, width: 75}
-  - name: startinghp
-    properties: {placeholder: '0', font_size: 15, background: 'theme:Surface Variant', foreground: '', type: number}
+  - event_bindings: {}
+    layout_properties: {width: 70, x: 405, y: 0}
+    name: startinghp
+    properties: {background: 'theme:Surface Variant', font_size: 15, foreground: '', placeholder: '0', type: number}
     type: TextBox
-    layout_properties: {x: 405, y: 0, width: 70}
-    event_bindings: {}
-- name: customization
-  properties: {visible: false, background: '#9ea9ff', role: card, foreground: '#000000', col_spacing: small, col_widths: '{"FQXNPV":35}'}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
-  components:
-  - name: column_panel_2
-    properties: {background: '', role: null, foreground: '', col_spacing: none, wrap_on: never, col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}'}
-    type: ColumnPanel
+  layout_properties: {grid_position: 'QIXASK,RJPYQE'}
+  name: xy_panel_1
+  properties: {height: '70', spacing_above: none, spacing_below: small}
+  type: XYPanel
+- components:
+  - components:
+    - layout_properties: {full_width_row: false, grid_position: 'KTXRFX,UEJOCT'}
+      name: hplabel
+      properties: {align: center, font_size: null, text: HP}
+      type: Label
+    - layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
+      name: hp
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR GYRYBB,TAPVOF'}
+      name: strlabel
+      properties: {align: center, font_size: null, text: STR}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR JSPVGR,KGYMRG'}
+      name: maglabel
+      properties: {align: center, text: MAG}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR YEDAHM,XEDNFW'}
+      name: skl_label
+      properties: {align: center, font_size: null, text: SKL}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR MSWAXB,WVUMZS'}
+      name: spdlabel
+      properties: {align: center, font_size: null, text: SPD}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR PDBIDL,WAOREX'}
+      name: lcklabel
+      properties: {align: center, font_size: null, text: LCK}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR DYRMEN,ZMLJID'}
+      name: deflabel
+      properties: {align: center, font_size: null, text: DEF}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,EORSAR IMRYFG,XCHNWJ'}
+      name: buildlabel
+      properties: {align: center, text: BLD}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE PQZPMB,KXSLRR'}
+      name: strength
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE HQBBZY,LQTRTZ'}
+      name: magic
+      properties: {align: center, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE CRNPVZ,RWLPKA'}
+      name: skill
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE RLVUXH,WWEMQZ'}
+      name: speed
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE AXGWJW,GKYSZT'}
+      name: luck
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE QCKJYR,PLZMCT'}
+      name: defense
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'CLSTUB,INCKSE JINCUW,WWCLYP'}
+      name: build
+      properties: {align: center, text: '-'}
+      type: Label
     layout_properties: {grid_position: 'EZLRPF,VQUCJR'}
-    components:
-    - name: hplabel
-      properties: {text: HP, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'KTXRFX,UEJOCT', full_width_row: false}
-    - name: hp
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'KTXRFX,GWNBQZ'}
-    - name: strlabel
-      properties: {text: STR, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR GYRYBB,TAPVOF'}
-    - name: maglabel
-      properties: {text: MAG, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR JSPVGR,KGYMRG'}
-    - name: skl_label
-      properties: {text: SKL, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR YEDAHM,XEDNFW'}
-    - name: spdlabel
-      properties: {text: SPD, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR MSWAXB,WVUMZS'}
-    - name: lcklabel
-      properties: {text: LCK, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR PDBIDL,WAOREX'}
-    - name: deflabel
-      properties: {text: DEF, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR DYRMEN,ZMLJID'}
-    - name: buildlabel
-      properties: {text: BLD, align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,EORSAR IMRYFG,XCHNWJ'}
-    - name: strength
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE PQZPMB,KXSLRR'}
-    - name: magic
-      properties: {text: '-', align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE HQBBZY,LQTRTZ'}
-    - name: skill
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE CRNPVZ,RWLPKA'}
-    - name: speed
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE RLVUXH,WWEMQZ'}
-    - name: luck
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE AXGWJW,GKYSZT'}
-    - name: defense
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE QCKJYR,PLZMCT'}
-    - name: build
-      properties: {text: '-', align: center}
-      type: Label
-      layout_properties: {grid_position: 'CLSTUB,INCKSE JINCUW,WWCLYP'}
-  - name: xy_panel_2
-    properties: {height: '75', spacing_above: small, spacing_below: small}
-    type: XYPanel
-    layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
-    components:
-    - name: hide
-      properties: {text: Hide, align: full, role: null, background: '#49454F', foreground: '#9ea9ff', visible: true, border: ''}
-      type: Button
-      layout_properties: {x: 125, y: 0, width: 100}
+    name: column_panel_2
+    properties: {background: '', col_spacing: none, col_widths: '{"UEJOCT":10,"GWNBQZ":10,"EORSAR":10,"INCKSE":10}', foreground: '', role: null, wrap_on: never}
+    type: ColumnPanel
+  - components:
+    - data_bindings: []
       event_bindings: {click: hide_click}
-      data_bindings: []
-    - name: leadershiplabel
+      layout_properties: {width: 100, x: 125, y: 0}
+      name: hide
+      properties: {align: full, background: '#49454F', border: '', foreground: '#9ea9ff', role: null, text: Hide, visible: true}
+      type: Button
+    - layout_properties: {width: 100, x: 0, y: 50}
+      name: leadershiplabel
       properties: {text: 'Leadership Stars:'}
       type: Label
-      layout_properties: {x: 0, y: 50, width: 100}
-    - name: starsbox
+    - event_bindings: {pressed_enter: starsbox_pressed_enter}
+      layout_properties: {width: 50, x: 100, y: 50}
+      name: starsbox
       properties: {placeholder: '0', type: number}
       type: TextBox
-      layout_properties: {x: 100, y: 50, width: 50}
-      event_bindings: {pressed_enter: starsbox_pressed_enter}
-  - name: column_panel_3
-    properties: {spacing_above: small, spacing_below: small, col_spacing: tiny}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
-    components:
-    - name: avoidlabel
-      properties: {text: Avoids, align: center, font_size: null}
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW WKZLFT,ZQWMSF'}
+    name: xy_panel_2
+    properties: {height: '75', spacing_above: small, spacing_below: small}
+    type: XYPanel
+  - components:
+    - layout_properties: {grid_position: 'DAMDVU,CNDIRF ZWALOY,WZAQGA'}
+      name: avoidlabel
+      properties: {align: center, font_size: null, text: Avoids}
       type: Label
-      layout_properties: {grid_position: 'DAMDVU,CNDIRF ZWALOY,WZAQGA'}
-    - name: avoid_drop
-      properties:
-        include_placeholder: false
-        placeholder: ''
-        items: ['0', '1', '2', '3', '4', '5']
-        foreground: ''
-        font_size: null
-        visible: true
-        align: full
-      type: DropDown
-      layout_properties: {grid_position: 'DAMDVU,CNDIRF VKMUZG,XZSAGP'}
+    - data_bindings: []
       event_bindings: {}
-      data_bindings: []
-    - name: critno
-      properties: {text: Crits, align: center}
+      layout_properties: {grid_position: 'DAMDVU,CNDIRF VKMUZG,XZSAGP'}
+      name: avoid_drop
+      properties:
+        align: full
+        font_size: null
+        foreground: ''
+        include_placeholder: false
+        items: ['0', '1', '2', '3', '4', '5']
+        placeholder: ''
+        visible: true
+      type: DropDown
+    - layout_properties: {grid_position: 'DAMDVU,VTTGZR PVFYIX,DQGRET'}
+      name: critno
+      properties: {align: center, text: Crits}
       type: Label
-      layout_properties: {grid_position: 'DAMDVU,VTTGZR PVFYIX,DQGRET'}
-    - name: crit_drop
+    - layout_properties: {grid_position: 'DAMDVU,VTTGZR XUPPNL,AXGIKQ'}
+      name: crit_drop
       properties:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
-      layout_properties: {grid_position: 'DAMDVU,VTTGZR XUPPNL,AXGIKQ'}
-    - name: dodgelabel
-      properties: {text: Dodges, align: center}
+    - layout_properties: {grid_position: 'DAMDVU,UQVIUJ ZMCETC,EHEAZD'}
+      name: dodgelabel
+      properties: {align: center, text: Dodges}
       type: Label
-      layout_properties: {grid_position: 'DAMDVU,UQVIUJ ZMCETC,EHEAZD'}
-    - name: dodge_drop
+    - layout_properties: {grid_position: 'DAMDVU,UQVIUJ DXPEGS,RNMBPC'}
+      name: dodge_drop
       properties:
         items: ['0', '1', '2', '3', '4', '5']
       type: DropDown
-      layout_properties: {grid_position: 'DAMDVU,UQVIUJ DXPEGS,RNMBPC'}
-  - name: column_panel_1
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW FINNXU,SGDICA'}
+    name: column_panel_3
+    properties: {col_spacing: tiny, spacing_above: small, spacing_below: small}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
+      name: aslabel
+      properties: {align: center, font_size: null, text: AS}
+      type: Label
+    - layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}
+      name: attackspeed
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'VEAZQA,JXKZOR FNRQCP,BBKNCJ'}
+      name: hitlabel
+      properties: {align: center, font_size: null, text: HIT}
+      type: Label
+    - data_bindings: []
+      layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
+      name: hit
+      properties: {align: center, font_size: null, text: '-'}
+      type: Label
+    - layout_properties: {grid_position: 'VEAZQA,ZIXKZV KZCDEV,AWWKWF'}
+      name: critlabel
+      properties: {align: center, text: CRIT}
+      type: Label
+    - layout_properties: {grid_position: 'VEAZQA,ZIXKZV TMZCBX,LGEHNJ'}
+      name: crit
+      properties: {align: center, text: '-'}
+      type: Label
+    layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
+    name: column_panel_1
     properties: {spacing_above: small, spacing_below: small}
     type: ColumnPanel
-    layout_properties: {grid_position: 'EZLRPF,TCYFRW HSBLTZ,EHGNTY'}
-    components:
-    - name: aslabel
-      properties: {text: AS, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,GJIZGX TENBXH,MYTINH'}
-    - name: attackspeed
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,GJIZGX IOGAFX,ELRHPS'}
-    - name: hitlabel
-      properties: {text: HIT, align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,JXKZOR FNRQCP,BBKNCJ'}
-    - name: hit
-      properties: {text: '-', align: center, font_size: null}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,JXKZOR OWHZRQ,YAYFZN'}
-      data_bindings: []
-    - name: critlabel
-      properties: {text: CRIT, align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,ZIXKZV KZCDEV,AWWKWF'}
-    - name: crit
-      properties: {text: '-', align: center}
-      type: Label
-      layout_properties: {grid_position: 'VEAZQA,ZIXKZV TMZCBX,LGEHNJ'}
-  - name: skills
-    properties: {text: SKILLS, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
-    type: Button
+  - event_bindings: {click: skills_click}
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,OWKWMX'}
-    event_bindings: {click: skills_click}
-  - name: cancelproc
-    properties: {text: enemy procs, visible: false, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    name: skills
+    properties: {background: 'theme:Surface Variant', foreground: '#9ea9ff', text: SKILLS}
     type: Button
+  - event_bindings: {click: cancelproc_click}
     layout_properties: {grid_position: 'EZLRPF,TCYFRW HZKCRJ,CUYJIQ'}
-    event_bindings: {click: cancelproc_click}
-- name: unitproc
-  properties: {visible: false}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'JHQCQW,YVFPRK'}
-  components:
-  - name: hideskills
-    properties: {text: hide skills, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
+    name: cancelproc
+    properties: {background: 'theme:Surface Variant', foreground: '#9ea9ff', text: enemy procs, visible: false}
     type: Button
+  layout_properties: {grid_position: 'HBBGFB,YHLKDT'}
+  name: customization
+  properties: {background: '#9ea9ff', col_spacing: small, col_widths: '{"FQXNPV":35}', foreground: '#000000', role: card, visible: false}
+  type: ColumnPanel
+- components:
+  - event_bindings: {click: hideskills_click}
     layout_properties: {grid_position: 'HATWNA,UILAJR'}
-    event_bindings: {click: hideskills_click}
-  - name: skillslist
+    name: hideskills
+    properties: {background: 'theme:Surface Variant', foreground: '#9ea9ff', text: hide skills}
+    type: Button
+  - layout_properties: {grid_position: 'JQEDOS,HGOTQO'}
+    name: skillslist
     properties: {}
     type: RichText
-    layout_properties: {grid_position: 'JQEDOS,HGOTQO'}
-  - name: adeptlabel
-    properties: {text: Adepts, align: center, visible: false}
+  - layout_properties: {grid_position: 'XWELLE,QLQVEC'}
+    name: adeptlabel
+    properties: {align: center, text: Adepts, visible: false}
     type: Label
-    layout_properties: {grid_position: 'XWELLE,QLQVEC'}
-  - name: miraclelabel
-    properties: {text: Miracles, align: center, visible: false}
+  - layout_properties: {grid_position: 'XWELLE,JIOJOY'}
+    name: miraclelabel
+    properties: {align: center, text: Miracles, visible: false}
     type: Label
-    layout_properties: {grid_position: 'XWELLE,JIOJOY'}
-  - name: adept_drop
+  - layout_properties: {grid_position: 'FXGNJJ,VIIIZT'}
+    name: adept_drop
     properties:
-      items: ['0', '1', '2', '3', '4', '5']
       align: full
-      visible: false
-    type: DropDown
-    layout_properties: {grid_position: 'FXGNJJ,VIIIZT'}
-  - name: miracle_drop
-    properties:
-      visible: false
       items: ['0', '1', '2', '3', '4', '5']
+      visible: false
     type: DropDown
-    layout_properties: {grid_position: 'FXGNJJ,XYQJIR'}
-- name: bossproc
+  - layout_properties: {grid_position: 'FXGNJJ,XYQJIR'}
+    name: miracle_drop
+    properties:
+      items: ['0', '1', '2', '3', '4', '5']
+      visible: false
+    type: DropDown
+  layout_properties: {grid_position: 'JHQCQW,YVFPRK'}
+  name: unitproc
   properties: {visible: false}
   type: ColumnPanel
-  layout_properties: {grid_position: 'JHQCQW,BJCOIT'}
-  components:
-  - name: hidecancel
-    properties: {text: hide enemy procs, enabled: true, background: 'theme:Surface Variant', foreground: '#9ea9ff'}
-    type: Button
+- components:
+  - event_bindings: {click: hidecancel_click}
     layout_properties: {grid_position: 'OCBONJ,DHMDAC'}
-    event_bindings: {click: hidecancel_click}
-  - name: canceladept
-    properties: {text: Cancel Adepts, visible: false, align: center}
+    name: hidecancel
+    properties: {background: 'theme:Surface Variant', enabled: true, foreground: '#9ea9ff', text: hide enemy procs}
+    type: Button
+  - layout_properties: {grid_position: 'VRASEL,IHHPAO'}
+    name: canceladept
+    properties: {align: center, text: Cancel Adepts, visible: false}
     type: Label
-    layout_properties: {grid_position: 'VRASEL,IHHPAO'}
-  - name: canceladept_drop
+  - layout_properties: {grid_position: 'WYLWID,LAJFEI'}
+    name: canceladept_drop
     properties:
-      items: ['0', '1', '2', '3', '4', '5']
       align: center
+      items: ['0', '1', '2', '3', '4', '5']
     type: DropDown
-    layout_properties: {grid_position: 'WYLWID,LAJFEI'}
+  layout_properties: {grid_position: 'JHQCQW,BJCOIT'}
+  name: bossproc
+  properties: {visible: false}
+  type: ColumnPanel
+container:
+  properties: {visible: false, wrap_on: mobile}
+  type: ColumnPanel
 is_package: true

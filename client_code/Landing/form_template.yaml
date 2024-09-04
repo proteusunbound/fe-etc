@@ -1,33 +1,33 @@
-container: {type: ColumnPanel}
 components:
-- name: column_panel_1
-  properties: {}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'FJKWAS,JEQEFH'}
-  components:
-  - name: fe1button
+- components:
+  - event_bindings: {click: fe1button_click}
+    layout_properties: {grid_position: 'BCPBTS,KNDETV PMKVAA,FDMVPH'}
+    name: fe1button
     properties: {text: FE1}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,KNDETV PMKVAA,FDMVPH'}
-    event_bindings: {click: fe1button_click}
-  - name: fe4button
+  - event_bindings: {click: fe4button_click}
+    layout_properties: {grid_position: 'BCPBTS,KNDETV DJESSQ,HTVIEF'}
+    name: fe4button
     properties: {text: FE4}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,KNDETV DJESSQ,HTVIEF'}
-    event_bindings: {click: fe4button_click}
-  - name: fe2button
+  - event_bindings: {click: fe2button_click}
+    layout_properties: {grid_position: 'BCPBTS,CEPQZJ OFGHGA,YBICFU'}
+    name: fe2button
     properties: {text: FE2}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,CEPQZJ OFGHGA,YBICFU'}
-    event_bindings: {click: fe2button_click}
-  - name: fe5button
+  - event_bindings: {click: fe5button_click}
+    layout_properties: {grid_position: 'BCPBTS,CEPQZJ PECISN,HELVOV'}
+    name: fe5button
     properties: {text: FE5}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,CEPQZJ PECISN,HELVOV'}
-    event_bindings: {click: fe5button_click}
-  - name: fe3button
+  - event_bindings: {click: fe3button_click}
+    layout_properties: {grid_position: 'BCPBTS,XSHXJK'}
+    name: fe3button
     properties: {text: FE3}
     type: Button
-    layout_properties: {grid_position: 'BCPBTS,XSHXJK'}
-    event_bindings: {click: fe3button_click}
+  layout_properties: {grid_position: 'FJKWAS,JEQEFH'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+container: {type: ColumnPanel}
 is_package: true

@@ -1,1503 +1,1503 @@
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-startup: {type: form, module: Landing}
-package_name: FE_ETC
 allow_embedding: false
-name: FE ETC
-runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox, server_spec: null}
-metadata: {title: FE Calculator, description: Combat success and turn calculator for Fire Emblem.}
-startup_form: null
-native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
-  fe4_ced_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Ced Inheritance
-  fe4_tine_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 67}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Tine Inheritance
-  fe2_weapon_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 101}
-      type: string
-    - name: Mgt
-      admin_ui: {order: 1, width: 200}
-      type: number
-    - name: Wgt
-      admin_ui: {order: 2, width: 50}
-      type: number
-    - name: Hit
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Crit
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Range
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Type
-      admin_ui: {order: 6, width: 67}
-      type: string
-    - name: Dmg
-      admin_ui: {width: 200, order: 7}
-      type: number
-    title: FE2 Weapon Stats
-  fe2_effectiveness:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 101}
-      type: string
-    - name: Cavalier
-      admin_ui: {width: 200, order: 1}
-      type: bool
-    - name: Knight
-      admin_ui: {width: 200, order: 2}
-      type: bool
-    - name: Pegasus Knight
-      admin_ui: {width: 200, order: 3}
-      type: bool
-    - name: Gargoyle
-      admin_ui: {width: 200, order: 4}
-      type: bool
-    - name: Paladin
-      admin_ui: {width: 200, order: 5}
-      type: bool
-    - name: Falcon Knight
-      admin_ui: {width: 200, order: 6}
-      type: bool
-    - name: Necrodragon
-      admin_ui: {width: 200, order: 7}
-      type: bool
-    - name: Soldier
-      admin_ui: {width: 200, order: 8}
-      type: bool
-    - name: Gold Knight
-      admin_ui: {width: 200, order: 9}
-      type: bool
-    - name: Hades
-      admin_ui: {width: 200, order: 10}
-      type: bool
-    - name: Mercenary
-      admin_ui: {width: 200, order: 11}
-      type: bool
-    - name: Myrmidon
-      admin_ui: {width: 200, order: 12}
-      type: bool
-    - name: Dread Fighter
-      admin_ui: {width: 200, order: 13}
-      type: bool
-    - name: Priestess
-      admin_ui: {width: 200, order: 14}
-      type: bool
-    - name: Revenant
-      admin_ui: {width: 200, order: 15}
-      type: bool
-    - name: Archer
-      admin_ui: {width: 200, order: 16}
-      type: bool
-    - name: Sniper
-      admin_ui: {width: 200, order: 17}
-      type: bool
-    - name: Villager
-      admin_ui: {width: 200, order: 18}
-      type: bool
-    - name: Brigand
-      admin_ui: {width: 200, order: 19}
-      type: bool
-    - name: Mage
-      admin_ui: {width: 200, order: 20}
-      type: bool
-    - name: Arcanist
-      admin_ui: {width: 200, order: 21}
-      type: bool
-    - name: Witch
-      admin_ui: {order: 22, width: 200}
-      type: bool
-    - name: Saint
-      admin_ui: {width: 200, order: 23}
-      type: bool
-    - name: Bonewalker
-      admin_ui: {width: 200, order: 24}
-      type: bool
-    - name: Cleric
-      admin_ui: {width: 200, order: 25}
-      type: bool
-    - name: Mogall
-      admin_ui: {width: 200, order: 26}
-      type: bool
-    - name: Sage
-      admin_ui: {width: 200, order: 27}
-      type: bool
-    - name: Cantor
-      admin_ui: {width: 200, order: 28}
-      type: bool
-    - name: Bow Knight
-      admin_ui: {width: 200, order: 29}
-      type: bool
-    - name: Fighter
-      admin_ui: {width: 200, order: 30}
-      type: bool
-    - name: Fell God
-      admin_ui: {width: 200, order: 31}
-      type: bool
-    - name: Baron
-      admin_ui: {width: 200, order: 32}
-      type: bool
-    - name: Hero
-      admin_ui: {width: 200, order: 33}
-      type: bool
-    - name: Princess
-      admin_ui: {width: 200, order: 34}
-      type: bool
-    title: FE2 Effectiveness
-  fe2_boss_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 206}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Spd
-      admin_ui: {order: 4, width: 50}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: FE2 Boss Stats
-  fe3_class_change:
-    client: search
-    server: search
-    columns:
-    - name: FromClass
-      admin_ui: {order: 0, width: 104}
-      type: string
-    - name: ToClass
-      admin_ui: {order: 1, width: 84}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
-    title: FE3 Class Change
-  fe2_unit_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 64}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Skl
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: FE2 Unit Stats
-  fe3_book_2:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 72}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Res
-      admin_ui: {order: 7, width: 50}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: FE3 Book 2
-  fe4_larcei_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 57}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Larcei Inheritance
   fe1_boss_stats:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 126}
+    - admin_ui: {order: 0, width: 126}
+      name: Name
       type: string
-    - name: HP
-      admin_ui: {order: 1, width: 59}
+    - admin_ui: {order: 1, width: 59}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 50}
+      name: Str
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Def
       type: number
-    - name: Class
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Class
       type: string
+    server: search
     title: FE1 Boss Stats
+  fe1_effectiveness:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 84}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Cavalier
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      name: Knight
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: Pegasus Knight
+      type: bool
+    - admin_ui: {order: 4, width: 200}
+      name: Paladin
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: Wyvern Knight
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      name: Mercenary
+      type: bool
+    - admin_ui: {order: 7, width: 200}
+      name: Fighter
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: Pirate
+      type: bool
+    - admin_ui: {order: 9, width: 200}
+      name: Thief
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: Hero
+      type: bool
+    - admin_ui: {order: 11, width: 200}
+      name: Archer
+      type: bool
+    - admin_ui: {order: 12, width: 200}
+      name: Hunter
+      type: bool
+    - admin_ui: {order: 13, width: 50}
+      name: Ballistician
+      type: bool
+    - admin_ui: {order: 14, width: 200}
+      name: Horseman
+      type: bool
+    - admin_ui: {order: 15, width: 200}
+      name: Sniper
+      type: bool
+    - admin_ui: {order: 16, width: 200}
+      name: Freelancer
+      type: bool
+    - admin_ui: {order: 17, width: 50}
+      name: Manakete
+      type: bool
+    - admin_ui: {order: 18, width: 200}
+      name: Mage
+      type: bool
+    - admin_ui: {order: 18, width: 200}
+      name: Curate
+      type: bool
+    - admin_ui: {order: 19, width: 200}
+      name: Bishop
+      type: bool
+    - admin_ui: {order: 20, width: 200}
+      name: Lord
+      type: bool
+    - admin_ui: {order: 21, width: 200}
+      name: General
+      type: bool
+    server: search
+    title: FE1 Effectiveness
+  fe1_unit_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 65}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Wlv
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 50}
+      name: Lck
+      type: number
+    - admin_ui: {order: 6, width: 50}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
+    - admin_ui: {order: 2.5, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE1 Unit Stats
+  fe1_weapon_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 87}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Lvl
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Mgt
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Wgt
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Hit
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Crit
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Min Range
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Max Range
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Type
+      type: string
+    server: search
+    title: FE1 Weapon Stats
+  fe2_boss_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 206}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 50}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 4, width: 50}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE2 Boss Stats
+  fe2_class_change:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 95}
+      name: Class
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Def
+      type: number
+    server: search
+    title: FE2 Class Change
+  fe2_effectiveness:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 101}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Cavalier
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      name: Knight
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: Pegasus Knight
+      type: bool
+    - admin_ui: {order: 4, width: 200}
+      name: Gargoyle
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: Paladin
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      name: Falcon Knight
+      type: bool
+    - admin_ui: {order: 7, width: 200}
+      name: Necrodragon
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: Soldier
+      type: bool
+    - admin_ui: {order: 9, width: 200}
+      name: Gold Knight
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: Hades
+      type: bool
+    - admin_ui: {order: 11, width: 200}
+      name: Mercenary
+      type: bool
+    - admin_ui: {order: 12, width: 200}
+      name: Myrmidon
+      type: bool
+    - admin_ui: {order: 13, width: 200}
+      name: Dread Fighter
+      type: bool
+    - admin_ui: {order: 14, width: 200}
+      name: Priestess
+      type: bool
+    - admin_ui: {order: 15, width: 200}
+      name: Revenant
+      type: bool
+    - admin_ui: {order: 16, width: 200}
+      name: Archer
+      type: bool
+    - admin_ui: {order: 17, width: 200}
+      name: Sniper
+      type: bool
+    - admin_ui: {order: 18, width: 200}
+      name: Villager
+      type: bool
+    - admin_ui: {order: 19, width: 200}
+      name: Brigand
+      type: bool
+    - admin_ui: {order: 20, width: 200}
+      name: Mage
+      type: bool
+    - admin_ui: {order: 21, width: 200}
+      name: Arcanist
+      type: bool
+    - admin_ui: {order: 22, width: 200}
+      name: Witch
+      type: bool
+    - admin_ui: {order: 23, width: 200}
+      name: Saint
+      type: bool
+    - admin_ui: {order: 24, width: 200}
+      name: Bonewalker
+      type: bool
+    - admin_ui: {order: 25, width: 200}
+      name: Cleric
+      type: bool
+    - admin_ui: {order: 26, width: 200}
+      name: Mogall
+      type: bool
+    - admin_ui: {order: 27, width: 200}
+      name: Sage
+      type: bool
+    - admin_ui: {order: 28, width: 200}
+      name: Cantor
+      type: bool
+    - admin_ui: {order: 29, width: 200}
+      name: Bow Knight
+      type: bool
+    - admin_ui: {order: 30, width: 200}
+      name: Fighter
+      type: bool
+    - admin_ui: {order: 31, width: 200}
+      name: Fell God
+      type: bool
+    - admin_ui: {order: 32, width: 200}
+      name: Baron
+      type: bool
+    - admin_ui: {order: 33, width: 200}
+      name: Hero
+      type: bool
+    - admin_ui: {order: 34, width: 200}
+      name: Princess
+      type: bool
+    server: search
+    title: FE2 Effectiveness
+  fe2_unit_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 64}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Skl
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE2 Unit Stats
+  fe2_weapon_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 101}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Mgt
+      type: number
+    - admin_ui: {order: 2, width: 50}
+      name: Wgt
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Hit
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Crit
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Range
+      type: number
+    - admin_ui: {order: 6, width: 67}
+      name: Type
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: Dmg
+      type: number
+    server: search
+    title: FE2 Weapon Stats
+  fe3_book_2:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 72}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 50}
+      name: Res
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE3 Book 2
+  fe3_boss_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 130}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE3 Boss Stats
+  fe3_class_change:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 104}
+      name: FromClass
+      type: string
+    - admin_ui: {order: 1, width: 84}
+      name: ToClass
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE3 Class Change
   fe3_effectiveness:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 104}
+    - admin_ui: {order: 0, width: 104}
+      name: Name
       type: string
-    - name: Lord
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: Lord
       type: bool
-    - name: Fighter
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Fighter
       type: bool
-    - name: Cavalier
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Cavalier
       type: bool
-    - name: Paladin
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Paladin
       type: bool
-    - name: Armor Knight
-      admin_ui: {order: 5, width: 50}
+    - admin_ui: {order: 5, width: 50}
+      name: Armor Knight
       type: bool
-    - name: General
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: General
       type: bool
-    - name: Pegasus Knight
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Pegasus Knight
       type: bool
-    - name: Dracoknight
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Dracoknight
       type: bool
-    - name: Hunter
-      admin_ui: {width: 200, order: 9}
+    - admin_ui: {order: 9, width: 200}
+      name: Hunter
       type: bool
-    - name: Sniper
-      admin_ui: {width: 200, order: 10}
+    - admin_ui: {order: 10, width: 200}
+      name: Sniper
       type: bool
-    - name: Archer
-      admin_ui: {width: 200, order: 11}
+    - admin_ui: {order: 11, width: 200}
+      name: Archer
       type: bool
-    - name: Horseman
-      admin_ui: {width: 200, order: 12}
+    - admin_ui: {order: 12, width: 200}
+      name: Horseman
       type: bool
-    - name: Manakete
-      admin_ui: {width: 200, order: 13}
+    - admin_ui: {order: 13, width: 200}
+      name: Manakete
       type: bool
-    - name: Fire Dragon
-      admin_ui: {width: 200, order: 14}
+    - admin_ui: {order: 14, width: 200}
+      name: Fire Dragon
       type: bool
-    - name: Mercenary
-      admin_ui: {width: 200, order: 15}
+    - admin_ui: {order: 15, width: 200}
+      name: Mercenary
       type: bool
-    - name: Hero
-      admin_ui: {width: 200, order: 16}
+    - admin_ui: {order: 16, width: 200}
+      name: Hero
       type: bool
-    - name: Thief
-      admin_ui: {width: 200, order: 17}
+    - admin_ui: {order: 17, width: 200}
+      name: Thief
       type: bool
-    - name: Freelancer
-      admin_ui: {width: 200, order: 18}
+    - admin_ui: {order: 18, width: 200}
+      name: Freelancer
       type: bool
-    - name: Dancer
-      admin_ui: {width: 200, order: 19}
+    - admin_ui: {order: 19, width: 200}
+      name: Dancer
       type: bool
-    - name: Cleric
-      admin_ui: {width: 200, order: 20}
+    - admin_ui: {order: 20, width: 200}
+      name: Cleric
       type: bool
-    - name: Mage
-      admin_ui: {width: 200, order: 21}
+    - admin_ui: {order: 21, width: 200}
+      name: Mage
       type: bool
-    - name: Bishop
-      admin_ui: {width: 200, order: 22}
+    - admin_ui: {order: 22, width: 200}
+      name: Bishop
       type: bool
-    - name: Brigand
-      admin_ui: {order: 23, width: 50}
+    - admin_ui: {order: 23, width: 50}
+      name: Brigand
       type: bool
-    - name: Pirate
-      admin_ui: {width: 200, order: 24}
+    - admin_ui: {order: 24, width: 200}
+      name: Pirate
       type: bool
-    - name: Dark Mage
-      admin_ui: {width: 200, order: 25}
+    - admin_ui: {order: 25, width: 200}
+      name: Dark Mage
       type: bool
-    - name: Ballistician
-      admin_ui: {width: 200, order: 26}
+    - admin_ui: {order: 26, width: 200}
+      name: Ballistician
       type: bool
-    - name: Emperor
-      admin_ui: {width: 200, order: 27}
+    - admin_ui: {order: 27, width: 200}
+      name: Emperor
       type: bool
-    - name: Ice Dragon
-      admin_ui: {width: 200, order: 28}
+    - admin_ui: {order: 28, width: 200}
+      name: Ice Dragon
       type: bool
-    - name: Wyvern
-      admin_ui: {width: 200, order: 29}
+    - admin_ui: {order: 29, width: 200}
+      name: Wyvern
       type: bool
-    - name: Earth Dragon
-      admin_ui: {width: 200, order: 30}
+    - admin_ui: {order: 30, width: 200}
+      name: Earth Dragon
       type: bool
-    - name: Shadow Dragon
-      admin_ui: {width: 200, order: 31}
+    - admin_ui: {order: 31, width: 200}
+      name: Shadow Dragon
       type: bool
-    - name: Mage Dragon
-      admin_ui: {width: 200, order: 32}
+    - admin_ui: {order: 32, width: 200}
+      name: Mage Dragon
       type: bool
-    - name: Knight
-      admin_ui: {width: 200, order: 33}
+    - admin_ui: {order: 33, width: 200}
+      name: Knight
       type: bool
+    server: search
     title: FE3 Effectiveness
   fe3_unit_stats:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 70}
+    - admin_ui: {order: 0, width: 70}
+      name: Name
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Str
       type: number
-    - name: Skl
-      admin_ui: {order: 3, width: 50}
+    - admin_ui: {order: 3, width: 50}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Res
       type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Class
       type: string
+    server: search
     title: FE3 Unit Stats
-  fe4_lana_inheritance:
+  fe3_weapon_stats:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 63}
+    - admin_ui: {order: 0, width: 100}
+      name: Name
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 50}
+      name: Mgt
       type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Wgt
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 50}
+      name: Hit
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Crit
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Min Range
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Max Range
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Lana Inheritance
-  fe1_effectiveness:
+    - admin_ui: {order: 7, width: 67}
+      name: Type
+      type: string
+    server: search
+    title: FE3 Weapon Stats
+  fe4_arthur_inheritance:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 84}
+    - admin_ui: {order: 0, width: 63}
+      name: Father
       type: string
-    - name: Cavalier
-      admin_ui: {width: 200, order: 1}
-      type: bool
-    - name: Knight
-      admin_ui: {width: 200, order: 2}
-      type: bool
-    - name: Pegasus Knight
-      admin_ui: {width: 200, order: 3}
-      type: bool
-    - name: Paladin
-      admin_ui: {width: 200, order: 4}
-      type: bool
-    - name: Wyvern Knight
-      admin_ui: {order: 5, width: 200}
-      type: bool
-    - name: Mercenary
-      admin_ui: {width: 200, order: 6}
-      type: bool
-    - name: Fighter
-      admin_ui: {width: 200, order: 7}
-      type: bool
-    - name: Pirate
-      admin_ui: {width: 200, order: 8}
-      type: bool
-    - name: Thief
-      admin_ui: {width: 200, order: 9}
-      type: bool
-    - name: Hero
-      admin_ui: {width: 200, order: 10}
-      type: bool
-    - name: Archer
-      admin_ui: {width: 200, order: 11}
-      type: bool
-    - name: Hunter
-      admin_ui: {width: 200, order: 12}
-      type: bool
-    - name: Ballistician
-      admin_ui: {order: 13, width: 50}
-      type: bool
-    - name: Horseman
-      admin_ui: {width: 200, order: 14}
-      type: bool
-    - name: Sniper
-      admin_ui: {width: 200, order: 15}
-      type: bool
-    - name: Freelancer
-      admin_ui: {width: 200, order: 16}
-      type: bool
-    - name: Manakete
-      admin_ui: {order: 17, width: 50}
-      type: bool
-    - name: Mage
-      admin_ui: {width: 200, order: 18}
-      type: bool
-    - name: Curate
-      admin_ui: {width: 200, order: 18}
-      type: bool
-    - name: Bishop
-      admin_ui: {width: 200, order: 19}
-      type: bool
-    - name: Lord
-      admin_ui: {width: 200, order: 20}
-      type: bool
-    - name: General
-      admin_ui: {width: 200, order: 21}
-      type: bool
-    title: FE1 Effectiveness
-  fe4_lester_inheritance:
+    - admin_ui: {order: 1, width: 50}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Arthur Inheritance
+  fe4_boss_stats:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 63}
+    - admin_ui: {order: 0, width: 123}
+      name: Name
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 50}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 50}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
-    title: FE4 Lester Inheritance
-  fe4_coirpre_inheritance:
+    - admin_ui: {order: 11, width: 200}
+      name: Leadership
+      type: number
+    - admin_ui: {order: 12, width: 200}
+      name: Class
+      type: string
+    - admin_ui: {order: 13, width: 200}
+      name: Level
+      type: number
+    server: search
+    title: FE4 Boss Stats
+  fe4_ced_inheritance:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 71}
+    - admin_ui: {order: 0, width: 200}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 2, width: 200}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
-    title: FE4 Coirpre Inheritance
-  fe4_lene_inheritance:
-    client: search
     server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 66}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Lene Inheritance
-  fe4_nanna_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 67}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Nanna Inheritance
+    title: FE4 Ced Inheritance
   fe4_class_change:
     client: search
+    columns:
+    - admin_ui: {order: 0, width: 112}
+      name: FromClass
+      type: string
+    - admin_ui: {order: 1, width: 98}
+      name: ToClass
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Res
+      type: number
     server: full
-    columns:
-    - name: FromClass
-      admin_ui: {order: 0, width: 112}
-      type: string
-    - name: ToClass
-      admin_ui: {order: 1, width: 98}
-      type: string
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
     title: FE4 Class Change
-  fe4_febail_inheritance:
+  fe4_coirpre_inheritance:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 62}
+    - admin_ui: {order: 0, width: 71}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 200}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
-    title: FE4 Febail Inheritance
-  fe4_patty_inheritance:
-    client: search
     server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 66}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Patty Inheritance
-  fe4_scathach_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 61}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Scathach Inheritance
+    title: FE4 Coirpre Inheritance
   fe4_diarmuid_inheritance:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 67}
+    - admin_ui: {order: 0, width: 67}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 50}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
+    server: search
     title: FE4 Diarmuid Inheritance
   fe4_effectiveness:
     client: search
+    columns:
+    - admin_ui: {order: 0, width: 102}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Cavalier
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      name: Lance Knight
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: Arch Knight
+      type: bool
+    - admin_ui: {order: 4, width: 50}
+      name: Axe Knight
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: Free Knight
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      name: Troubadour
+      type: bool
+    - admin_ui: {order: 7, width: 200}
+      name: Knight Lord
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: Duke Knight
+      type: bool
+    - admin_ui: {order: 9, width: 200}
+      name: Master Knight
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: Paladin
+      type: bool
+    - admin_ui: {order: 11, width: 200}
+      name: Bow Knight
+      type: bool
+    - admin_ui: {order: 12, width: 200}
+      name: Ranger
+      type: bool
+    - admin_ui: {order: 13, width: 200}
+      name: Mage Knight
+      type: bool
+    - admin_ui: {order: 14, width: 200}
+      name: Great Knight
+      type: bool
+    - admin_ui: {order: 15, width: 200}
+      name: Pegasus Knight
+      type: bool
+    - admin_ui: {order: 16, width: 200}
+      name: Falcon Knight
+      type: bool
+    - admin_ui: {order: 17, width: 200}
+      name: Wyvern Rider
+      type: bool
+    - admin_ui: {order: 18, width: 200}
+      name: Wyvern Lord
+      type: bool
+    - admin_ui: {order: 19, width: 200}
+      name: Bow Fighter
+      type: bool
+    - admin_ui: {order: 20, width: 200}
+      name: Sword Fighter
+      type: bool
+    - admin_ui: {order: 21, width: 200}
+      name: Swordmaster
+      type: bool
+    - admin_ui: {order: 22, width: 200}
+      name: Sniper
+      type: bool
+    - admin_ui: {order: 23, width: 200}
+      name: Forrest
+      type: bool
+    - admin_ui: {order: 24, width: 200}
+      name: General
+      type: bool
+    - admin_ui: {order: 25, width: 200}
+      name: Emperor
+      type: bool
+    - admin_ui: {order: 26, width: 200}
+      name: Baron
+      type: bool
+    - admin_ui: {order: 27, width: 200}
+      name: Sword Armor
+      type: bool
+    - admin_ui: {order: 28, width: 200}
+      name: Axe Fighter
+      type: bool
+    - admin_ui: {order: 29, width: 200}
+      name: Warrior
+      type: bool
+    - admin_ui: {order: 30, width: 200}
+      name: Junior Lord
+      type: bool
+    - admin_ui: {order: 31, width: 200}
+      name: Mage Fighter
+      type: bool
+    - admin_ui: {order: 32, width: 200}
+      name: Prince
+      type: bool
+    - admin_ui: {order: 33, width: 200}
+      name: Princess
+      type: bool
+    - admin_ui: {order: 34, width: 200}
+      name: Queen
+      type: bool
+    - admin_ui: {order: 35, width: 200}
+      name: Dancer
+      type: bool
+    - admin_ui: {order: 36, width: 200}
+      name: Priest
+      type: bool
+    - admin_ui: {order: 37, width: 200}
+      name: Mage
+      type: bool
+    - admin_ui: {order: 38, width: 200}
+      name: Thunder Mage
+      type: bool
+    - admin_ui: {order: 39, width: 200}
+      name: Wind Mage
+      type: bool
+    - admin_ui: {order: 40, width: 200}
+      name: High Priest
+      type: bool
+    - admin_ui: {order: 41, width: 200}
+      name: Bishop
+      type: bool
+    - admin_ui: {order: 42, width: 200}
+      name: Sage
+      type: bool
+    - admin_ui: {order: 43, width: 200}
+      name: Bard
+      type: bool
+    - admin_ui: {order: 44, width: 200}
+      name: Light Priestess
+      type: bool
+    - admin_ui: {order: 45, width: 200}
+      name: Dark Mage
+      type: bool
+    - admin_ui: {order: 46, width: 200}
+      name: Dark Bishop
+      type: bool
+    - admin_ui: {order: 47, width: 200}
+      name: Thief
+      type: bool
+    - admin_ui: {order: 48, width: 200}
+      name: Thief Fighter
+      type: bool
+    - admin_ui: {order: 49, width: 200}
+      name: Dark Prince
+      type: bool
     server: full
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 102}
-      type: string
-    - name: Cavalier
-      admin_ui: {width: 200, order: 1}
-      type: bool
-    - name: Lance Knight
-      admin_ui: {width: 200, order: 2}
-      type: bool
-    - name: Arch Knight
-      admin_ui: {width: 200, order: 3}
-      type: bool
-    - name: Axe Knight
-      admin_ui: {order: 4, width: 50}
-      type: bool
-    - name: Free Knight
-      admin_ui: {width: 200, order: 5}
-      type: bool
-    - name: Troubadour
-      admin_ui: {width: 200, order: 6}
-      type: bool
-    - name: Knight Lord
-      admin_ui: {width: 200, order: 7}
-      type: bool
-    - name: Duke Knight
-      admin_ui: {width: 200, order: 8}
-      type: bool
-    - name: Master Knight
-      admin_ui: {width: 200, order: 9}
-      type: bool
-    - name: Paladin
-      admin_ui: {width: 200, order: 10}
-      type: bool
-    - name: Bow Knight
-      admin_ui: {width: 200, order: 11}
-      type: bool
-    - name: Ranger
-      admin_ui: {width: 200, order: 12}
-      type: bool
-    - name: Mage Knight
-      admin_ui: {width: 200, order: 13}
-      type: bool
-    - name: Great Knight
-      admin_ui: {width: 200, order: 14}
-      type: bool
-    - name: Pegasus Knight
-      admin_ui: {width: 200, order: 15}
-      type: bool
-    - name: Falcon Knight
-      admin_ui: {width: 200, order: 16}
-      type: bool
-    - name: Wyvern Rider
-      admin_ui: {width: 200, order: 17}
-      type: bool
-    - name: Wyvern Lord
-      admin_ui: {width: 200, order: 18}
-      type: bool
-    - name: Bow Fighter
-      admin_ui: {width: 200, order: 19}
-      type: bool
-    - name: Sword Fighter
-      admin_ui: {width: 200, order: 20}
-      type: bool
-    - name: Swordmaster
-      admin_ui: {width: 200, order: 21}
-      type: bool
-    - name: Sniper
-      admin_ui: {width: 200, order: 22}
-      type: bool
-    - name: Forrest
-      admin_ui: {width: 200, order: 23}
-      type: bool
-    - name: General
-      admin_ui: {width: 200, order: 24}
-      type: bool
-    - name: Emperor
-      admin_ui: {width: 200, order: 25}
-      type: bool
-    - name: Baron
-      admin_ui: {width: 200, order: 26}
-      type: bool
-    - name: Sword Armor
-      admin_ui: {width: 200, order: 27}
-      type: bool
-    - name: Axe Fighter
-      admin_ui: {width: 200, order: 28}
-      type: bool
-    - name: Warrior
-      admin_ui: {width: 200, order: 29}
-      type: bool
-    - name: Junior Lord
-      admin_ui: {width: 200, order: 30}
-      type: bool
-    - name: Mage Fighter
-      admin_ui: {width: 200, order: 31}
-      type: bool
-    - name: Prince
-      admin_ui: {width: 200, order: 32}
-      type: bool
-    - name: Princess
-      admin_ui: {width: 200, order: 33}
-      type: bool
-    - name: Queen
-      admin_ui: {width: 200, order: 34}
-      type: bool
-    - name: Dancer
-      admin_ui: {width: 200, order: 35}
-      type: bool
-    - name: Priest
-      admin_ui: {width: 200, order: 36}
-      type: bool
-    - name: Mage
-      admin_ui: {width: 200, order: 37}
-      type: bool
-    - name: Thunder Mage
-      admin_ui: {width: 200, order: 38}
-      type: bool
-    - name: Wind Mage
-      admin_ui: {width: 200, order: 39}
-      type: bool
-    - name: High Priest
-      admin_ui: {width: 200, order: 40}
-      type: bool
-    - name: Bishop
-      admin_ui: {width: 200, order: 41}
-      type: bool
-    - name: Sage
-      admin_ui: {width: 200, order: 42}
-      type: bool
-    - name: Bard
-      admin_ui: {width: 200, order: 43}
-      type: bool
-    - name: Light Priestess
-      admin_ui: {width: 200, order: 44}
-      type: bool
-    - name: Dark Mage
-      admin_ui: {width: 200, order: 45}
-      type: bool
-    - name: Dark Bishop
-      admin_ui: {width: 200, order: 46}
-      type: bool
-    - name: Thief
-      admin_ui: {width: 200, order: 47}
-      type: bool
-    - name: Thief Fighter
-      admin_ui: {width: 200, order: 48}
-      type: bool
-    - name: Dark Prince
-      admin_ui: {width: 200, order: 49}
-      type: bool
     title: FE4 Effectiveness
-  fe4_unit_stats:
+  fe4_febail_inheritance:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 66}
+    - admin_ui: {order: 0, width: 62}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 50}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
-    - name: Class
-      admin_ui: {width: 200, order: 9}
-      type: string
-    title: FE4 Unit Stats
+    server: search
+    title: FE4 Febail Inheritance
   fe4_fee_inheritance:
     client: search
-    server: search
     columns:
-    - name: Father
-      admin_ui: {order: 0, width: 67}
+    - admin_ui: {order: 0, width: 67}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 50}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
       type: number
+    server: search
     title: FE4 Fee Inheritance
-  fe3_boss_stats:
+  fe4_lana_inheritance:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 130}
+    - admin_ui: {order: 0, width: 63}
+      name: Father
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Str
       type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
       type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Lana Inheritance
+  fe4_larcei_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 57}
+      name: Father
       type: string
-    title: FE3 Boss Stats
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Larcei Inheritance
+  fe4_lene_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 66}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Lene Inheritance
+  fe4_lester_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 63}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Lester Inheritance
+  fe4_nanna_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 67}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Nanna Inheritance
+  fe4_patty_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 66}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Patty Inheritance
+  fe4_scathach_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 61}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Scathach Inheritance
+  fe4_tine_inheritance:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 67}
+      name: Father
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    server: search
+    title: FE4 Tine Inheritance
+  fe4_unit_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 66}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Res
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: Class
+      type: string
+    server: search
+    title: FE4 Unit Stats
   fe4_weapon_stats:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 103}
+    - admin_ui: {order: 0, width: 103}
+      name: Name
       type: string
-    - name: Mgt
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: Mgt
       type: number
-    - name: Wgt
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 50}
+      name: Wgt
       type: number
-    - name: Hit
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Hit
       type: number
-    - name: Type
-      admin_ui: {order: 4, width: 69}
+    - admin_ui: {order: 4, width: 69}
+      name: Type
       type: string
-    - name: Min Range
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Min Range
       type: number
-    - name: Max Range
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Max Range
       type: number
+    server: search
     title: FE4 Weapon Stats
-  fe4_boss_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 123}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {order: 4, width: 50}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {order: 6, width: 50}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    - name: Leadership
-      admin_ui: {width: 200, order: 11}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 12}
-      type: string
-    - name: Level
-      admin_ui: {width: 200, order: 13}
-      type: number
-    title: FE4 Boss Stats
-  fe1_unit_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 65}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Wlv
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Lck
-      admin_ui: {order: 5, width: 50}
-      type: number
-    - name: Def
-      admin_ui: {order: 6, width: 50}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Skl
-      admin_ui: {order: 2.5, width: 200}
-      type: number
-    - name: Class
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: FE1 Unit Stats
-  fe2_class_change:
-    client: search
-    server: search
-    columns:
-    - name: Class
-      admin_ui: {order: 0, width: 95}
-      type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 5}
-      type: number
-    title: FE2 Class Change
-  fe1_weapon_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 87}
-      type: string
-    - name: Lvl
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Mgt
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Wgt
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Hit
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Crit
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Min Range
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Max Range
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Type
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: FE1 Weapon Stats
-  fe5_unit_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 70}
-      type: string
-    - name: HP
-      admin_ui: {order: 1, width: 50}
-      type: number
-    - name: Str
-      admin_ui: {order: 2, width: 200}
-      type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Bld
-      admin_ui: {width: 200, order: 8}
-      type: number
-    - name: FCM
-      admin_ui: {width: 200, order: 9}
-      type: number
-    title: FE5 Unit Stats
   fe5_boss_stats:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 159}
+    - admin_ui: {order: 0, width: 159}
+      name: Name
       type: string
-    - name: HP
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: HP
       type: number
-    - name: Str
-      admin_ui: {order: 2, width: 50}
+    - admin_ui: {order: 2, width: 50}
+      name: Str
       type: number
-    - name: Mag
-      admin_ui: {order: 3, width: 50}
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
       type: number
-    - name: Skl
-      admin_ui: {order: 4, width: 50}
+    - admin_ui: {order: 4, width: 50}
+      name: Skl
       type: number
-    - name: Spd
-      admin_ui: {order: 5, width: 50}
+    - admin_ui: {order: 5, width: 50}
+      name: Spd
       type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
       type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Def
       type: number
-    - name: Bld
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Bld
       type: number
-    - name: Leadership
-      admin_ui: {width: 200, order: 9}
+    - admin_ui: {order: 9, width: 200}
+      name: Leadership
       type: number
-    - name: FCM
-      admin_ui: {width: 200, order: 10}
+    - admin_ui: {order: 10, width: 200}
+      name: FCM
       type: number
+    server: search
     title: FE5 Boss Stats
+  fe5_unit_stats:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 70}
+      name: Name
+      type: string
+    - admin_ui: {order: 1, width: 50}
+      name: HP
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: Str
+      type: number
+    - admin_ui: {order: 3, width: 50}
+      name: Mag
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: Skl
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Spd
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: Lck
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Def
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: Bld
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: FCM
+      type: number
+    server: search
+    title: FE5 Unit Stats
   fe5_weapon_stats:
     client: search
-    server: search
     columns:
-    - name: Name
-      admin_ui: {order: 0, width: 107}
+    - admin_ui: {order: 0, width: 107}
+      name: Name
       type: string
-    - name: Mgt
-      admin_ui: {order: 1, width: 50}
+    - admin_ui: {order: 1, width: 50}
+      name: Mgt
       type: number
-    - name: Wgt
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Wgt
       type: number
-    - name: Hit
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Hit
       type: number
-    - name: Crit
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Crit
       type: number
-    - name: Type
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Type
       type: string
-    - name: Min Range
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Min Range
       type: number
-    - name: Max Range
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: Max Range
       type: number
+    server: search
     title: FE5 Weapon Stats
-  fe4_arthur_inheritance:
-    client: search
-    server: search
-    columns:
-    - name: Father
-      admin_ui: {order: 0, width: 63}
-      type: string
-    - name: HP
-      admin_ui: {order: 1, width: 50}
-      type: number
-    - name: Str
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Mag
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Skl
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Spd
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Lck
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Def
-      admin_ui: {width: 200, order: 7}
-      type: number
-    - name: Res
-      admin_ui: {width: 200, order: 8}
-      type: number
-    title: FE4 Arthur Inheritance
-  fe3_weapon_stats:
-    client: search
-    server: search
-    columns:
-    - name: Name
-      admin_ui: {order: 0, width: 100}
-      type: string
-    - name: Mgt
-      admin_ui: {order: 1, width: 50}
-      type: number
-    - name: Wgt
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Hit
-      admin_ui: {order: 3, width: 50}
-      type: number
-    - name: Crit
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Min Range
-      admin_ui: {width: 200, order: 5}
-      type: number
-    - name: Max Range
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Type
-      admin_ui: {order: 7, width: 67}
-      type: string
-    title: FE3 Weapon Stats
+metadata: {description: Combat success and turn calculator for Fire Emblem., title: FE Calculator}
+name: FE ETC
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+package_name: FE_ETC
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-sandbox, version: 2}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+startup: {module: Landing, type: form}
+startup_form: null
