@@ -260,7 +260,14 @@ skill_list = {
       "Alec": ["Adept", "Nihil", "Follow-Up"],
       "Arden": ["Adept", "Follow-Up", "Vantage"],
       "Azelle": ["Adept", "Follow-Up"],
-      
+      "Lex": ["Adept", "Follow-Up", "Vantage"],
+      "Finn": ["Adept", "Miracle", "Follow-Up"],
+      "Midir": ["Accost", "Adept", "Follow-Up"],
+      "Dew": ["Adept", "Follow-Up"],
+      "Jamke": ["Accost", "Adept", "Follow-Up"],
+      "Chulainn": ["Adept", "Follow-Up"],
+      "Beowolf": ["Accost", "Adept", "Follow-Up"],
+      "Claud": ["Adept", "Follow-Up"]
     },
     "Hawk": ["Follow-Up", "Adept"],
     "Hannibal": ["Adept", "Vantage", "Pavise"],
