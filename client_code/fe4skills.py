@@ -258,6 +258,7 @@ skill_list = {
       "Lewyn": ["Follow-Up", "Critical", "Adept"],
       "Naoise": ["Accost", "Adept", "Critical", "Follow-Up"],
       "Alec": ["Adept", "Nihil", "Follow-Up"],
+      "Arden": ["Adept", "Follow-Up", "Vantage"],
       
     },
     "Hawk": ["Follow-Up", "Adept"],
