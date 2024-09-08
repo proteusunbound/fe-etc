@@ -275,6 +275,7 @@ skill_list = {
       "Claud": ["Adept", "Miracle"],
       "Naoise": ["Accost", "Adept", "Critical", "Miracle"],
       "Alec": ["Adept", "Miracle", "Nihil", "Follow-Up"],
+      "Arden": ["Adept", "Miracle", "Vantage"],
       
     },
     "Altena": ["Critical", "Adept"]
