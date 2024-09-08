@@ -278,6 +278,7 @@ skill_list = {
       "Arden": ["Adept", "Miracle", "Vantage"],
       "Azelle": ["Adept", "Miracle", "Follow-Up"],
       "Lex": ["Adept", "Miracle", "Vantage"],
+      "Finn": ["Adept", "Miracle", "Follow-Up"],
       
     },
     "Altena": ["Critical", "Adept"]
