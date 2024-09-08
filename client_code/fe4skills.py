@@ -279,7 +279,12 @@ skill_list = {
       "Azelle": ["Adept", "Miracle", "Follow-Up"],
       "Lex": ["Adept", "Miracle", "Vantage"],
       "Finn": ["Adept", "Miracle", "Follow-Up"],
-      
+      "Midir": ["Accost", "Adept", "Miracle", "Follow-Up"],
+      "Dew": ["Adept", "Miracle"],
+      "Jamke": ["Accost", "Adept", "Miracle"],
+      "Chulainn": ["Adept", "Miracle"],
+      "Beowolf": ["Accost", "Adept", "Miracle", "Follow-Up"],
+      "Lewyn": ["Adept", "Critical", "Miracle"]
     },
     "Altena": ["Critical", "Adept"]
 }
