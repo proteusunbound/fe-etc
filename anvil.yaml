@@ -1106,7 +1106,7 @@ db_schema:
   fe4_larcei_inheritance:
     client: search
     columns:
-    - admin_ui: {order: 0, width: 57}
+    - admin_ui: {order: 0, width: 67}
       name: Father
       type: string
     - admin_ui: {order: 1, width: 200}
@@ -1266,7 +1266,7 @@ db_schema:
   fe4_scathach_inheritance:
     client: search
     columns:
-    - admin_ui: {order: 0, width: 61}
+    - admin_ui: {order: 0, width: 70}
       name: Father
       type: string
     - admin_ui: {order: 1, width: 200}
