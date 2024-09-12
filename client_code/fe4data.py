@@ -48,7 +48,8 @@ class ActiveUnit:
         self.crit = 0
 
     def setfather(self, keyword):
-      
+        """Set Father"""
+        
 
     def setleadership(self, keyword):
         """Set Leadership"""
