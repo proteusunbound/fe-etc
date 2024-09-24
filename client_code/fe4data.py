@@ -5,8 +5,10 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe4skills
+from . import fe4inheritance
 
 skills = fe4skills.skill_list
+inheritance = fe4inheritance.inheritance_list
 
 
 @anvil.server.portable_class
