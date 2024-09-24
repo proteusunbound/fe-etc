@@ -61,6 +61,9 @@ class ActiveUnit:
         self.critbonus = 0
         self.crit = 0
 
+    def setfather(self, father):
+        """Set Father"""
+  
     def setleadership(self, keyword):
         """Set Leadership"""
         if keyword == "Sigurd":
