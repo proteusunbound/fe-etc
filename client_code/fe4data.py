@@ -25,7 +25,6 @@ class ActiveUnit:
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
         self.charclass = self.char["Class"]
-        self.father = ""
         self.level = 1
         self.hitpoints = 0
         self.doubles = False
@@ -46,12 +45,6 @@ class ActiveUnit:
         self.hitbonus = 0
         self.critbonus = 0
         self.crit = 0
-
-    def setfather(self, keyword):
-        """Set Father"""
-        if self.name in ("Scathach", "Larcei", "Lana", "Lester", "Diarmuid", "Fee", "Arthur", "Nanna", "Patty", "Lene", "Tine", "Febail", "Ced", "Coirpre"):
-          
-        
 
     def setleadership(self, keyword):
         """Set Leadership"""
