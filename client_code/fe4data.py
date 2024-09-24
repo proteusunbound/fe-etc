@@ -49,6 +49,8 @@ class ActiveUnit:
 
     def setfather(self, keyword):
         """Set Father"""
+        if self.name in ("Scathach", "Larcei", "Lana", "Lester", "Diarmuid", "Fee", "Arthur", "Nanna", "Patty", "Lene", "Tine", "Febail", "Ced", "Coirpre"):
+          
         
 
     def setleadership(self, keyword):
