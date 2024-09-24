@@ -16,17 +16,30 @@ class ActiveUnit:
     """Active Unit"""
 
     def __init__(self, keyword):
-        self.char = app_tables.fe4_unit_stats.get(Name=keyword)
-        self.name = self.char["Name"]
-        self.maxhp = self.char["HP"]
-        self.strength = self.char["Str"]
-        self.magic = self.char["Mag"]
-        self.skill = self.char["Skl"]
-        self.speed = self.char["Spd"]
-        self.defense = self.char["Def"]
-        self.luck = self.char["Lck"]
-        self.resistance = self.char["Res"]
-        self.charclass = self.char["Class"]
+        if keyword in inheritance:
+          self.char = inheritance[keyword]
+          self.name = keyword
+          self.maxhp = 0
+          self.strength = 0
+          self.magic = 0
+          self.skill = 0
+          self.speed = 0
+          self.defense = 0
+          self.luck = 0
+          self.resistance = 0
+          self.charclass = ""
+        else:
+          self.char = app_tables.fe4_unit_stats.get(Name=keyword)
+          self.name = self.char["Name"]
+          self.maxhp = self.char["HP"]
+          self.strength = self.char["Str"]
+          self.magic = self.char["Mag"]
+          self.skill = self.char["Skl"]
+          self.speed = self.char["Spd"]
+          self.defense = self.char["Def"]
+          self.luck = self.char["Lck"]
+          self.resistance = self.char["Res"]
+          self.charclass = self.char["Class"]
         self.level = 1
         self.hitpoints = 0
         self.doubles = False
