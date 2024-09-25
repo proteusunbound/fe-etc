@@ -65,6 +65,15 @@ class ActiveUnit:
         """Set Father"""
         if father in inheritance:
             self.char = inheritance[self.name][father]
+            self.maxhp = self.char["HP"]
+            self.strength = self.char["Str"]
+            self.magic = self.char["Mag"]
+            self.skill = self.char["Skl"]
+            self.speed = self.char["Spd"]
+            self.defense = self.char["Def"]
+            self.luck = self.char["Lck"]
+            self.resistance = self.char["Res"]
+            self.charclass = self.char["Class"]
   
     def setleadership(self, keyword):
         """Set Leadership"""
