@@ -28,6 +28,7 @@ class ActiveUnit:
           self.luck = 0
           self.resistance = 0
           self.charclass = ""
+          self.skills = []
         else:
           self.char = app_tables.fe4_unit_stats.get(Name=keyword)
           self.name = self.char["Name"]
@@ -63,18 +64,17 @@ class ActiveUnit:
 
     def setfather(self, father):
         """Set Father"""
-        if father in inheritance:
-            self.char = inheritance[self.name][father]
-            self.maxhp = self.char["HP"]
-            self.strength = self.char["Str"]
-            self.magic = self.char["Mag"]
-            self.skill = self.char["Skl"]
-            self.speed = self.char["Spd"]
-            self.defense = self.char["Def"]
-            self.luck = self.char["Lck"]
-            self.resistance = self.char["Res"]
-            self.charclass = self.char["Class"]
-            self.skills = self.char["Skills"]
+        self.char = inheritance[self.name][father]
+        self.maxhp = self.char["HP"]
+        self.strength = self.char["Str"]
+        self.magic = self.char["Mag"]
+        self.skill = self.char["Skl"]
+        self.speed = self.char["Spd"]
+        self.defense = self.char["Def"]
+        self.luck = self.char["Lck"]
+        self.resistance = self.char["Res"]
+        self.charclass = self.char["Class"]
+        self.skills = self.char["Skills"]
   
     def setleadership(self, keyword):
         """Set Leadership"""
