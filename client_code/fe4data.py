@@ -91,6 +91,8 @@ class ActiveUnit:
         """Set Skills"""
         if self.name in skills:
             self.skills = skills[self.name]
+        elif self.name in inheritance:
+            self.skills = self.char["Skills"]
 
     def setlover(self, lover):
         """Set Lover"""
