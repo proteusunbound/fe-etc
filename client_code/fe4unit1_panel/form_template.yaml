@@ -45,7 +45,11 @@ components:
     type: TextBox
   - layout_properties: {width: 475, x: 0, y: 40}
     name: father_drop
-    properties: {visible: false}
+    properties:
+      include_placeholder: true
+      items: [Naoise, Alec, Arden, Azelle, Lex, Finn, Midir, Dew, Jamke, Chulainn, Beowolf, Lewyn, Claud]
+      placeholder: Select Father
+      visible: false
     type: DropDown
   layout_properties: {grid_position: 'QIXASK,RJPYQE'}
   name: xy_panel_1
