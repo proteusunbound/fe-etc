@@ -43,7 +43,8 @@ components:
     name: killcount
     properties: {placeholder: Kills, type: number, visible: false}
     type: TextBox
-  - layout_properties: {width: 475, x: 0, y: 40}
+  - event_bindings: {change: father_drop_change}
+    layout_properties: {width: 475, x: 0, y: 40}
     name: father_drop
     properties:
       include_placeholder: true

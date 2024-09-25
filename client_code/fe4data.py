@@ -40,6 +40,7 @@ class ActiveUnit:
           self.luck = self.char["Lck"]
           self.resistance = self.char["Res"]
           self.charclass = self.char["Class"]
+          self.skills = skills[self.name]
         self.level = 1
         self.hitpoints = 0
         self.doubles = False
@@ -56,7 +57,6 @@ class ActiveUnit:
         self.astrarate = 1
         self.paviserate = 1
         self.pavisecancel = 1
-        self.skills = []
         self.hitbonus = 0
         self.critbonus = 0
         self.crit = 0
@@ -74,6 +74,7 @@ class ActiveUnit:
             self.luck = self.char["Lck"]
             self.resistance = self.char["Res"]
             self.charclass = self.char["Class"]
+            self.skills = self.char["Skills"]
   
     def setleadership(self, keyword):
         """Set Leadership"""
@@ -86,13 +87,6 @@ class ActiveUnit:
         """Set Charm"""
         if charmcheck is True:
             self.charm = 10
-
-    def setskills(self):
-        """Set Skills"""
-        if self.name in skills:
-            self.skills = skills[self.name]
-        elif self.name in inheritance:
-            self.skills = self.char["Skills"]
 
     def setlover(self, lover):
         """Set Lover"""

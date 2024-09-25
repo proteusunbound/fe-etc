@@ -21,7 +21,6 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
         """This method is called when an item is selected"""
         self.skillslist.content = ""
         self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
-        self.parent.combat.duels[0].unit.setskills()
         self.hp.text = self.parent.combat.duels[0].unit.maxhp
         self.strength.text = self.parent.combat.duels[0].unit.strength
         self.magic.text = self.parent.combat.duels[0].unit.magic
@@ -48,6 +47,8 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
             self.skillslist.content += f"{skill} \n"
         if self.parent.combat.duels[0].unit.charclass in ("Junior Lord", "Princess", "Prince", "Cavalier", "Troubadour", "Free Knight", "Lance Knight", "Axe Knight", "Arch Knight", "Sword Armor", "Sword Fighter", "Axe Fighter", "Bow Fighter", "Thief", "Priest", "Bard", "Light Priestess", "Mage", "Thunder Mage", "Wind Mage", "Pegasus Knight", "Wyvern Rider"):
           self.promobox.visible = True
+        if self.parent.combat.duels[0].unit.name in ("Scathach", "Larcei", "Lana", "Diarmuid", "Lester", "Fee", "Arthur", "Nanna", "Patty", "Lene", "Tine", "Febail", "Ced", "Coirpre"):
+          self.father_drop.visible = True
 
     def hide_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -410,3 +411,7 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
     def refreshbox_change(self, **event_args):
       """This method is called when this checkbox is checked or unchecked"""
       self.parent.combat.duels[0].refresh = self.refreshbox.checked
+
+    def father_drop_change(self, **event_args):
+      """This method is called when an item is selected"""
+      pass
