@@ -63,6 +63,8 @@ class ActiveUnit:
 
     def setfather(self, father):
         """Set Father"""
+        if father in inheritance:
+            self.char = inheritance[self.name][father]
   
     def setleadership(self, keyword):
         """Set Leadership"""
