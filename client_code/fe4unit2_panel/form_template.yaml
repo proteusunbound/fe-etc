@@ -11,7 +11,7 @@ components:
       spacing_below: small
     type: DropDown
   - event_bindings: {change: weapon_drop_change}
-    layout_properties: {width: 275, x: 0, y: 45}
+    layout_properties: {width: 275, x: 0, y: 80}
     name: weapon_drop
     properties:
       include_placeholder: true
@@ -20,7 +20,7 @@ components:
       visible: false
     type: DropDown
   - event_bindings: {click: custombutton_click}
-    layout_properties: {width: 120, x: 355, y: 45}
+    layout_properties: {width: 120, x: 355, y: 80}
     name: custombutton
     properties: {align: full, background: 'theme:Surface Variant', font_size: 15, foreground: '#9ea9ff', role: null, text: Customize}
     type: Button
@@ -39,13 +39,22 @@ components:
     properties: {placeholder: Level, type: number}
     type: TextBox
   - event_bindings: {pressed_enter: killcount_pressed_enter}
-    layout_properties: {width: 55, x: 285, y: 45}
+    layout_properties: {width: 55, x: 285, y: 80}
     name: killcount
     properties: {placeholder: Kills, type: number, visible: false}
     type: TextBox
+  - event_bindings: {change: father_drop_change}
+    layout_properties: {width: 475, x: 0, y: 40}
+    name: father_drop
+    properties:
+      include_placeholder: true
+      items: [Naoise, Alec, Arden, Azelle, Lex, Finn, Midir, Dew, Jamke, Chulainn, Beowolf, Lewyn, Claud]
+      placeholder: Select Father
+      visible: false
+    type: DropDown
   layout_properties: {grid_position: 'QIXASK,RJPYQE'}
   name: xy_panel_1
-  properties: {height: '70', spacing_above: none, spacing_below: small}
+  properties: {height: 111, spacing_above: none, spacing_below: small}
   type: XYPanel
 - components:
   - components:

@@ -22,22 +22,10 @@ components:
   name: unit1_panel
   properties: {}
   type: form:fe4unit1_panel
-- layout_properties: {grid_position: 'KJHVDW,CRTGEU RALMSM,QOGGWF'}
+- layout_properties: {grid_position: 'KJHVDW,CRTGEU MRELAY,AZMAVO'}
   name: unit2_panel
   properties: {}
   type: form:fe4unit2_panel
-- layout_properties: {grid_position: 'KJHVDW,CRTGEU TSMXFI,KTCCGV'}
-  name: unit3_panel
-  properties: {}
-  type: form:fe4unit3_panel
-- layout_properties: {grid_position: 'KJHVDW,CRTGEU FVFOXK,TIUUXQ'}
-  name: unit4_panel
-  properties: {}
-  type: form:fe4unit4_panel
-- layout_properties: {grid_position: 'KJHVDW,CRTGEU WIKMUO,LJDGDP'}
-  name: unit5_panel
-  properties: {}
-  type: form:fe4unit5_panel
 - components:
   - event_bindings: {change: boss_drop_change}
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
