@@ -112,3 +112,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
   def hidecancel_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.bossproc.visible = False
+
+  def hidesupport_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
