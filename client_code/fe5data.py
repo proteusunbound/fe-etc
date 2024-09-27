@@ -114,7 +114,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars)
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars) + keyword.supportbonus
 
 def physattack(keyword, weapon):
     """Physical Attack"""
@@ -134,7 +134,7 @@ def magdamage(attacker, defender):
 
 def critical(keyword, weapon):
     """Critical"""
-    keyword.crit = keyword.skill + weapon.crit
+    keyword.crit = keyword.skill + weapon.crit + keyword.supportbonus
 
 def physcrit(attacker, defender):
     """Physical Crit """
@@ -283,7 +283,7 @@ class DuelSim:
 
     def bosshitchance(self):
         """Boss Hit Chance"""
-        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars)) / 100), 0.99)
+        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars) + (self.unit.supportbonus)) / 100), 0.99)
         self.boss.hitchance = max(0.01, hitchance)
 
     def precombat(self):
@@ -317,8 +317,8 @@ class DuelSim:
             self.unitcrit = unitcritrate
         else:
             self.unitcrit = unitfcm
-        bosscritrate = min(0.25, (self.boss.crit - (self.unit.luck / 2)) / 100)
-        bossfcm = min((self.boss.fcm * (self.boss.crit - (self.unit.luck / 2))) / 100, 1)
+        bosscritrate = min(0.25, (self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus)) / 100)
+        bossfcm = min((self.boss.fcm * (self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus))) / 100, 1)
         if self.boss.fcm > 0:
             self.unitdodge = 1 - bossfcm
         else:
@@ -409,9 +409,9 @@ class DuelSim:
             elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
                 self.miracleno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+            elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
                 self.bosscrit()
-            elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
+            elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -464,9 +464,9 @@ class DuelSim:
         elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
             self.miracleno -= 1
             self.bossmiss()
-        elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+        elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
             self.bosscrit()
-        elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
+        elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
             self.bosscrit()
         else:
             self.bossattack()
