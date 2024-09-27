@@ -39,11 +39,25 @@ class ActiveUnit:
         self.miraclerate = 1
         self.skills = []
         self.supports = []
+        self.supportbonus = 0
 
     def setskills(self):
         """Set Skills"""
         if self.name in skills:
             self.skills = skills[self.name]
+
+    def setsupports(self):
+        """Set Supports"""
+        if self.name in supports:
+            for name, number in supports[self.name].items():
+                self.supports.append(name)
+        else:
+            self.supports = ["None", "None"]
+
+    def setsupportbonus(self, keyword, check):
+        """Set Support Bonus"""
+        if check is True:
+            self.supportbonus += supports[self.name][keyword]
 
 @anvil.server.portable_class
 class ActiveWeapon:
