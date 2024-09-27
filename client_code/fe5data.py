@@ -36,6 +36,7 @@ class ActiveUnit:
         self.adeptcancel = 1
         self.miraclerate = 1
         self.skills = []
+        self.supports = []
 
     def setskills(self):
         """Set Skills"""
