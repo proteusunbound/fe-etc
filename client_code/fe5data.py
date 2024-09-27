@@ -5,8 +5,10 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe5skills
+from . import fe5support
 
 skills = fe5skills.skills_list
+supports = fe5support.supportlist
 
 @anvil.server.portable_class
 class ActiveUnit:
