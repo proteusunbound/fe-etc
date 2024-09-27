@@ -976,6 +976,9 @@ db_schema:
     - admin_ui: {order: 10, width: 200}
       name: FCM
       type: number
+    - admin_ui: {order: 11, width: 200}
+      name: Action
+      type: number
     server: search
     title: FE5 Boss Stats
   fe5_unit_stats:
@@ -1010,6 +1013,9 @@ db_schema:
       type: number
     - admin_ui: {order: 9, width: 200}
       name: FCM
+      type: number
+    - admin_ui: {order: 10, width: 200}
+      name: Action
       type: number
     server: search
     title: FE5 Unit Stats
