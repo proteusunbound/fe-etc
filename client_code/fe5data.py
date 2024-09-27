@@ -101,6 +101,7 @@ class ActiveBoss:
         self.crit = 0
         self.skills = []
         self.counter = False
+        self.supportbonus = 0
 
     def setskills(self):
         """Set Skills"""
