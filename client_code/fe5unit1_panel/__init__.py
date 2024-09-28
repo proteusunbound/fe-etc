@@ -23,6 +23,7 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.skillslist.content = ""
     self.parent.combat.duels[0].setunit(self.unit_drop.selected_value)
     self.parent.combat.duels[0].unit.setskills()
+    self.parent.combat.duels[0].unit.setsupports()
     self.hp.text = self.parent.combat.duels[0].unit.maxhp
     self.strength.text = self.parent.combat.duels[0].unit.strength
     self.magic.text = self.parent.combat.duels[0].unit.magic
@@ -34,8 +35,14 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
     self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
     self.weapon_drop.selected_value = None
     self.weapon_drop.visible = True
+    self.support1.checked = False
+    self.support2.checked = False
     for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
         self.skillslist.content += f"{skill} \n"
+    if self.parent.combat.duels[0].unit.name not in ("Ralf", "Ilios", "Sleuf", "Shannam", "Amalda"):
+        self.support.visible = True
+        self.support1.text = self.parent.combat.duels[0].unit.supports[0]
+        self.support2.text = self.parent.combat.duels[0].unit.supports[1]
     
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -115,4 +122,22 @@ class fe5unit1_panel(fe5unit1_panelTemplate):
 
   def hidesupport_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.supportpanel.visible = False
+
+  def support_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.supportpanel.visible = True
+
+  def support1_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[0].unit.setsupportbonus(self.support1.text, self.support1.checked)
+    self.parent.combat.duels[0].unitdisplay()
+    self.hit.text = self.parent.combat.duels[0].unit.hit
+    self.crit.text = self.parent.combat.duels[0].unit.crit
+
+  def support2_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    self.parent.combat.duels[0].unit.setsupportbonus(self.support2.text, self.support2.checked)
+    self.parent.combat.duels[0].unitdisplay()
+    self.hit.text = self.parent.combat.duels[0].unit.hit
+    self.crit.text = self.parent.combat.duels[0].unit.crit
