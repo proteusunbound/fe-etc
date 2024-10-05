@@ -485,6 +485,8 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.counter is True
         ):
+            if "Wrath" in self.boss.skills:
+                self.boss.crit = 100
             self.counterdamage()
         if (
             self.unit.doubles is True
@@ -500,6 +502,7 @@ class DuelSim:
             and self.boss.counter is True
         ):
             self.bossfollowup = True
+            critical(self.boss, self.bossweapon)
             self.counterdamage()
         self.dueltext += "\n"
 
