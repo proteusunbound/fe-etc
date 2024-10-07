@@ -9,7 +9,7 @@ components:
     name: unit_number
     properties:
       include_placeholder: true
-      items: ['1', '2', '3']
+      items: ['1', '2', '3', '4']
       placeholder: Select Unit Number
       spacing_above: small
       spacing_below: none
