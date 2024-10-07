@@ -30,6 +30,10 @@ components:
   name: unit3_panel
   properties: {}
   type: form:fe5unit3_panel
+- layout_properties: {grid_position: 'KJHVDW,CRTGEU CVMNZF,VDVLHA'}
+  name: unit4_panel
+  properties: {}
+  type: form:fe5unit4_panel
 - components:
   - event_bindings: {change: boss_drop_change}
     layout_properties: {grid_position: 'TKBHLU,IQXRSE'}
