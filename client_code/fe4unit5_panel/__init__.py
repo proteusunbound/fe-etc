@@ -22,7 +22,6 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
     """This method is called when an item is selected"""
     self.skillslist.content = ""
     self.parent.combat.duels[4].setunit(self.unit_drop.selected_value)
-    self.parent.combat.duels[4].unit.setskills()
     self.hp.text = self.parent.combat.duels[4].unit.maxhp
     self.strength.text = self.parent.combat.duels[4].unit.strength
     self.magic.text = self.parent.combat.duels[4].unit.magic
@@ -45,8 +44,6 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
     self.miracleband.checked = False
     self.followupring.checked = False
     self.circlet.checked = False
-    for i, skill in enumerate(self.parent.combat.duels[4].unit.skills):
-      self.skillslist.content += f"{skill} \n"
     if self.parent.combat.duels[4].unit.charclass in (
       "Junior Lord",
       "Princess",
@@ -72,6 +69,25 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
       "Wyvern Rider",
     ):
       self.promobox.visible = True
+    if self.parent.combat.duels[4].unit.name in (
+      "Scathach",
+      "Larcei",
+      "Lana",
+      "Diarmuid",
+      "Lester",
+      "Fee",
+      "Arthur",
+      "Nanna",
+      "Patty",
+      "Lene",
+      "Tine",
+      "Febail",
+      "Ced",
+      "Coirpre",
+    ):
+      self.father_drop.visible = True
+    for i, skill in enumerate(self.parent.combat.duels[4].unit.skills):
+      self.skillslist.content += f"{skill} \n"
 
   def hide_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -434,3 +450,18 @@ class fe4unit5_panel(fe4unit5_panelTemplate):
   def refreshbox_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
     self.parent.combat.duels[4].refresh = self.refreshbox.checked
+
+  def father_drop_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.parent.combat.duels[4].unit.setfather(self.father_drop.selected_value)
+    self.hp.text = self.parent.combat.duels[4].unit.maxhp
+    self.strength.text = self.parent.combat.duels[4].unit.strength
+    self.magic.text = self.parent.combat.duels[4].unit.magic
+    self.skill.text = self.parent.combat.duels[4].unit.skill
+    self.speed.text = self.parent.combat.duels[4].unit.speed
+    self.luck.text = self.parent.combat.duels[4].unit.luck
+    self.defense.text = self.parent.combat.duels[4].unit.defense
+    self.resistance.text = self.parent.combat.duels[4].unit.resistance
+    self.startinghp.text = self.parent.combat.duels[4].unit.maxhp
+    for i, skill in enumerate(self.parent.combat.duels[4].unit.skills):
+      self.skillslist.content += f"{skill} \n"

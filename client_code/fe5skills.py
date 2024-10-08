@@ -10,13 +10,17 @@ skills_list = {
     "Leif": ["Adept"],
     "Finn": ["Miracle"],
     "Halvan": ["Vantage"],
+    "Osian": ["Wrath"],
     "Eyvel": ["Adept"],
     "Ronan": ["Adept"],
+    "Brighton": ["Wrath"],
     "Machyua": ["Vantage"],
     "Asbel": ["Adept"],
     "Ilios": ["Miracle"],
-    "Sara": ["Miracle"],
+    "Sara": ["Miracle", "Wrath"],
+    "Miranda": ["Wrath"],
     "Shannam": ["Adept"],
+    "Xavier": ["Wrath"],
     "Amalda": ["Adept"],
     "Ced": ["Adept"]
 }

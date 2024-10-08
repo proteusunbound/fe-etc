@@ -5,8 +5,10 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import fe5skills
+from . import fe5support
 
 skills = fe5skills.skills_list
+supports = fe5support.supportlist
 
 @anvil.server.portable_class
 class ActiveUnit:
@@ -24,6 +26,7 @@ class ActiveUnit:
         self.luck = self.char["Lck"]
         self.build = self.char["Bld"]
         self.fcm = self.char["FCM"]
+        self.actionstars = self.char["Action"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -35,11 +38,26 @@ class ActiveUnit:
         self.adeptcancel = 1
         self.miraclerate = 1
         self.skills = []
+        self.supports = []
+        self.supportbonus = 0
 
     def setskills(self):
         """Set Skills"""
         if self.name in skills:
             self.skills = skills[self.name]
+
+    def setsupports(self):
+        """Set Supports"""
+        if self.name in supports:
+            for name, number in supports[self.name].items():
+                self.supports.append(name)
+        else:
+            self.supports = ["None", "None"]
+
+    def setsupportbonus(self, keyword, check):
+        """Set Support Bonus"""
+        if check is True:
+            self.supportbonus += supports[self.name][keyword]
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -72,6 +90,7 @@ class ActiveBoss:
         self.build = boss["Bld"]
         self.leaderstars = boss["Leadership"]
         self.fcm = boss["FCM"]
+        self.actionstars = boss["Action"]
         self.hitpoints = 0
         self.doubles = False
         self.damage = 0
@@ -82,6 +101,7 @@ class ActiveBoss:
         self.crit = 0
         self.skills = []
         self.counter = False
+        self.supportbonus = 0
 
     def setskills(self):
         """Set Skills"""
@@ -94,7 +114,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars)
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars) + keyword.supportbonus
 
 def physattack(keyword, weapon):
     """Physical Attack"""
@@ -114,7 +134,7 @@ def magdamage(attacker, defender):
 
 def critical(keyword, weapon):
     """Critical"""
-    keyword.crit = keyword.skill + weapon.crit
+    keyword.crit = keyword.skill + weapon.crit + keyword.supportbonus
 
 def physcrit(attacker, defender):
     """Physical Crit """
@@ -263,7 +283,7 @@ class DuelSim:
 
     def bosshitchance(self):
         """Boss Hit Chance"""
-        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars)) / 100), 0.99)
+        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars) + (self.unit.supportbonus)) / 100), 0.99)
         self.boss.hitchance = max(0.01, hitchance)
 
     def precombat(self):
@@ -297,8 +317,8 @@ class DuelSim:
             self.unitcrit = unitcritrate
         else:
             self.unitcrit = unitfcm
-        bosscritrate = min(0.25, (self.boss.crit - (self.unit.luck / 2)) / 100)
-        bossfcm = min((self.boss.fcm * (self.boss.crit - (self.unit.luck / 2))) / 100, 1)
+        bosscritrate = min(0.25, (self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus)) / 100)
+        bossfcm = min((self.boss.fcm * (self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus))) / 100, 1)
         if self.boss.fcm > 0:
             self.unitdodge = 1 - bossfcm
         else:
@@ -389,9 +409,9 @@ class DuelSim:
             elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
                 self.miracleno -= 1
                 self.bossmiss()
-            elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+            elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
                 self.bosscrit()
-            elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
+            elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
                 self.bosscrit()
             else:
                 self.bossattack()
@@ -444,9 +464,9 @@ class DuelSim:
         elif (self.unit.hitpoints - self.boss.damage <= 0) and "Miracle" in self.unit.skills and self.miracleno > 0:
             self.miracleno -= 1
             self.bossmiss()
-        elif self.boss.crit > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
+        elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm == 0 and self.bossfollowup is False:
             self.bosscrit()
-        elif self.boss.crit > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
+        elif self.boss.crit - ((self.unit.luck / 2) + self.unit.supportbonus) > 0 and self.boss.fcm > 0 and self.bossfollowup is True:
             self.bosscrit()
         else:
             self.bossattack()
@@ -465,6 +485,8 @@ class DuelSim:
             and self.unit.hitpoints > 0
             and self.boss.counter is True
         ):
+            if "Wrath" in self.boss.skills:
+                self.boss.crit = 100
             self.counterdamage()
         if (
             self.unit.doubles is True
@@ -480,6 +502,7 @@ class DuelSim:
             and self.boss.counter is True
         ):
             self.bossfollowup = True
+            critical(self.boss, self.bossweapon)
             self.counterdamage()
         self.dueltext += "\n"
 
@@ -495,6 +518,8 @@ class DuelSim:
         ):
             self.counterdamage()
         if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
+            if "Wrath" in self.unit.skills:
+                self.unit.crit = 100
             self.dodamage()
         if (
             self.boss.doubles is True
@@ -510,6 +535,7 @@ class DuelSim:
             and self.boss.hitpoints > 0
         ):
             self.unitfollowup = True
+            critical(self.unit, self.unitweapon)
             self.dodamage()
         self.dueltext += "\n"
 
