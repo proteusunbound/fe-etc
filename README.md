@@ -1,5 +1,10 @@
 # fe-etc
 Combat success rate and turn calculator for Fire Emblem.
+### version 4.4
+- variable stats and skills for FE4 Gen 2 characters
+- supports in FE5
+- skill list update: Wrath
+- fourth player combatant
 ### version 4.3
 - refresh in FE4
 - weapon range and magical damage in FE5
