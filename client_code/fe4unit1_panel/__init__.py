@@ -265,44 +265,50 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
 
     def power_ring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Power Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.strength.text = self.parent.combat.duels[0].unit.strength
+        if self.power_ring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Power Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.strength.text = self.parent.combat.duels[0].unit.strength
 
     def magicring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Magic Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.magic.text = self.parent.combat.duels[0].unit.magic
+        if self.magicring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Magic Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.magic.text = self.parent.combat.duels[0].unit.magic
 
     def skillring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Skill Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.parent.combat.duels[0].unitdisplay()
-        self.skill.text = self.parent.combat.duels[0].unit.skill
-        self.hit.text = self.parent.combat.duels[0].unit.hit
-        self.crit.text = self.parent.combat.duels[0].unit.crit
+        if self.skillring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Skill Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.parent.combat.duels[0].unitdisplay()
+          self.skill.text = self.parent.combat.duels[0].unit.skill
+          self.hit.text = self.parent.combat.duels[0].unit.hit
+          self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def speedring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Speed Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.parent.combat.duels[0].unitdisplay()
-        self.speed.text = self.parent.combat.duels[0].unit.speed
-        self.attackspeed.text = self.parent.combat.duels[0].unit.AS
+        if self.speedring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Speed Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.parent.combat.duels[0].unitdisplay()
+          self.speed.text = self.parent.combat.duels[0].unit.speed
+          self.attackspeed.text = self.parent.combat.duels[0].unit.AS
 
     def shieldring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Shield Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.defense.text = self.parent.combat.duels[0].unit.defense
+        if self.shieldring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Shield Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.defense.text = self.parent.combat.duels[0].unit.defense
 
     def barrier_ring_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
-        self.parent.combat.duels[0].setunitequip("Barrier Ring")
-        self.parent.combat.duels[0].unitstatadjust()
-        self.resistance.text = self.parent.combat.duels[0].unit.resistance
+        if self.barrier_ring.checked is True:
+          self.parent.combat.duels[0].setunitequip("Barrier Ring")
+          self.parent.combat.duels[0].unitstatadjust()
+          self.resistance.text = self.parent.combat.duels[0].unit.resistance
 
     def renewalband_change(self, **event_args):
         """This method is called when this checkbox is checked or unchecked"""
