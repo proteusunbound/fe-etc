@@ -329,6 +329,7 @@ class DuelSim:
 
     def setunitequip(self, equipment):
         """Set Unit Equipment"""
+        if eq
         self.unitequip.append(equipment)
 
     def setbossequip(self, equipment):
