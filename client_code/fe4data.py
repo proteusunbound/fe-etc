@@ -329,7 +329,6 @@ class DuelSim:
 
     def setunitequip(self, equipment):
         """Set Unit Equipment"""
-        if eq
         self.unitequip.append(equipment)
 
     def setbossequip(self, equipment):
@@ -454,6 +453,13 @@ class DuelSim:
 
     def unitstatadjust(self):
         """Adjust Unit Stats"""
+        self.unit.strength = self.unit.char["Str"]
+        self.unit.magic = self.unit.char["Mag"]
+        self.unit.skill = self.unit.char["Skl"]
+        self.unit.speed = self.unit.char["Spd"]
+        self.unit.defense = self.unit.char["Def"]
+        self.unit.luck = self.unit.char["Lck"]
+        self.unit.resistance = self.unit.char["Res"]
         rings = {
             "Power Ring": "strength",
             "Magic Ring": "magic",
