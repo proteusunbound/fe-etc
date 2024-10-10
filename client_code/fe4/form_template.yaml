@@ -45,7 +45,7 @@ components:
     properties:
       enabled: true
       include_placeholder: true
-      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement, Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar, Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danaan, Kutuzov, Ishtore, Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah, Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege), Manfroy, Julius]
+      items: [DiMaggio, Gerrard, Cimbaeth, Munnir, Sandima, Bordeaux, Macbeth, Clement, Chagall (Agusti), Jacobi, Chagall (Sylvale), Duvall, Myos, Donovan, Daccar, Lombard, Vaja, Reptor, Harold, Iucharba, Iuchar, Danann, Kutuzov, Ishtore, Bramsel, Bloom (Ulster), Bloom (Connacht), Maykov, Kanatz, Distler, Judah, Travant, Hilda (Chronos), Riddell, Zagam, Arvis, Juphiel, Brian, Hilda (Friege), Manfroy, Julius]
       placeholder: Select Boss
       spacing_above: small
     type: DropDown
