@@ -307,8 +307,8 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.noaccost = False
-        self.unitequip = []
-        self.bossequip = []
+        self.unitequip = ""
+        self.bossequip = ""
         self.refresh = False
 
     def setunit(self, unit):
@@ -329,11 +329,11 @@ class DuelSim:
 
     def setunitequip(self, equipment):
         """Set Unit Equipment"""
-        self.unitequip.append(equipment)
+        self.unitequip = equipment
 
     def setbossequip(self, equipment):
         """Set Boss Equipment"""
-        self.bossequip.append(equipment)
+        self.bossequip = equipment
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -453,13 +453,6 @@ class DuelSim:
 
     def unitstatadjust(self):
         """Adjust Unit Stats"""
-        self.unit.strength = self.unit.char["Str"]
-        self.unit.magic = self.unit.char["Mag"]
-        self.unit.skill = self.unit.char["Skl"]
-        self.unit.speed = self.unit.char["Spd"]
-        self.unit.defense = self.unit.char["Def"]
-        self.unit.luck = self.unit.char["Lck"]
-        self.unit.resistance = self.unit.char["Res"]
         rings = {
             "Power Ring": "strength",
             "Magic Ring": "magic",
@@ -480,7 +473,7 @@ class DuelSim:
             "Mystletainn": {"skill": 20, "resistance": 10},
         }
         for ring, stat in rings.items():
-            if ring in self.unitequip:
+            if self.unitequip == ring:
                 setattr(self.unit, stat, getattr(self.unit, stat) + 5)
         if self.unitweapon.name in weapons:
             for stat, bonus in weapons[self.unitweapon.name].items():
@@ -527,7 +520,7 @@ class DuelSim:
             "Helswath": {"defense": 10, "resistance": 10},
         }
         for ring, stat in rings.items():
-            if ring in self.bossequip:
+            if self.bossequip == ring:
                 setattr(self.boss, stat, getattr(self.boss, stat) + 5)
         if self.bossweapon.name in weapons:
             for stat, bonus in weapons[self.bossweapon.name].items():
