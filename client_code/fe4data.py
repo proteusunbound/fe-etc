@@ -532,6 +532,7 @@ class DuelSim:
         attack_speed(self.unit, self.unitweapon)
         hitrate(self.unit, self.unitweapon)
         if "Critical" in self.unit.skills:
+            self.unitweapon.killcount = 50
             self.unit.crit = self.unit.skill + self.unit.critbonus + (self.unitweapon.killcount - 50)
         else:
             self.unit.crit = self.unit.critbonus
