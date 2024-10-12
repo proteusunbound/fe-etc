@@ -131,35 +131,35 @@ class ActiveUnit:
 
     def boosthp(self, number):
         """HP Boost"""
-        self.maxhp = min(self.char["HP"] + number, 80)
+        self.maxhp = min(self.maxhp + number, 80)
 
     def boost_strength(self, number):
         """Strength Boost"""
-        self.strength = min(self.char["Str"] + number, 27)
+        self.strength = min(self.strength + number, 27)
 
     def boostmagic(self, number):
         """Magic Boost"""
-        self.magic = min(self.char["Mag"] + number, 30)
+        self.magic = min(self.magic + number, 30)
 
     def boost_skill(self, number):
         """Skill Boost"""
-        self.skill = min(self.char["Skl"] + number, 30)
+        self.skill = min(self.skill + number, 30)
 
     def boost_speed(self, number):
         """Speed Boost"""
-        self.speed = min(self.char["Spd"] + number, 30)
+        self.speed = min(self.speed + number, 30)
 
     def boostluck(self, number):
         """Luck Boost"""
-        self.luck = min(self.char["Lck"] + number, 30)
+        self.luck = min(self.luck + number, 30)
 
     def boostdefense(self, number):
         """Defense Boost"""
-        self.defense = min(self.char["Def"] + number, 29)
+        self.defense = min(self.defense + number, 29)
 
     def boostresistance(self, number):
         """Resistance Boost"""
-        self.resistance = min(self.char["Res"] + number, 27)
+        self.resistance = min(self.resistance + number, 27)
 
 
 @anvil.server.portable_class
