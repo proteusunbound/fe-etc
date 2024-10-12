@@ -475,12 +475,13 @@ class DuelSim:
         for ring, stat in rings.items():
             if self.unitequip == ring:
                 setattr(self.unit, stat, getattr(self.unit, stat) + 5)
+                self.unitequip = ""
         if self.unitweapon.name in weapons:
             for stat, bonus in weapons[self.unitweapon.name].items():
                 setattr(self.unit, stat, getattr(self.unit, stat) + bonus)
 
     def adjustunitskills(self):
-        """Abjust Unit Skills"""
+        """Adjust Unit Skills"""
         if ("Renewal Band" in self.unitequip) or (self.unitweapon.name == "Yewfelle"):
             self.unit.skills.append("Renewal")
         if ("Miracle Band" in self.unitequip) or (
