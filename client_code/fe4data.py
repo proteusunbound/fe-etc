@@ -131,35 +131,35 @@ class ActiveUnit:
 
     def boosthp(self, number):
         """HP Boost"""
-        self.maxhp = min(self.char["HP"] + number, 80)
+        self.maxhp = min(self.maxhp + number, 80)
 
     def boost_strength(self, number):
         """Strength Boost"""
-        self.strength = min(self.char["Str"] + number, 27)
+        self.strength = min(self.strength + number, 27)
 
     def boostmagic(self, number):
         """Magic Boost"""
-        self.magic = min(self.char["Mag"] + number, 30)
+        self.magic = min(self.magic + number, 30)
 
     def boost_skill(self, number):
         """Skill Boost"""
-        self.skill = min(self.char["Skl"] + number, 30)
+        self.skill = min(self.skill + number, 30)
 
     def boost_speed(self, number):
         """Speed Boost"""
-        self.speed = min(self.char["Spd"] + number, 30)
+        self.speed = min(self.speed + number, 30)
 
     def boostluck(self, number):
         """Luck Boost"""
-        self.luck = min(self.char["Lck"] + number, 30)
+        self.luck = min(self.luck + number, 30)
 
     def boostdefense(self, number):
         """Defense Boost"""
-        self.defense = min(self.char["Def"] + number, 29)
+        self.defense = min(self.defense + number, 29)
 
     def boostresistance(self, number):
         """Resistance Boost"""
-        self.resistance = min(self.char["Res"] + number, 27)
+        self.resistance = min(self.resistance + number, 27)
 
 
 @anvil.server.portable_class
@@ -307,8 +307,8 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.noaccost = False
-        self.unitequip = []
-        self.bossequip = []
+        self.unitequip = ""
+        self.bossequip = ""
         self.refresh = False
 
     def setunit(self, unit):
@@ -329,11 +329,11 @@ class DuelSim:
 
     def setunitequip(self, equipment):
         """Set Unit Equipment"""
-        self.unitequip.append(equipment)
+        self.unitequip = equipment
 
     def setbossequip(self, equipment):
         """Set Boss Equipment"""
-        self.bossequip.append(equipment)
+        self.bossequip = equipment
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -453,13 +453,6 @@ class DuelSim:
 
     def unitstatadjust(self):
         """Adjust Unit Stats"""
-        self.unit.strength = self.unit.char["Str"]
-        self.unit.magic = self.unit.char["Mag"]
-        self.unit.skill = self.unit.char["Skl"]
-        self.unit.speed = self.unit.char["Spd"]
-        self.unit.defense = self.unit.char["Def"]
-        self.unit.luck = self.unit.char["Lck"]
-        self.unit.resistance = self.unit.char["Res"]
         rings = {
             "Power Ring": "strength",
             "Magic Ring": "magic",
@@ -480,7 +473,7 @@ class DuelSim:
             "Mystletainn": {"skill": 20, "resistance": 10},
         }
         for ring, stat in rings.items():
-            if ring in self.unitequip:
+            if self.unitequip == ring:
                 setattr(self.unit, stat, getattr(self.unit, stat) + 5)
         if self.unitweapon.name in weapons:
             for stat, bonus in weapons[self.unitweapon.name].items():
@@ -527,7 +520,7 @@ class DuelSim:
             "Helswath": {"defense": 10, "resistance": 10},
         }
         for ring, stat in rings.items():
-            if ring in self.bossequip:
+            if self.bossequip == ring:
                 setattr(self.boss, stat, getattr(self.boss, stat) + 5)
         if self.bossweapon.name in weapons:
             for stat, bonus in weapons[self.bossweapon.name].items():
