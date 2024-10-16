@@ -315,8 +315,8 @@ class DuelSim:
         self.unitdodge = 0
         self.terrain = False
         self.noaccost = False
-        self.unitequip = ""
-        self.bossequip = ""
+        self.unitequip = []
+        self.bossequip = []
         self.refresh = False
 
     def setunit(self, unit):
@@ -337,11 +337,11 @@ class DuelSim:
 
     def setunitequip(self, equipment):
         """Set Unit Equipment"""
-        self.unitequip = equipment
+        self.unitequip.append(equipment)
 
     def setbossequip(self, equipment):
         """Set Boss Equipment"""
-        self.bossequip = equipment
+        self.bossequip.append(equipment)
 
     def setunithp(self, hitpoints):
         """Set Unit HP"""
@@ -481,9 +481,9 @@ class DuelSim:
             "Mystletainn": {"skill": 20, "resistance": 10},
         }
         for ring, stat in rings.items():
-            if self.unitequip == ring:
+            if ring in self.unitequip:
                 setattr(self.unit, stat, getattr(self.unit, stat) + 5)
-                self.unitequip = ""
+                self.unitequip.remove(ring)
         if self.unitweapon.name in weapons:
             for stat, bonus in weapons[self.unitweapon.name].items():
                 setattr(self.unit, stat, getattr(self.unit, stat) + bonus)
