@@ -41,7 +41,7 @@ class ActiveUnit:
           self.luck = self.char["Lck"]
           self.resistance = self.char["Res"]
           self.charclass = self.char["Class"]
-          self.skills = skills[self.name]
+          self.skills = []
         self.level = 1
         self.hitpoints = 0
         self.doubles = False
@@ -74,8 +74,16 @@ class ActiveUnit:
         self.luck = self.char["Lck"]
         self.resistance = self.char["Res"]
         self.charclass = self.char["Class"]
-        self.skills = self.char["Skills"]
-  
+
+    def setskills(self):
+        self.skills.clear()
+        if self.name in inheritance:
+            for i in range(len(self.char["Skills"])):
+                self.skills.append(self.char["Skills"][i])
+        elif self.name in skills:
+            for i in range(len(skills[self.name])):
+                self.skills.append(skills[self.name][i])
+          
     def setleadership(self, keyword):
         """Set Leadership"""
         if keyword == "Sigurd":
@@ -482,6 +490,7 @@ class DuelSim:
 
     def adjustunitskills(self):
         """Adjust Unit Skills"""
+        self.unit.setskills()
         if ("Renewal Band" in self.unitequip) or (self.unitweapon.name == "Yewfelle"):
             self.unit.skills.append("Renewal")
         if ("Miracle Band" in self.unitequip) or (
