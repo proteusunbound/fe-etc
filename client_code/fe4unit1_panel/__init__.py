@@ -413,6 +413,9 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
       self.parent.combat.duels[0].unitweapon.setkillcount(self.killcount.text)
       self.parent.combat.duels[0].adjustunitskills()
       self.parent.combat.duels[0].unitdisplay()
+      self.skillslist.content = ""
+      for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
+          self.skillslist.content += f"{skill} \n"
       self.crit.text = self.parent.combat.duels[0].unit.crit
 
     def refreshbox_change(self, **event_args):
@@ -431,5 +434,6 @@ class fe4unit1_panel(fe4unit1_panelTemplate):
       self.defense.text = self.parent.combat.duels[0].unit.defense
       self.resistance.text = self.parent.combat.duels[0].unit.resistance
       self.startinghp.text = self.parent.combat.duels[0].unit.maxhp
+      self.skillslist.content = ""
       for i, skill in enumerate(self.parent.combat.duels[0].unit.skills):
             self.skillslist.content += f"{skill} \n"
