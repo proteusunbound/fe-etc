@@ -764,7 +764,7 @@ class DuelSim:
                     f"{self.unit.name} restores to {self.unit.hitpoints} HP. \n"
                 )
             elif (
-                self.unitweapon.name == "Nosferatu"
+                self.unitweapon.name in ()"Nosferatu"
                 and self.unit.hitpoints < self.unit.maxhp
             ):
                 self.hitno += 1
