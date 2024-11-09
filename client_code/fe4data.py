@@ -938,7 +938,7 @@ class DuelSim:
                 else:
                     break
         elif self.noaccost is True:
-            accostavoid = 1 - (self.boss.AS - self.unit.AS + (self.boss.hitpoints / 2))
+            accostavoid = 1 - ((self.boss.AS - self.unit.AS + (self.boss.hitpoints / 2)) / 100)
         if "Accost" in self.unit.skills and self.iniaccost > 0:
             for i in range(0, self.iniaccost):
                 if self.unit.hitpoints >= 25:
