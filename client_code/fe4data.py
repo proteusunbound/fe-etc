@@ -641,6 +641,17 @@ class DuelSim:
         if self.bossweapon.name in ("Brave Axe", "Brave Bow"):
             self.unit.adeptcancel = 0
 
+    def rngtweak(self):
+        """Tweak RNG"""
+        if self.unithit > 0:
+            self.unithit = min(self.unithit + self.rng, 1)
+        if self.unitcrit > 0:
+            self.unitcrit += self.rng
+        if self.unitavoid > 0:
+            self.unitavoid = min(self.unitavoid + self.rng, 1)
+        if self.unitdodge > 0:
+            self.unitdodge = min(self.unitdodge + self.rng, 1)
+
     def effectivecheck(self):
         """Effectiveness Log"""
         effectiveness(self.unitweapon, self.boss)
