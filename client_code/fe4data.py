@@ -401,6 +401,10 @@ class DuelSim:
         """Set Boss HP"""
         self.boss.hitpoints = hitpoints
 
+    def setrng(self, rng):
+        """Tweak RNG"""
+        self.rng = rng / 100
+
     def weapontriangle(self):
         """Weapon Triangle"""
         triangle_logic = {
