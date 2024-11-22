@@ -651,6 +651,8 @@ class DuelSim:
             self.unitavoid = min(self.unitavoid + self.rng, 1)
         if self.unitdodge > 0:
             self.unitdodge = min(self.unitdodge + self.rng, 1)
+        if self.unit.adeptrate > 0:
+            self.unit.adeptrate += self.rng
 
     def effectivecheck(self):
         """Effectiveness Log"""
