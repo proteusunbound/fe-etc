@@ -653,6 +653,8 @@ class DuelSim:
             self.unitdodge = min(self.unitdodge + self.rng, 1)
         if self.unit.adeptrate > 0:
             self.unit.adeptrate += self.rng
+        if self.unit.adeptcancel > 0:
+            self.unit.adeptcandel = min(self.unit.adeptcancel + self.rng, 1)
 
     def effectivecheck(self):
         """Effectiveness Log"""
