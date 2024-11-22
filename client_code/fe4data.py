@@ -657,6 +657,8 @@ class DuelSim:
             self.unit.adeptcandel = min(self.unit.adeptcancel + self.rng, 1)
         if self.unit.solrate > 0:
             self.unit.solrate += self.rng
+        if self.unit.lunarate > 0:
+            self.unit.lunarate += self.rng
 
     def effectivecheck(self):
         """Effectiveness Log"""
