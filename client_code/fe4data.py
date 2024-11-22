@@ -318,6 +318,7 @@ class DuelSim:
         self.unitequip = ""
         self.bossequip = ""
         self.refresh = False
+        self.rng = 0
 
     def setunit(self, unit):
         """Set Unit"""
