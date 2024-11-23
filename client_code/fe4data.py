@@ -659,6 +659,8 @@ class DuelSim:
             self.unit.solrate += self.rng
         if self.unit.lunarate > 0:
             self.unit.lunarate += self.rng
+        if self.unit.astrarate > 0:
+            self.unit.astrarate += self.rng
 
     def effectivecheck(self):
         """Effectiveness Log"""
