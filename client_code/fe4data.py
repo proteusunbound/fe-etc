@@ -663,6 +663,8 @@ class DuelSim:
             self.unit.astrarate += self.rng
         if self.unit.paviserate > 0:
             self.unit.paviserate += self.rng
+        if self.unit.pavisecancel > 0:
+            self.unit.pavisecancel = min(self.unit.pavisecancel + self.rng, 1)
 
     def effectivecheck(self):
         """Effectiveness Log"""
