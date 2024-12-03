@@ -436,15 +436,10 @@ class DuelSim:
     def hpthreshold(self):
         """HP Threshold"""
         if "Miracle" in self.unit.skills and self.unit.hitpoints <= 10:
-            self.unitavoid = min(self.unitavoid + (11 - self.unit.hitpoints) / 10, 1)
-        else:
-            self.unitavoid = 1 - self.boss.hitchance
+            self.unitavoid = min(self.unitavoid + (11 - self.unit.hitpoints) / 10 + self.rng, 1)
         if "Miracle" in self.boss.skills and self.boss.hitpoints <= 10:
             self.boss.avoid = self.boss.avoid + (11 - self.boss.hitpoints) * 10
-            self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
-        else:
-            self.enemy_avoid()
-            self.unithit = min((self.unit.hit - self.boss.avoid) / 100, 1)
+            self.unithit = min((self.unit.hit - self.boss.avoid) / 100 + self.rng, 1)
         if self.bossweapon.name == "Hel" and self.unit.hitpoints > 1:
             self.boss.crit = 0
             self.boss.damage = self.unit.hitpoints - 1
@@ -462,7 +457,7 @@ class DuelSim:
             and (self.unit.hitpoints < self.unit.maxhp / 2)
             and ("Nihil" not in self.boss.skills)
         ):
-            self.unit.crit = 100
+            self.unitcrit = 1
 
     def unitstatadjust(self):
         """Adjust Unit Stats"""
@@ -654,7 +649,7 @@ class DuelSim:
         if self.unit.adeptrate > 0:
             self.unit.adeptrate += self.rng
         if self.unit.adeptcancel > 0:
-            self.unit.adeptcandel = min(self.unit.adeptcancel + self.rng, 1)
+            self.unit.adeptcancel = min(self.unit.adeptcancel + self.rng, 1)
         if self.unit.solrate > 0:
             self.unit.solrate += self.rng
         if self.unit.lunarate > 0:
@@ -725,10 +720,10 @@ class DuelSim:
             ):
                 self.astrano -= 1
                 self.astra()
-            elif self.unit.crit == 100 and "Nihil" not in self.boss.skills:
+            elif self.unitcrit == 1 and "Nihil" not in self.boss.skills:
                 self.unit_crit()
             elif (
-                self.unit.crit > 0
+                self.unitcrit > 0
                 and self.critno > 0
                 and "Nihil" not in self.boss.skills
             ):
@@ -742,9 +737,9 @@ class DuelSim:
         self.dueltext += f"{self.unit.name} activates Astra. \n"
         for i in range(0, 5):
             if self.unit.hitpoints > 0 and self.boss.hitpoints > 0:
-                if self.unit.crit == 100:
+                if self.unitcrit == 1:
                     self.unit_crit()
-                elif self.unit.crit > 0 and self.critno > 0:
+                elif self.unitcrit > 0 and self.critno > 0:
                     self.critno -= 1
                     self.unit_crit()
                 else:
@@ -863,10 +858,10 @@ class DuelSim:
             self.astrano -= 1
             self.astra()
         elif (
-            self.unit.crit == 100 or self.unitweapon.effective is True
+            self.unitcrit == 1 or self.unitweapon.effective is True
         ) and "Nihil" not in self.boss.skills:
             self.unit_crit()
-        elif self.unit.crit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
+        elif self.unitcrit > 0 and self.critno > 0 and "Nihil" not in self.boss.skills:
             self.critno -= 1
             self.unit_crit()
         else:
