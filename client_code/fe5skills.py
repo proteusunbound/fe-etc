@@ -6,6 +6,14 @@ from anvil.tables import app_tables
 
 skills_list = {
     "Perne": ["Vantage", "Sol"],
+    "List": ["Pavse"],
+    "Paulus": ["Pavise"],
+    "Gustaf": ["Pavise"],
+    "Wolf": ["Pavise"],
+    "Barath": ["Pavise"],
+    "Zaom": ["Pavise"],
+    "Cohen": ["Pavise"],
+    "Raydrick": ["Pavise"],
     "Veld": ["Adept"],
     "Leif": ["Adept"],
     "Finn": ["Miracle"],
@@ -25,7 +33,7 @@ skills_list = {
     "Sara": ["Miracle", "Wrath"],
     "Miranda": ["Wrath"],
     "Shannam": ["Adept"],
-    "Xavier": ["Wrath", "Accost"],
+    "Xavier": ["Wrath", "Accost", "Pavise"],
     "Amalda": ["Adept"],
     "Conomor": ["Accost"],
     "Saias": ["Nihil"],
