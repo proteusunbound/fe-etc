@@ -19,6 +19,7 @@ skills_list = {
     "Asbel": ["Adept"],
     "Shiva": ["Sol"],
     "Selphina": ["Accost"],
+    "Mareeta": ["Luna"],
     "Ilios": ["Miracle", "Sol"],
     "Sara": ["Miracle", "Wrath"],
     "Miranda": ["Wrath"],
@@ -26,5 +27,6 @@ skills_list = {
     "Xavier": ["Wrath", "Accost"],
     "Amalda": ["Adept"],
     "Conomor": ["Accost"],
-    "Ced": ["Adept"]
+    "Ced": ["Adept"],
+    "Galzus": ["Luna"]
 }
