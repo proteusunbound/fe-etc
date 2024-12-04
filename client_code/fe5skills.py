@@ -5,7 +5,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 skills_list = {
-    "Perne": ["Vantage"],
+    "Perne": ["Vantage", "Sol"],
     "Veld": ["Adept"],
     "Leif": ["Adept"],
     "Finn": ["Miracle"],
@@ -17,8 +17,9 @@ skills_list = {
     "Brighton": ["Wrath"],
     "Machyua": ["Vantage"],
     "Asbel": ["Adept"],
+    "Shiva": ["Sol"],
     "Selphina": ["Accost"],
-    "Ilios": ["Miracle"],
+    "Ilios": ["Miracle", "Sol"],
     "Sara": ["Miracle", "Wrath"],
     "Miranda": ["Wrath"],
     "Shannam": ["Adept"],
