@@ -14,7 +14,7 @@ skills_list = {
     "Zaom": ["Pavise"],
     "Cohen": ["Pavise"],
     "Raydrick": ["Pavise"],
-    "Veld": ["Adept"],
+    "Veld": ["Adept", "Renewal"],
     "Leif": ["Adept"],
     "Finn": ["Miracle"],
     "Halvan": ["Vantage"],
