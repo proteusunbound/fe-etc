@@ -38,5 +38,5 @@ skills_list = {
     "Conomor": ["Accost"],
     "Saias": ["Nihil"],
     "Ced": ["Adept"],
-    "Galzus": ["Luna"]
+    "Galzus": ["Luna", "Astra"]
 }
