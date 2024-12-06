@@ -539,6 +539,8 @@ class DuelSim:
             self.dodamage()
         self.dueltext += "\n"
 
+    def accost(self):
+
     def vantage(self, vantageuser):
         """Vantage"""
         self.dueltext += f"{vantageuser.name} activates Vantage. \n"
