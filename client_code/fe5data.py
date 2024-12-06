@@ -543,6 +543,20 @@ class DuelSim:
         """Accost"""
         if "Accost" in self.boss.skills:
             ceiling = math.floor(self.boss.maxhp / self.unit.damage)
+            for i in range(0, ceiling):
+                if self.boss.hitpoints > self.unit.hitpoints and self.unit.hitpoints > 0:
+                    self.dueltext += f"{self.boss.name} activates Accost. \n"
+                    self.enemyphase()
+                else:
+                    break
+        if "Accost" in self.unit skills:
+            ceiling = math.floor(self.unit.maxhp / self.boss.damage)
+            for i in range(0, ceiling):
+                if self.unit.hitpoints > self.boss.hitpoints and self.boss.hitpoints > 0:
+                    self.dueltext += f"{self.unit.name} activates Accost. \n"
+                    self.playerphase()
+                else:
+                    break
 
     def vantage(self, vantageuser):
         """Vantage"""
