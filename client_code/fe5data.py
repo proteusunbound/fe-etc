@@ -59,6 +59,13 @@ class ActiveUnit:
         if check is True:
             self.supportbonus += supports[self.name][keyword]
 
+    def setleaderstars(self, stars):
+        """Set Leadership Stars"""
+        self.leaderstars = stars
+
+    def setcharm(self, charmcheck):
+        """Set Charm"""
+
 @anvil.server.portable_class
 class ActiveWeapon:
     """Active Weapon"""
