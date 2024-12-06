@@ -540,6 +540,9 @@ class DuelSim:
         self.dueltext += "\n"
 
     def accost(self):
+        """Accost"""
+        if "Accost" in self.boss.skills:
+            ceiling = math.floor(self.boss.maxhp / self.unit.damage)
 
     def vantage(self, vantageuser):
         """Vantage"""
