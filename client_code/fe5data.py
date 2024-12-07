@@ -37,6 +37,7 @@ class ActiveUnit:
         self.adeptrate = 1
         self.adeptcancel = 1
         self.miraclerate = 1
+        self.charm = 0
         self.skills = []
         self.supports = []
         self.supportbonus = 0
@@ -65,6 +66,8 @@ class ActiveUnit:
 
     def setcharm(self, charmcheck):
         """Set Charm"""
+        if charmcheck is True:
+            self.charm = 10
 
 @anvil.server.portable_class
 class ActiveWeapon:
@@ -121,7 +124,7 @@ def attack_speed(keyword, weapon):
 
 def hitrate(keyword, weapon):
     """Hit Rate"""
-    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars) + keyword.supportbonus
+    keyword.hit = weapon.hit + (2 * keyword.skill) + keyword.luck + weapon.weapontriangle + (3 * keyword.leaderstars) + keyword.supportbonus + keyword.charm
 
 def physattack(keyword, weapon):
     """Physical Attack"""
@@ -290,7 +293,7 @@ class DuelSim:
 
     def bosshitchance(self):
         """Boss Hit Chance"""
-        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars) + (self.unit.supportbonus)) / 100), 0.99)
+        hitchance = min(((self.boss.hit - ((self.unit.AS * 2) + self.unit.luck) + (3 * self.unit.leaderstars) + (self.unit.supportbonus) + (self.unit.charm)) / 100), 0.99)
         self.boss.hitchance = max(0.01, hitchance)
 
     def precombat(self):
